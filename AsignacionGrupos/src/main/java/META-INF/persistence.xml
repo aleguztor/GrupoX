@@ -3,6 +3,9 @@
 	<persistence-unit name="AsignacionGrupos" transaction-type="RESOURCE_LOCAL">
 		<class>GrupoX.AsignacionGrupos.Grupo</class>
 		<class>GrupoX.AsignacionGrupos.Clase</class>
+		<class>GrupoX.AsignacionGrupos.Matricula</class>
+		<class>GrupoX.AsignacionGrupos.Titulacion</class>
+		<class>GrupoX.AsignacionGrupos.Clase</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sii"/>
 			<property name="javax.persistence.jdbc.user" value="siiuser"/>

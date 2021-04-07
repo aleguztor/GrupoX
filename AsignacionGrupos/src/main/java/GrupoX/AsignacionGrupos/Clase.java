@@ -1,9 +1,8 @@
 package GrupoX.AsignacionGrupos;
 
 import java.io.Serializable;
-import java.lang.Long;
-import java.sql.Time;
-import java.util.Date;
+import java.lang.String;
+import java.sql.Date;
 
 import javax.persistence.*;
 
@@ -13,6 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 
+@IdClass(ClasePK.class)
 public class Clase implements Serializable {
 
 	   
@@ -50,5 +50,21 @@ public class Clase implements Serializable {
 	public void setHorafin(Date Horafin) {
 		this.Horafin = Horafin;
 	}
-   
+	@Override
+	public boolean equals(Object object) {
+		if((object instanceof Clase )) {
+			Clase ma = (Clase) object;
+			return ((this.Dia == ma.Dia) &&(this.Horainicio== ma.Horainicio) );
+		}
+		return false;
+	}
+	@Override
+	public String toString() {
+		return "GrupoX.AsignacionGrupos.Clase[Dia" + Dia +", Horainicio = "+Horainicio+"]";
+	}
+	
+	@Override
+	public int hashCode() {
+		return Dia.hashCode() + Horainicio.hashCode();
+   }
 }

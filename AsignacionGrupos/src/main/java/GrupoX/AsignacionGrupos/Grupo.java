@@ -19,13 +19,18 @@ public class Grupo implements Serializable {
 	private Long Id;
 	private String Curso;
 	private String Letra;
-	private String Turno_mañana_tarde;
+	private String Turno_manyana_tarde;
 	private String Ingles;
 	private String Visible;
 	private String Asignar;
 	private Long Plazas;
 	private static final long serialVersionUID = 1L;
-
+	@OneToMany(mappedBy = "grupo")
+	private Grupos_Por_Asignatura gpa;
+	
+	@ManyToOne
+	private Titulacion titulacion;
+	
 	public Grupo() {
 		super();
 	}   
@@ -50,12 +55,12 @@ public class Grupo implements Serializable {
 	public void setLetra(String Letra) {
 		this.Letra = Letra;
 	}   
-	public String getTurno_mañana_tarde() {
-		return this.Turno_mañana_tarde;
+	public String getTurno_manyana_tarde() {
+		return this.Turno_manyana_tarde;
 	}
 
-	public void setTurno_mañana_tarde(String Turno_mañana_tarde) {
-		this.Turno_mañana_tarde = Turno_mañana_tarde;
+	public void setTurno_manyana_tarde(String Turno_manyana_tarde) {
+		this.Turno_manyana_tarde = Turno_manyana_tarde;
 	}   
 	public String getIngles() {
 		return this.Ingles;
@@ -85,5 +90,27 @@ public class Grupo implements Serializable {
 	public void setPlazas(Long Plazas) {
 		this.Plazas = Plazas;
 	}
-   
+	public Grupos_Por_Asignatura getGpa() {
+		return gpa;
+	}
+	public void setGpa(Grupos_Por_Asignatura gpa) {
+		this.gpa = gpa;
+	}
+	@Override
+	public boolean equals(Object object) {
+		if((object instanceof Grupo )) {
+			Grupo ma = (Grupo) object;
+			return ((this.Id == ma.Id));
+		}
+		return false;
+	}
+	@Override
+	public String toString() {
+		return "GrupoX.AsignacionGrupos.Grupo[Id" + Id +",";
+	}
+	
+	@Override
+	public int hashCode() {
+		return Id.hashCode();
+   }
 }

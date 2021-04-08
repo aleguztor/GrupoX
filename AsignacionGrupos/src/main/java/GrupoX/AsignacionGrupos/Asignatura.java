@@ -29,6 +29,8 @@ public class Asignatura {
 	private List<Clase> clases;
 	@ManyToOne
 	private Titulacion titulacion;
+	@OneToMany(mappedBy="asignatura")
+	private List<Asignaturas_matriculas> am;
 	
 	public Asignatura() {}
 	

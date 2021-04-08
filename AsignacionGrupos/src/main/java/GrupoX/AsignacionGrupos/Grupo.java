@@ -36,6 +36,8 @@ public class Grupo implements Serializable {
 	private List<Grupo> grupos;
 	@ManyToOne
 	private Grupo grupo;
+	@OneToMany(mappedBy="grupo")
+	private List<Asignaturas_matriculas> am;
 	
 	
 	public Grupo() {}

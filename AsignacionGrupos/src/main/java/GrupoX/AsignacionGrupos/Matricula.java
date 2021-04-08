@@ -31,6 +31,7 @@ public class Matricula implements Serializable {
 	@Id
 	@JoinColumn(referencedColumnName="Num_Expediente")
 	private Expediente expedientes_num_expedientes;
+	@OneToMany(mappedBy="matricula")
 	private static final long serialVersionUID = 1L;
 	
 	public Integer getCurso_academico() {

@@ -1,34 +1,56 @@
 package GrupoX.AsignacionGrupos;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
 
 
 @Entity
-@IdClass(Grupos_Por_Asignatura.gpa_grupoId_asigRef.class)
-public class Grupos_Por_Asignatura {
-	public static class gpa_grupoId_asigRef{
+@IdClass(Grupos_Por_Asignatura.Grupos_Por_Asignatura_PK.class)
+public class Grupos_Por_Asignatura implements Serializable {
+	public static class Grupos_Por_Asignatura_PK implements Serializable {
+		@Column(nullable = false)
 		private String Curso_Academico;
-		private Long gId;
-		private String refAsig;
+		@Column(nullable = false)
+		private Long grupo;
+		@Column(nullable = false)
+		private String asignatura;
+		
+		public Grupos_Por_Asignatura_PK() {}
+		
+		public Grupos_Por_Asignatura_PK(String ca, String a, Long g) {
+			Curso_Academico = ca;
+			grupo = g;
+			asignatura = a;
+		}
+		@Override
+		public boolean equals(Object o) {
+			if(o instanceof Grupos_Por_Asignatura_PK) {
+				if(((Grupos_Por_Asignatura_PK) o).asignatura.equals(asignatura) && ((Grupos_Por_Asignatura_PK)o).Curso_Academico.equals(Curso_Academico) && ((Grupos_Por_Asignatura_PK) o).grupo.equals(grupo)) {
+					return true;
+				}
+			}
+			return false;
+		}
+		
+		@Override
+		public int hashCode() {
+			return asignatura.hashCode() + grupo.hashCode() + Curso_Academico.hashCode();
+		}
+		
 	}
 	@Id
 	private String Curso_Academico;
 	private boolean Oferta;
-	@ManyToMany(mappedBy = "encuestasGrupos")
-	private List<Encuesta> gpa_encuesta;
-	@Id
+	@ManyToMany(mappedBy="gpa")
+	private List<Encuesta> encuestas;
 	@ManyToOne
+	@Id
+	@JoinColumn(referencedColumnName="Id")
 	private Grupo grupo;
-	@Id
 	@ManyToOne
+	@Id
+	@JoinColumn(referencedColumnName="Referencia")
 	private Asignatura asignatura;
-	
-	public Grupos_Por_Asignatura() {}
-	
-	public Grupos_Por_Asignatura(String ca) {
-		Curso_Academico = ca;
-	}
-
 
 	public String getCurso_Academico() {
 		return Curso_Academico;
@@ -46,12 +68,12 @@ public class Grupos_Por_Asignatura {
 		Oferta = oferta;
 	}
 	
-	public List<Encuesta> getGpa_encuesta() {
-		return gpa_encuesta;
+	public List<Encuesta> getEncuestas() {
+		return encuestas;
 	}
 
-	public void setGpa_encuesta(List<Encuesta> gpa_encuesta) {
-		this.gpa_encuesta = gpa_encuesta;
+	public void setEncuestas(List<Encuesta> encuestas) {
+		this.encuestas = encuestas;
 	}
 
 	@Override

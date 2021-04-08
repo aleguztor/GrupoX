@@ -2,33 +2,36 @@ package GrupoX.AsignacionGrupos;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.sql.Date;
+import javax.persistence.*;
 
-/**
- * ID class for entity: Clase
- *
- */ 
+@Embeddable
 public class ClasePK  implements Serializable {   
-   
-	         
-	private String Dia;
+         
+	private Date dia;
+	private Date horainicio;
 	private static final long serialVersionUID = 1L;
 
 	public ClasePK() {}
 
-	
-
-	public String getDia() {
-		return this.Dia;
+	public Date getDia() {
+		return this.dia;
 	}
 
-	public void setDia(String Dia) {
-		this.Dia = Dia;
+	public void setDia(Date Dia) {
+		this.dia = Dia;
 	}
 	
-   
-	/*
-	 * @see java.lang.Object#equals(Object)
-	 */	
+	public Date getHorainicio() {
+		return horainicio;
+	}
+
+	public void setHorainicio(Date hi) {
+		horainicio = hi;
+	}
+
+
+
 	public boolean equals(Object o) {
 		if (o == this) {
 			return true;
@@ -41,9 +44,6 @@ public class ClasePK  implements Serializable {
 			&& (getDia() == null ? other.getDia() == null : getDia().equals(other.getDia()));
 	}
 	
-	/*	 
-	 * @see java.lang.Object#hashCode()
-	 */	
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;

@@ -1,7 +1,11 @@
 package GrupoX.AsignacionGrupos;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="OPTATIVA", discriminatorType = DiscriminatorType.CHAR)
 public class Asignatura {
 	@Id
 	private String Referencia;
@@ -20,16 +24,19 @@ public class Asignatura {
 	@Column(nullable = false)
 	private boolean Idioma_de_imparticion;
 	@OneToMany(mappedBy = "asignatura")
-	private Grupos_Por_Asignatura gpa;
-	
-	@ManyToOne(optional=false)
+	private List<Grupos_Por_Asignatura> gpa;
+	@OneToMany (mappedBy = "asignatura")
+	private List<Clase> clases;
+	@ManyToOne
 	private Titulacion titulacion;
+	
 	public Asignatura() {}
 	
-	public Asignatura(String r, int c, int cred, boolean of, boolean idimp) {
+	public Asignatura(String r, String n, int c, int cred, boolean of, boolean idimp) {
 		Referencia = r;
 		Codigo = c;
 		Creditos = cred;
+		Nombre = n;
 		Ofertada = of;
 		Idioma_de_imparticion = idimp;
 	}
@@ -114,11 +121,11 @@ public class Asignatura {
 		Idioma_de_imparticion = idioma_de_imparticion;
 	}
 	
-	public Grupos_Por_Asignatura getGpa() {
+	public List<Grupos_Por_Asignatura> getGpa() {
 		return gpa;
 	}
 
-	public void setGpa(Grupos_Por_Asignatura gpa) {
+	public void setGpa(List<Grupos_Por_Asignatura> gpa) {
 		this.gpa = gpa;
 	}
 

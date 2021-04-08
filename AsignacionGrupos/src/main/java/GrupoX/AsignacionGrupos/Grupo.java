@@ -1,8 +1,8 @@
 package GrupoX.AsignacionGrupos;
 
 import java.io.Serializable;
-import java.lang.Long;
-import java.lang.String;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -10,15 +10,16 @@ import javax.persistence.*;
  *
  */
 @Entity
-
 public class Grupo implements Serializable {
-
 	   
 	@Id
 	@GeneratedValue
 	private Long Id;
+	@Column(nullable = false, unique = true)
 	private String Curso;
+	@Column(nullable = false, unique = true)
 	private String Letra;
+	@Column(nullable = false)
 	private String Turno_manyana_tarde;
 	private String Ingles;
 	private String Visible;
@@ -26,14 +27,25 @@ public class Grupo implements Serializable {
 	private Long Plazas;
 	private static final long serialVersionUID = 1L;
 	@OneToMany(mappedBy = "grupo")
-	private Grupos_Por_Asignatura gpa;
-	
+	private List<Grupos_Por_Asignatura> gpa;
 	@ManyToOne
 	private Titulacion titulacion;
+	@OneToMany (mappedBy = "grupo")
+	private List<Clase> clases;
+	@OneToMany(mappedBy = "grupo")
+	private List<Grupo> grupos;
+	@ManyToOne
+	private Grupo grupo;
 	
-	public Grupo() {
-		super();
-	}   
+	
+	public Grupo() {}
+	
+	public Grupo(String c, String l, String t) {
+		Curso = c;
+		Letra = l;
+		Turno_manyana_tarde = t;
+	}
+	
 	public Long getId() {
 		return this.Id;
 	}
@@ -90,27 +102,28 @@ public class Grupo implements Serializable {
 	public void setPlazas(Long Plazas) {
 		this.Plazas = Plazas;
 	}
-	public Grupos_Por_Asignatura getGpa() {
+	public List<Grupos_Por_Asignatura> getGpa() {
 		return gpa;
 	}
-	public void setGpa(Grupos_Por_Asignatura gpa) {
+	public void setGpa(List<Grupos_Por_Asignatura> gpa) {
 		this.gpa = gpa;
 	}
+	
 	@Override
-	public boolean equals(Object object) {
-		if((object instanceof Grupo )) {
-			Grupo ma = (Grupo) object;
-			return ((this.Id == ma.Id));
+	public boolean equals(Object o) {
+		if(o instanceof Grupo) {
+			if(((Grupo) o).Id.equals(Id) && ((Grupo) o).Asignar.equals(Asignar) && ((Grupo) o).clases.equals(clases)
+					&& ((Grupo) o).Curso.equals(Curso)&& ((Grupo) o).Letra.equals(Letra) && ((Grupo)o).Ingles.equals(Ingles) && ((Grupo)o).Turno_manyana_tarde.equals(Turno_manyana_tarde)
+					&& ((Grupo)o).Visible.equals(Visible) && ((Grupo) o).Plazas.equals(Plazas)){
+						return true;
+					}
 		}
 		return false;
-	}
-	@Override
-	public String toString() {
-		return "GrupoX.AsignacionGrupos.Grupo[Id" + Id +",";
 	}
 	
 	@Override
 	public int hashCode() {
-		return Id.hashCode();
-   }
+		return Id.hashCode() ;
+	}
+   
 }

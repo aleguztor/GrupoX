@@ -1,48 +1,94 @@
 package GrupoX.AsignacionGrupos;
 
 import java.io.Serializable;
-import java.lang.String;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.*;
 
-/**
- * Entity implementation class for Entity: Clase
- *
- */
 @Entity
-
-@IdClass(ClasePK.class)
+@IdClass(GrupoX.AsignacionGrupos.Clase.Clase_PK.class)
 public class Clase implements Serializable {
+	public static class Clase_PK implements Serializable{
+		private Long grupo;
+		@EmbeddedId
+		private ClasePK clases;
+		private static final long serialVersionUID = 1L;
 
-	   
+		public Clase_PK() {}
+		
+		public Clase_PK(Long g, ClasePK c) {
+			grupo = g;
+			clases = c;
+		}
+		
+		public ClasePK getClase() {
+			return clases;
+		}
+
+		public void setClase(ClasePK clase) {
+			this.clases = clase;
+		}
+
+		public Long getGrupo() {
+			return grupo;
+		}
+
+		public void setGrupo(Long grupo) {
+			this.grupo = grupo;
+		}
+		
+		@Override
+		public boolean equals(Object o) {
+			if(o instanceof Clase_PK) {
+				if(((Clase_PK) o).clases.equals(clases) && ((Clase_PK) o).grupo.equals(grupo)){
+							return true;
+						}
+			}
+			return false;
+		}
+		
+		@Override
+		public int hashCode() {
+			return clases.hashCode() + grupo.hashCode();
+		}
+		
+	}
+	@ManyToOne
 	@Id
-	@Temporal(TemporalType.DATE)
-	private Date Dia;   
+	@JoinColumn(referencedColumnName="Id")
+	private Grupo grupo;
 	@Id
-	@Temporal(TemporalType.TIME)
-	private Date Horainicio;
+	private ClasePK clases;
 	@Temporal(TemporalType.TIME)
 	private Date Horafin;
 	private static final long serialVersionUID = 1L;
+	@ManyToOne
+	private Asignatura asignatura;
 
-	public Clase() {
-		super();
-	}   
-	public Date getDia() {
-		return this.Dia;
+	public Clase() {}
+	
+	public Clase(Grupo g, ClasePK c) {
+		grupo = g;
+		clases = c;
+	}
+	
+
+	
+	public Asignatura getAsignatura() {
+		return asignatura;
 	}
 
-	public void setDia(Date Dia) {
-		this.Dia = Dia;
-	}   
-	public Date getHorainicio() {
-		return this.Horainicio;
+
+
+	/**
+	 * @param asignatura the asignatura to set
+	 */
+	public void setAsignatura(Asignatura asignatura) {
+		this.asignatura = asignatura;
 	}
 
-	public void setHorainicio(Date Horainicio) {
-		this.Horainicio = Horainicio;
-	}   
+
+
 	public Date getHorafin() {
 		return this.Horafin;
 	}
@@ -50,21 +96,21 @@ public class Clase implements Serializable {
 	public void setHorafin(Date Horafin) {
 		this.Horafin = Horafin;
 	}
+	
 	@Override
-	public boolean equals(Object object) {
-		if((object instanceof Clase )) {
-			Clase ma = (Clase) object;
-			return ((this.Dia == ma.Dia) &&(this.Horainicio== ma.Horainicio) );
+	public boolean equals(Object o) {
+		if(o instanceof Clase) {
+			if(((Clase) o).asignatura.equals(asignatura) && ((Clase) o).clases.equals(clases) && ((Clase) o).grupo.equals(grupo)
+					&& ((Clase) o).Horafin.equals(Horafin)){
+						return true;
+					}
 		}
 		return false;
-	}
-	@Override
-	public String toString() {
-		return "GrupoX.AsignacionGrupos.Clase[Dia" + Dia +", Horainicio = "+Horainicio+"]";
 	}
 	
 	@Override
 	public int hashCode() {
-		return Dia.hashCode() + Horainicio.hashCode();
-   }
+		return clases.hashCode() + grupo.hashCode();
+	}
+   
 }

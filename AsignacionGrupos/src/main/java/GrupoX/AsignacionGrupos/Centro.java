@@ -7,22 +7,19 @@ import javax.persistence.*;
 
 @Entity
 public class Centro implements Serializable{
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	@Id @GeneratedValue
-	public Long ID;
+	@Id 
+	private Long ID;
 	@Column(nullable=false, unique = true)
-	public String Nombre;
+	private String Nombre;
 	@Column(nullable=false)
-	public String Direccion;
+	private String Direccion;
 	@Column(nullable=true)
-	public int TLF_Conserjeria;
-	
-	@ManyToMany(mappedBy="centros")
+	private int TLF_Conserjeria;
+	@ManyToMany (mappedBy = "centros")
 	private List<Titulacion> titulaciones;
+	
+	public Centro() {}
 	
 	public Centro(Long iD, String nombre, String direccion, int tLF_Conserjeria) {
 		ID = iD;
@@ -57,19 +54,43 @@ public class Centro implements Serializable{
 	public void setTLF_Conserjeria(int tLF_Conserjeria) {
 		TLF_Conserjeria = tLF_Conserjeria;
 	}
-	
-	@Override
-	public boolean equals(Object object) {
-		if((object instanceof Centro)) {
-			Centro obj = (Centro) object;
-			return ((ID == obj.ID));
-		}
-		return false;
-	}
-	
 	@Override
 	public int hashCode() {
-		return ID.hashCode();
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Direccion == null) ? 0 : Direccion.hashCode());
+		result = prime * result + ((ID == null) ? 0 : ID.hashCode());
+		result = prime * result + ((Nombre == null) ? 0 : Nombre.hashCode());
+		result = prime * result + TLF_Conserjeria;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Centro other = (Centro) obj;
+		if (Direccion == null) {
+			if (other.Direccion != null)
+				return false;
+		} else if (!Direccion.equals(other.Direccion))
+			return false;
+		if (ID == null) {
+			if (other.ID != null)
+				return false;
+		} else if (!ID.equals(other.ID))
+			return false;
+		if (Nombre == null) {
+			if (other.Nombre != null)
+				return false;
+		} else if (!Nombre.equals(other.Nombre))
+			return false;
+		if (TLF_Conserjeria != other.TLF_Conserjeria)
+			return false;
+		return true;
 	}
 	
 	

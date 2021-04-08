@@ -1,9 +1,6 @@
 package GrupoX.AsignacionGrupos;
 
-
 import java.io.Serializable;
-import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 
 import javax.persistence.*;
@@ -19,26 +16,27 @@ public class Titulacion implements Serializable {
 	   
 	@Id @GeneratedValue
 	private Integer codigo;
+	@Column(nullable = false)
 	private String nombre;
+	@Column(nullable = false)
 	private Integer creditos;
 	private static final long serialVersionUID = 1L;
-	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="titulacion")
+	@OneToMany (mappedBy = "titulacion")
 	private List<Asignatura> asignaturas;
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="titulacion")
-	private List<Expediente> expedientes;
-	
 	@ManyToMany
-	@JoinTable(name="jnd_titulacion_centro",joinColumns=@JoinColumn(name="titulacion_fk"),
-				inverseJoinColumns=@JoinColumn(name="centro_fk"))
 	private List<Centro> centros;
-	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="titulacion")
+	@OneToMany (mappedBy = "titulacion")
+	private List<Expediente> expedientes;
+	@OneToMany (mappedBy = "titulacion")
 	private List<Grupo> grupos;
 	
-	public Titulacion() {
-		super();
-	}   
+	public Titulacion() {}
+	
+	public Titulacion(String n, Integer c) {
+		nombre = n;
+		creditos = c;
+	}
+	
 	public Integer getCodigo() {
 		return this.codigo;
 	}

@@ -17,28 +17,22 @@ import javax.persistence.*;
 @IdClass(MatriculaPK.class)
 public class Matricula implements Serializable {
 
-	   
 	@Id
 	private Integer curso_academico;
+	@Column(nullable = false)
 	private Character estado;
 	private Integer num_archivo;
 	private Character turno_preferente;
-	@Temporal(TemporalType.DATE)
+	@Column(nullable = false)
 	private Date fecha_matricula;
 	private Character nuevo_ingreso;
 	private String listado_asignaturas;   
-	@Id @GeneratedValue
-	private Integer expedientes_num_expedientes;
-	private static final long serialVersionUID = 1L;
-
-	@Id
 	@ManyToOne
-	@JoinColumn(name="idExpediente")
-	private Expediente idExpediente;
-		
-	public Matricula() {
-		super();
-	}   
+	@Id
+	@JoinColumn(referencedColumnName="Num_Expediente")
+	private Expediente expedientes_num_expedientes;
+	private static final long serialVersionUID = 1L;
+	
 	public Integer getCurso_academico() {
 		return this.curso_academico;
 	}
@@ -88,11 +82,11 @@ public class Matricula implements Serializable {
 	public void setListado_asignaturas(String listado_asignaturas) {
 		this.listado_asignaturas = listado_asignaturas;
 	}   
-	public Integer getExpedientes_num_expedientes() {
+	public Expediente getExpedientes_num_expedientes() {
 		return this.expedientes_num_expedientes;
 	}
 
-	public void setExpedientes_num_expedientes(Integer expedientes_num_expedientes) {
+	public void setExpedientes_num_expedientes(Expediente expedientes_num_expedientes) {
 		this.expedientes_num_expedientes = expedientes_num_expedientes;
 	}
 	@Override

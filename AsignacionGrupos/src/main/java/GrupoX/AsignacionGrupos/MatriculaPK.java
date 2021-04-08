@@ -11,10 +11,15 @@ public class MatriculaPK  implements Serializable {
    
 	         
 	private Integer curso_academico;         
-	private Integer expedientes_num_expedientes;
+	private Long expedientes_num_expedientes;
 	private static final long serialVersionUID = 1L;
 
 	public MatriculaPK() {}
+	
+	public MatriculaPK(Integer ca, Long ne) {
+		curso_academico = ca;
+		expedientes_num_expedientes = ne;
+	}
 
 	
 
@@ -27,11 +32,11 @@ public class MatriculaPK  implements Serializable {
 	}
 	
 
-	public Integer getExpedientes_num_expedientes() {
+	public Long getExpedientes_num_expedientes() {
 		return this.expedientes_num_expedientes;
 	}
 
-	public void setExpedientes_num_expedientes(Integer expedientes_num_expedientes) {
+	public void setExpedientes_num_expedientes(Long expedientes_num_expedientes) {
 		this.expedientes_num_expedientes = expedientes_num_expedientes;
 	}
 	

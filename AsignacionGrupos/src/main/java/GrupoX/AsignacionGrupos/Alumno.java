@@ -2,21 +2,12 @@ package GrupoX.AsignacionGrupos;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
+import javax.persistence.*;
 @Entity
 public class Alumno implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
 	@Column(nullable = false, unique = true)
 	private String DNI;
@@ -34,8 +25,8 @@ public class Alumno implements Serializable{
 	private String Localidad_notificacion;
 	private String Provincia_notificacion;
 	private String CP_notificacion;
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="Id_alumno")
-	private List<Expediente> alumno_expedientes;
+	@OneToMany (mappedBy="alumno", cascade = CascadeType.ALL)
+	private List<Expediente> expedientes;
 	
 	
 	public Alumno() {}
@@ -150,14 +141,13 @@ public class Alumno implements Serializable{
 	public void setCP_notificacion(String cP_notificacion) {
 		CP_notificacion = cP_notificacion;
 	}
-	
-	
+		
 	public List<Expediente> getAlumno_expedientes() {
-		return alumno_expedientes;
+		return expedientes;
 	}
 
 	public void setAlumno_expedientes(List<Expediente> alumno_expedientes) {
-		this.alumno_expedientes = alumno_expedientes;
+		this.expedientes = alumno_expedientes;
 	}
 
 	@Override

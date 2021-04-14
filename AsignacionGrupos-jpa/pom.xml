@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+ <parent>
+    <groupId>GrupoX</groupId>
+    <artifactId>AsignacionGrupos</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>AsignacionGrupos-jpa</artifactId>
+  name>JPA</name>
+  <description>Entidades JPA de la aplicación</description>
+  <scm>
+  	<url>https://github.com/aleguztor/GrupoX.git</url>
+  </scm>
+  <properties>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  <dependencies>
+  	<dependency>
+  		<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+  		<version>8.0.19</version>
+  	</dependency>
+  	<dependency>
+    <groupId>org.eclipse.persistence</groupId>
+    <artifactId>eclipselink</artifactId>
+    <version>2.7.6</version>
+    </dependency>
+    <dependency>
+    <groupId>junit</groupId>
+  	<artifactId>junit</artifactId>
+  	<version>4.13.2</version>
+  	<scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>GrupoX</groupId>
+    <artifactId>AsignacionGrupos</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>AsignacionGrupos-ejb</artifactId>
+  <packaging>ejb</packaging>
+  <name>EJB</name>
+  <description>Enterprise Java Beans de la aplicación</description>
+  <properties>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  	<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+  </properties>
+  <scm>
+  	<url>https://github.com/aleguztor/GrupoX.git</url>
+  </scm>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>javax</groupId>
+  		<artifactId>javaee-api</artifactId>
+  		<scope>provided</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>GrupoX</groupId>
+  		<artifactId>AsignacionGrupos-jpa</artifactId>
+  		<version>1.0-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+  
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-ejb-plugin</artifactId>
+  			<configuration>
+  				<ejbVersion>3.2</ejbVersion>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+  
+</project>

@@ -42,10 +42,6 @@ public interface CrudEJBLocal {
 	public void eliminarMatricula(Matricula m) throws MatriculaNoEncontradaException;
 	public Matricula existeMatricula(Matricula m) throws MatriculaNoEncontradaException;
 	
-	public void insertarGrupoAsignatura(Grupos_Por_Asignatura gp) throws GrupoAsignaturaException;
-	public void modificarGrupoAsignatura(Grupos_Por_Asignatura gp) throws GrupoAsignaturaException;
-	public void elimnarGrupoAsignatura(Grupos_Por_Asignatura gp) throws GrupoAsignaturaException;
-	public Grupos_Por_Asignatura existeGrupoAsignatura(Grupos_Por_Asignatura gp) throws GrupoAsignaturaException;
 	
 	
 	public void insertarGrupo(Grupo g) throws GrupoException;
@@ -64,25 +60,12 @@ public interface CrudEJBLocal {
 	public Asignatura existeAsignatura(Asignatura a)throws AsignaturaException;
 	
 	
-	public void insertarAsignaturasMatriculas (Asignaturas_matriculas am)throws AsignaturaMatriculaException;
-	public void modificarAsignaturasMatriculas (Asignaturas_matriculas am)throws AsignaturaMatriculaException;
-	public void eliminarAsignaturasMatriculas (Asignaturas_matriculas am)throws AsignaturaMatriculaException;
-	public Asignaturas_matriculas existeAsignaturasMatriculas (Asignaturas_matriculas am)throws AsignaturaMatriculaException;
 
 	public void insertarCentro (Centro c) throws CentroException;
 	public void modificarCentro (Centro c) throws CentroException;
 	public Centro existeCentro (Centro c) throws CentroException;
 	public void eliminarCentro (Centro c) throws CentroException;
 	
-	public void insertarEncuesta(Encuesta e)throws EncuestaException;
-	public void modificarEncuesta(Encuesta e)throws EncuestaException;
-	public void eliminarEncuesta(Encuesta e)throws EncuestaException;
-	public Encuesta existeEncuesta(Encuesta e)throws EncuestaException;
-	
-	public void insertarData(Data d) throws DataException;
-	public void modificarData(Data d) throws DataException;
-	public void eliminarData(Data d) throws DataException;
-	public Data existeData(Data d) throws DataException;
 	
 	public void insertarClase(Clase c)throws ClaseException;
 	public void modificarClase(Clase c)throws ClaseException;

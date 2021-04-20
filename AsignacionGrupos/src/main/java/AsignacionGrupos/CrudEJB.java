@@ -98,7 +98,6 @@ public class CrudEJB implements CrudEJBLocal {
 	public void modificarAlumno(Alumno a) throws AlumnoNoEncontradoException {
 		Alumno al = existeAlumno(a);
 		em.merge(a);
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -188,60 +187,53 @@ public class CrudEJB implements CrudEJBLocal {
 			return ma;
 	}
 
-	@Override
-	public void insertarGrupoAsignatura(Grupos_Por_Asignatura gp) throws GrupoAsignaturaException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void modificarGrupoAsignatura(Grupos_Por_Asignatura gp) throws GrupoAsignaturaException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void elimnarGrupoAsignatura(Grupos_Por_Asignatura gp) throws GrupoAsignaturaException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Grupos_Por_Asignatura existeGrupoAsignatura(Grupos_Por_Asignatura gp) throws GrupoAsignaturaException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public void insertarGrupo(Grupo g) throws GrupoException {
-		// TODO Auto-generated method stub
+		Grupo gr = em.find(Grupo.class, g.getId());
+		if(gr == null)
+			em.persist(gr);
+		else 
+			throw new GrupoException();
 		
 	}
 
 	@Override
 	public void modificarGrupo(Grupo g) throws GrupoException {
-		// TODO Auto-generated method stub
+		Grupo gr = existeGrupo(g);
+		if(gr ==null)
+			throw new GrupoException();
+		else 
+			em.merge(gr);
 		
 	}
 
 	@Override
 	public void eliminarGrupo(Grupo g) throws GrupoException {
-		// TODO Auto-generated method stub
+		Grupo gr = existeGrupo(g);
+		if(gr==null)
+			throw new GrupoException();
+		else 
+			em.remove(gr);
 		
 	}
 
 	@Override
 	public Grupo existeGrupo(Grupo g) throws GrupoException {
-		// TODO Auto-generated method stub
-		return null;
+		Grupo	gr = em.find(Grupo.class,g.getId());
+		if(gr == null)
+			throw new GrupoException();
+		else 
+			return gr;
 	}
 
 	@Override
 	public void insertarTitulacion(Titulacion t) throws TitulacionException {
-		Titulacion ti = em.find(Titulacion.class, t.getCodigo());
+		Titulacion ti = em.find(Titulacion.class,t.getCodigo());
 		if(ti == null)
-			em.persist(t);
-		else
+			em.persist(ti);
+		else 
 			throw new TitulacionException();
 		
 	}
@@ -316,126 +308,88 @@ public class CrudEJB implements CrudEJBLocal {
 			return as;
 	}
 
-	@Override
-	public void insertarAsignaturasMatriculas(Asignaturas_matriculas am) throws AsignaturaMatriculaException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void modificarAsignaturasMatriculas(Asignaturas_matriculas am) throws AsignaturaMatriculaException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void eliminarAsignaturasMatriculas(Asignaturas_matriculas am) throws AsignaturaMatriculaException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Asignaturas_matriculas existeAsignaturasMatriculas(Asignaturas_matriculas am)
-			throws AsignaturaMatriculaException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public void insertarCentro(Centro c) throws CentroException {
-		// TODO Auto-generated method stub
+		Centro ce = em.find(Centro.class,c.getID());
+		if(ce == null)
+			em.persist(ce);
+		else
+			throw new CentroException();
 		
 	}
 
 	@Override
 	public void modificarCentro(Centro c) throws CentroException {
-		// TODO Auto-generated method stub
+		Centro ce = existeCentro(c);
+		if(ce==null)
+			throw new CentroException();
+		else 
+			em.merge(ce);
 		
 	}
 
 	@Override
 	public Centro existeCentro(Centro c) throws CentroException {
-		// TODO Auto-generated method stub
-		return null;
+		Centro ce = em.find(Centro.class, c.getID());
+		if(ce == null)
+			throw new CentroException();
+		else
+			return ce;
 	}
 
 	@Override
 	public void eliminarCentro(Centro c) throws CentroException {
-		// TODO Auto-generated method stub
+		Centro ce = existeCentro(c);
+		if(ce==null)
+			throw new CentroException();
+		else 
+			em.remove(ce);
 		
 	}
 
-	@Override
-	public void insertarEncuesta(Encuesta e) throws EncuestaException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void modificarEncuesta(Encuesta e) throws EncuestaException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void eliminarEncuesta(Encuesta e) throws EncuestaException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Encuesta existeEncuesta(Encuesta e) throws EncuestaException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void insertarData(Data d) throws DataException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void modificarData(Data d) throws DataException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void eliminarData(Data d) throws DataException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Data existeData(Data d) throws DataException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void insertarClase(Clase c) throws ClaseException {
-		// TODO Auto-generated method stub
-		
+		Clase cl= em.find(Clase.class,c.getClasePK());
+		if(cl == null)
+			em.persist(cl);
+		else
+			throw new ClaseException();
 	}
 
 	@Override
 	public void modificarClase(Clase c) throws ClaseException {
-		// TODO Auto-generated method stub
+		Clase cl = existeClase(c);
+		if(cl==null)
+			throw new ClaseException();
+		else 
+			em.merge(cl);
 		
 	}
 
 	@Override
 	public void eliminarClase(Clase c) throws ClaseException {
-		// TODO Auto-generated method stub
+		Clase cl = existeClase(c);
+		if(cl==null)
+			throw new ClaseException();
+		else 
+			em.remove(cl);
 		
 	}
 
 	@Override
 	public Clase existeClase(Clase c) throws ClaseException {
-		// TODO Auto-generated method stub
-		return null;
+		Clase cl = em.find(Clase.class, c.getClasePK());
+		if(cl == null)
+			throw new ClaseException();
+		else
+			return cl;
+		
 	}
+
+	
 
 	
 	

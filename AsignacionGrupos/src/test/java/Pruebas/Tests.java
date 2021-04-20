@@ -142,6 +142,19 @@ public class Tests {
 		
 	}
 	
+	@Test 
+	public void testBusqueda() {
+		try {
+			Alumno al = new Alumno("Mario", "Vazquez", "1235754a", "asd@uma.es");
+			
+			
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+
 	@AfterClass
 	public static void tearDownClass() {
 		if(ejbContainer != null) {

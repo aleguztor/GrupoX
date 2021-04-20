@@ -13,6 +13,6 @@ import Exceptions.AlumnoNoEncontradoException;
 
 public interface BusquedaYFiltrado {
 
-	public List<Alumno> BusquedaAlumno(Alumno a, Titulacion t, int a, Grupo g) throws  AlumnoNoEncontradoException;
+	public List<Alumno> BusquedaAlumno(Alumno a, Titulacion t, Asignatura a1) throws  AlumnoNoEncontradoException;
 		
 }

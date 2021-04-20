@@ -16,10 +16,10 @@ public class Base {
 		em.getTransaction().begin();
 		
 		Alumno a = new Alumno("Mario", "Vazquez", "1235754a", "asd@uma.es");
-		Expediente e = new Expediente((long)10,true,5.0);
-		a.setAlumno_expedientes(new LinkedList<Expediente>());
+		Alumno a1 = new Alumno("Jose", "Vazquez", "1225754a", "asd@uma.es");
 //		em.persist(e);
 		em.persist(a);
+		em.persist(a1);
 //		a.getAlumno_expedientes().add(e);
 		
 		em.getTransaction().commit();

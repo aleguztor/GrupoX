@@ -22,10 +22,10 @@ public class BusquedaYFiltradoImpl implements BusquedaYFiltrado{
 	public List<Alumno> BusquedaAlumno(Alumno alumno, Titulacion t, int a, Grupo g) throws  AlumnoNoEncontradoException{
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		TypedQuery<Alumno> q = em.createNamedQuery("SELECT a.* from ALUMNO a, TITULACION t, GRUPO g WHERE a.expedientes = " + t, Alumno.class);
-		List<Alumno> res = q.getResultList();
+		TypedQuery<Alumno> filtrado = em.createNamedQuery("SELECT a.* from ALUMNO a, TITULACION t, GRUPO g", Alumno.class);
+		List<Alumno> ListaAlumnos = filtrado.getResultList();
 		tx.commit();
-		return res;
+		return ListaAlumnos;
 		
 	}
 }

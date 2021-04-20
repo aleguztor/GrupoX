@@ -10,8 +10,7 @@ public interface CambioHorario {
 	/* crear formulario en el jsf*/
 	
 	
-	
-	public void CambioHorarioyGrupo(Alumno alumn,String letranueva, String antigualetra, Grupo g) throws AsignacionGruposException;
+	public void CambioHorarioyGrupo(Alumno alumn,Grupo antiguo, Grupo nuevo) throws AsignacionGruposException;
 	// Alumno para saber el cambio que haremos al alumno
 	// letranueva para saber la nueva letra que quiere el alumno
 	// antigualetra para saber la letra que tenia antes

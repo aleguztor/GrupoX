@@ -40,9 +40,12 @@ public class Grupo implements Serializable {
 	private Grupo grupo;
 	@OneToMany(mappedBy="grupo")
 	private List<Asignaturas_matriculas> am;
-	@ManyToOne
-	private Alumno alumno;
+	@ManyToMany
+	private List<Alumno> alumno;
 	
+	
+	
+
 	public Grupo() {}
 	
 	public Grupo(String c, String l, String t) {
@@ -113,12 +116,23 @@ public class Grupo implements Serializable {
 	public void setGpa(List<Grupos_Por_Asignatura> gpa) {
 		this.gpa = gpa;
 	}
-	public Alumno getAlumno() {
+	public Grupo getGrupo() {
+		return grupo;
+	}
+
+	public void setGrupo(Grupo grupo) {
+		this.grupo = grupo;
+	}
+	public List<Alumno> getAlumno() {
 		return alumno;
 	}
-	public void setAlumno(Alumno alum) {
-		this.alumno=alum;
+
+	public void setAlumno(List<Alumno> alumno) {
+		this.alumno = alumno;
 	}
+
+	
+	
 	@Override
 	public boolean equals(Object o) {
 		if(o instanceof Grupo) {

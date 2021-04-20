@@ -28,7 +28,7 @@ public class Alumno implements Serializable{
 	private String CP_notificacion;
 	@OneToMany (mappedBy="alumno", cascade = CascadeType.ALL)
 	private List<Expediente> expedientes;
-	@OneToMany(mappedBy="alumno", cascade = CascadeType.ALL)
+	@ManyToMany
 	private List<Grupo> grupos;
 	private File pdf;
 	

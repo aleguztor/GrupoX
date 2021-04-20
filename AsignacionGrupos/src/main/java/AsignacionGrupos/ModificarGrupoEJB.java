@@ -42,4 +42,90 @@ public class ModificarGrupoEJB implements ModificarGrupoAlumno{
 		grupos.remove(antiguo);
 		grupos.add(nuevo);			
 	}
+	// EJEMPLO PARA ALE
+	public void EliminarGrupoporfaltaalumno(List<Alumno> alum, List<Grupo> grupos) {
+		long plazaslibres1=0;
+		long plazaslibres2=0;
+		long plazaslibres3=0;
+		long plazaslibres4=0;
+		long case1;
+		Iterator<Grupo> itg= grupos.iterator();
+			while(itg.hasNext()) {
+				
+			Grupo g= itg.next(); // Cogemos el primer grupo
+			
+			switch (g.getCurso()) {
+			case "1": 			//imaginamos que cogemos el 1º A
+					plazaslibres1=g.getAlumno().size()-g.getPlazas();
+					if(plazaslibres1) //tenemos 20 alumnos
+				
+				break;
+			case "2":
+				plazaslibres2+= plazas-numerodealumnos;
+				break;
+				
+			case "3":
+				plazaslibres3+= plazas-numerodealumnos;
+				break;
+				
+			case "4":
+				plazaslibres4+= plazas-numerodealumnos;
+				break;
+
+			default:
+				break;
+			}
+			}
+			
+			
+			
+			
+			long plazas= g.getPlazas();
+			long numerodealumnos= g.getAlumno().size();
+			long cursomenor=0;
+			
+			
+			while(itg.hasNext()) {
+				Grupo g2=itg.next();
+				Grupo menor;
+				if(g2.getAlumno().size()<=numerodealumnos) {
+					cursomenor=g2.getAlumno().size();
+					menor= g2;
+			}
+			}
+			switch (g.getCurso()) {
+			case "1":
+				plazaslibres1+= plazas-numerodealumnos;
+				
+				break;
+			case "2":
+				plazaslibres2+= plazas-numerodealumnos;
+				break;
+				
+			case "3":
+				plazaslibres3+= plazas-numerodealumnos;
+				break;
+				
+			case "4":
+				plazaslibres4+= plazas-numerodealumnos;
+				break;
+
+			default:
+				break;
+			}
+						
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
 }

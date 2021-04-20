@@ -1,7 +1,6 @@
 package AsignacionGrupos;
 
 import java.io.File;
-import java.util.Iterator;
 import java.util.List;
 
 import Entidades.Alumno;
@@ -14,6 +13,9 @@ public class CambioHorarioEJB implements CambioHorario {
 
 	@Override
 	public void CambioHorarioyGrupo(Alumno alum, Grupo antiguo, Grupo nuevo) throws AsignacionGruposException {
+		if(alum==null) {
+			throw  new AlumnoNoEncontradoException();
+		}
 		
 		List<Grupo> grupos= alum.getAlumno_Grupos();
 		grupos.remove(antiguo);

@@ -22,15 +22,14 @@ public class CambioHorarioEJB implements CambioHorario {
 		grupos.add(nuevo);			
 	}
 
-	@Override
-	public void AdjuntarArchivo(File f, Alumno alumno) throws AsignacionGruposException {
-		
-	}
+
 
 	@Override
 	public long numeroPlazas(Grupo grupo) throws AsignacionGruposException {
 		return grupo.getPlazas();
 		
 	}
+
+
 
 }

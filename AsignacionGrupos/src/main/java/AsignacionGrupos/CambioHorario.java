@@ -22,9 +22,7 @@ public interface CambioHorario {
 	 * El siguiente procedimiento será para el jsf, cuando nos pida el adjuntar archivos, deberemos almacenarlo en algun lado.
 	 * en Alumno añadiremos la columna de archivo adjunto, que será un pdf en el que pondremos la informacion necesaria
 	 */
-	
-	public File getPdf() throws AsignacionGruposException;
-	public void setPdf(File pdf) throws AsignacionGruposException;
+
 	
 	
 	public long numeroPlazas(Grupo grupo) throws AsignacionGruposException;

@@ -17,23 +17,7 @@ import Entidades.Grupos_Por_Asignatura;
 import Entidades.Matricula;
 import Entidades.Optativa;
 import Entidades.Titulacion;
-import Exceptions.AlumnoDuplicadoException;
-import Exceptions.AlumnoNoEncontradoException;
-import Exceptions.AsignaturaException;
-import Exceptions.AsignaturaMatriculaException;
-import Exceptions.CentroException;
-import Exceptions.ClaseException;
-import Exceptions.DataException;
-import Exceptions.EncuestaException;
-import Exceptions.ExpedienteDuplicadoException;
-import Exceptions.ExpedienteNoEncontradoException;
-import Exceptions.GrupoAsignaturaException;
-import Exceptions.GrupoException;
-import Exceptions.MatriculaException;
-import Exceptions.MatriculaNoEncontradaException;
-import Exceptions.OptativaExpception;
-import Exceptions.OptativaNoEncontradaExpception;
-import Exceptions.TitulacionException;
+import Exceptions.*;
 
 /**
  * Session Bean implementation class CrudEJB
@@ -111,12 +95,12 @@ public class CrudEJB implements CrudEJBLocal {
 	}
 
 	@Override
-	public void insertarOptativa(Optativa o) throws  OptativaExpception {
+	public void insertarOptativa(Optativa o) throws  OptativaNoEncontradaExpception {
 		Optativa op = em.find(Optativa.class, o.getReferencia());
 		if(op == null)
 			em.persist(o);
 		else
-			throw new OptativaExpception();
+			throw new OptativaNoEncontradaExpception();
 	}
 
 	@Override
@@ -149,12 +133,12 @@ public class CrudEJB implements CrudEJBLocal {
 	}
 
 	@Override
-	public void insertarMatricula(Matricula m) throws MatriculaException {
+	public void insertarMatricula(Matricula m) throws MatriculaNoEncontradaException {
 		Matricula ma = em.find(Matricula.class, m.getNum_archivo());
 		if(ma == null)
 			em.persist(m);
 		else 
-			throw new MatriculaException();
+			throw new MatriculaNoEncontradaException();
 		
 	}
 

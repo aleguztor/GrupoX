@@ -3,12 +3,14 @@ package Pruebas;
 import Entidades.*;
 import Entidades.Encuesta.Expediente_Encuesta_PK;
 import Exceptions.ExpedienteNoEncontradoException;
+import Exceptions.NoExisteGrupoEnAlumno;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
@@ -46,6 +48,8 @@ public class Tests {
 	
 	private AGNegocio negocio;
 	private CrudEJB crud;
+	private ModificarGrupoEJB modg;
+	private CambioHorarioEJB cambh;
 	
 	@BeforeClass
 	public static void setUpClass() {
@@ -134,7 +138,7 @@ public class Tests {
 			al.setDireccion_notificacion("Calle la mia");
 			al.setEmail_personal("pepito@gmail.com");
 			al.setLocalidad_notificacion("Malaga");
-			al.setTelefono(123123);
+			al.setTelefono("123123");
 			crud.modificarAlumno(al);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -153,6 +157,38 @@ public class Tests {
 			e.printStackTrace();
 		}
 	}
+	@Test
+	public void testCambioGrupoAlumnos() {
+		Alumno al = new Alumno("PEPE", "viruela", "124536b", "adassa@uma.es");
+		Alumno ab = new Alumno("Mario", "Vazquez", "1235754a", "asd@uma.es");
+		Alumno ac = new Alumno("Alejandro", "Torres", "124232b", "23cvd@uma.es");
+		List<Alumno> listaalumnos = new ArrayList<>();
+		listaalumnos.add(al);
+		listaalumnos.add(ab);
+		listaalumnos.add(ac);
+		Grupo a = new Grupo("2º", "a","Mañana");
+		Grupo b = new Grupo("1º", "b","Mañana");
+		Grupo c = new Grupo("1º", "c","Tarde");
+		List<Grupo> grupos= new ArrayList<>();
+		grupos.add(a);
+		grupos.add(b);
+		grupos.add(c);
+		al.setAlumno_Grupos(grupos);
+		ab.setAlumno_Grupos(grupos);
+		ac.setAlumno_Grupos(grupos);
+		Grupo nuevo= new Grupo("1º", "a", "Mañana");
+		try {
+			modg.CambioGrupoAlumnos(listaalumnos, c, nuevo);
+			assertEquals(al.getAlumno_Grupos().indexOf(c),-1);
+			grupos=al.getAlumno_Grupos();
+			assertEquals(grupos.get(grupos.indexOf(nuevo)),nuevo);
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 
 	@AfterClass

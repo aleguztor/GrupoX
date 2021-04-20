@@ -17,9 +17,9 @@ public class Grupo implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long Id;
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	private String Curso;
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	private String Letra;
 	@Column(nullable = false)
 	private String Turno_manyana_tarde;

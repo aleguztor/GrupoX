@@ -3,9 +3,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import Entidades.*;
-import Exceptions.NoExisteGrupoEnAlumno;
+import Exceptions.*;
 
-public class ModificarGrupoEJB {
+public class ModificarGrupoEJB implements ModificarGrupoAlumno{
 	
 	public List<Grupo> obtenerGrupoPorMatricula(Matricula m) {
 		Expediente e = m.getExpedientes_num_expedientes();
@@ -16,7 +16,7 @@ public class ModificarGrupoEJB {
 		return g.getAlumno().getExpedientes().get(0).getMatricula();
 	}
 	
-	public void CambioGrupoAlumnos(List<Alumno> alum, Grupo antiguo, Grupo nuevo) throws NoExisteGrupoEnAlumno {
+	public void CambioGrupoAlumnos(List<Alumno> alum, Grupo antiguo, Grupo nuevo) throws  NoExisteGrupoEnAlumno{
 		Iterator<Alumno> it = alum.iterator();
 	
 		while(it.hasNext()) {
@@ -31,5 +31,15 @@ public class ModificarGrupoEJB {
 			grupos.add(nuevo);
 				
 		}
+	}
+	@Override
+	public void CambioHorarioyGrupo(Alumno alum, Grupo antiguo, Grupo nuevo) throws AsignacionGruposException {
+		if(alum==null) {
+			throw  new AlumnoNoEncontradoException();
+		}
+		
+		List<Grupo> grupos= alum.getAlumno_Grupos();
+		grupos.remove(antiguo);
+		grupos.add(nuevo);			
 	}
 }

@@ -7,9 +7,9 @@ import Entidades.*;
 public interface ModificarGrupoAlumno {
 	
 	// ESTE SIRVE PARA CAMBIAR A UN ALUMNO DE GRUPO Y POR TANTO DE HORARIO
-	public void CambioHorarioyGrupo(Alumno alumn,String letranueva, String antigualetra, Grupo g) throws AsignacionException;
+	public void CambioHorarioyGrupo(Alumno alumn,String letranueva, String antigualetra, Grupo g) throws AsignacionGruposException;
 	
-	public long numeroPlazas(Grupo grupo) throws AsignacionException;
+	public long numeroPlazas(Grupo grupo) throws AsignacionGruposException;
 	
 	//get u set de alumno con expediente
 	public List<Expediente> getAlumno_expedientes();

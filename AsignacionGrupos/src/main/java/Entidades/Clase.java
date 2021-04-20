@@ -72,7 +72,9 @@ public class Clase implements Serializable {
 		clases = c;
 	}
 	
-
+	public ClasePK getClasePK() {
+		return clases;
+	}
 	
 	public Asignatura getAsignatura() {
 		return asignatura;

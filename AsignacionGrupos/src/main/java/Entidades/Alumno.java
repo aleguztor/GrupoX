@@ -3,13 +3,11 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
-
-import GrupoX.AsignacionGrupos.Entidades.Grupo;
 @Entity
 public class Alumno implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long Id;
 	@Column(nullable = false, unique = true)
 	private String DNI;
@@ -21,16 +19,17 @@ public class Alumno implements Serializable{
 	@Column(nullable = false)
 	private String Email_institucional;
 	private String Email_personal;
-	private int Telefono;
-	private int Movil;
+	private String Telefono;
+	private String Movil;
 	private String Direccion_notificacion;
 	private String Localidad_notificacion;
 	private String Provincia_notificacion;
 	private String CP_notificacion;
 	@OneToMany (mappedBy="alumno", cascade = CascadeType.ALL)
 	private List<Expediente> expedientes;
-	@OneToMany (mappedBy="alumno", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="alumno", cascade = CascadeType.ALL)
 	private List<Grupo> grupos;
+	
 	
 	public Alumno() {}
 	
@@ -97,19 +96,19 @@ public class Alumno implements Serializable{
 		Email_personal = email_personal;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return Telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		Telefono = telefono;
 	}
 
-	public int getMovil() {
+	public String getMovil() {
 		return Movil;
 	}
 
-	public void setMovil(int movil) {
+	public void setMovil(String movil) {
 		Movil = movil;
 	}
 
@@ -152,11 +151,21 @@ public class Alumno implements Serializable{
 	public void setAlumno_expedientes(List<Expediente> alumno_expedientes) {
 		this.expedientes = alumno_expedientes;
 	}
-	public List<Grupo> getAlumno_Grupos(){
+
+	public List<Expediente> getExpedientes() {
+		return expedientes;
+	}
+
+	public void setExpedientes(List<Expediente> expedientes) {
+		this.expedientes = expedientes;
+	}
+
+	public List<Grupo> getAlumno_Grupos() {
 		return grupos;
 	}
+
 	public void setAlumno_Grupos(List<Grupo> grupos) {
-		this.grupos=grupos;
+		this.grupos = grupos;
 	}
 
 	@Override

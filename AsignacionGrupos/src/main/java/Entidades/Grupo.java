@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import GrupoX.AsignacionGrupos.Entidades.Alumno;
+
 
 /**
  * Entity implementation class for Entity: Grupo

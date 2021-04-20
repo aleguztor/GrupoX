@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import GrupoX.AsignacionGrupos.Entidades.Grupo;
+
 @Entity
 public class Alumno implements Serializable{
 	private static final long serialVersionUID = 1L;

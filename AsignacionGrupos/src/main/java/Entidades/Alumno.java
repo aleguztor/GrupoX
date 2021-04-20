@@ -1,4 +1,5 @@
 package Entidades;
+import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
@@ -29,8 +30,10 @@ public class Alumno implements Serializable{
 	private List<Expediente> expedientes;
 	@OneToMany(mappedBy="alumno", cascade = CascadeType.ALL)
 	private List<Grupo> grupos;
+	private File pdf;
 	
 	
+
 	public Alumno() {}
 	
 	public Alumno(String n, String ap1, String dni, String ei) {
@@ -166,6 +169,13 @@ public class Alumno implements Serializable{
 
 	public void setAlumno_Grupos(List<Grupo> grupos) {
 		this.grupos = grupos;
+	}
+	public File getPdf() {
+		return pdf;
+	}
+
+	public void setPdf(File pdf) {
+		this.pdf = pdf;
 	}
 
 	@Override

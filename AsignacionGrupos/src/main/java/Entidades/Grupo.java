@@ -27,6 +27,10 @@ public class Grupo implements Serializable {
 	private String Visible;
 	private String Asignar;
 	private Long Plazas;
+	private Long PlazasNuevoIngreso;
+	private Long PlazasRepetidores;
+	
+
 	private static final long serialVersionUID = 1L;
 	@OneToMany(mappedBy = "grupo")
 	private List<Grupos_Por_Asignatura> gpa;
@@ -52,6 +56,7 @@ public class Grupo implements Serializable {
 		Curso = c;
 		Letra = l;
 		Turno_manyana_tarde = t;
+		Plazas= PlazasNuevoIngreso+PlazasRepetidores;
 	}
 	
 	public Long getId() {
@@ -130,7 +135,21 @@ public class Grupo implements Serializable {
 	public void setAlumno(List<Alumno> alumno) {
 		this.alumno = alumno;
 	}
+	public Long getPlazasNuevoIngreso() {
+		return PlazasNuevoIngreso;
+	}
 
+	public void setPlazasNuevoIngreso(Long plazasNuevoIngreso) {
+		PlazasNuevoIngreso = plazasNuevoIngreso;
+	}
+
+	public Long getPlazasRepetidores() {
+		return PlazasRepetidores;
+	}
+
+	public void setPlazasRepetidores(Long plazasRepetidores) {
+		PlazasRepetidores = plazasRepetidores;
+	}
 	
 	
 	@Override

@@ -13,7 +13,7 @@ import Exceptions.*;
 public class CambioHorarioEJB implements CambioHorario {
 
 	@Override
-	public void CambioHorarioyGrupo(Alumno alum, String nuevaletra, String antigualetra, Grupo nuevo) throws AsignacionException {
+	public void CambioHorarioyGrupo(Alumno alum, String nuevaletra, String antigualetra, Grupo nuevo) throws AsignacionGruposException {
 		
 		Iterator<Grupo> it;
 		List<Grupo> grupos= alum.getAlumno_Grupos();

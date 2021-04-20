@@ -13,22 +13,11 @@ import Exceptions.*;
 public class CambioHorarioEJB implements CambioHorario {
 
 	@Override
-	public void CambioHorarioyGrupo(Alumno alum, String nuevaletra, String antigualetra, Grupo nuevo) throws AsignacionGruposException {
+	public void CambioHorarioyGrupo(Alumno alum, Grupo antiguo, Grupo nuevo) throws AsignacionGruposException {
 		
-		Iterator<Grupo> it;
 		List<Grupo> grupos= alum.getAlumno_Grupos();
-		it= grupos.iterator();
-		
-		int cuenta=0;
-		while(it.hasNext()) {
-			Grupo g= it.next();
-			cuenta++;
-			if(antigualetra==g.getLetra()) {
-				grupos.remove(cuenta);
-				grupos.add(nuevo);
-			}
-		}
-			
+		grupos.remove(antiguo);
+		grupos.add(nuevo);			
 	}
 
 	@Override

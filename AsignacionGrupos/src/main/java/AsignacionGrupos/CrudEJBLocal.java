@@ -15,7 +15,9 @@ import Exceptions.ExpedienteDuplicadoException;
 import Exceptions.ExpedienteNoEncontradoException;
 import Exceptions.GrupoAsignaturaException;
 import Exceptions.GrupoException;
+import Exceptions.MatriculaException;
 import Exceptions.MatriculaNoEncontradaException;
+import Exceptions.OptativaExpception;
 import Exceptions.OptativaNoEncontradaExpception;
 import Exceptions.TitulacionException;
 
@@ -30,15 +32,15 @@ public interface CrudEJBLocal {
 	public void modificarAlumno(Alumno a) throws AlumnoNoEncontradoException;
 	public Alumno existeAlumno(Alumno a) throws AlumnoNoEncontradoException;
 	
-	public void insertarOptativa(Optativa o) throws OptativaNoEncontradaExpception;
+	public void insertarOptativa(Optativa o) throws  OptativaExpception;
 	public void modificarOptativa(Optativa o) throws OptativaNoEncontradaExpception;
 	public void eliminarOptativa(Optativa o ) throws OptativaNoEncontradaExpception;
 	public Optativa existeOptativa(Optativa o) throws OptativaNoEncontradaExpception;
 	
-	public void insertarMatricula(Matricula m) throws MatriculaNoEncontradaException;
+	public void insertarMatricula(Matricula m) throws MatriculaException;
 	public void modificarMatricula(Matricula m) throws MatriculaNoEncontradaException;
 	public void eliminarMatricula(Matricula m) throws MatriculaNoEncontradaException;
-	public Matricula existeMatriucla(Matricula m) throws MatriculaNoEncontradaException;
+	public Matricula existeMatricula(Matricula m) throws MatriculaNoEncontradaException;
 	
 	public void insertarGrupoAsignatura(Grupos_Por_Asignatura gp) throws GrupoAsignaturaException;
 	public void modificarGrupoAsignatura(Grupos_Por_Asignatura gp) throws GrupoAsignaturaException;

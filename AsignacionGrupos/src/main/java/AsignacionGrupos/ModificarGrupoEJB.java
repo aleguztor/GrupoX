@@ -43,6 +43,7 @@ public class ModificarGrupoEJB implements ModificarGrupoAlumno{
 		grupos.add(nuevo);			
 	}
 	// EJEMPLO PARA ALE
+	/*
 	public void EliminarGrupoporfaltaalumno(List<Alumno> alum, List<Grupo> grupos) {
 		long plazaslibres1=0;
 		long plazaslibres2=0;
@@ -76,8 +77,6 @@ public class ModificarGrupoEJB implements ModificarGrupoAlumno{
 				break;
 			}
 			}
-			
-			
 			
 			
 			long plazas= g.getPlazas();
@@ -115,17 +114,6 @@ public class ModificarGrupoEJB implements ModificarGrupoAlumno{
 			}
 						
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	}
+			
+	}*/
 }

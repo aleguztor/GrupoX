@@ -70,11 +70,15 @@ public class CrudEJB implements CrudEJBLocal {
 
 	@Override
 	public void insertarAlumno(Alumno a) throws  AlumnoDuplicadoException {
-		Alumno al = em.find(Alumno.class, a.getId());
-		if(al == null)
+		try {
+			Alumno al = buscarAlumnoPorDNI(a.getDNI());
+			if(al != null) {
+				throw new AlumnoDuplicadoException();
+			}
+		} catch (AlumnoNoEncontradoException e) {
 			em.persist(a);
-		else 
-			throw new AlumnoDuplicadoException();
+		}
+			
 		
 	}
 
@@ -87,7 +91,7 @@ public class CrudEJB implements CrudEJBLocal {
 
 	@Override
 	public Alumno existeAlumno(Alumno a) throws AlumnoNoEncontradoException {
-		Alumno al = em.find(Alumno.class, a.getId());
+		Alumno al = buscarAlumnoPorDNI(a.getDNI());
 		if(al == null)
 			throw new AlumnoNoEncontradoException();
 		else
@@ -375,8 +379,7 @@ public class CrudEJB implements CrudEJBLocal {
 
 	@Override
 	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
-		String ejbQL = "SELECT a FROM Alumno a WHERE a.DNI LIKE '"+dni+"'";
-		TypedQuery<Alumno> q = em.createQuery(ejbQL, Alumno.class);
+		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM ALUMNO a WHERE a.DNI LIKE '"+dni+"'", Alumno.class);
 		if(q.getSingleResult() == null) {
 			throw new AlumnoNoEncontradoException();
 		}

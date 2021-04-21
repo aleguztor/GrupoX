@@ -7,54 +7,34 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import Entidades.*;
 import Exceptions.*;
 
 
-	public abstract class LimitePlazasEJB implements LimitePlazas,CrudEJBLocal{
+	public class LimitePlazasEJB implements LimitePlazas{
 	    @PersistenceContext(unitName="AsignacionGrupos")
 	    private EntityManager em;
 
 
 
+	    @Override
 	    public void limitarPlazasNuevoIngreso (Grupo grupo,Long PlazasNuevas) throws GrupoNoEncontradoException {
-	        if(grupo==null) {
+	    	Grupo g = busquedaGrupo(grupo.getCurso(), grupo.getLetra(), grupo.getTurno_manyana_tarde());
+	        if(g==null) {
 	            throw  new GrupoNoEncontradoException();
 	        }
-	        Grupo g=em.find(Grupo.class, grupo.getId()); //vinculo con la bd
-
-	        existeGrupo(g);
 	        g.setPlazasNuevoIngreso(PlazasNuevas);
-
-
-
-	        //q mi grupo este
-	        //Entro al grupo
-	        //cambio plazas
-
-
-
-	        em.persist(g);
 	    }
+	    @Override
 	    public void limitarPlazasRepetidores (Grupo grupo,Long PlazasRep) throws GrupoNoEncontradoException {
-	        if(grupo==null) {
+	    	Grupo g = busquedaGrupo(grupo.getCurso(), grupo.getLetra(), grupo.getTurno_manyana_tarde());
+	        if(g==null) {
 	            throw  new GrupoNoEncontradoException();
 	        }
-	        Grupo g=em.find(Grupo.class, grupo.getId()); //vinculo con la bd
-
-	        existeGrupo(g);
 	        g.setPlazasRepetidores(PlazasRep);
 
-
-
-
-	        //q mi grupo este
-	        //Entro al grupo
-	        //cambio plazas
-
-
-	        em.persist(g);
 	    }
 	    @Override
         public List<Alumno> EliminarGrupoPorFaltaDeAlumnos(Grupo g) throws GrupoNoEncontradoException{
@@ -68,12 +48,16 @@ import Exceptions.*;
             return alumnos;
 
         }
+	    
+	    @Override
+		public Grupo busquedaGrupo(String c, String l, String t) throws GrupoNoEncontradoException {
+			TypedQuery<Grupo> q = em.createQuery("SELECT g FROM GRUPO g WHERE g.CURSO LIKE '"+c+"' AND g.LETRA LIKE '"+l+"'"
+					+ " AND g.TURNO_MANYANA_TARDE LIKE '"+t+"'", Grupo.class);
+			if(q.getSingleResult() == null) {
+				throw new GrupoNoEncontradoException();
+			}
+			return q.getSingleResult();
+		}
 
-        //eliminar grupo saber nplazas libres totales y el grupo con menos alumnos
-        // en tarde y en mañana
-
-
-	    //eliminar grupo saber nplazas libres totales y el grupo con menos alumnos
-	    // en tarde y en mañana
 
 }

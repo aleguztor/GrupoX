@@ -1,6 +1,5 @@
 package AsignacionGrupos;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -12,7 +11,6 @@ import Entidades.Encuesta;
 import Entidades.Expediente;
 import Exceptions.AlumnoNoEncontradoException;
 import Exceptions.ExpedienteNoEncontradoException;
-
 
 
 @Stateful
@@ -39,25 +37,6 @@ public class AGNegocioImpl implements AGNegocio{
 		return em.find(Alumno.class, (long)1);
 	}
 	
-	@Override
-	public Expediente obtenerExpedientePorAlumno(Alumno a) throws AlumnoNoEncontradoException {
-		
-		Alumno al = em.find(Alumno.class, a.getId());
-		if(al == null) {
-			throw new AlumnoNoEncontradoException();
-		}
-		return al.getExpedientes().get(0);
-	}
-
-	@Override
-	public Alumno obtenerAlumnoPorExpediente(Long num_expediente) throws ExpedienteNoEncontradoException {
-		Expediente e = em.find(Expediente.class, num_expediente);
-		if(e == null) {
-			throw new ExpedienteNoEncontradoException();
-		}
-		Alumno a = e.getAlumno();
-		return a;
-	}
 	
 	
 

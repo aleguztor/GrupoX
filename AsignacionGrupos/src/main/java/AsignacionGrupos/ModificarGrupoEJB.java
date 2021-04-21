@@ -3,24 +3,34 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.*;
+import javax.ejb.*;
 import Entidades.Alumno;
 import Entidades.Expediente;
 import Entidades.Grupo;
 import Entidades.Matricula;
-import Exceptions.AlumnoNoEncontradoException;
-import Exceptions.AsignacionGruposException;
-import Exceptions.NoExisteGrupoEnAlumno;
+import Exceptions.*;
 
+@Stateless
 public class ModificarGrupoEJB implements ModificarGrupoAlumno{
+	private EntityManager em;
 	
-	public List<Grupo> obtenerGrupoPorMatricula(Matricula m) {
-		Expediente e = m.getExpedientes_num_expedientes();
+	public List<Grupo> obtenerGrupoPorMatricula(Matricula m) throws MatriculaNoEncontradaException{
+		Matricula ma = em.find(Matricula.class, m.getCurso_academico());
+		if(ma == null){
+			throw new MatriculaNoEncontradaException();
+		}
+		Expediente e = ma.getExpedientes_num_expedientes();
 		return e.getAlumno().getAlumno_Grupos();
 	}
 	
 	//Suponiedo que solo exista el expediente de informatica
-	public List<Matricula> obtenerMatriculaPorGrupo(Grupo g) {
-		List<Alumno> alumnos = g.getAlumno();
+	public List<Matricula> obtenerMatriculaPorGrupo(Grupo g) throws GrupoNoEncontradoException{
+		Grupo gr = busquedaGrupo(g.getCurso(), g.getLetra(), g.getTurno_manyana_tarde());
+		if(gr == null) {
+			throw new GrupoNoEncontradoException();
+		}
+		List<Alumno> alumnos = gr.getAlumno();
 		Iterator<Alumno> it = alumnos.iterator();
 		List<Matricula> matriculas = new LinkedList<>();
 		while(it.hasNext()) {
@@ -30,20 +40,26 @@ public class ModificarGrupoEJB implements ModificarGrupoAlumno{
 		return matriculas;
 	}
 	
-	public void CambioGrupoAlumnos(List<Alumno> alum, Grupo antiguo, Grupo nuevo) throws  NoExisteGrupoEnAlumno{
+	public void CambioGrupoAlumnos(List<Alumno> alum, Grupo antiguo, Grupo nuevo) throws  NoExisteGrupoEnAlumno, GrupoNoEncontradoException{
+		Grupo ant = busquedaGrupo(antiguo.getCurso(), antiguo.getLetra(), antiguo.getTurno_manyana_tarde());
+		Grupo n = busquedaGrupo(nuevo.getCurso(), nuevo.getLetra(), nuevo.getTurno_manyana_tarde());
+		if(ant == null) {
+			throw new GrupoNoEncontradoException();
+		}
+		if(n == null) {
+			throw new GrupoNoEncontradoException();
+		}
 		Iterator<Alumno> it = alum.iterator();
-	
 		while(it.hasNext()) {
 			Alumno al= it.next();
 			List<Grupo> grupos= al.getAlumno_Grupos();
 			
-			if(grupos.indexOf(antiguo)<0) {
+			if(grupos.indexOf(ant)<0) {
 				throw new NoExisteGrupoEnAlumno();
 			}
 		
-			grupos.remove(antiguo);
-			grupos.add(nuevo);
-				
+			grupos.remove(ant);
+			grupos.add(n);	
 		}
 	}
 	@Override
@@ -57,4 +73,13 @@ public class ModificarGrupoEJB implements ModificarGrupoAlumno{
 		grupos.add(nuevo);			
 	}
 	
+	@Override
+	public Grupo busquedaGrupo(String c, String l, String t) throws GrupoNoEncontradoException {
+		TypedQuery<Grupo> q = em.createQuery("SELECT g FROM GRUPO g WHERE g.CURSO LIKE '"+c+"' AND g.LETRA LIKE '"+l+"'"
+				+ " AND g.TURNO_MANYANA_TARDE LIKE '"+t+"'", Grupo.class);
+		if(q.getSingleResult() == null) {
+			throw new GrupoNoEncontradoException();
+		}
+		return q.getSingleResult();
+	}
 }

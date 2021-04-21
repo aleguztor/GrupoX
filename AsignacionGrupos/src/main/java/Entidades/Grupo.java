@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Grupo implements Serializable {
 	   
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
 	@Column(nullable = false)
 	private String Curso;
@@ -27,8 +27,8 @@ public class Grupo implements Serializable {
 	private String Visible;
 	private String Asignar;
 	private Long Plazas;
-	private Long PlazasNuevoIngreso;
-	private Long PlazasRepetidores;
+	private Long PlazasNuevoIngreso = (long)0;
+	private Long PlazasRepetidores = (long)0;
 	
 
 	private static final long serialVersionUID = 1L;
@@ -140,6 +140,7 @@ public class Grupo implements Serializable {
 
 	public void setPlazasNuevoIngreso(Long plazasNuevoIngreso) {
 		PlazasNuevoIngreso = plazasNuevoIngreso;
+		Plazas = PlazasNuevoIngreso + PlazasRepetidores;
 	}
 
 	public Long getPlazasRepetidores() {
@@ -148,6 +149,7 @@ public class Grupo implements Serializable {
 
 	public void setPlazasRepetidores(Long plazasRepetidores) {
 		PlazasRepetidores = plazasRepetidores;
+		Plazas = PlazasNuevoIngreso + PlazasRepetidores;
 	}
 	
 	

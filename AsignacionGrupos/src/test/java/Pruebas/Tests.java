@@ -2,6 +2,7 @@ package Pruebas;
 
 import Entidades.*;
 import Entidades.Encuesta.Expediente_Encuesta_PK;
+import Exceptions.AlumnoNoEncontradoException;
 import Exceptions.ExpedienteNoEncontradoException;
 import Exceptions.NoExisteGrupoEnAlumno;
 
@@ -47,9 +48,9 @@ public class Tests {
 	private static Context ctx;
 	
 	private AGNegocio negocio;
-	private CrudEJB crud;
-	private ModificarGrupoEJB modg;
-	private CambioHorarioEJB cambh;
+	private CrudEJBLocal crud;
+	private ModificarGrupoAlumno modg;
+	private CambioHorario cambh;
 	
 	@BeforeClass
 	public static void setUpClass() {
@@ -69,24 +70,27 @@ public class Tests {
 	@Ignore
 	public void testAsignarEncuesta() {
 		Date d = new Date(System.currentTimeMillis());
-		Expediente e = new Expediente((long)123123, true, 5.0);
-			
-
+		Alumno al = negocio.getAlumnoRandom();
 		try {
-			negocio.asignarEncuesta(e.getNum_Expediente(), d, "Manyana");
-			Alumno al = negocio.obtenerAlumnoPorExpediente(e.getNum_Expediente());
-			Expediente e1 = al.getAlumno_expedientes().get(al.getAlumno_expedientes().indexOf(e));
-			Assert.assertEquals(e.getNum_Expediente(), e1.getEncuesta().get(0).getExpediente().getNum_Expediente());
+			Expediente e = negocio.obtenerExpedientePorAlumno(al);
+			Expediente_Encuesta_PK pk = new Expediente_Encuesta_PK(e.getNum_Expediente(), d);
+			Encuesta en = new Encuesta(pk, "Manyana");
+			negocio.asignarEncuesta(e.getNum_Expediente(), en);
+			Alumno a = negocio.obtenerAlumnoPorExpediente(e.getNum_Expediente());
+			assertEquals(a.getExpedientes().get(0).getEncuesta().get(0).getExpediente(), e.getNum_Expediente());
 		} catch (ExpedienteNoEncontradoException e1) {
 			e1.printStackTrace();
+		}catch (AlumnoNoEncontradoException e2) {
+			e2.printStackTrace();
 		}
 	}
 	
 	
 	@Test
-	public void testModificar() {
+	@Ignore
+	public void testModificarExp() {
 		try {
-			Expediente ex = new Expediente((long)123141234, true, 9.2);
+			Expediente ex = new Expediente((long)214623, true, 9.2);
 			crud.modificarExpediente(ex);
 			Expediente e = crud.existeExpediente(ex);
 			assertEquals(e,ex);
@@ -97,9 +101,10 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testEliminarExp() {
 		try {
-			Expediente ex = new Expediente((long) 12123123, true, 9);
+			Expediente ex = new Expediente((long) 214623, true, 9);
 			crud.eliminarExpediente(ex);;
 			assertNull(crud.existeExpediente(ex));
 		}catch(Exception e) {
@@ -108,9 +113,10 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testInsertarExp() {
 		try {
-			Expediente ex = new Expediente((long) 12314512,true,6);
+			Expediente ex = new Expediente((long) 214623,true,6);
 			crud.insertarExpediente(ex);
 			Expediente e = crud.existeExpediente(ex);
 			assertEquals(e,ex);
@@ -119,9 +125,10 @@ public class Tests {
 		}
 	}
 	@Test
-	public void testInsertarAl() {
+	@Ignore
+	public void testInsertarAlumno() {
 		try {
-			Alumno al = new Alumno("Mario", "Vazquez", "1235754a", "asd@uma.es");
+			Alumno al = new Alumno("Jose", "Gutierrez", "8461761r", "asd@uma.es");
 			crud.insertarAlumno(al);
 			Alumno a = crud.existeAlumno(al);
 			assertEquals(a,al);
@@ -131,9 +138,10 @@ public class Tests {
 		}
 	}
 	@Test
-	public void testModificarAl() {
+	@Ignore
+	public void testModificarAlumno() {
 		try {
-			Alumno al = new Alumno("Mario", "Vazquez", "1235754a", "asd@uma.es");
+			Alumno al = new Alumno("Jose", "Gutierrez", "8461761r", "asd@uma.es");
 			crud.insertarAlumno(al);
 			al.setDireccion_notificacion("Calle la mia");
 			al.setEmail_personal("pepito@gmail.com");
@@ -146,8 +154,9 @@ public class Tests {
 		
 	}
 	
-	@Test 
-	public void testBusqueda() {
+	@Test
+	@Ignore
+	public void testBusquedaAlumno() {
 		try {
 			Alumno al = new Alumno("Mario", "Vazquez", "1235754a", "asd@uma.es");
 			
@@ -158,6 +167,7 @@ public class Tests {
 		}
 	}
 	@Test
+	@Ignore
 	public void testCambioGrupoAlumnos() {
 		Alumno al = new Alumno("PEPE", "viruela", "124536b", "adassa@uma.es");
 		Alumno ab = new Alumno("Mario", "Vazquez", "1235754a", "asd@uma.es");

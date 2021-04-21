@@ -12,12 +12,12 @@ import Entidades.Encuesta;
 import Entidades.Expediente;
 import Exceptions.AlumnoNoEncontradoException;
 import Exceptions.ExpedienteNoEncontradoException;
-import jdk.internal.org.jline.utils.Log;
+
 
 
 @Stateful
 public class AGNegocioImpl implements AGNegocio{
-	private static final Logger LOG = Logger.getLogger(AGNegocioImpl.class.getCanonicalName());
+	
 	@PersistenceContext(name="AsignacionGrupos")
 	private EntityManager em;
 	
@@ -41,7 +41,7 @@ public class AGNegocioImpl implements AGNegocio{
 	
 	@Override
 	public Expediente obtenerExpedientePorAlumno(Alumno a) throws AlumnoNoEncontradoException {
-		LOG.info(a.getId().toString());
+		
 		Alumno al = em.find(Alumno.class, a.getId());
 		if(al == null) {
 			throw new AlumnoNoEncontradoException();

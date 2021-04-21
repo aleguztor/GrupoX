@@ -28,6 +28,8 @@ public interface CrudEJBLocal {
 	public void insertarAlumno(Alumno a) throws AlumnoDuplicadoException;
 	public void modificarAlumno(Alumno a) throws AlumnoNoEncontradoException;
 	public Alumno existeAlumno(Alumno a) throws AlumnoNoEncontradoException;
+	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException;
+	public void eliminarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException;
 	
 	public void insertarOptativa(Optativa o) throws  OptativaNoEncontradaExpception;
 	public void modificarOptativa(Optativa o) throws OptativaNoEncontradaExpception;
@@ -45,6 +47,8 @@ public interface CrudEJBLocal {
 	public void modificarGrupo(Grupo g) throws GrupoNoEncontradoException;
 	public void eliminarGrupo(Grupo g) throws GrupoNoEncontradoException;
 	public Grupo existeGrupo(Grupo g) throws GrupoNoEncontradoException;
+	public Grupo busquedaGrupo(String c, String l, String t) throws GrupoNoEncontradoException;
+	
 	
 	public void insertarTitulacion(Titulacion t) throws TitulacionException;
 	public void modificarTitulacion(Titulacion t) throws TitulacionException;

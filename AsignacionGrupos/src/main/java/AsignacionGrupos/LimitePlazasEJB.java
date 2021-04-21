@@ -57,17 +57,21 @@ import Exceptions.*;
 	        em.persist(g);
 	    }
 	    @Override
-	    public List<Alumno> EliminarGrupoPorFaltaDeAlumnos(Grupo g) throws GrupoNoEncontradoException{
-	    	Grupo gr = em.find(Grupo.class, g);
-	    	if(gr == null) {
-	    		throw new GrupoNoEncontradoException();
-	    	}
-			List<Alumno> alumnos = gr.getAlumno();
-			em.remove(em.merge(gr));
-			
-			return alumnos;
-			
-		}
+        public List<Alumno> EliminarGrupoPorFaltaDeAlumnos(Grupo g) throws GrupoNoEncontradoException{
+            Grupo gr = em.find(Grupo.class, g);
+            if(gr == null) {
+                throw new GrupoNoEncontradoException();
+            }
+            List<Alumno> alumnos = gr.getAlumno();
+            em.remove(em.merge(gr));
+
+            return alumnos;
+
+        }
+
+        //eliminar grupo saber nplazas libres totales y el grupo con menos alumnos
+        // en tarde y en mañana
+
 
 	    //eliminar grupo saber nplazas libres totales y el grupo con menos alumnos
 	    // en tarde y en mañana

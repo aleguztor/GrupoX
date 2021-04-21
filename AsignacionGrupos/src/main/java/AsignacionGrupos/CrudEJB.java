@@ -373,6 +373,36 @@ public class CrudEJB implements CrudEJBLocal {
 		
 	}
 
+	@Override
+	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
+		String ejbQL = "SELECT a FROM Alumno a WHERE a.DNI LIKE '"+dni+"'";
+		TypedQuery<Alumno> q = em.createQuery(ejbQL, Alumno.class);
+		if(q.getSingleResult() == null) {
+			throw new AlumnoNoEncontradoException();
+		}
+		return q.getSingleResult();
+	}
+
+	@Override
+	public void eliminarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
+		Alumno a = buscarAlumnoPorDNI(dni);
+		if(a == null) {
+			throw new AlumnoNoEncontradoException();
+		}
+		em.remove(em.merge(a));
+		
+	}
+
+	@Override
+	public Grupo busquedaGrupo(String c, String l, String t) throws GrupoNoEncontradoException {
+		TypedQuery<Grupo> q = em.createQuery("SELECT g FROM GRUPO g WHERE g.CURSO LIKE '"+c+"' AND g.LETRA LIKE '"+l+"'"
+				+ " AND g.TURNO_MANYANA_TARDE LIKE '"+t+"'", Grupo.class);
+		if(q.getSingleResult() == null) {
+			throw new GrupoNoEncontradoException();
+		}
+		return q.getSingleResult();
+	}
+
 	
 
 	

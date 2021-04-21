@@ -51,7 +51,7 @@ public class Tests {
 	private CrudEJBLocal crud;
 	private ModificarGrupoAlumno modg;
 	private CambioHorario cambh;
-	
+	private LimitePlazas limpla;
 	@BeforeClass
 	public static void setUpClass() {
 		Properties properties = new Properties();
@@ -67,7 +67,7 @@ public class Tests {
 	}
 	
 	@Test
-	@Ignore
+	
 	public void testAsignarEncuesta() {
 		Date d = new Date(System.currentTimeMillis());
 		Alumno al = negocio.getAlumnoRandom();
@@ -87,7 +87,7 @@ public class Tests {
 	
 	
 	@Test
-	@Ignore
+	
 	public void testModificarExp() {
 		try {
 			Expediente ex = new Expediente((long)214623, true, 9.2);
@@ -101,7 +101,7 @@ public class Tests {
 	}
 	
 	@Test
-	@Ignore
+	
 	public void testEliminarExp() {
 		try {
 			Expediente ex = new Expediente((long) 214623, true, 9);
@@ -113,7 +113,7 @@ public class Tests {
 	}
 	
 	@Test
-	@Ignore
+	
 	public void testInsertarExp() {
 		try {
 			Expediente ex = new Expediente((long) 214623,true,6);
@@ -125,7 +125,7 @@ public class Tests {
 		}
 	}
 	@Test
-	@Ignore
+	
 	public void testInsertarAlumno() {
 		try {
 			Alumno al = new Alumno("Jose", "Gutierrez", "8461761r", "asd@uma.es");
@@ -138,7 +138,7 @@ public class Tests {
 		}
 	}
 	@Test
-	@Ignore
+	
 	public void testModificarAlumno() {
 		try {
 			Alumno al = new Alumno("Jose", "Gutierrez", "8461761r", "asd@uma.es");
@@ -155,7 +155,7 @@ public class Tests {
 	}
 	
 	@Test
-	@Ignore
+	
 	public void testBusquedaAlumno() {
 		try {
 			Alumno al = new Alumno("Mario", "Vazquez", "1235754a", "asd@uma.es");
@@ -167,7 +167,7 @@ public class Tests {
 		}
 	}
 	@Test
-	@Ignore
+	
 	public void testCambioGrupoAlumnos() {
 		Alumno al = new Alumno("PEPE", "viruela", "124536b", "adassa@uma.es");
 		Alumno ab = new Alumno("Mario", "Vazquez", "1235754a", "asd@uma.es");
@@ -221,6 +221,45 @@ public class Tests {
 			e.printStackTrace();
 		}
 	}
+	@Test
+
+    public void TestLimitarPlazasNuevoIngreso() {
+        Grupo g = new Grupo("1º", "c","Tarde");
+        Long nplazas=(long) 10;
+        try {
+            limpla.limitarPlazasNuevas(g, nplazas);
+            assertEquals(g.getPlazasNuevoIngreso(), nplazas);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    @Test
+    public void TestLimitarPlazasRepetidores() {
+
+        Grupo g=new Grupo("1º","c","Tarde");
+        Long nplazas=(long)10;
+        try {
+            limpla.limitarPlazasRepetidores(g, nplazas);
+            assertEquals(g.getPlazasRepetidores(), nplazas);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void TestEliminarGrupoPorFaltaDeAlumnos() {
+        //Suponemos que el limite por falta de alumnos es 3. El grupo A tiene dos alumnos por 
+        //tanto deberia borrase.
+        try {
+            Grupo g = crud.busquedaGrupo("1º", "a", "Manyana");
+            limpla.EliminarGrupoPorFaltaDeAlumnos(g);
+            assertNull(crud.busquedaGrupo("1º", "a", "Manyana"));
+
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 	
 
 	@AfterClass

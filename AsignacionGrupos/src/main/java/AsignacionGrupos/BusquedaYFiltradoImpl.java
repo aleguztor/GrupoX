@@ -10,7 +10,6 @@ import javax.persistence.TypedQuery;
 
 import Entidades.Alumno;
 import Entidades.Asignatura;
-import Entidades.Grupo;
 import Entidades.Titulacion;
 import Exceptions.AlumnoNoEncontradoException;
 

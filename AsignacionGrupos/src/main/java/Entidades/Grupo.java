@@ -56,7 +56,6 @@ public class Grupo implements Serializable {
 		Curso = c;
 		Letra = l;
 		Turno_manyana_tarde = t;
-		Plazas= PlazasNuevoIngreso+PlazasRepetidores;
 	}
 	
 	public Long getId() {

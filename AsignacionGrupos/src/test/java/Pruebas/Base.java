@@ -66,9 +66,11 @@ public class Base {
 		mats.add(m6);
 		e6.setMatricula(mats);
 		e6.setAlumno(a6);
-		Grupo a = new Grupo("2∫", "a","Ma√±ana");
-		Grupo b = new Grupo("1∫", "b","Ma√±ana");
-		Grupo c = new Grupo("1∫", "c","Tarde");		
+		Grupo a = new Grupo("2∫", "a","Manyana");
+		Grupo b = new Grupo("1∫", "b","Manyana");
+		Grupo c = new Grupo("1∫", "c","Tarde");
+		a.setPlazasNuevoIngreso((long)5);
+		a.setPlazasRepetidores((long)1);
 		List<Expediente> exps = new LinkedList<>();
 		List<Grupo> gps = new LinkedList<>();
 		exps.add(e1);
@@ -103,7 +105,7 @@ public class Base {
 		gps.add(a);
 		a5.setAlumno_Grupos(gps);
 		gps.remove(0);
-		gps.add(a);
+		gps.add(c);
 		a6.setAlumno_Grupos(gps);
 		em.getTransaction().begin();
 		em.persist(m1);

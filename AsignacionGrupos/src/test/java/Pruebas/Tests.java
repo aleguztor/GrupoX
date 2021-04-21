@@ -6,8 +6,7 @@ import Exceptions.AlumnoNoEncontradoException;
 import Exceptions.ExpedienteNoEncontradoException;
 import Exceptions.NoExisteGrupoEnAlumno;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 
 import java.sql.Date;
@@ -52,6 +51,7 @@ public class Tests {
 	private ModificarGrupoAlumno modg;
 	private CambioHorario cambh;
 	private LimitePlazas limpla;
+	
 	@BeforeClass
 	public static void setUpClass() {
 		Properties properties = new Properties();
@@ -67,28 +67,25 @@ public class Tests {
 	}
 	
 	@Test
-	
 	public void testAsignarEncuesta() {
 		Date d = new Date(System.currentTimeMillis());
-		Alumno al = negocio.getAlumnoRandom();
 		try {
-			Expediente e = negocio.obtenerExpedientePorAlumno(al);
+			Alumno a = crud.buscarAlumnoPorDNI("12345678a");
+			Expediente e = a.getExpedientes().get(0);
 			Expediente_Encuesta_PK pk = new Expediente_Encuesta_PK(e.getNum_Expediente(), d);
 			Encuesta en = new Encuesta(pk, "Manyana");
+			en.setExpediente(e);
 			negocio.asignarEncuesta(e.getNum_Expediente(), en);
-			Alumno a = negocio.obtenerAlumnoPorExpediente(e.getNum_Expediente());
-			assertEquals(a.getExpedientes().get(0).getEncuesta().get(0).getExpediente(), e.getNum_Expediente());
-		} catch (ExpedienteNoEncontradoException e1) {
+			a = crud.buscarAlumnoPorDNI("12345678a");
+			assertEquals(a.getExpedientes().get(0).getEncuesta().get(0).getExpediente().getNum_Expediente(), e.getNum_Expediente());
+		} catch (Exception e1) {
 			e1.printStackTrace();
-		}catch (AlumnoNoEncontradoException e2) {
-			e2.printStackTrace();
 		}
 	}
 	
 	
 	@Test
-	
-	public void testModificarExp() {
+	public void testModificarExpediente() {
 		try {
 			Expediente ex = new Expediente((long)214623, true, 9.2);
 			crud.modificarExpediente(ex);
@@ -101,8 +98,7 @@ public class Tests {
 	}
 	
 	@Test
-	
-	public void testEliminarExp() {
+	public void testEliminarExpediente() {
 		try {
 			Expediente ex = new Expediente((long) 214623, true, 9);
 			crud.eliminarExpediente(ex);;
@@ -113,7 +109,6 @@ public class Tests {
 	}
 	
 	@Test
-	
 	public void testInsertarExp() {
 		try {
 			Expediente ex = new Expediente((long) 214623,true,6);
@@ -125,7 +120,6 @@ public class Tests {
 		}
 	}
 	@Test
-	
 	public void testInsertarAlumno() {
 		try {
 			Alumno al = new Alumno("Jose", "Gutierrez", "8461761r", "asd@uma.es");
@@ -138,7 +132,6 @@ public class Tests {
 		}
 	}
 	@Test
-	
 	public void testModificarAlumno() {
 		try {
 			Alumno al = new Alumno("Jose", "Gutierrez", "8461761r", "asd@uma.es");
@@ -155,43 +148,24 @@ public class Tests {
 	}
 	
 	@Test
-	
 	public void testBusquedaAlumno() {
 		try {
-			Alumno al = new Alumno("Mario", "Vazquez", "1235754a", "asd@uma.es");
-			
-			
-		
+			assertNotNull(crud.buscarAlumnoPorDNI("12345678a"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	@Test
 	
+	@Test
 	public void testCambioGrupoAlumnos() {
-		Alumno al = new Alumno("PEPE", "viruela", "124536b", "adassa@uma.es");
-		Alumno ab = new Alumno("Mario", "Vazquez", "1235754a", "asd@uma.es");
-		Alumno ac = new Alumno("Alejandro", "Torres", "124232b", "23cvd@uma.es");
-		List<Alumno> listaalumnos = new ArrayList<>();
-		listaalumnos.add(al);
-		listaalumnos.add(ab);
-		listaalumnos.add(ac);
-		Grupo a = new Grupo("2º", "a","Mañana");
-		Grupo b = new Grupo("1º", "b","Mañana");
-		Grupo c = new Grupo("1º", "c","Tarde");
-		List<Grupo> grupos= new ArrayList<>();
-		grupos.add(a);
-		grupos.add(b);
-		grupos.add(c);
-		al.setAlumno_Grupos(grupos);
-		ab.setAlumno_Grupos(grupos);
-		ac.setAlumno_Grupos(grupos);
-		Grupo nuevo= new Grupo("1º", "a", "Mañana");
+		List<Alumno> alumnos = new LinkedList<>();
 		try {
-			modg.CambioGrupoAlumnos(listaalumnos, c, nuevo);
-			assertEquals(al.getAlumno_Grupos().indexOf(c),-1);
-			grupos=al.getAlumno_Grupos();
-			assertEquals(grupos.get(grupos.indexOf(nuevo)),nuevo);
+			alumnos.add(crud.buscarAlumnoPorDNI("12345678a"));
+			Grupo a = crud.busquedaGrupo("2�", "a", "Manyana");
+			Grupo n = crud.busquedaGrupo("1�", "c","Tarde");
+			modg.CambioGrupoAlumnos(alumnos, a, n);
+			assertEquals(alumnos.get(0).getAlumno_Grupos().indexOf(a),-1);
+			assertEquals(alumnos.get(0).getAlumno_Grupos().get(alumnos.get(0).getAlumno_Grupos().indexOf(n)),n);
 		} catch (Exception e) {
 		
 			e.printStackTrace();
@@ -200,34 +174,11 @@ public class Tests {
 	}
 	
 	@Test
-	public void testCambioGrupoAlumno() {
-		Alumno al = new Alumno("PEPE", "viruela", "124536b", "adassa@uma.es");
-		Grupo a = new Grupo("2º", "a","Mañana");
-		Grupo b = new Grupo("1º", "b","Mañana");
-		Grupo c = new Grupo("1º", "c","Tarde");
-		List<Grupo> grupos= new ArrayList<>();
-		grupos.add(a);
-		grupos.add(b);
-		grupos.add(c);
-		al.setAlumno_Grupos(grupos);
-		Grupo nuevo= new Grupo("1º", "a", "Mañana");
-		try {
-			cambh.CambioHorarioyGrupo(al, a, nuevo);
-			assertEquals(al.getAlumno_Grupos().indexOf(c),-1);
-			grupos=al.getAlumno_Grupos();
-			assertEquals(grupos.get(grupos.indexOf(nuevo)),nuevo);
-		}catch(Exception e) {
-			
-			e.printStackTrace();
-		}
-	}
-	@Test
-
     public void TestLimitarPlazasNuevoIngreso() {
-        Grupo g = new Grupo("1º", "c","Tarde");
+        Grupo g = new Grupo("1�", "c","Tarde");
         Long nplazas=(long) 10;
         try {
-            limpla.limitarPlazasNuevas(g, nplazas);
+            limpla.limitarPlazasNuevoIngreso(g, nplazas);
             assertEquals(g.getPlazasNuevoIngreso(), nplazas);
         } catch (Exception e) {
             e.printStackTrace();
@@ -237,7 +188,7 @@ public class Tests {
     @Test
     public void TestLimitarPlazasRepetidores() {
 
-        Grupo g=new Grupo("1º","c","Tarde");
+        Grupo g=new Grupo("1�","c","Tarde");
         Long nplazas=(long)10;
         try {
             limpla.limitarPlazasRepetidores(g, nplazas);
@@ -246,20 +197,21 @@ public class Tests {
             e.printStackTrace();
         }
     }
-    @Test
+	
+	@Test
     public void TestEliminarGrupoPorFaltaDeAlumnos() {
-        //Suponemos que el limite por falta de alumnos es 3. El grupo A tiene dos alumnos por 
-        //tanto deberia borrase.
-        try {
-            Grupo g = crud.busquedaGrupo("1º", "a", "Manyana");
-            limpla.EliminarGrupoPorFaltaDeAlumnos(g);
-            assertNull(crud.busquedaGrupo("1º", "a", "Manyana"));
-
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
+		//Suponemos que el limite por falta de alumnos es 3. El grupo A tiene dos alumnos por 
+		//tanto deberia borrase.
+		try {
+			Grupo g = crud.busquedaGrupo("1�", "a", "Manyana");
+			limpla.EliminarGrupoPorFaltaDeAlumnos(g);
+			assertNull(crud.busquedaGrupo("1�", "a", "Manyana"));
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
     }
-
+	
 	
 
 	@AfterClass

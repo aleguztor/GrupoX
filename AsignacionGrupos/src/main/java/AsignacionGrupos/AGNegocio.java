@@ -1,8 +1,7 @@
 package AsignacionGrupos;
-import java.sql.Date;
 import Entidades.*;
-//import Excepciones.*;
-import Exceptions.ExpedienteNoEncontradoException;
+
+import Exceptions.*;
 
 import javax.ejb.Local;
 
@@ -10,6 +9,9 @@ import javax.ejb.Local;
 @Local
 public interface AGNegocio {
 	
-	public Alumno obtenerAlumnoPorExpediente(Long num) throws ExpedienteNoEncontradoException;
-	public void asignarEncuesta(Long numexp, Date fechaenvio, String turno) throws ExpedienteNoEncontradoException;
+	public void asignarEncuesta(Long numexp, Encuesta en) throws ExpedienteNoEncontradoException;
+	public Expediente obtenerExpedientePorAlumno(Alumno a) throws AlumnoNoEncontradoException;
+	public Alumno obtenerAlumnoPorExpediente(Long num_expediente) throws ExpedienteNoEncontradoException;
+	public Alumno getAlumnoRandom();
+
 }

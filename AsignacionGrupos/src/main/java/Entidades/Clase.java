@@ -80,16 +80,9 @@ public class Clase implements Serializable {
 		return asignatura;
 	}
 
-
-
-	/**
-	 * @param asignatura the asignatura to set
-	 */
 	public void setAsignatura(Asignatura asignatura) {
 		this.asignatura = asignatura;
 	}
-
-
 
 	public Date getHorafin() {
 		return this.Horafin;

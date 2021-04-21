@@ -10,24 +10,24 @@ import java.lang.Integer;
 public class MatriculaPK  implements Serializable {   
    
 	         
-	private Integer curso_academico;         
+	private String curso_academico;         
 	private Long expedientes_num_expedientes;
 	private static final long serialVersionUID = 1L;
 
 	public MatriculaPK() {}
 	
-	public MatriculaPK(Integer ca, Long ne) {
+	public MatriculaPK(String ca, Long ne) {
 		curso_academico = ca;
 		expedientes_num_expedientes = ne;
 	}
 
 	
 
-	public Integer getCurso_academico() {
+	public String getCurso_academico() {
 		return this.curso_academico;
 	}
 
-	public void setCurso_academico(Integer curso_academico) {
+	public void setCurso_academico(String curso_academico) {
 		this.curso_academico = curso_academico;
 	}
 	

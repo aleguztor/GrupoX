@@ -174,40 +174,40 @@ public class CrudEJB implements CrudEJBLocal {
 	
 
 	@Override
-	public void insertarGrupo(Grupo g) throws GrupoException {
+	public void insertarGrupo(Grupo g) throws GrupoNoEncontradoException {
 		Grupo gr = em.find(Grupo.class, g.getId());
 		if(gr == null)
 			em.persist(gr);
 		else 
-			throw new GrupoException();
+			throw new GrupoNoEncontradoException();
 		
 	}
 
 	@Override
-	public void modificarGrupo(Grupo g) throws GrupoException {
+	public void modificarGrupo(Grupo g) throws GrupoNoEncontradoException {
 		Grupo gr = existeGrupo(g);
 		if(gr ==null)
-			throw new GrupoException();
+			throw new GrupoNoEncontradoException();
 		else 
 			em.merge(gr);
 		
 	}
 
 	@Override
-	public void eliminarGrupo(Grupo g) throws GrupoException {
+	public void eliminarGrupo(Grupo g) throws GrupoNoEncontradoException {
 		Grupo gr = existeGrupo(g);
 		if(gr==null)
-			throw new GrupoException();
+			throw new GrupoNoEncontradoException();
 		else 
 			em.remove(gr);
 		
 	}
 
 	@Override
-	public Grupo existeGrupo(Grupo g) throws GrupoException {
+	public Grupo existeGrupo(Grupo g) throws GrupoNoEncontradoException {
 		Grupo	gr = em.find(Grupo.class,g.getId());
 		if(gr == null)
-			throw new GrupoException();
+			throw new GrupoNoEncontradoException();
 		else 
 			return gr;
 	}

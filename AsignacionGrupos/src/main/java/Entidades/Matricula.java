@@ -19,7 +19,7 @@ import javax.persistence.*;
 public class Matricula implements Serializable {
 
 	@Id
-	private Integer curso_academico;
+	private String curso_academico;
 	@Column(nullable = false)
 	private Character estado;
 	private Integer num_archivo;
@@ -36,11 +36,20 @@ public class Matricula implements Serializable {
 	private List<Asignaturas_matriculas> am;
 	private static final long serialVersionUID = 1L;
 	
-	public Integer getCurso_academico() {
+	public Matricula() {}
+	
+	public Matricula(MatriculaPK pk, Expediente e, Character c, Date fm) {
+		expedientes_num_expedientes = e;
+		curso_academico = pk.getCurso_academico();
+		estado = c;
+		fecha_matricula = fm;
+	}
+	
+	public String getCurso_academico() {
 		return this.curso_academico;
 	}
 
-	public void setCurso_academico(Integer curso_academico) {
+	public void setCurso_academico(String curso_academico) {
 		this.curso_academico = curso_academico;
 	}   
 	public Character getEstado() {

@@ -14,7 +14,7 @@ import Exceptions.EncuestaException;
 import Exceptions.ExpedienteDuplicadoException;
 import Exceptions.ExpedienteNoEncontradoException;
 import Exceptions.GrupoAsignaturaException;
-import Exceptions.GrupoException;
+import Exceptions.GrupoNoEncontradoException;
 import Exceptions.*;
 
 
@@ -41,10 +41,10 @@ public interface CrudEJBLocal {
 	
 	
 	
-	public void insertarGrupo(Grupo g) throws GrupoException;
-	public void modificarGrupo(Grupo g) throws GrupoException;
-	public void eliminarGrupo(Grupo g) throws GrupoException;
-	public Grupo existeGrupo(Grupo g) throws GrupoException;
+	public void insertarGrupo(Grupo g) throws GrupoNoEncontradoException;
+	public void modificarGrupo(Grupo g) throws GrupoNoEncontradoException;
+	public void eliminarGrupo(Grupo g) throws GrupoNoEncontradoException;
+	public Grupo existeGrupo(Grupo g) throws GrupoNoEncontradoException;
 	
 	public void insertarTitulacion(Titulacion t) throws TitulacionException;
 	public void modificarTitulacion(Titulacion t) throws TitulacionException;

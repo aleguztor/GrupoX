@@ -147,14 +147,6 @@ public class Alumno implements Serializable{
 		CP_notificacion = cP_notificacion;
 	}
 		
-	public List<Expediente> getAlumno_expedientes() {
-		return expedientes;
-	}
-
-	public void setAlumno_expedientes(List<Expediente> alumno_expedientes) {
-		this.expedientes = alumno_expedientes;
-	}
-
 	public List<Expediente> getExpedientes() {
 		return expedientes;
 	}

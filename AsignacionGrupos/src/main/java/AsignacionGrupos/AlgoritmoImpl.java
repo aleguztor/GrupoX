@@ -34,7 +34,7 @@ public class AlgoritmoImpl {
 	public void asignacionGrupos() {
 		List<Alumno> alumnos;
 		em.getTransaction().begin();
-		TypedQuery<Alumno> q = em.createNamedQuery("SELECT * FROM ALUMNOS", Alumno.class);
+		TypedQuery<Alumno> q = em.createNamedQuery("SELECT a FROM ALUMNOS a", Alumno.class);
 		alumnos = q.getResultList();
 		Collections.sort(alumnos, new comparatorAlumno());
 		Iterator<Alumno> it = alumnos.iterator();

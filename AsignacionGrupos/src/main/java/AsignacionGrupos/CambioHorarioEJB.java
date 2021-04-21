@@ -10,7 +10,7 @@ import Exceptions.*;
 
 
 public class CambioHorarioEJB implements CambioHorario {
-
+ 
 	@Override
 	public void CambioHorarioyGrupo(Alumno alum, Grupo antiguo, Grupo nuevo) throws AsignacionGruposException {
 		if(alum==null) {

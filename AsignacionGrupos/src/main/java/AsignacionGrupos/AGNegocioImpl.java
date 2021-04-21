@@ -1,49 +1,64 @@
 package AsignacionGrupos;
-import java.sql.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
-import Entidades.*;
-import Entidades.Encuesta.Expediente_Encuesta_PK;
-//import Excepciones.*;
+import Entidades.Alumno;
+import Entidades.Encuesta;
+import Entidades.Expediente;
+import Exceptions.AlumnoNoEncontradoException;
 import Exceptions.ExpedienteNoEncontradoException;
+import jdk.internal.org.jline.utils.Log;
 
 
 @Stateful
 public class AGNegocioImpl implements AGNegocio{
+	private static final Logger LOG = Logger.getLogger(AGNegocioImpl.class.getCanonicalName());
 	@PersistenceContext(name="AsignacionGrupos")
 	private EntityManager em;
 	
 	@Override
-	public void asignarEncuesta(Long numexp, Date fechaenvio, String turno)
+	public void asignarEncuesta(Long numexp, Encuesta en)
 			throws ExpedienteNoEncontradoException {
 		Expediente e = em.find(Expediente.class, numexp);
 		if(e == null) {
 			throw new ExpedienteNoEncontradoException();
 		}
 		List<Encuesta> exen = e.getEncuesta();
-		Expediente_Encuesta_PK enpk = new Expediente_Encuesta_PK(e.getNum_Expediente(), fechaenvio);
-		Encuesta en = new Encuesta(enpk, turno);
-		en.setExpediente(e);
 		exen.add(en);
 		e.setEncuesta(exen);
 		em.persist(en);
 	
 	}
 	
+	public Alumno getAlumnoRandom() {
+		return em.find(Alumno.class, (long)1);
+	}
+	
 	@Override
-	public Alumno obtenerAlumnoPorExpediente(Long num) throws ExpedienteNoEncontradoException{
-		Expediente e = em.find(Expediente.class, num);
+	public Expediente obtenerExpedientePorAlumno(Alumno a) throws AlumnoNoEncontradoException {
+		LOG.info(a.getId().toString());
+		Alumno al = em.find(Alumno.class, a.getId());
+		if(al == null) {
+			throw new AlumnoNoEncontradoException();
+		}
+		return al.getExpedientes().get(0);
+	}
+
+	@Override
+	public Alumno obtenerAlumnoPorExpediente(Long num_expediente) throws ExpedienteNoEncontradoException {
+		Expediente e = em.find(Expediente.class, num_expediente);
 		if(e == null) {
 			throw new ExpedienteNoEncontradoException();
 		}
 		Alumno a = e.getAlumno();
 		return a;
 	}
-
+	
 	
 
 	

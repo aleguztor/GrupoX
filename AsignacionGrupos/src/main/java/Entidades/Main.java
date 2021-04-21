@@ -21,7 +21,7 @@ public class Main{
 		expedientes.add(e2);
 		expedientes.add(e);
 		Alumno a = new Alumno("Juan","Perez","23456789B","abcde@uma.es");
-		a.setAlumno_expedientes(expedientes);
+		a.setExpedientes(expedientes);
 		e.setAlumno(a);
 		e.setAlumno(a);
 		e2.setAlumno(a);

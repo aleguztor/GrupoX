@@ -13,16 +13,12 @@ import Exceptions.*;
 
 
 	public abstract class LimitePlazasEJB implements LimitePlazas,CrudEJBLocal{
-
-	    /**
-	     * Default constructor. 
-	     */
 	    @PersistenceContext(unitName="AsignacionGrupos")
 	    private EntityManager em;
 
 
 
-	    public void limitarPlazasNuevoIngreso (Grupo grupo,Long PlazasNuevas) throws GrupoException {
+	    public void limitarPlazasNuevoIngreso (Grupo grupo,Long PlazasNuevas) throws GrupoNoEncontradoException {
 	        if(grupo==null) {
 	            throw  new GrupoNoEncontradoException();
 	        }
@@ -41,7 +37,7 @@ import Exceptions.*;
 
 	        em.persist(g);
 	    }
-	    public void limitarPlazasRepetidores (Grupo grupo,Long PlazasRep) throws GrupoException {
+	    public void limitarPlazasRepetidores (Grupo grupo,Long PlazasRep) throws GrupoNoEncontradoException {
 	        if(grupo==null) {
 	            throw  new GrupoNoEncontradoException();
 	        }
@@ -60,6 +56,18 @@ import Exceptions.*;
 
 	        em.persist(g);
 	    }
+	    @Override
+	    public List<Alumno> EliminarGrupoPorFaltaDeAlumnos(Grupo g) throws GrupoNoEncontradoException{
+	    	Grupo gr = em.find(Grupo.class, g);
+	    	if(gr == null) {
+	    		throw new GrupoNoEncontradoException();
+	    	}
+			List<Alumno> alumnos = gr.getAlumno();
+			em.remove(em.merge(gr));
+			
+			return alumnos;
+			
+		}
 
 	    //eliminar grupo saber nplazas libres totales y el grupo con menos alumnos
 	    // en tarde y en mañana

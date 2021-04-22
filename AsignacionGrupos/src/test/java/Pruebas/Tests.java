@@ -51,6 +51,8 @@ public class Tests {
 	private ModificarGrupoAlumno modg;
 	private CambioHorario cambh;
 	private LimitePlazas limpla;
+	private BusquedaYFiltrado bf;
+	private ImportacionExcel ie;
 	
 	@BeforeClass
 	public static void setUpClass() {
@@ -347,7 +349,7 @@ public class Tests {
 	@Test
 	public void testInsertarTitulacion() {
 		try {
-			Titulacion t=  new Titulacion("Desarrollo movil",550);
+			Titulacion t=  new Titulacion("Desarrollo movil",540);
 			crud.insertarTitulacion(t);
 			assertEquals(t, crud.existeTitulacion(t));
 		}catch(Exception e) {
@@ -359,7 +361,7 @@ public class Tests {
 	@Test
 	public void testModificarTitulacion() {
 		try {
-			Titulacion t=  new Titulacion("Desarrollo movil",550);
+			Titulacion t=  new Titulacion("Desarrollo movil",540);
 			crud.insertarTitulacion(t);
 			t.setCreditos(250);
 			t.setCodigo(666);
@@ -373,7 +375,7 @@ public class Tests {
 	@Test
 	public void testEliminarTitulacion() {
 		try {
-			Titulacion t=  new Titulacion("Desarrollo movil",550);
+			Titulacion t=  new Titulacion("Desarrollo movil",540);
 			crud.insertarTitulacion(t);
 			crud.eliminarTitulacion(t);
 			assertNull(crud.existeTitulacion(t));
@@ -385,7 +387,7 @@ public class Tests {
 	@Test
 	public void testExisteTitulacion() {
 		try {
-			Titulacion t=  new Titulacion("Desarrollo movil",550);
+			Titulacion t=  new Titulacion("Desarrollo movil",540);
 			crud.insertarTitulacion(t);
 			assertEquals(t, crud.existeTitulacion(t));
 		}catch(Exception e) {
@@ -397,7 +399,7 @@ public class Tests {
 	@Test
 	public void testInsertarAsignatura() {
 		try {
-			Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
+			Asignatura as = new Asignatura("rf11","Desarrollo de maquinas virtuales",9999,12,true,false);
 			crud.insertarAsignatura(as);
 			assertEquals(as, crud.existeAsignatura(as));
 		}catch(Exception e) {
@@ -408,7 +410,7 @@ public class Tests {
 	@Test
 	public void testModificarAsignatura() {
 		try {
-			Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
+			Asignatura as = new Asignatura("rf11","Desarrollo de maquinas virtuales",9999,12,true,false);
 			crud.insertarAsignatura(as);
 			as.setCodigo(122222);
 			crud.modificarAsignatura(as);
@@ -421,7 +423,7 @@ public class Tests {
 	@Test
 	public void testEliminarAsignatura() {
 		try {
-			Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
+			Asignatura as = new Asignatura("rf11","Desarrollo de maquinas virtuales",9999,12,true,false);
 			crud.insertarAsignatura(as);
 			crud.eliminarAsignatura(as);
 			assertNull(crud.existeAsignatura(as));
@@ -433,7 +435,7 @@ public class Tests {
 	@Test
 	public void testExisteAsignatura() {
 		try {
-			Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
+			Asignatura as = new Asignatura("rf11","Desarrollo de maquinas virtuales",9999,12,true,false);
 			crud.insertarAsignatura(as);
 			assertEquals(as, crud.existeAsignatura(as));
 		}catch(Exception e) {
@@ -444,7 +446,7 @@ public class Tests {
 	@Test
 	public void testInsertarCentro() {
 		try {
-			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12",999999999);
+			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12","999999999");
 			crud.insertarCentro(c);
 			assertEquals(c,crud.existeCentro(c));
 		}catch(Exception e) {
@@ -455,9 +457,9 @@ public class Tests {
 	@Test
 	public void testModificarCentro() {
 		try {
-			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12",999999999);
+			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12","999999999");
 			crud.insertarCentro(c);
-			c.setTLF_Conserjeria(1234567890);
+			c.setTLF_Conserjeria("1234567890");
 			c.setNombre("Marina dor");
 			crud.modificarCentro(c);
 			assertEquals(c,crud.existeCentro(c));
@@ -469,7 +471,7 @@ public class Tests {
 	@Test
 	public void testExisteCentro() {
 		try {
-			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12",999999999);
+			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12","999999999");
 			crud.insertarCentro(c);
 			assertEquals(c,crud.existeCentro(c));
 		}catch(Exception e) {
@@ -480,7 +482,7 @@ public class Tests {
 	@Test
 	public void testEliminarCentro() {
 		try {
-			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12",999999999);
+			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12","999999999");
 			crud.insertarCentro(c);
 			assertNull(crud.existeCentro(c));
 		}catch(Exception e) {
@@ -604,8 +606,8 @@ public class Tests {
         }
 
     }
+	
     @Test
-    
     public void TestLimitarPlazasRepetidores() {
 
         Grupo g=new Grupo("1ï¿½","c","Tarde");
@@ -619,7 +621,6 @@ public class Tests {
     }
 	
 	@Test
-	
     public void TestEliminarGrupoPorFaltaDeAlumnos() {
 		//Suponemos que el limite por falta de alumnos es 3. El grupo A tiene dos alumnos por 
 		//tanto deberia borrase.
@@ -633,7 +634,36 @@ public class Tests {
 		}
     }
 	
+	@Test
+	public void testFiltradoAlumnos() {
+		try {
+			List<Alumno> a = new LinkedList<>();
+			Alumno a1 = new Alumno("Mario", "Vazquez", "12345678a", "mario@uma.es");
+			Alumno a2 = new Alumno("Juan", "Moreno", "23456789b", "juan@uma.es");
+			Alumno a3 = new Alumno("Marta", "Ruiz", "34567890c", "marta@uma.es");
+			a.add(a1);
+			a.add(a2);
+			a.add(a3);
+			Titulacion t =  new Titulacion("Desarrollo movil",550);
+			Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
+			List<Alumno> res = bf.filtradoAlumnos(t, as);
+			assertEquals(a, res);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
+	@Test
+	public void testImportacionAlumnos() {
+		Alumno a = new Alumno( "Carmelita", "Enríquez","95115697E", "06104200001@uma.es");
+		try {
+			ie.ImportarExcel();
+			Alumno res = crud.buscarAlumnoPorDNI("95115697E");
+			assertEquals(res, a);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	@AfterClass
 	public static void tearDownClass() {

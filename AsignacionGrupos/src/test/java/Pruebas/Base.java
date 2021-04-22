@@ -8,10 +8,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import Entidades.Alumno;
+import Entidades.Asignatura;
 import Entidades.Expediente;
 import Entidades.Grupo;
 import Entidades.Matricula;
 import Entidades.MatriculaPK;
+import Entidades.Titulacion;
 
 public class Base {
 	public static void init(String nombreper) {
@@ -30,6 +32,14 @@ public class Base {
 		Expediente e4 = new Expediente((long)872163,true,5.0);
 		Expediente e5 = new Expediente((long)174615,true,5.0);
 		Expediente e6 = new Expediente((long)123642,true,5.0);
+		Titulacion t =  new Titulacion("Desarrollo movil",550);
+		Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
+		List<Asignatura> asig = new LinkedList<>();
+		asig.add(as);
+		t.setAsignaturas(asig);
+		e1.setTitulacion(t);
+		e2.setTitulacion(t);
+		e3.setTitulacion(t);
 		List<Matricula> mats = new LinkedList<>();
 		MatriculaPK pk = new MatriculaPK("2º", (long)214623);
 		Matricula m1 = new Matricula(pk,e1,'I',d);
@@ -108,6 +118,8 @@ public class Base {
 		gps.add(c);
 		a6.setAlumno_Grupos(gps);
 		em.getTransaction().begin();
+		em.persist(t);
+		em.persist(as);
 		em.persist(m1);
 		em.persist(m2);
 		em.persist(m3);

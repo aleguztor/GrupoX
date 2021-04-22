@@ -29,6 +29,7 @@ public class Grupo implements Serializable {
 	private Long Plazas;
 	private Long PlazasNuevoIngreso = (long)0;
 	private Long PlazasRepetidores = (long)0;
+	private boolean idiomaIngles;
 	
 
 	private static final long serialVersionUID = 1L;
@@ -153,6 +154,46 @@ public class Grupo implements Serializable {
 	}
 	
 	
+	public boolean isIdiomaIngles() {
+		return idiomaIngles;
+	}
+
+	public void setIdiomaIngles(boolean idiomaIngles) {
+		this.idiomaIngles = idiomaIngles;
+	}
+
+	public Titulacion getTitulacion() {
+		return titulacion;
+	}
+
+	public void setTitulacion(Titulacion titulacion) {
+		this.titulacion = titulacion;
+	}
+
+	public List<Clase> getClases() {
+		return clases;
+	}
+
+	public void setClases(List<Clase> clases) {
+		this.clases = clases;
+	}
+
+	public List<Grupo> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(List<Grupo> grupos) {
+		this.grupos = grupos;
+	}
+
+	public List<Asignaturas_matriculas> getAm() {
+		return am;
+	}
+
+	public void setAm(List<Asignaturas_matriculas> am) {
+		this.am = am;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if(o instanceof Grupo) {

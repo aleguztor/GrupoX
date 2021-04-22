@@ -131,6 +131,30 @@ public class Asignatura {
 		this.gpa = gpa;
 	}
 
+	public List<Clase> getClases() {
+		return clases;
+	}
+
+	public void setClases(List<Clase> clases) {
+		this.clases = clases;
+	}
+
+	public Titulacion getTitulacion() {
+		return titulacion;
+	}
+
+	public void setTitulacion(Titulacion titulacion) {
+		this.titulacion = titulacion;
+	}
+
+	public List<Asignaturas_matriculas> getAm() {
+		return am;
+	}
+
+	public void setAm(List<Asignaturas_matriculas> am) {
+		this.am = am;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if(o instanceof Asignatura) {

@@ -7,14 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import Entidades.Alumno;
-import Entidades.Asignatura;
-import Entidades.Expediente;
-import Entidades.Grupo;
-import Entidades.Matricula;
-import Entidades.MatriculaPK;
-import Entidades.Titulacion;
-
+import Entidades.*;
+import Entidades.Encuesta.Expediente_Encuesta_PK;
 public class Base {
 	public static void init(String nombreper) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombreper);
@@ -26,12 +20,39 @@ public class Base {
 		Alumno a4 = new Alumno("Pedro", "Muñoz", "45678901d", "pedro@uma.es");
 		Alumno a5 = new Alumno("Maria", "Garcia","56789012e", "maria@uma.es");
 		Alumno a6 = new Alumno("Luis", "Ramos", "67890123f", "luis@uma.es");
+		
 		Expediente e1 = new Expediente((long)214623,true,5.0);
 		Expediente e2 = new Expediente((long)172411,true,5.0);
 		Expediente e3 = new Expediente((long)238413,true,5.0);
 		Expediente e4 = new Expediente((long)872163,true,5.0);
 		Expediente e5 = new Expediente((long)174615,true,5.0);
 		Expediente e6 = new Expediente((long)123642,true,5.0);
+		
+		Encuesta en1 = new Encuesta(d,e1, "Manyana");
+		Encuesta en2 = new Encuesta(d,e2, "Manyana");
+		Encuesta en3 = new Encuesta(d,e3, "Manyana");
+		Encuesta en4 = new Encuesta(d,e4, "Tarde");
+		Encuesta en5 = new Encuesta(d,e5, "Tarde");
+		Encuesta en6 = new Encuesta(d,e6, "Manyana");
+		
+		List<Encuesta> p = new LinkedList<>();
+		p.add(en1);
+		e1.setEncuesta(p);
+		p.remove(en1);
+		p.add(en2);
+		e2.setEncuesta(p);
+		p.remove(en2);
+		p.add(en3);
+		e3.setEncuesta(p);
+		p.remove(en3);
+		p.add(en4);
+		e4.setEncuesta(p);
+		p.remove(en4);
+		p.add(en5);
+		e5.setEncuesta(p);
+		p.remove(en5);
+		p.add(en6);
+		e6.setEncuesta(p);
 		Titulacion t =  new Titulacion("Desarrollo movil",550);
 		Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
 		List<Asignatura> asig = new LinkedList<>();
@@ -52,13 +73,13 @@ public class Base {
 		mats.add(m2);
 		e2.setMatricula(mats);
 		e2.setAlumno(a2);
-		pk = new MatriculaPK("3º", (long)172411);
+		pk = new MatriculaPK("2º", (long)172411);
 		Matricula m3 = new Matricula(pk,e3,'I',d);
 		mats.remove(0);
 		mats.add(m3);
 		e3.setMatricula(mats);
 		e3.setAlumno(a3);
-		pk = new MatriculaPK("4º", (long)872163);
+		pk = new MatriculaPK("1º", (long)872163);
 		Matricula m4 = new Matricula(pk,e4,'I',d);
 		mats.remove(0);
 		mats.add(m4);
@@ -117,6 +138,19 @@ public class Base {
 		gps.remove(0);
 		gps.add(c);
 		a6.setAlumno_Grupos(gps);
+		Grupos_Por_Asignatura g1 = new Grupos_Por_Asignatura("20/21",a,as);
+		Grupos_Por_Asignatura g2 = new Grupos_Por_Asignatura("20/21",b,as);
+		Grupos_Por_Asignatura g3 = new Grupos_Por_Asignatura("20/21",c,as);
+		List<Grupos_Por_Asignatura> gpa = new LinkedList<>();
+		gpa.add(g1);
+		gpa.add(g2);
+		gpa.add(g3);
+		as.setGpa(gpa);
+		a.setGpa(gpa);
+		b.setGpa(gpa);
+		c.setGpa(gpa);
+		
+		
 		em.getTransaction().begin();
 		em.persist(t);
 		em.persist(as);
@@ -141,6 +175,15 @@ public class Base {
 		em.persist(a4);
 		em.persist(a5);
 		em.persist(a6);
+		em.persist(g1);
+		em.persist(g2);
+		em.persist(g3);
+		em.persist(en1);
+		em.persist(en2);
+		em.persist(en3);
+		em.persist(en4);
+		em.persist(en5);
+		em.persist(en6);
 				
 		em.getTransaction().commit();
 		em.close();

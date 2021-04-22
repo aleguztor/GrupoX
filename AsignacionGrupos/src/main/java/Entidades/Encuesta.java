@@ -68,8 +68,9 @@ public class Encuesta implements Serializable{
 	
 	public Encuesta() {}
 	
-	public Encuesta(Expediente_Encuesta_PK pk, String tp) {
-		Fecha_envio = pk.Fecha_envio;
+	public Encuesta(Date f, Expediente e, String tp) {
+		Fecha_envio = f;
+		expediente = e;
 		Turno_Preferente = tp;
 	}
 	

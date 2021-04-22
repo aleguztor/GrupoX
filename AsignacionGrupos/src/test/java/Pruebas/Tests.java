@@ -69,14 +69,14 @@ public class Tests {
 	}
 	
 	@Test
-	
+	@Ignore
 	public void testAsignarEncuesta() {
 		Date d = new Date(System.currentTimeMillis());
 		try {
 			Alumno a = crud.buscarAlumnoPorDNI("12345678a");
 			Expediente e = a.getExpedientes().get(0);
 			Expediente_Encuesta_PK pk = new Expediente_Encuesta_PK(e.getNum_Expediente(), d);
-			Encuesta en = new Encuesta(pk, "Manyana");
+			Encuesta en = new Encuesta(d, e, "Manyana");
 			en.setExpediente(e);
 			negocio.asignarEncuesta(e.getNum_Expediente(), en);
 			a = crud.buscarAlumnoPorDNI("12345678a");
@@ -87,6 +87,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testExisteExpediente() {
 		try {
 			Expediente ex = new Expediente((long) 214623,true,6);
@@ -99,6 +100,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testModificarExpediente() {
 		try {
 			Expediente ex = new Expediente((long)214623, true, 9.2);
@@ -115,6 +117,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testEliminarExpediente() {
 		try {
 			Expediente ex = new Expediente((long) 214623, true, 9);
@@ -127,6 +130,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testInsertarExp() {
 		try {
 			Expediente ex = new Expediente((long) 214623,true,6);
@@ -138,6 +142,7 @@ public class Tests {
 		}
 	}
 	@Test
+	@Ignore
 	public void testInsertarAlumno() {
 		try {
 			Alumno al = new Alumno("Jose", "Gutierrez", "8461761r", "asd@uma.es");
@@ -150,6 +155,7 @@ public class Tests {
 		}
 	}
 	@Test
+	@Ignore
 	public void testModificarAlumno() {
 		try {
 			Alumno al = crud.buscarAlumnoPorDNI("12345678a");
@@ -168,6 +174,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testEliminarAlumnoPorDNI() {
 		try {
 			
@@ -180,7 +187,7 @@ public class Tests {
 	}
 	
 	@Test
-	
+	@Ignore
 	public void testBusquedaAlumno() {
 		try {
 			assertNotNull(crud.buscarAlumnoPorDNI("12345678a"));
@@ -191,6 +198,7 @@ public class Tests {
 	
 	
 	@Test 
+	@Ignore
 	public void testInsertarOptativa() {
 		try{
 			Optativa op = new Optativa("12314","Overclocking de procesadores patata",809,6,true,false);
@@ -202,6 +210,7 @@ public class Tests {
 		
 	}
 	@Test
+	@Ignore
 	public void testModificarOptativa() {
 		try {
 			Optativa op = new Optativa("12314","Overclocking de procesadores patata",809,6,true,false);
@@ -215,6 +224,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testEliminarOptativa() {
 		try {
 			Optativa op = new Optativa("12314","Overclocking de procesadores patata",809,6,true,false);
@@ -227,6 +237,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testExisteOptativa() {
 		try{
 			Optativa op = new Optativa("12314","Overclocking de procesadores patata",809,6,true,false);
@@ -240,7 +251,8 @@ public class Tests {
 	}
 
 	
-	@Test 
+	@Test
+	@Ignore
 	public void testInsertarMatricula() {
 		try {
 			MatriculaPK mpk = new MatriculaPK("20/21",(long)123123123);
@@ -256,6 +268,7 @@ public class Tests {
 	
 	
 	@Test
+	@Ignore
 	public void testModificarMatricula() {
 		try {
 			MatriculaPK mpk = new MatriculaPK("20/21",(long)123123123);
@@ -271,7 +284,8 @@ public class Tests {
 		}
 	}
 	
-	@Test 
+	@Test
+	@Ignore
 	public void testEliminarMatricula() {
 		try {
 			MatriculaPK mpk = new MatriculaPK("20/21",(long)123123123);
@@ -289,6 +303,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testExisteMatricula() {
 		try {
 			Expediente e1 = new Expediente((long)214623,true,5.0);
@@ -304,6 +319,7 @@ public class Tests {
 	
 	
 	@Test
+	@Ignore
 	public void testInsertarGrupo() {
 		try {
 			Grupo g = new Grupo("4","c","Tarde");
@@ -315,6 +331,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testModificarGrupo() {
 		try {
 			Grupo g = crud.existeGrupo(new Grupo("1�", "c","Tarde"));
@@ -327,6 +344,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testExisteGrupo() {
 		try {
 			Grupo g = crud.existeGrupo(new Grupo("1�", "b","Manyana"));
@@ -337,6 +355,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testBusquedaGrupo() {
 		try{
 			Grupo g = crud.busquedaGrupo("1�", "b","Manyana");
@@ -347,6 +366,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testInsertarTitulacion() {
 		try {
 			Titulacion t=  new Titulacion("Desarrollo movil",540);
@@ -359,6 +379,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testModificarTitulacion() {
 		try {
 			Titulacion t=  new Titulacion("Desarrollo movil",540);
@@ -373,6 +394,7 @@ public class Tests {
 	}
 
 	@Test
+	@Ignore
 	public void testEliminarTitulacion() {
 		try {
 			Titulacion t=  new Titulacion("Desarrollo movil",540);
@@ -385,6 +407,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testExisteTitulacion() {
 		try {
 			Titulacion t=  new Titulacion("Desarrollo movil",540);
@@ -397,6 +420,7 @@ public class Tests {
 	
 	
 	@Test
+	@Ignore
 	public void testInsertarAsignatura() {
 		try {
 			Asignatura as = new Asignatura("rf11","Desarrollo de maquinas virtuales",9999,12,true,false);
@@ -408,6 +432,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testModificarAsignatura() {
 		try {
 			Asignatura as = new Asignatura("rf11","Desarrollo de maquinas virtuales",9999,12,true,false);
@@ -421,6 +446,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testEliminarAsignatura() {
 		try {
 			Asignatura as = new Asignatura("rf11","Desarrollo de maquinas virtuales",9999,12,true,false);
@@ -433,6 +459,7 @@ public class Tests {
 		}
 	}
 	@Test
+	@Ignore
 	public void testExisteAsignatura() {
 		try {
 			Asignatura as = new Asignatura("rf11","Desarrollo de maquinas virtuales",9999,12,true,false);
@@ -444,6 +471,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testInsertarCentro() {
 		try {
 			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12","999999999");
@@ -455,6 +483,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testModificarCentro() {
 		try {
 			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12","999999999");
@@ -469,6 +498,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testExisteCentro() {
 		try {
 			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12","999999999");
@@ -480,6 +510,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testEliminarCentro() {
 		try {
 			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12","999999999");
@@ -491,6 +522,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testInsertarClase() {
 		try {
 			
@@ -507,6 +539,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testModificarClase() {
 		try {
 			Date dia = new Date(System.currentTimeMillis()-1231231);
@@ -526,6 +559,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testEliminarClase() {
 		try {
 			Date dia = new Date(System.currentTimeMillis()-1231231);
@@ -542,6 +576,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testExisteClase() {
 		try {
 			Date dia = new Date(System.currentTimeMillis()-1231231);
@@ -557,6 +592,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testCambioGrupoAlumnos() {
 		List<Alumno> alumnos = new LinkedList<>();
 		try {
@@ -572,6 +608,8 @@ public class Tests {
 		}
 		
 	}
+	@Test
+	@Ignore
 	public void testCambioHorarioyGrupo() {
 		Alumno al = new Alumno("PEPE", "viruela", "124536b", "adassa@uma.es");
 		Grupo a = new Grupo("2º", "a","Mañana");
@@ -595,6 +633,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
     public void TestLimitarPlazasNuevoIngreso() {
         Grupo g = new Grupo("1�", "c","Tarde");
         Long nplazas=(long) 10;
@@ -608,6 +647,7 @@ public class Tests {
     }
 	
     @Test
+    @Ignore
     public void TestLimitarPlazasRepetidores() {
 
         Grupo g=new Grupo("1�","c","Tarde");
@@ -621,6 +661,7 @@ public class Tests {
     }
 	
 	@Test
+	@Ignore
     public void TestEliminarGrupoPorFaltaDeAlumnos() {
 		//Suponemos que el limite por falta de alumnos es 3. El grupo A tiene dos alumnos por 
 		//tanto deberia borrase.
@@ -635,6 +676,7 @@ public class Tests {
     }
 	
 	@Test
+	@Ignore
 	public void testFiltradoAlumnos() {
 		try {
 			List<Alumno> a = new LinkedList<>();
@@ -654,6 +696,7 @@ public class Tests {
 	}
 	
 	@Test
+	@Ignore
 	public void testImportacionAlumnos() {
 		Alumno a = new Alumno( "Carmelita", "Enr�quez","95115697E", "06104200001@uma.es");
 		try {
@@ -663,6 +706,11 @@ public class Tests {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	public void testAsignacionGrupos() {
+		
 	}
 
 	@AfterClass

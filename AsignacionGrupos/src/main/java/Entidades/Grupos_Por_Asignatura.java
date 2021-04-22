@@ -54,6 +54,13 @@ public class Grupos_Por_Asignatura implements Serializable {
 	
 	public Grupos_Por_Asignatura() {}
 	
+	public Grupos_Por_Asignatura(String c, Grupo g, Asignatura a) {
+		grupo = g;
+		asignatura = a;
+		Curso_Academico = c;
+	}
+	
+
 	public String getCurso_Academico() {
 		return Curso_Academico;
 	}

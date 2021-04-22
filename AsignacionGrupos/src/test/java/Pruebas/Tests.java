@@ -570,9 +570,29 @@ public class Tests {
 		}
 		
 	}
+	public void testCambioHorarioyGrupo() {
+		Alumno al = new Alumno("PEPE", "viruela", "124536b", "adassa@uma.es");
+		Grupo a = new Grupo("2º", "a","Mañana");
+		Grupo b = new Grupo("1º", "b","Mañana");
+		Grupo c = new Grupo("1º", "c","Tarde");
+		List<Grupo> grupos= new ArrayList<>();
+		grupos.add(a);
+		grupos.add(b);
+		grupos.add(c);
+		al.setAlumno_Grupos(grupos);
+		Grupo nuevo= new Grupo("1º", "a", "Mañana");
+		try {
+			cambh.CambioHorarioyGrupo(al, a, nuevo);
+			assertEquals(al.getAlumno_Grupos().indexOf(c),-1);
+			grupos=al.getAlumno_Grupos();
+			assertEquals(grupos.get(grupos.indexOf(nuevo)),nuevo);
+		}catch(Exception e) {
+
+			e.printStackTrace();
+		}
+	}
 	
 	@Test
-	
     public void TestLimitarPlazasNuevoIngreso() {
         Grupo g = new Grupo("1�", "c","Tarde");
         Long nplazas=(long) 10;

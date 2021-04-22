@@ -13,7 +13,11 @@ public class ClasePK  implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public ClasePK() {}
-
+	public ClasePK(Date d, Date hi) {
+		dia = d;
+		horainicio = hi;
+	}
+	
 	public Date getDia() {
 		return this.dia;
 	}

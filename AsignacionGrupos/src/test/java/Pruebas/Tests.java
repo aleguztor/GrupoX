@@ -345,6 +345,216 @@ public class Tests {
 	}
 	
 	@Test
+	public void testInsertarTitulacion() {
+		try {
+			Titulacion t=  new Titulacion("Desarrollo movil",550);
+			crud.insertarTitulacion(t);
+			assertEquals(t, crud.existeTitulacion(t));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Test
+	public void testModificarTitulacion() {
+		try {
+			Titulacion t=  new Titulacion("Desarrollo movil",550);
+			crud.insertarTitulacion(t);
+			t.setCreditos(250);
+			t.setCodigo(666);
+			crud.modificarTitulacion(t);
+			assertEquals(t, crud.existeTitulacion(t));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void testEliminarTitulacion() {
+		try {
+			Titulacion t=  new Titulacion("Desarrollo movil",550);
+			crud.insertarTitulacion(t);
+			crud.eliminarTitulacion(t);
+			assertNull(crud.existeTitulacion(t));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testExisteTitulacion() {
+		try {
+			Titulacion t=  new Titulacion("Desarrollo movil",550);
+			crud.insertarTitulacion(t);
+			assertEquals(t, crud.existeTitulacion(t));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	@Test
+	public void testInsertarAsignatura() {
+		try {
+			Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
+			crud.insertarAsignatura(as);
+			assertEquals(as, crud.existeAsignatura(as));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testModificarAsignatura() {
+		try {
+			Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
+			crud.insertarAsignatura(as);
+			as.setCodigo(122222);
+			crud.modificarAsignatura(as);
+			assertEquals(as,crud.existeAsignatura(as));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testEliminarAsignatura() {
+		try {
+			Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
+			crud.insertarAsignatura(as);
+			crud.eliminarAsignatura(as);
+			assertNull(crud.existeAsignatura(as));
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void testExisteAsignatura() {
+		try {
+			Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
+			crud.insertarAsignatura(as);
+			assertEquals(as, crud.existeAsignatura(as));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testInsertarCentro() {
+		try {
+			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12",999999999);
+			crud.insertarCentro(c);
+			assertEquals(c,crud.existeCentro(c));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testModificarCentro() {
+		try {
+			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12",999999999);
+			crud.insertarCentro(c);
+			c.setTLF_Conserjeria(1234567890);
+			c.setNombre("Marina dor");
+			crud.modificarCentro(c);
+			assertEquals(c,crud.existeCentro(c));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testExisteCentro() {
+		try {
+			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12",999999999);
+			crud.insertarCentro(c);
+			assertEquals(c,crud.existeCentro(c));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testEliminarCentro() {
+		try {
+			Centro c = new Centro((long)12313,"Escuela tecnica Civil","Calle Ave del Paraiso 12",999999999);
+			crud.insertarCentro(c);
+			assertNull(crud.existeCentro(c));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testInsertarClase() {
+		try {
+			
+			Date dia = new Date(12,1,2021);
+			Date hora = new Date(1111);
+			ClasePK cpk = new ClasePK(dia, hora);
+			Grupo g = new Grupo("20/21","a","manyana");
+			Clase c = new Clase(g,cpk);
+			crud.insertarClase(c);
+			assertEquals(c, crud.existeClase(c));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testModificarClase() {
+		try {
+			Date dia = new Date(12,1,2021);
+			Date hora = new Date(1111);
+			ClasePK cpk = new ClasePK(dia, hora);
+			Grupo g = new Grupo("20/21","a","manyana");
+			Clase c = new Clase(g,cpk);
+			crud.insertarClase(c);
+			Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
+			c.setAsignatura(as);
+			crud.modificarClase(c);
+			assertEquals(c, crud.existeClase(c));
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testEliminarClase() {
+		try {
+			Date dia = new Date(12,1,2021);
+			Date hora = new Date(1111);
+			ClasePK cpk = new ClasePK(dia, hora);
+			Grupo g = new Grupo("20/21","a","manyana");
+			Clase c = new Clase(g,cpk);
+			crud.insertarClase(c);
+			crud.eliminarClase(c);
+			assertNull(crud.existeClase(c));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testExisteClase() {
+		try {
+			Date dia = new Date(12,1,2021);
+			Date hora = new Date(1111);
+			ClasePK cpk = new ClasePK(dia, hora);
+			Grupo g = new Grupo("20/21","a","manyana");
+			Clase c = new Clase(g,cpk);
+			crud.insertarClase(c);
+			assertEquals(c, crud.existeClase(c));
+		}catch(Exception e) {
+			
+		}
+	}
+	
+	@Test
 	public void testCambioGrupoAlumnos() {
 		List<Alumno> alumnos = new LinkedList<>();
 		try {

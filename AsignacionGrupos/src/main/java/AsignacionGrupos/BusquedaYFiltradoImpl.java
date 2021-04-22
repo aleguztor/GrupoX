@@ -1,47 +1,72 @@
 package AsignacionGrupos;
 
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import Entidades.Alumno;
 import Entidades.Asignatura;
-import Entidades.Grupo;
 import Entidades.Titulacion;
-import Exceptions.AlumnoNoEncontradoException;
+import Exceptions.*;
 
 public class BusquedaYFiltradoImpl implements BusquedaYFiltrado{
 
 	@PersistenceContext(name="AsignacionGrupos")
 	private EntityManager em;
 	
-	public List<Alumno> BusquedaAlumno(Alumno alumno, Titulacion t, Asignatura asignatura) throws  AlumnoNoEncontradoException{
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		if(alumno != null && t == null && asignatura == null) {
-			TypedQuery<Alumno> filtrado = em.createNamedQuery("SELECT * from ALUMNO WHERE NOMBRE =" + alumno.getNombre() + "APELLIDO1 =" + alumno.getApellido1() + "APELLIDO2" + alumno.getApellido2(), Alumno.class);
-			List<Alumno> ListaAlumnos = filtrado.getResultList();
-			tx.commit();
-			return ListaAlumnos;
-		} else if(t != null && alumno == null && asignatura == null) {
-			TypedQuery<Alumno> filtrado = em.createNamedQuery("SELECT * from ALUMNO al, TITULACION t, EXPEDIENTE e WHERE al.expedientes = e.matricula AND e.titulacion = t.codigo AND t.nombre =" + t.getNombre(), Alumno.class);
-			List<Alumno> ListaAlumnos = filtrado.getResultList();
-			tx.commit();
-			return ListaAlumnos;
-		} else if(asignatura != null && alumno == null && t == null) {
-			TypedQuery<Alumno> filtrado = em.createNamedQuery("SELECT * from ALUMNO al, TITULACION t, EXPEDIENTE e, ASIGNATURA as WHERE al.expedientes = e.matricula AND e.titulacion = t.codigo AND as.codigo = t.asignaturas AND as.NOMBRE =" + asignatura.getNombre() , Alumno.class);
-			List<Alumno> ListaAlumnos = filtrado.getResultList();
-			tx.commit();
-			return ListaAlumnos;
+	public List<Alumno> filtradoAlumnos(Titulacion t, Asignatura asignatura) throws  AlumnoNoEncontradoException, TitulacionNoEncontradaException, AsignaturaNoEncontradaException{
+		List<Alumno> ListaAlumnos = new LinkedList<>();
+		TypedQuery<Alumno> filtrado = null;
+		Titulacion ti = null;
+		Asignatura a = null;
+		if(t != null) {
+			ti = buscarTitulacionPorNombre(t.getNombre());
+			if(ti == null) {
+				throw new TitulacionNoEncontradaException();
+			}
 		}
-		tx.commit();
-		return null;
+		if(asignatura != null) {
+			a = em.find(Asignatura.class, asignatura.getCodigo());
+			if(a == null) {
+				throw new AsignaturaNoEncontradaException();
+			}
+		}
+		if(ti != null && a != null) {
+			filtrado = em.createQuery("SELECT al FROM ALUMNO, TITULACION t, ASIGNATURA a WHERE t.NOMBRE LIKE '"+ti.getNombre()+"' "
+					+ "AND a.CODIGO = "+a.getCodigo(), Alumno.class);
+		}else if(ti != null && a == null) {
+			filtrado = em.createNamedQuery("SELECT al from ALUMNO al, TITULACION t WHERE t.NOMBRE LIKE '"+ti.getNombre()+"'", Alumno.class);
+		} else if(a != null && ti == null) {
+			filtrado = em.createNamedQuery("SELECT al from ALUMNO al, ASIGNATURA as WHERE as.CODIGO = "+a.getCodigo() , Alumno.class);
+		}
+		ListaAlumnos = filtrado.getResultList();
+
+		return ListaAlumnos;
 		
 	}
+	
+	@Override
+	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
+		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM ALUMNO a WHERE a.DNI LIKE '"+dni+"'", Alumno.class);
+		if(q.getSingleResult() == null) {
+			throw new AlumnoNoEncontradoException();
+		}
+		return q.getSingleResult();
+	}
+	
+	@Override
+	public Titulacion buscarTitulacionPorNombre(String nombre) throws TitulacionNoEncontradaException{
+		TypedQuery<Titulacion> q = em.createQuery("SELECT t FROM TITULACION WHERE t.NOMBRE LIKE '"+nombre+"'", Titulacion.class);
+		if(q.getSingleResult() == null) {
+			throw new TitulacionNoEncontradaException();
+		}
+		return q.getSingleResult();
+	}
+	
 	
 	
 }

@@ -257,30 +257,35 @@ public class CrudEJB implements CrudEJBLocal {
 	}
 
 	@Override
-	public void insertarAsignatura(Asignatura a) throws AsignaturaException {
-		Asignatura as = em.find(Asignatura.class,a.getCodigo());
-		if(as == null)
+	public void insertarAsignatura(Asignatura a) throws AsignaturaNoEncontradaException, AsignaturaDuplicadaException {
+		try {
+			Asignatura as = em.find(Asignatura.class,a.getCodigo());
+			if(as == null) {
+				throw new AsignaturaNoEncontradaException();
+			}else {
+				throw new AsignaturaDuplicadaException();
+			}
+		}catch(AsignaturaNoEncontradaException a1) {
 			em.persist(a);
-		else
-			throw new AsignaturaException();
+		}
 		
 	}
 
 	@Override
-	public void modificarAsignatura(Asignatura a) throws AsignaturaException {
+	public void modificarAsignatura(Asignatura a) throws AsignaturaNoEncontradaException {
 		Asignatura as = existeAsignatura(a);
 		if(as==null)
-			throw new AsignaturaException();
+			throw new AsignaturaNoEncontradaException();
 		else 
 			em.merge(as);
 		
 	}
 
 	@Override
-	public void eliminarAsignatura(Asignatura a) throws AsignaturaException {
+	public void eliminarAsignatura(Asignatura a) throws AsignaturaNoEncontradaException {
 		Asignatura as = existeAsignatura(a);
 		if(as==null)
-			throw new AsignaturaException();
+			throw new AsignaturaNoEncontradaException();
 		else 
 			em.remove(as);
 
@@ -288,10 +293,10 @@ public class CrudEJB implements CrudEJBLocal {
 	}
 
 	@Override
-	public Asignatura existeAsignatura(Asignatura a) throws AsignaturaException {
+	public Asignatura existeAsignatura(Asignatura a) throws AsignaturaNoEncontradaException {
 		Asignatura as = em.find(Asignatura.class, a.getReferencia());
 		if(as == null)
-			throw new AsignaturaException();
+			throw new AsignaturaNoEncontradaException();
 		else
 			return as;
 	}

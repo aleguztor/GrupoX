@@ -3,18 +3,6 @@ package AsignacionGrupos;
 import javax.ejb.Local;
 
 import Entidades.*;
-import Exceptions.AlumnoDuplicadoException;
-import Exceptions.AlumnoNoEncontradoException;
-import Exceptions.AsignaturaException;
-import Exceptions.AsignaturaMatriculaException;
-import Exceptions.CentroException;
-import Exceptions.ClaseException;
-import Exceptions.DataException;
-import Exceptions.EncuestaException;
-import Exceptions.ExpedienteDuplicadoException;
-import Exceptions.ExpedienteNoEncontradoException;
-import Exceptions.GrupoAsignaturaException;
-import Exceptions.GrupoNoEncontradoException;
 import Exceptions.*;
 
 
@@ -55,10 +43,10 @@ public interface CrudEJBLocal {
 	public void eliminarTitulacion(Titulacion t) throws TitulacionException;
 	public Titulacion existeTitulacion(Titulacion t)throws TitulacionException;
 	
-	public void insertarAsignatura(Asignatura a)throws AsignaturaException;
-	public void modificarAsignatura(Asignatura a) throws AsignaturaException;
-	public void eliminarAsignatura(Asignatura a)throws AsignaturaException;
-	public Asignatura existeAsignatura(Asignatura a)throws AsignaturaException;
+	public void insertarAsignatura(Asignatura a)throws AsignaturaNoEncontradaException, AsignaturaDuplicadaException;
+	public void modificarAsignatura(Asignatura a) throws AsignaturaNoEncontradaException;
+	public void eliminarAsignatura(Asignatura a)throws AsignaturaNoEncontradaException;
+	public Asignatura existeAsignatura(Asignatura a)throws AsignaturaNoEncontradaException;
 	
 	
 

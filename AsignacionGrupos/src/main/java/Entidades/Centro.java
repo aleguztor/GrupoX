@@ -15,13 +15,13 @@ public class Centro implements Serializable{
 	@Column(nullable=false)
 	private String Direccion;
 	@Column(nullable=true)
-	private int TLF_Conserjeria;
+	private String TLF_Conserjeria;
 	@ManyToMany (mappedBy = "centros")
 	private List<Titulacion> titulaciones;
 	
 	public Centro() {}
 	
-	public Centro(Long iD, String nombre, String direccion, int tLF_Conserjeria) {
+	public Centro(Long iD, String nombre, String direccion, String tLF_Conserjeria) {
 		ID = iD;
 		Nombre = nombre;
 		Direccion = direccion;
@@ -48,10 +48,10 @@ public class Centro implements Serializable{
 	public void setDireccion(String direccion) {
 		Direccion = direccion;
 	}
-	public int getTLF_Conserjeria() {
+	public String getTLF_Conserjeria() {
 		return TLF_Conserjeria;
 	}
-	public void setTLF_Conserjeria(int tLF_Conserjeria) {
+	public void setTLF_Conserjeria(String tLF_Conserjeria) {
 		TLF_Conserjeria = tLF_Conserjeria;
 	}
 	@Override
@@ -61,7 +61,7 @@ public class Centro implements Serializable{
 		result = prime * result + ((Direccion == null) ? 0 : Direccion.hashCode());
 		result = prime * result + ((ID == null) ? 0 : ID.hashCode());
 		result = prime * result + ((Nombre == null) ? 0 : Nombre.hashCode());
-		result = prime * result + TLF_Conserjeria;
+		result = prime * result + ((TLF_Conserjeria == null) ? 0 : TLF_Conserjeria.hashCode());
 		return result;
 	}
 	@Override

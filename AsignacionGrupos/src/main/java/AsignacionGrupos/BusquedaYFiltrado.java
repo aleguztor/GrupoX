@@ -9,10 +9,11 @@ import Entidades.Alumno;
 import Entidades.Asignatura;
 import Entidades.Grupo;
 import Entidades.Titulacion;
-import Exceptions.AlumnoNoEncontradoException;
+import Exceptions.*;
 
 public interface BusquedaYFiltrado {
 
-	public List<Alumno> BusquedaAlumno(Alumno a, Titulacion t, Asignatura a1) throws  AlumnoNoEncontradoException;
-		
+	public List<Alumno> filtradoAlumnos(Titulacion t, Asignatura a1) throws  AlumnoNoEncontradoException, TitulacionNoEncontradaException, AsignaturaNoEncontradaException;
+	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException;
+	public Titulacion buscarTitulacionPorNombre(String nombre) throws TitulacionNoEncontradaException;
 }

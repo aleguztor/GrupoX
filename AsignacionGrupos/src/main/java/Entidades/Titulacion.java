@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Titulacion implements Serializable {
 
 	   
-	@Id @GeneratedValue
+	@Id @GeneratedValue (strategy = GenerationType.AUTO)
 	private Integer codigo;
 	@Column(nullable = false)
 	private String nombre;
@@ -58,6 +58,39 @@ public class Titulacion implements Serializable {
 	public void setCreditos(Integer creditos) {
 		this.creditos = creditos;
 	}
+	
+	public List<Asignatura> getAsignaturas() {
+		return asignaturas;
+	}
+
+	public void setAsignaturas(List<Asignatura> asignaturas) {
+		this.asignaturas = asignaturas;
+	}
+
+	public List<Centro> getCentros() {
+		return centros;
+	}
+
+	public void setCentros(List<Centro> centros) {
+		this.centros = centros;
+	}
+
+	public List<Expediente> getExpedientes() {
+		return expedientes;
+	}
+
+	public void setExpedientes(List<Expediente> expedientes) {
+		this.expedientes = expedientes;
+	}
+
+	public List<Grupo> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(List<Grupo> grupos) {
+		this.grupos = grupos;
+	}
+
 	@Override
 	public boolean equals(Object object) {
 		if((object instanceof Titulacion)) {

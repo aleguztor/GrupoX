@@ -12,9 +12,9 @@ import org.apache.poi.xssf.usermodel.*;
 public class ImportacionExcelImpl {
 
 	public void ImportarExcel() throws ExcelNoEncontradoException{
-		String jdbcURL = "jdbc:mysql://localhost:3306/sales";
-        String username = "user";
-        String password = "password";
+		String jdbcURL = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE";
+        String username = "";
+        String password = "";
  
         String excelFilePath = "target/PruebaAlumnadoFAKE.xlsx";
  
@@ -78,11 +78,11 @@ public class ImportacionExcelImpl {
                         break;    
                     case 6:
                     	String telefono = nextCell.getStringCellValue();
-                        statement.setString(3, telefono);
+                        statement.setString(7, telefono);
                         break;
                     case 7:
                     	String movil = nextCell.getStringCellValue();
-                        statement.setString(3, movil);
+                        statement.setString(8, movil);
                         break;
                     }
  

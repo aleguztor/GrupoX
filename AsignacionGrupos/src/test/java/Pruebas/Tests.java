@@ -492,7 +492,7 @@ public class Tests {
 	public void testInsertarClase() {
 		try {
 			
-			Date dia = new Date(12,1,2021);
+			Date dia = new Date(System.currentTimeMillis()-1231231);
 			Date hora = new Date(1111);
 			ClasePK cpk = new ClasePK(dia, hora);
 			Grupo g = new Grupo("20/21","a","manyana");
@@ -507,7 +507,7 @@ public class Tests {
 	@Test
 	public void testModificarClase() {
 		try {
-			Date dia = new Date(12,1,2021);
+			Date dia = new Date(System.currentTimeMillis()-1231231);
 			Date hora = new Date(1111);
 			ClasePK cpk = new ClasePK(dia, hora);
 			Grupo g = new Grupo("20/21","a","manyana");
@@ -526,7 +526,7 @@ public class Tests {
 	@Test
 	public void testEliminarClase() {
 		try {
-			Date dia = new Date(12,1,2021);
+			Date dia = new Date(System.currentTimeMillis()-1231231);
 			Date hora = new Date(1111);
 			ClasePK cpk = new ClasePK(dia, hora);
 			Grupo g = new Grupo("20/21","a","manyana");
@@ -542,7 +542,7 @@ public class Tests {
 	@Test
 	public void testExisteClase() {
 		try {
-			Date dia = new Date(12,1,2021);
+			Date dia = new Date(System.currentTimeMillis()-1231231);
 			Date hora = new Date(1111);
 			ClasePK cpk = new ClasePK(dia, hora);
 			Grupo g = new Grupo("20/21","a","manyana");

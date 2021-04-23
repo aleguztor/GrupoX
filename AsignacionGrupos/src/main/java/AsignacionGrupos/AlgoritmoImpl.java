@@ -43,8 +43,8 @@ public class AlgoritmoImpl implements AlgoritmoIntf{
 	private boolean eq = true;
 	private CrudEJBLocal crud;
 	//Actualizar cosas en base con los metodos del CRUD
-	//Inicialmente tenemos un grupo de mañana y uno de tarde.
-	//PORCENTAJES DE ALUMNOS POR TITULACION NO LO TENEMOS EN CUENTA PORQUE ME CAAGO EN LA PUTA. MATADME PLS.
+	//Inicialmente tenemos un grupo de maÃ±ana y uno de tarde.
+	//PORCENTAJES DE ALUMNOS POR TITULACION NO LO TENEMOS EN CUENTA DE MOMENTO.
 	//Tener en cuenta el estado. Esto es el algoritmo sin tener en cuenta las plazas.
 	// Suponemos que el alumno de primera matricula no tiene activada la matricula hasta el inicio del curso.
 	// Hay que preguntar si es asi o no. Matricula Activa = A 	Inactiva = I
@@ -124,28 +124,28 @@ public class AlgoritmoImpl implements AlgoritmoIntf{
 	private void asignacionAuxiliar(String curso, Grupo g, String[] asigres, String asigact, int i) {
 		switch (curso){
 			case "1":
-				if(g.getCurso().equals("1º") && g.getPlazasRepetidores()>0) {
+				if(g.getCurso().equals("1Âº") && g.getPlazasRepetidores()>0) {
 					asigact += g.getLetra();
 					asigres[i] = asigact;
 					g.setPlazasRepetidores(g.getPlazasRepetidores()-1);
 				}
 				break;
 			case "2":
-				if(g.getCurso().equals("2º") && g.getPlazasRepetidores()>0) {
+				if(g.getCurso().equals("2Âº") && g.getPlazasRepetidores()>0) {
 					asigact += g.getLetra();
 					asigres[i] = asigact;
 					g.setPlazasRepetidores(g.getPlazasRepetidores()-1);
 				}
 				break;
 			case "3":
-				if(g.getCurso().equals("3º") && g.getPlazasRepetidores()>0) {
+				if(g.getCurso().equals("3Âº") && g.getPlazasRepetidores()>0) {
 					asigact += g.getLetra();
 					asigres[i] = asigact;
 					g.setPlazasRepetidores(g.getPlazasRepetidores()-1);
 				}
 				break;
 			case "4":
-				if(g.getCurso().equals("4º") && g.getPlazasRepetidores()>0) {
+				if(g.getCurso().equals("4Âº") && g.getPlazasRepetidores()>0) {
 					asigact += g.getLetra();
 					asigres[i] = asigact;
 					g.setPlazasRepetidores(g.getPlazasRepetidores()-1);
@@ -171,7 +171,7 @@ public class AlgoritmoImpl implements AlgoritmoIntf{
 				if(g.getPlazas()>0) {
 					String turno = e.getEncuesta().get(0).getTurno_Preferente();
 					if(turno.equalsIgnoreCase("manyana") && g.getTurno_manyana_tarde().equalsIgnoreCase("manyana")) {
-						if(ma.getEstado() == 'I' && g.getCurso().equals("1º")) {
+						if(ma.getEstado() == 'I' && g.getCurso().equals("1Âº")) {
 							if(g.getPlazasNuevoIngreso()>0) {
 								asigact += g.getLetra();
 								asigres[i] = asigact;
@@ -182,7 +182,7 @@ public class AlgoritmoImpl implements AlgoritmoIntf{
 							asignacionAuxiliar(curso, g, asigres, asigact, i);
 						}
 					}else if(turno.equalsIgnoreCase("tarde") && g.getTurno_manyana_tarde().equalsIgnoreCase("tarde")) {
-						if(ma.getEstado() == 'I' && g.getCurso().equals("1º")) {
+						if(ma.getEstado() == 'I' && g.getCurso().equals("1Âº")) {
 							if(g.getPlazasNuevoIngreso()>0) {
 								asigact += g.getLetra();
 								asigres[i] = asigact;

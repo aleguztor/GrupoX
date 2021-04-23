@@ -7,10 +7,12 @@ import java.util.*;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
+import javax.ejb.*;
 
-
-public class ImportacionExcelImpl {
-
+@Stateless
+public class ImportacionExcelImpl implements ImportacionExcel{
+	
+	@Override
 	public void ImportarExcel() throws ExcelNoEncontradoException{
 		String jdbcURL = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE";
         String username = "";

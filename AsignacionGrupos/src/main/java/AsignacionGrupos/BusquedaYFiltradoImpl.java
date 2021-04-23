@@ -1,6 +1,6 @@
 package AsignacionGrupos;
 
-
+import javax.ejb.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +13,7 @@ import Entidades.Asignatura;
 import Entidades.Titulacion;
 import Exceptions.*;
 
+@Stateless
 public class BusquedaYFiltradoImpl implements BusquedaYFiltrado{
 
 	@PersistenceContext(name="AsignacionGrupos")

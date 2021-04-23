@@ -1,11 +1,13 @@
 package AsignacionGrupos;
 
+import javax.ejb.*;
 import java.io.File;
 
 import Entidades.Alumno;
 import Entidades.Grupo;
 import Exceptions.*;
 
+@Local
 public interface CambioHorario {
 	/* crear formulario en el jsf*/
 	

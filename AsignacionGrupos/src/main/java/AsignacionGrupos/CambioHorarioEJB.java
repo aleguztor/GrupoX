@@ -1,6 +1,6 @@
 package AsignacionGrupos;
 
-import java.io.File;
+import javax.ejb.*;
 import java.util.List;
 
 import Entidades.Alumno;
@@ -8,7 +8,7 @@ import Entidades.Grupo;
 import Exceptions.*;
 
 
-
+@Stateless
 public class CambioHorarioEJB implements CambioHorario {
  
 	@Override

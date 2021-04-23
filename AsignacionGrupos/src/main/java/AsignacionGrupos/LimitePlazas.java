@@ -1,13 +1,14 @@
 package AsignacionGrupos;
 
 
-
+import javax.ejb.*;
 import java.util.List;
 
 import Entidades.Alumno;
 import Entidades.Grupo;
 import Exceptions.GrupoNoEncontradoException;
 
+@Local
 public interface LimitePlazas {
 	
     public void limitarPlazasRepetidores (Grupo grupo,Long PlazasRep) throws GrupoNoEncontradoException;

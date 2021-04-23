@@ -10,9 +10,10 @@ import javax.persistence.Persistence;
 import Entidades.*;
 import Entidades.Encuesta.Expediente_Encuesta_PK;
 public class Base {
+	private static EntityManager em;
 	public static void init(String nombreper) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory(nombreper);
-		EntityManager em = emf.createEntityManager();
+		em = emf.createEntityManager();
 		Date d = new Date(System.currentTimeMillis());
 		Alumno a1 = new Alumno("Mario", "Vazquez", "12345678a", "mario@uma.es");
 		Alumno a2 = new Alumno("Juan", "Moreno", "23456789b", "juan@uma.es");
@@ -54,54 +55,84 @@ public class Base {
 		p.add(en6);
 		e6.setEncuesta(p);
 		Titulacion t =  new Titulacion("Desarrollo movil",550);
-		Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
+		Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",101,12,true,true);
+		Asignatura as1 = new Asignatura("rf13","Desarrollo de maquinas virtuales",202,12,true,false);
 		List<Asignatura> asig = new LinkedList<>();
 		asig.add(as);
+		asig.add(as1);
 		t.setAsignaturas(asig);
 		e1.setTitulacion(t);
 		e2.setTitulacion(t);
 		e3.setTitulacion(t);
+		e4.setTitulacion(t);
+		e5.setTitulacion(t);
+		e6.setTitulacion(t);
 		List<Matricula> mats = new LinkedList<>();
-		MatriculaPK pk = new MatriculaPK("2º", (long)214623);
+		MatriculaPK pk = new MatriculaPK("2", (long)214623);
 		Matricula m1 = new Matricula(pk,e1,'I',d);
 		mats.add(m1);
 		e1.setMatricula(mats);
 		e1.setAlumno(a1);
-		pk = new MatriculaPK("1º", (long)214623);
+		pk = new MatriculaPK("1", (long)214623);
 		Matricula m2 = new Matricula(pk,e2,'I',d);
 		mats.remove(0);
 		mats.add(m2);
 		e2.setMatricula(mats);
 		e2.setAlumno(a2);
-		pk = new MatriculaPK("2º", (long)172411);
+		pk = new MatriculaPK("2", (long)172411);
 		Matricula m3 = new Matricula(pk,e3,'I',d);
 		mats.remove(0);
 		mats.add(m3);
 		e3.setMatricula(mats);
 		e3.setAlumno(a3);
-		pk = new MatriculaPK("1º", (long)872163);
+		pk = new MatriculaPK("1", (long)872163);
 		Matricula m4 = new Matricula(pk,e4,'I',d);
 		mats.remove(0);
 		mats.add(m4);
 		e4.setMatricula(mats);
 		e4.setAlumno(a4);
-		pk = new MatriculaPK("2º", (long)174615);
+		pk = new MatriculaPK("2", (long)174615);
 		Matricula m5 = new Matricula(pk,e5,'I',d);
 		mats.remove(0);
 		mats.add(m5);
 		e5.setMatricula(mats);
 		e5.setAlumno(a5);
-		pk = new MatriculaPK("1º", (long)123642);
+		pk = new MatriculaPK("1", (long)123642);
 		Matricula m6 = new Matricula(pk,e6,'I',d);
 		mats.remove(0);
 		mats.add(m6);
 		e6.setMatricula(mats);
 		e6.setAlumno(a6);
-		Grupo a = new Grupo("2º", "a","Manyana");
-		Grupo b = new Grupo("1º", "b","Manyana");
-		Grupo c = new Grupo("1º", "c","Tarde");
-		a.setPlazasNuevoIngreso((long)5);
-		a.setPlazasRepetidores((long)1);
+		m1.setListado_asignaturas("101,202");
+		m2.setListado_asignaturas("202");
+		m3.setListado_asignaturas("202");
+		m4.setListado_asignaturas("202");
+		m5.setListado_asignaturas("202");
+		m6.setListado_asignaturas("202");
+		Grupo ing = new Grupo("1", "A", "Manyana");
+		ing.setIdiomaIngles(true);
+		Grupo a = new Grupo("1", "B","Manyana");
+		Grupo b = new Grupo("1", "C","Manyana");
+		Grupo c = new Grupo("1", "D","Tarde");
+		Grupo de = new Grupo("1", "E","Tarde");
+		Grupo aa1 = new Grupo("2", "B","Manyana");
+		Grupo b1 = new Grupo("2", "C","Manyana");
+		Grupo c1 = new Grupo("2", "D","Tarde");
+		Grupo de1 = new Grupo("2", "E","Tarde");
+		a.setPlazasNuevoIngreso((long)30);
+		b.setPlazasNuevoIngreso((long)30);
+		b.setPlazasRepetidores((long)20);
+		a.setPlazasRepetidores((long)20);
+		c.setPlazasNuevoIngreso((long)30);
+		de.setPlazasNuevoIngreso((long)30);
+		c.setPlazasRepetidores((long)20);
+		de.setPlazasRepetidores((long)20);
+		aa1.setPlazasNuevoIngreso((long)30);
+		b1.setPlazasNuevoIngreso((long)30);
+		b1.setPlazasRepetidores((long)20);
+		aa1.setPlazasRepetidores((long)20);
+		c1.setPlazasNuevoIngreso((long)30);
+		de1.setPlazasNuevoIngreso((long)30);
 		List<Expediente> exps = new LinkedList<>();
 		List<Grupo> gps = new LinkedList<>();
 		exps.add(e1);
@@ -121,72 +152,118 @@ public class Base {
 		exps.remove(0);
 		exps.add(e6);
 		a6.setExpedientes(exps);
-		gps.add(a);
-		a1.setAlumno_Grupos(gps);
-		gps.remove(0);
-		gps.add(b);
-		a2.setAlumno_Grupos(gps);
-		gps.remove(0);
-		gps.add(c);
-		a3.setAlumno_Grupos(gps);
-		gps.remove(0);
-		gps.add(b);
-		a4.setAlumno_Grupos(gps);
-		gps.remove(0);
-		gps.add(a);
-		a5.setAlumno_Grupos(gps);
-		gps.remove(0);
-		gps.add(c);
-		a6.setAlumno_Grupos(gps);
 		Grupos_Por_Asignatura g1 = new Grupos_Por_Asignatura("20/21",a,as);
+		Grupos_Por_Asignatura g1ing = new Grupos_Por_Asignatura("20/21",ing,as);
 		Grupos_Por_Asignatura g2 = new Grupos_Por_Asignatura("20/21",b,as);
 		Grupos_Por_Asignatura g3 = new Grupos_Por_Asignatura("20/21",c,as);
+		Grupos_Por_Asignatura g4 = new Grupos_Por_Asignatura("20/21",de,as);
+		Grupos_Por_Asignatura g5 = new Grupos_Por_Asignatura("20/21",aa1,as);
+		Grupos_Por_Asignatura g6 = new Grupos_Por_Asignatura("20/21",b1,as);
+		Grupos_Por_Asignatura g7 = new Grupos_Por_Asignatura("20/21",c1,as);
+		Grupos_Por_Asignatura g8 = new Grupos_Por_Asignatura("20/21",de1,as);
 		List<Grupos_Por_Asignatura> gpa = new LinkedList<>();
+		List<Alumno> alumnos = new LinkedList<>();
+		mats.remove(0);
+		mats.add(m1);
+		mats.add(m2);
+		mats.add(m3);
+		mats.add(m4);
+		mats.add(m5);
+		mats.add(m6);
+		exps.remove(0);
+		exps.add(e1);
+		exps.add(e2);
+		exps.add(e3);
+		exps.add(e4);
+		exps.add(e5);
+		exps.add(e6);
+		alumnos.add(a1);
+		alumnos.add(a2);
+		alumnos.add(a3);
+		alumnos.add(a4);
+		alumnos.add(a5);
+		alumnos.add(a6);
 		gpa.add(g1);
 		gpa.add(g2);
 		gpa.add(g3);
+		gpa.add(g4);
+		gpa.add(g5);
+		gpa.add(g6);
+		gpa.add(g7);
+		gpa.add(g8);
 		as.setGpa(gpa);
 		a.setGpa(gpa);
 		b.setGpa(gpa);
 		c.setGpa(gpa);
+		aa1.setGpa(gpa);
+		b1.setGpa(gpa);
+		c1.setGpa(gpa);
+		de1.setGpa(gpa);
+		de.setGpa(gpa);
+		gps.add(a);
+		gps.add(ing);
+		gps.add(b);
+		gps.add(c);
+		gps.add(de);
+		gps.add(aa1);
+		gps.add(b1);
+		gps.add(c1);
+		gps.add(de1);
+		p.remove(0);
+		p.add(en1);
+		p.add(en2);
+		p.add(en3);
+		p.add(en4);
+		p.add(en5);
+		p.add(en6);
+		
 		
 		
 		em.getTransaction().begin();
+		
 		em.persist(t);
 		em.persist(as);
-		em.persist(m1);
-		em.persist(m2);
-		em.persist(m3);
-		em.persist(m4);
-		em.persist(m5);
-		em.persist(m6);
-		em.persist(a);
-		em.persist(b);
-		em.persist(c);
-		em.persist(e1);
-		em.persist(e2);
-		em.persist(e3);
-		em.persist(e4);
-		em.persist(e5);
-		em.persist(e6);
-		em.persist(a1);
-		em.persist(a2);
-		em.persist(a3);
-		em.persist(a4);
-		em.persist(a5);
-		em.persist(a6);
-		em.persist(g1);
-		em.persist(g2);
-		em.persist(g3);
-		em.persist(en1);
-		em.persist(en2);
-		em.persist(en3);
-		em.persist(en4);
-		em.persist(en5);
-		em.persist(en6);
+		em.persist(as1);
+		Grupos_Por_AsignaturaPersist(gpa);
+		AlumnosPersist(alumnos);
+		MatriculasPersist(mats);
+		ExpedientesPersist(exps);
+		GruposPersist(gps);
+		EncuestasPersist(p);
 				
 		em.getTransaction().commit();
 		em.close();
 		emf.close();
+	}
+	
+	private static void AlumnosPersist(List<Alumno> al) {
+		for(Alumno a : al) {
+			em.persist(a);
+		}
+	}
+	private static void ExpedientesPersist(List<Expediente> exps) {
+		for(Expediente e : exps) {
+			em.persist(e);
+		}
+	}
+	private static void GruposPersist(List<Grupo> g) {
+		for(Grupo gr : g) {
+			em.persist(gr);
+		}
+	}
+	private static void MatriculasPersist(List<Matricula> mats) {
+		for(Matricula m : mats) {
+			em.persist(m);
+		}
+	}
+	private static void EncuestasPersist(List<Encuesta> en) {
+		for(Encuesta e : en) {
+			em.persist(e);
+		}
+	}
+	private static void Grupos_Por_AsignaturaPersist(List<Grupos_Por_Asignatura> gpa) {
+		for(Grupos_Por_Asignatura g : gpa) {
+			em.persist(g);
+		}
 	}
 }

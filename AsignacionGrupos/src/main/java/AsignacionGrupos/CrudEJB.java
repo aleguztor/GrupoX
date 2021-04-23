@@ -23,7 +23,6 @@ import Exceptions.*;
  * Session Bean implementation class CrudEJB
  */
 @Stateless
-@LocalBean
 public class CrudEJB implements CrudEJBLocal {
 
     /**
@@ -384,7 +383,7 @@ public class CrudEJB implements CrudEJBLocal {
 
 	@Override
 	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
-		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM ALUMNO a WHERE a.DNI LIKE '"+dni+"'", Alumno.class);
+		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a WHERE a.DNI LIKE '"+dni+"'", Alumno.class);
 		if(q.getSingleResult() == null) {
 			throw new AlumnoNoEncontradoException();
 		}
@@ -403,8 +402,8 @@ public class CrudEJB implements CrudEJBLocal {
 
 	@Override
 	public Grupo busquedaGrupo(String c, String l, String t) throws GrupoNoEncontradoException {
-		TypedQuery<Grupo> q = em.createQuery("SELECT g FROM GRUPO g WHERE g.CURSO LIKE '"+c+"' AND g.LETRA LIKE '"+l+"'"
-				+ " AND g.TURNO_MANYANA_TARDE LIKE '"+t+"'", Grupo.class);
+		TypedQuery<Grupo> q = em.createQuery("SELECT g FROM Grupo g WHERE g.Curso LIKE '"+c+"' AND g.Letra LIKE '"+l+"'"
+				+ " AND g.Turno_Manyana_Tarde LIKE '"+t+"'", Grupo.class);
 		if(q.getSingleResult() == null) {
 			throw new GrupoNoEncontradoException();
 		}

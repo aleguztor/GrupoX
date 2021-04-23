@@ -1,17 +1,25 @@
 package AsignacionGrupos;
-import java.util.Iterator;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.PriorityQueue;
 
-import javax.persistence.*;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
-import Entidades.*;
-import Exceptions.*;
+import Entidades.Alumno;
+import Entidades.Asignatura;
+import Entidades.Encuesta;
+import Entidades.Expediente;
+import Entidades.Grupo;
+import Entidades.Matricula;
 
-public class AlgoritmoImpl {
+@Stateless
+public class AlgoritmoImpl implements AlgoritmoIntf{
 	
 	static class comparatorAlumno implements Comparator<Alumno>{
 
@@ -42,9 +50,10 @@ public class AlgoritmoImpl {
 	// Hay que preguntar si es asi o no. Matricula Activa = A 	Inactiva = I
 	
 	// Orden de preferencia --> Fecha envio encuesta, turno y equitativo. Mirar comparator.
+	@Override
 	public void asignacionGrupos(){
 		List<Alumno> alumnos; int grupoMinimo = 30;
-		TypedQuery<Alumno> q = em.createNamedQuery("SELECT a FROM ALUMNOS a", Alumno.class);
+		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a", Alumno.class);
 		alumnos = q.getResultList();
 		Collections.sort(alumnos, new comparatorAlumno());
 		Iterator<Alumno> it = alumnos.iterator();
@@ -56,13 +65,22 @@ public class AlgoritmoImpl {
 			String[] asigs = listadoasig.split(", ");
 			Expediente e = a.getExpedientes().get(0);
 			String turno = e.getEncuesta().get(0).getTurno_Preferente();
-			String[] asigres = new String[asigs.length-1];
+			String[] asigres = new String[asigs.length];
+			List<Grupo> grupos = null;
 			for(int i = 0; i<asigs.length; i++) {
 				String asigact = asigs[0].substring(0, 3);
-				Asignatura as = em.find(Asignatura.class, asigact);
+				Asignatura as = buscarAsignaturaPorCodigo(asigact);
 				String curso = asigact.substring(0,1);
 				boolean idioma = as.isIdioma_de_imparticion();
-				Grupo g = buscarGrupoConCondiciones(curso, idioma, turno);
+				Grupo g = buscarGrupoConCondiciones(turno, idioma, curso);
+				if(a.getAlumno_Grupos() == null) {
+					grupos = new LinkedList<>();
+					grupos.add(g);
+				}else {
+					grupos = a.getAlumno_Grupos();
+					grupos.add(g);
+				}
+				a.setAlumno_Grupos(grupos);
 				asigact += g.getLetra();
 				asigres[i] = asigact;
 			}
@@ -82,33 +100,26 @@ public class AlgoritmoImpl {
 	}
 	
 	private Grupo buscarGrupoConCondiciones(String turno, boolean idioma, String curso){
-		TypedQuery<Grupo> q = em.createQuery("SELECT g FROM GRUPO g WHERE g.TURNO LIKE '"+turno+"' AND g.idiomaIngles AND"
-				+ "g.CURSO LIKE '"+curso+"'", Grupo.class);
+		int idiomaint;
+		if(idioma)  idiomaint = 1;
+		else  idiomaint = 0;
+		TypedQuery<Grupo> q = em.createQuery("SELECT g FROM Grupo g WHERE g.Turno_manyana_tarde LIKE '"+turno+"' AND g.idiomaIngles = '"+idiomaint+"' AND"
+				+ " g.Curso = "+Integer.parseInt(curso), Grupo.class);
 		List<Grupo> gr = q.getResultList();
-		Grupo g = null;
-		if(!idioma) {
-			if(eq == true) {
-				if(turno.equals("Tarde")) {
-					g = new Grupo(curso, "D", turno);
-				}else {
-					g = new Grupo(curso, "B", turno);
-				}
-			}else {
-				if(turno.equals("Tarde")) {
-					g = new Grupo(curso, "E", turno);
-				}else {
-					g = new Grupo(curso, "C", turno);
-				}
-			}
-			eq = !eq;
+		if(idioma) {
+			return gr.get(0);
 		}else {
-			g = new Grupo(curso, "A", turno);
-			g.setIdiomaIngles(true);
-		}
-		return gr.get(gr.indexOf(g));
-		
-		
+			if(eq == true) {
+				eq = !eq;
+				return gr.get(0);
+			}else {
+				eq = !eq;
+				return gr.get(1);
+			}
+		}	
 	}
+	
+	
 	
 	private void asignacionAuxiliar(String curso, Grupo g, String[] asigres, String asigact, int i) {
 		switch (curso){
@@ -141,6 +152,17 @@ public class AlgoritmoImpl {
 				}
 				break;
 			}
+	}
+	
+	@Override
+	public List<Grupo> buscarGrupos(){
+		return em.createQuery("SELECT g FROM Grupo g", Grupo.class).getResultList();
+	}
+
+	@Override
+	public Asignatura buscarAsignaturaPorCodigo(String codigo) {
+		TypedQuery<Asignatura> q = em.createQuery("SELECT a FROM Asignatura a WHERE a.Codigo = "+Integer.parseInt(codigo), Asignatura.class);
+		return q.getSingleResult();
 	}
 	
 	/*

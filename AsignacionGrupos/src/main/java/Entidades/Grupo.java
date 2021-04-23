@@ -211,4 +211,8 @@ public class Grupo implements Serializable {
 		return Id.hashCode() ;
 	}
    
+	@Override
+	public String toString() {
+		return Curso+" "+Letra+" "+Turno_manyana_tarde;
+	}
 }

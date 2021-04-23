@@ -1,8 +1,7 @@
 package AsignacionGrupos;
 
 
-	
-
+import javax.ejb.*;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -12,8 +11,8 @@ import javax.persistence.TypedQuery;
 import Entidades.*;
 import Exceptions.*;
 
-
-	public class LimitePlazasEJB implements LimitePlazas{
+@Stateless
+public class LimitePlazasEJB implements LimitePlazas{
 	    @PersistenceContext(unitName="AsignacionGrupos")
 	    private EntityManager em;
 

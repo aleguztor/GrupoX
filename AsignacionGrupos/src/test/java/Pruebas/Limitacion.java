@@ -53,8 +53,8 @@ public class Limitacion {
 		Base.init(UNIDAD_PERSISTENCIA_PRUEBAS);
 	}
 	
+	@Requisitos({"RF7"})
 	@Test
-	
     public void TestLimitarPlazasNuevoIngreso() {
         Grupo g = new Grupo("1�", "c","Tarde");
         Long nplazas=(long) 10;
@@ -67,8 +67,8 @@ public class Limitacion {
 
     }
 	
+	@Requisitos({"RF7"})
     @Test
-    
     public void TestLimitarPlazasRepetidores() {
 
         Grupo g=new Grupo("1�","c","Tarde");

@@ -53,8 +53,8 @@ public class ModAlumnos {
 		Base.init(UNIDAD_PERSISTENCIA_PRUEBAS);
 	}
 	
+	@Requisitos({"RF8"})
 	@Test
-	
 	public void testCambioGrupoAlumnos() {
 		List<Alumno> alumnos = new LinkedList<>();
 		try {

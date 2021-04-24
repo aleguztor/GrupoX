@@ -51,6 +51,7 @@ public class Algoritmo {
 		Base.init(UNIDAD_PERSISTENCIA_PRUEBAS);
 	}
 	
+	@Requisitos({"RF9"})
 	@Test
 	public void testAlgoritmo() {
 		List<Grupo> g = alg.buscarGrupos();

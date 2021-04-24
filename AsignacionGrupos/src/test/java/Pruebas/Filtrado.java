@@ -47,8 +47,8 @@ public class Filtrado {
 		Base.init(UNIDAD_PERSISTENCIA_PRUEBAS);
 	}
 	
+	@Requisitos({"RF3"})
 	@Test
-	
 	public void testFiltradoAlumnos() {
 		try {
 			List<Alumno> a = new LinkedList<>();

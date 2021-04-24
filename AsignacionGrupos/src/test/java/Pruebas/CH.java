@@ -48,6 +48,7 @@ public class CH {
 		Base.init(UNIDAD_PERSISTENCIA_PRUEBAS);
 	}
 	
+	@Requisitos({"RF4"})
 	@Test
 	public void testCambioHorarioyGrupo() {
 		Alumno al = new Alumno("PEPE", "viruela", "124536b", "adassa@uma.es");

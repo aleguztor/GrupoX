@@ -3,6 +3,7 @@ package AsignacionGrupos;
 import java.util.List;
 
 import javax.ejb.Local;
+import javax.ejb.LocalBean;
 
 import Entidades.Alumno;
 import Entidades.Asignatura;

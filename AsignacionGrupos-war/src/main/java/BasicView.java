@@ -3,13 +3,13 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.commons.math3.stat.descriptive.summary.Product;
 
-import AsignacionGrupos.CrudEJB;
+import AsignacionGrupos.CrudEJBLocal;
 import Entidades.*;
 
 @Named(value = "dtBasicView")
@@ -20,8 +20,8 @@ public class BasicView implements Serializable {
 
 	private List<Alumno> alumnos;
 
-    @Resource
-    private CrudEJB crud;
+    @EJB
+    private CrudEJBLocal crud;
 
     @PostConstruct
     public void init() {
@@ -32,7 +32,7 @@ public class BasicView implements Serializable {
         return alumnos;
     }
 
-    public void setService(CrudEJB crud) {
+    public void setService(CrudEJBLocal crud) {
         this.crud = crud;
     }
 }

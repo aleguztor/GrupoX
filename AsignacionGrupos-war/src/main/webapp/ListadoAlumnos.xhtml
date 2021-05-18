@@ -10,9 +10,9 @@
     <h:body>
 	    <h:form>
 	    <div class="card">
-	        <h:dataTable var="alumno" value="#{dtBasicView.alumnos}">
+	        <h:dataTable var="alumno" value="#{dtBasicView.alumnos)}">
 	            <h:column headerText="ID">
-	                <h:outputText value="#{alumno.ID}" />
+	                <h:outputText value="#{alumno.Id}" />
 	            </h:column>
 	
 	            <h:column headerText="Nombre">
@@ -20,11 +20,11 @@
 	            </h:column>
 	
 	            <h:column headerText="Primer apellido">
-	                <h:outputText value="#{alumno.apellido1}" />
+	                <h:outputText value="#{alumno.Apellido1}" />
 	            </h:column>
 	
 	            <h:column headerText="Segundo apellido">
-	                <h:outputText value="#{alumno.apellido2}" />
+	                <h:outputText value="#{alumno.Apellido2}" />
 	            </h:column>
 	        </h:dataTable>
 	    </div>

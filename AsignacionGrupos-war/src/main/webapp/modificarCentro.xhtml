@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+      
+<h:head>
+  <title>Centro</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<table>
+			<tr>
+				<td>Nombre:</td>
+				<td><h:inputText value="#{modificarCentro.centro.nombre}"/></td>
+			</tr>
+			<tr>
+				<td>Direccion:</td>
+				<td><h:inputText value="#{modificarCentro.centro.direccion}"/></td>
+			</tr>
+			<tr>
+				<td>Telefono:</td>
+				<td><h:inputText value="#{modificarCentro.centro.telefono}"></h:inputText></td>
+			</tr>
+			<tr>				
+				<h:dataTable value="#{centro.listaTitulaciones}" var="t">
+					<h:column>
+						<f:facet name="header">Titulaciones</f:facet>
+						<h:outputText value="#{t}"></h:outputText>
+					</h:column>
+					<h:column><h:commandButton id="modificarTitulacion" action="#{modificarCentro.modificarTitulacion}" value="Modificar"/></h:column>
+				</h:dataTable>
+			</tr>
+			<tr>
+				<td><h:commandButton value="Enviar"/></td>
+				<td></td>
+			</tr>
+		</table>
+	</h:form>
+	
+</h:body>
+
+</html>

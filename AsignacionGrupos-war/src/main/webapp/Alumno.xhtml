@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+  <title>Busqueda de un alumno</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<table>
+			<tr>
+				<td>Dame DNI</td>
+				<td><h:inputText value="#{AlumnoController.alumnopordni}"/></td>
+			</tr>
+			<tr>
+				<td>Nombre:</td>
+				<td><h:outputText value="#{AlumnoController.nombrealumno}"/></td>
+			</tr>
+			<tr>
+				<td>Primer apellido:</td>
+				<td><h:outputText value="#{AlumnoController.apellidoalumno}"/></td>
+			</tr>
+			<tr>
+				<td>Segundo apellido:</td>
+				<td><h:outputText value="#{AlumnoController.segundoapellido}"/></td>
+			</tr>
+			<tr>
+				<td>DNI:</td>
+				<td><h:outputText value="#{AlumnoController.dni}"/></td>
+			</tr>
+			<tr>
+				<td>Email constitucional:</td>
+				<td><h:outputText value="#{AlumnoController.emailinstitucional}"/></td>
+			</tr>
+			<tr>
+				<td>Email personal:</td>
+				<td><h:outputText value="#{AlumnoController.emailpersonal}"/></td>
+			</tr>
+			<tr>
+				<td>Teléfono:</td>
+				<td><h:outputText value="#{AlumnoController.tlf}"/></td>
+			</tr>
+			<tr>
+				<td>Móvil:</td>
+				<td><h:outputText value="#{AlumnoController.movil}"/></td>
+			</tr>
+			
+		</table>
+	</h:form>
+</h:body>
+
+</html>

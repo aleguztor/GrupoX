@@ -481,75 +481,75 @@ public class Crud {
 		}
 	}
 	
-//	@Requisitos({"RF2"})
-	@Test
-	public void testInsertarClase() {
-		try {
-			
-			Date dia = new Date(System.currentTimeMillis()-1231231);
-			Date hora = new Date(1111);
-			ClasePK cpk = new ClasePK(dia, hora);
-			Grupo g = new Grupo("20/21","a","manyana");
-			Clase c = new Clase(g,cpk);
-			crud.insertarClase(c);
-			assertEquals(c, crud.existeClase(c));
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-//	@Requisitos({"RF2"})
-	@Test
-	public void testModificarClase() {
-		try {
-			Date dia = new Date(System.currentTimeMillis()-1231231);
-			Date hora = new Date(1111);
-			ClasePK cpk = new ClasePK(dia, hora);
-			Grupo g = new Grupo("20/21","a","manyana");
-			Clase c = new Clase(g,cpk);
-			crud.insertarClase(c);
-			Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
-			c.setAsignatura(as);
-			crud.modificarClase(c);
-			assertEquals(c, crud.existeClase(c));
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-//	@Requisitos({"RF2"})
-	@Test
-	public void testEliminarClase() {
-		try {
-			Date dia = new Date(System.currentTimeMillis()-1231231);
-			Date hora = new Date(1111);
-			ClasePK cpk = new ClasePK(dia, hora);
-			Grupo g = new Grupo("20/21","a","manyana");
-			Clase c = new Clase(g,cpk);
-			crud.insertarClase(c);
-			crud.eliminarClase(c);
-			assertNull(crud.existeClase(c));
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-//	@Requisitos({"RF2"})
-	@Test
-	public void testExisteClase() {
-		try {
-			Date dia = new Date(System.currentTimeMillis()-1231231);
-			Date hora = new Date(1111);
-			ClasePK cpk = new ClasePK(dia, hora);
-			Grupo g = new Grupo("20/21","a","manyana");
-			Clase c = new Clase(g,cpk);
-			crud.insertarClase(c);
-			assertEquals(c, crud.existeClase(c));
-		}catch(Exception e) {
-			
-		}
-	}
+////	@Requisitos({"RF2"})
+//	@Test
+//	public void testInsertarClase() {
+//		try {
+//			
+//			Date dia = new Date(System.currentTimeMillis()-1231231);
+//			Date hora = new Date(1111);
+//			ClasePK cpk = new ClasePK(dia, hora);
+//			Grupo g = new Grupo("20/21","a","manyana");
+//			Clase c = new Clase(g,cpk);
+//			crud.insertarClase(c);
+//			assertEquals(c, crud.existeClase(c));
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+//	
+////	@Requisitos({"RF2"})
+//	@Test
+//	public void testModificarClase() {
+//		try {
+//			Date dia = new Date(System.currentTimeMillis()-1231231);
+//			Date hora = new Date(1111);
+//			ClasePK cpk = new ClasePK(dia, hora);
+//			Grupo g = new Grupo("20/21","a","manyana");
+//			Clase c = new Clase(g,cpk);
+//			crud.insertarClase(c);
+//			Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
+//			c.setAsignatura(as);
+//			crud.modificarClase(c);
+//			assertEquals(c, crud.existeClase(c));
+//			
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+//	
+////	@Requisitos({"RF2"})
+//	@Test
+//	public void testEliminarClase() {
+//		try {
+//			Date dia = new Date(System.currentTimeMillis()-1231231);
+//			Date hora = new Date(1111);
+//			ClasePK cpk = new ClasePK(dia, hora);
+//			Grupo g = new Grupo("20/21","a","manyana");
+//			Clase c = new Clase(g,cpk);
+//			crud.insertarClase(c);
+//			crud.eliminarClase(c);
+//			assertNull(crud.existeClase(c));
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+//	
+////	@Requisitos({"RF2"})
+//	@Test
+//	public void testExisteClase() {
+//		try {
+//			Date dia = new Date(System.currentTimeMillis()-1231231);
+//			Date hora = new Date(1111);
+//			ClasePK cpk = new ClasePK(dia, hora);
+//			Grupo g = new Grupo("20/21","a","manyana");
+//			Clase c = new Clase(g,cpk);
+//			crud.insertarClase(c);
+//			assertEquals(c, crud.existeClase(c));
+//		}catch(Exception e) {
+//			
+//		}
+//	}
 
 	
 }

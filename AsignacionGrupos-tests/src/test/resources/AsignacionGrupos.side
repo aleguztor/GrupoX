@@ -1,0 +1,46 @@
+{
+  "id": "fe094a5a-f95e-42e7-a536-87a20ff8a1ed",
+  "version": "2.0",
+  "name": "AsignacionGrupos",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "81184973-c45d-4744-9fa0-179a37daf9f3",
+    "name": "PruebaSeleniumSencilla",
+    "commands": [{
+      "id": "01765224-aa0e-45b1-a43a-97284698eda3",
+      "comment": "",
+      "command": "open",
+      "target": "/AsignacionGrupos-war/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f9f3326d-219b-4342-8efb-331b510d2fae",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x692",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "91ce9ba6-12e7-4c68-8ec5-fd2be0168e12",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'HOLA')]", "xpath:innerText"]
+      ],
+      "value": "HOLA"
+    }]
+  }],
+  "suites": [{
+    "id": "6828c9df-a07e-42e7-911b-2335ea07ec23",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["81184973-c45d-4744-9fa0-179a37daf9f3"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

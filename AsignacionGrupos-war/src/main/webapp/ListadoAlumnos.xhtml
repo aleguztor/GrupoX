@@ -8,28 +8,6 @@
         <title>Aplicacion Asignacion Grupos</title>
     </h:head>
     <h:body>
-	    <h:form>
-	    <div class="card">
-	        <h:dataTable var="alumno" value="#{dtBasicView.alumnos)}">
-	            <h:column headerText="ID">
-	                <h:outputText value="#{alumno.Id}" />
-	            </h:column>
-	
-	            <h:column headerText="Nombre">
-	                <h:outputText value="#{alumno.Nombre}" />
-	            </h:column>
-	
-	            <h:column headerText="Primer apellido">
-	                <h:outputText value="#{alumno.Apellido1}" />
-	            </h:column>
-	
-	            <h:column headerText="Segundo apellido">
-	                <h:outputText value="#{alumno.Apellido2}" />
-	            </h:column>
-	        </h:dataTable>
-	    </div>
-	</h:form>
-</h:body>
-
-
+		<h1><h:outputText value="#{listado.saludo}"/></h1>
+	</h:body>
 </html>

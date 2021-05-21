@@ -423,8 +423,7 @@ public class CrudEJB implements CrudEJBLocal {
 	
 	@Override
 	public List<Alumno> getAlumnos() {
-		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM ALUMNO", Alumno.class);
-		return q.getResultList();
+		return em.createQuery("SELECT a FROM Alumno a", Alumno.class).getResultList();
 	}
 
 	

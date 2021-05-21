@@ -9,5 +9,6 @@
 	<module>AsignacionGrupos-ejb</module>
 	<module>AsignacionGrupos-war</module>
 	<module>AsignacionGrupos-ear</module>
+	<module>AsignacionGrupos-tests</module>
   </modules>
 </project>

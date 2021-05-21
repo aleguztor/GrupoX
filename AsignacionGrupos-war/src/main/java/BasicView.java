@@ -2,37 +2,39 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.apache.commons.math3.stat.descriptive.summary.Product;
-
 import AsignacionGrupos.CrudEJBLocal;
-import Entidades.*;
+import Entidades.Alumno;
+import Exceptions.AlumnoNoEncontradoException;
 
-@Named(value = "dtBasicView")
-@ViewScoped
+@Named(value = "listado")
+@RequestScoped
 public class BasicView implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	private Alumno a;
+	
 	private List<Alumno> alumnos;
 
-    @EJB
+    @Inject
     private CrudEJBLocal crud;
+//
+//    @PostConstruct
+//    public void init() {
+//        alumnos = crud.getAlumnos();
+//   }
+//    
+//    public List<Alumno> getAlumnos() {
+//        return alumnos;
+//    }
+    
+    public String getSaludo() {
+    	return "HOLA";
 
-    @PostConstruct
-    public void init() {
-        alumnos = crud.getAlumnos();
     }
-
-    public List<Alumno> getProducts() {
-        return alumnos;
-    }
-
-    public void setService(CrudEJBLocal crud) {
-        this.crud = crud;
-    }
+	
 }

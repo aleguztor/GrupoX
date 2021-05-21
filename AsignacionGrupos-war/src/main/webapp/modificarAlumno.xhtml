@@ -11,43 +11,50 @@
 </h:head>
 
 <h:body>
+
+	<h:form>
+		<tr>
+				<td>Introduzca un DNI de alumno:</td>
+				<td><h:inputText id="dni" value="#{alumnocon.dni}"/></td>
+				<td><h:commandButton value="Enviar" action="#{AlumnoController.obtenerAlumno}" /></td>
+		</tr>
+	</h:form>
 	<h:form>
 	
 		<table>
-			<tr>
-				<td></td>
-			</tr>
+			
+			
 			<tr>
 				<td>Nombre:</td>
-				<td><h:inputText value="#{AlumnoController.alumno.nombre}"/></td>
+				<td><h:inputText value="#{alumnocon.alumno.apellido1}"/></td>
 			</tr>
 			<tr>
 				<td>Primer apellido:</td>
-				<td><h:inputText value="#{AlumnoController.alumno.apellido1}"/></td>
+				<td><h:inputText value="#{alumnocon.alumno.apellido1}"/></td>
 			</tr>
 			<tr>
 				<td>Segundo apellido:</td>
-				<td><h:inputText value="#{AlumnoController.alumno.apellido2}"/></td>
+				<td><h:inputText value="#{alumnocon.alumno.apellido2}"/></td>
 			</tr>
 			<tr>
 				<td>DNI:</td>
-				<td><h:inputText value="#{AlumnoController.alumno.dni}"/></td>
+				<td><h:inputText value="#{alumnocon.alumno.DNI}"/></td>
 			</tr>
 			<tr>
-				<td>Email constitucional:</td>
-				<td><h:inputText value="#{AlumnoController.alumno.emailconstitucional}"/></td>
+				<td>Email institucional:</td>
+				<td><h:inputText value="#{alumnocon.alumno.email_institucional}"/></td>
 			</tr>
 			<tr>
 				<td>Email personal:</td>
-				<td><h:inputText value="#{AlumnoController.alumno.emailconstitucional}"/></td>
+				<td><h:inputText value="#{alumnocon.alumno.email_personal}"/></td>
 			</tr>
 			<tr>
 				<td>Teléfono:</td>
-				<td><h:inputText value="#{AlumnoController.alumno.tlf}"/></td>
+				<td><h:inputText value="#{alumnocon.alumno.telefono}"/></td>
 			</tr>
 			<tr>
 				<td>Móvil:</td>
-				<td><h:inputText value="#{AlumnoController.alumno.movil}"/></td>
+				<td><h:inputText value="#{alumnocon.alumno.movil}"/></td>
 			</tr>
 			<tr>
 				<td><h:commandButton value="Enviar"/></td>

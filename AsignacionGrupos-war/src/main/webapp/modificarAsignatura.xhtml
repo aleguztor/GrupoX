@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+      
+<h:head>
+  <title>Asignatura</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<table>
+			<tr>
+				<td>Referencia:</td>
+				<td><h:inputText value="#{modificarAsignatura.asignatura.ref}"/></td>
+			</tr>
+			<tr>
+				<td>Codigo:</td>
+				<td><h:inputText value="#{modificarAsignatura.asignatura.codigo}"/></td>
+			</tr>
+			<tr>
+				<td>Nombre:</td>
+				<td><h:inputText value="#{modificarAsignatura.asignatura.nombre}"/></td>
+			</tr>
+			<tr>
+				<td>Ofertada:</td>
+				<td>
+					<h:selectOneMenu>
+						<f:selectItem itemLabel="Si"/>
+						<f:selectItem itemLabel="No"/>
+					</h:selectOneMenu>
+				</td>
+			</tr>
+			<tr>
+				<td>Curso:</td>
+				<td>
+					<h:selectOneMenu>
+						<f:selectItem itemLabel="1º"/>
+						<f:selectItem itemLabel="2º"/>
+						<f:selectItem itemLabel="3º"/>
+						<f:selectItem itemLabel="4º"/>						
+					</h:selectOneMenu>
+				</td>
+			</tr>
+			<tr>
+				<td>Carácter:</td>
+				<td>
+					<h:selectOneMenu>
+						<f:selectItem itemLabel="OB"/>
+						<f:selectItem itemLabel="BA"/>
+						<f:selectItem itemLabel="OP"/>
+					</h:selectOneMenu>
+				</td>
+			</tr>
+			<tr>
+				<td>Cuatrimestre:</td>
+				<td>
+					<h:selectOneMenu>
+						<f:selectItem itemLabel="1º"/>
+						<f:selectItem itemLabel="2º"/>
+					</h:selectOneMenu>
+				</td>
+			</tr>
+			<tr>
+				<td>Idioma:</td>
+				<td><h:inputText value="#{modificarAsignatura.asignatura.idioma}"/></td>
+			</tr>
+			<tr>
+				<td>Plazas:</td>
+				<td><h:inputText value="#{modificarAsignaturas.asignatura.plazas}"/></td>
+			</tr>
+			<tr>
+				<td>Mencion:</td>
+				<td><h:inputText value="#{modificarAsignaturas.asignatura.mencion}"/></td>
+			</tr>
+			<tr>
+				<td><h:commandButton value="Enviar"/></td>
+				<td></td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+
+</html>

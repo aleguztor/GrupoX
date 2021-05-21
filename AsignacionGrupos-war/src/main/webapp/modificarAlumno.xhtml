@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+      
+<h:head>
+  <title>Alumno</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<table>
+			<tr>
+				<td>Nombre:</td>
+				<td><h:inputText value="#{modificarAlumno.alumno.nombre}"/></td>
+			</tr>
+			<tr>
+				<td>Primer apellido:</td>
+				<td><h:inputText value="#{modificarAlumno.alumno.apellido1}"/></td>
+			</tr>
+			<tr>
+				<td>Segundo apellido:</td>
+				<td><h:inputText value="#{modificarAlumno.alumno.apellido2}"/></td>
+			</tr>
+			<tr>
+				<td>DNI:</td>
+				<td><h:inputText value="#{modificarAlumno.alumno.dni}"/></td>
+			</tr>
+			<tr>
+				<td>Email constitucional:</td>
+				<td><h:inputText value="#{modificarAlumno.alumno.emailconstitucional}"/></td>
+			</tr>
+			<tr>
+				<td>Email personal:</td>
+				<td><h:inputText value="#{modificarAlumno.alumno.emailconstitucional}"/></td>
+			</tr>
+			<tr>
+				<td>Teléfono:</td>
+				<td><h:inputText value="#{modificarAlumno.alumno.tlf}"/></td>
+			</tr>
+			<tr>
+				<td>Móvil:</td>
+				<td><h:inputText value="#{modificarAlumno.alumno.movil}"/></td>
+			</tr>
+			<tr>
+				<td>Expediente:</td>
+				<td><h:inputText value="#{modificarAlumno.alumno.expediente}"></h:inputText></td>
+				<td><h:commandButton id="botonModificarExp" action="#{modificarAlumno.modificarExpediente}" value="Modificar"/></td>
+			</tr>
+			<tr>
+				<td><h:commandButton value="Enviar"/></td>
+				<td></td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+
+</html>

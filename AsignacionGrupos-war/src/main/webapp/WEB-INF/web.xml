@@ -17,6 +17,6 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
     <url-pattern>/faces/*</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>faces/ListadoAlumnos.xhtml</welcome-file>
+    <welcome-file>faces/modificarAlumno.xhtml</welcome-file>
   </welcome-file-list>
 </web-app>

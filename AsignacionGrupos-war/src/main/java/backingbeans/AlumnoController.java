@@ -5,49 +5,55 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import AsignacionGrupos.*;
+
+import AsignacionGrupos.CrudEJB;
 import Entidades.Alumno;
 import Exceptions.AlumnoNoEncontradoException;
 
-@Named(value="alumnocon")
+@Named
 @RequestScoped
 
 public class AlumnoController {
 	@Inject
-	private CrudEJBLocal crud;
-	private String dni;
-	private Alumno alumno ;
+	private CrudEJB crud;
 	
-	public String obtenterAlumno() {
-		try {
-			alumno = crud.buscarAlumnoPorDNI(dni);
-			if(alumno == null) {
-				return "failed";
-			}else {
-				return "success";
-			}
-		} catch (AlumnoNoEncontradoException e) {
-			e.printStackTrace();
+	private Alumno alumno;
+	
+	public Alumno getAlumnoporDni(String dni) throws AlumnoNoEncontradoException {
+		alumno  = crud.buscarAlumnoPorDNI(dni);
+		if(alumno==null) {
+			throw new AlumnoNoEncontradoException();
 		}
-			return "failed";
-	}
-
-	public String getDni() {
-		return dni;
-	}
-
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-
-	public Alumno getAlumno() {
 		return alumno;
+		
+		
+	}
+	public String getNombreAlumno() {
+		return alumno.getNombre();
+	}
+	public String getPrimerApellido() {
+		return alumno.getApellido1();
+	}
+	public String getSegundoApellido() {
+		return alumno.getApellido2();
+	}
+	public String getDNI() {
+		return alumno.getDNI();
+	}
+	public String getEmailinstitucional() {
+		return alumno.getEmail_institucional();
+	}
+	public String getEmailPersonal() {
+		return alumno.getEmail_personal();
+	}
+	public String getTlf() {
+		return alumno.getTelefono();
+	}
+	public String getMovil() {
+		return alumno.getMovil();
+		
 	}
 
-	public void setAlumno(Alumno alumno) {
-		this.alumno = alumno;
-	}
-	
 	
 	
 }

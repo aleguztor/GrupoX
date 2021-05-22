@@ -481,7 +481,7 @@ public class Crud {
 		}
 	}
 	
-////	@Requisitos({"RF2"})
+//	//@Requisitos({"RF2"})
 //	@Test
 //	public void testInsertarClase() {
 //		try {
@@ -498,7 +498,7 @@ public class Crud {
 //		}
 //	}
 //	
-////	@Requisitos({"RF2"})
+//	//@Requisitos({"RF2"})
 //	@Test
 //	public void testModificarClase() {
 //		try {
@@ -518,7 +518,7 @@ public class Crud {
 //		}
 //	}
 //	
-////	@Requisitos({"RF2"})
+//	//@Requisitos({"RF2"})
 //	@Test
 //	public void testEliminarClase() {
 //		try {
@@ -535,7 +535,7 @@ public class Crud {
 //		}
 //	}
 //	
-////	@Requisitos({"RF2"})
+//	//@Requisitos({"RF2"})
 //	@Test
 //	public void testExisteClase() {
 //		try {
@@ -545,7 +545,7 @@ public class Crud {
 //			Grupo g = new Grupo("20/21","a","manyana");
 //			Clase c = new Clase(g,cpk);
 //			crud.insertarClase(c);
-//			assertEquals(c, crud.existeClase(c));
+//		assertEquals(c, crud.existeClase(c));
 //		}catch(Exception e) {
 //			
 //		}

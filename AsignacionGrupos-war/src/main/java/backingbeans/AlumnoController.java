@@ -2,28 +2,48 @@ package backingbeans;
 
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
-import AsignacionGrupos.CrudEJB;
+import AsignacionGrupos.CrudEJBLocal;
 import Entidades.Alumno;
+import Exceptions.AlumnoDuplicadoException;
 import Exceptions.AlumnoNoEncontradoException;
 
+@SuppressWarnings("deprecation")
 @Named
-@RequestScoped
+@ManagedBean
 
 public class AlumnoController {
 	@Inject
-	private CrudEJB crud;
+	private CrudEJBLocal crud;
 	
-	private Alumno alumno;
+	private Alumno alumno =new Alumno();
+	private String dni;
 	
-	public Alumno getAlumnoporDni(String dni) throws AlumnoNoEncontradoException {
+	public void modificarAlumno() throws AlumnoDuplicadoException 
+	{
+		try {
+			Alumno au = crud.existeAlumno(alumno);
+			if(au!=null)
+				crud.modificarAlumno(alumno);
+		} catch (AlumnoNoEncontradoException  e) {
+			crud.insertarAlumno(alumno);
+			
+		} 
+		
+		
+	}
+	public String getDni() {
+		return dni;
+	}
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+	public Alumno getAlumnoporDni() throws AlumnoNoEncontradoException {
 		alumno  = crud.buscarAlumnoPorDNI(dni);
-		if(alumno==null) {
-			throw new AlumnoNoEncontradoException();
-		}
+		
 		return alumno;
 		
 		
@@ -54,6 +74,38 @@ public class AlumnoController {
 		
 	}
 
+	public void setNombreAlumno(String nombre) {
+		 alumno.setNombre(nombre);
+	}
+	
+	public void setPrimerApellido(String apellido) {
+		 alumno.setApellido1(apellido);
+	}
+	
+	public void setSegundoApellido(String apellido) {
+		 alumno.setApellido2(apellido);
+	}
+	
+	public void setDNI(String DNI) {
+		 alumno.setDNI(DNI);
+	}
+	
+	public void setEmailinstitucional(String email) {
+		alumno.setEmail_institucional(email);
+	}
+	
+	
+	public void setEmailPersonal(String email) {
+		alumno.setEmail_personal(email);
+	}
+	
+	public void setTlf(String tel) {
+		alumno.setTelefono(tel);
+	}
+
+	public void setMovil(String mov) {
+		alumno.setMovil(mov);
+	}
 	
 	
 }

@@ -1,8 +1,9 @@
 package backingbeans;
 
 
+
+
 import javax.enterprise.context.RequestScoped;
-import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -11,27 +12,24 @@ import Entidades.Alumno;
 import Exceptions.AlumnoDuplicadoException;
 import Exceptions.AlumnoNoEncontradoException;
 
-@SuppressWarnings("deprecation")
+
 @Named
-@ManagedBean
+@RequestScoped
 
 public class AlumnoController {
 	@Inject
 	private CrudEJBLocal crud;
 	
-	private Alumno alumno =new Alumno();
+	private Alumno alumno ;
 	private String dni;
+	
+	public AlumnoController() {
+		alumno = new Alumno();
+	}
 	
 	public void modificarAlumno() throws AlumnoDuplicadoException 
 	{
-		try {
-			Alumno au = crud.existeAlumno(alumno);
-			if(au!=null)
-				crud.modificarAlumno(alumno);
-		} catch (AlumnoNoEncontradoException  e) {
-			crud.insertarAlumno(alumno);
-			
-		} 
+		
 		
 		
 	}
@@ -73,39 +71,7 @@ public class AlumnoController {
 		return alumno.getMovil();
 		
 	}
-
-	public void setNombreAlumno(String nombre) {
-		 alumno.setNombre(nombre);
-	}
-	
-	public void setPrimerApellido(String apellido) {
-		 alumno.setApellido1(apellido);
-	}
-	
-	public void setSegundoApellido(String apellido) {
-		 alumno.setApellido2(apellido);
-	}
-	
-	public void setDNI(String DNI) {
-		 alumno.setDNI(DNI);
-	}
-	
-	public void setEmailinstitucional(String email) {
-		alumno.setEmail_institucional(email);
-	}
-	
-	
-	public void setEmailPersonal(String email) {
-		alumno.setEmail_personal(email);
-	}
-	
-	public void setTlf(String tel) {
-		alumno.setTelefono(tel);
-	}
-
-	public void setMovil(String mov) {
-		alumno.setMovil(mov);
-	}
+ 
 	
 	
 }

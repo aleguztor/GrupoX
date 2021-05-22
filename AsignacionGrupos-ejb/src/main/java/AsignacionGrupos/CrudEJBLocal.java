@@ -36,7 +36,7 @@ public interface CrudEJBLocal {
 	public void insertarExpediente(Expediente e) throws ExpedienteDuplicadoException;
 	
 	public void insertarAlumno(Alumno a) throws AlumnoDuplicadoException;
-	public void modificarAlumno(Alumno a) throws AlumnoNoEncontradoException;
+	public void modificarAlumno(Alumno al) throws AlumnoNoEncontradoException;
 	public Alumno existeAlumno(Alumno a) throws AlumnoNoEncontradoException;
 	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException;
 	public void eliminarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException;

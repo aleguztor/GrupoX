@@ -1,58 +1,32 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      >
-      
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
 <h:head>
-  <title>Alumno</title>
+	<title>Insertar Alumno</title>
 </h:head>
 
 <h:body>
-	<f:view>
+
+
+	<div class="card">
 		<h:form>
-			<h:outputLabel value="Introduzca DNI:" for="dni"></h:outputLabel>
-			<h:inputText id="dni" value="#{alumnoController.dni}"></h:inputText>
-			<br></br>
-			<h:commandButton value="Enviar" action="#{alumnoController.setDNI(dni)}"></h:commandButton>
-			
+			<h:panelGrid columns="3" layout="grid" styleClass="showcase-text-align-center">
+				<span class="ui-float-label"> 
+					<p:inputText id="float-input"
+						value="#{alumnoBean.DNI}" /> 
+					<p:outputLabel for="@previous"
+						value="DNI" /> 
+					<p:commandButton type="button" value="Enviar" />
+				</span>
+
+			</h:panelGrid>
 		</h:form>
-	</f:view>
-	
-	<f:view>
-		<h:form>
-			<h:outputLabel value="Nombre:" for="dni"></h:outputLabel>
-			<h:inputText id="dni" value="#{alumnoController.nombreAlumno}"></h:inputText>
-			<br></br>
-			<h:outputLabel value="Primer Apellido:" for="apellido1"></h:outputLabel>
-			<h:inputText id="apellido1" value="#{alumnoController.primerApellido}"></h:inputText>
-			<br></br>
-			<h:outputLabel value="Segundo Apellido:" for="apellido2"></h:outputLabel>
-			<h:inputText id="apellido2" value="#{alumnoController.segundoApellido}"></h:inputText>
-			<br></br>
-			<h:outputLabel value="DNI:" for="DNI"></h:outputLabel>
-			<h:inputText id="DNI" value="#{alumnoController.DNI}"></h:inputText>
-			<br></br>
-			<h:outputLabel value="Telefono:" for="tlf"></h:outputLabel>
-			<h:inputText id="tlf" value="#{alumnoController.tlf}"></h:inputText>
-			<br></br>
-			<h:outputLabel value="Movil:" for="mov"></h:outputLabel>
-			<h:inputText id="mov" value="#{alumnoController.movil}"></h:inputText>
-			<br></br>
-			<h:outputLabel value="Correo Institucional:" for="insti"></h:outputLabel>
-			<h:inputText id="insti" value="#{alumnoController.emailinstitucional}"></h:inputText>
-			<br></br>
-			<h:outputLabel value="Correo Personal:" for="per"></h:outputLabel>
-			<h:inputText id="per" value="#{alumnoController.emailPersonal}"></h:inputText>
-			<br></br>
-			<h:commandButton value="Enviar" action="#{alumnoController.modificarAlumno}"></h:commandButton>
-			<br></br>
-		</h:form>
-	
-	</f:view>
+
+	</div>
+
+
 
 </h:body>
-
 </html>

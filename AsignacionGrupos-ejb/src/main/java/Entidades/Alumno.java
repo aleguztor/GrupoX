@@ -2,7 +2,7 @@ package Entidades;
 import java.io.File;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,7 +14,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 @Entity
 public class Alumno implements Serializable{
-	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6705146396193434357L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long Id;

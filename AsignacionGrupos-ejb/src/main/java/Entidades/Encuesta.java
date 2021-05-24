@@ -9,9 +9,18 @@ import javax.persistence.*;
 @Entity
 @IdClass(Encuesta.Expediente_Encuesta_PK.class)
 public class Encuesta implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3085497720995065068L;
+
 	public static class Expediente_Encuesta_PK implements Serializable {
 		
-		private static final long serialVersionUID = 1L;
+	
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -8997815467337471718L;
 		@Column(nullable = false)
 		private Long expediente;
 		@Column(nullable = false)
@@ -41,21 +50,44 @@ public class Encuesta implements Serializable{
 		}
 
 		@Override
-		public boolean equals(Object o) {
-			if(o instanceof Expediente_Encuesta_PK) {
-				if(((Expediente_Encuesta_PK) o).expediente.equals(expediente) && ((Expediente_Encuesta_PK) o).Fecha_envio.equals(Fecha_envio)){
-							return true;
-						}
-			}
-			return false;
-		}
-		
-		@Override
 		public int hashCode() {
-			return expediente.hashCode() + Fecha_envio.hashCode();
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((Fecha_envio == null) ? 0 : Fecha_envio.hashCode());
+			result = prime * result + ((expediente == null) ? 0 : expediente.hashCode());
+			return result;
 		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Expediente_Encuesta_PK other = (Expediente_Encuesta_PK) obj;
+			if (Fecha_envio == null) {
+				if (other.Fecha_envio != null)
+					return false;
+			} else if (!Fecha_envio.equals(other.Fecha_envio))
+				return false;
+			if (expediente == null) {
+				if (other.expediente != null)
+					return false;
+			} else if (!expediente.equals(other.expediente))
+				return false;
+			return true;
+		}
+
+		@Override
+		public String toString() {
+			return "Expediente_Encuesta_PK [expediente=" + expediente + ", Fecha_envio=" + Fecha_envio + "]";
+		}
+
+		
 	}
-	private static final long serialVersionUID = 1L;
+	
 	@Id
 	private Date Fecha_envio;
 	private String Turno_Preferente;
@@ -112,6 +144,9 @@ public class Encuesta implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((Fecha_envio == null) ? 0 : Fecha_envio.hashCode());
+		result = prime * result + ((Turno_Preferente == null) ? 0 : Turno_Preferente.hashCode());
+		result = prime * result + ((expediente == null) ? 0 : expediente.hashCode());
+		result = prime * result + ((gpa == null) ? 0 : gpa.hashCode());
 		return result;
 	}
 
@@ -129,8 +164,31 @@ public class Encuesta implements Serializable{
 				return false;
 		} else if (!Fecha_envio.equals(other.Fecha_envio))
 			return false;
+		if (Turno_Preferente == null) {
+			if (other.Turno_Preferente != null)
+				return false;
+		} else if (!Turno_Preferente.equals(other.Turno_Preferente))
+			return false;
+		if (expediente == null) {
+			if (other.expediente != null)
+				return false;
+		} else if (!expediente.equals(other.expediente))
+			return false;
+		if (gpa == null) {
+			if (other.gpa != null)
+				return false;
+		} else if (!gpa.equals(other.gpa))
+			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Encuesta [Fecha_envio=" + Fecha_envio + ", Turno_Preferente=" + Turno_Preferente + ", expediente="
+				+ expediente + ", gpa=" + gpa + "]";
+	}
+
+	
 
 	
 }

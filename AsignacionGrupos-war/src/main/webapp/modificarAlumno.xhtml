@@ -11,67 +11,68 @@
 
 
 	<h:form>
-		
-		<span class="ui-fluid p-formgrid p-grid" >
-			<div class="p-field p-col" >
+
+		<div class="ui-fluid p-formgrid p-grid">
+			<div class="p-field p-col">
 				<label for="nombre">Nombre</label>
 				<p:inputText id="nombre" value="#{alumnop.nombre}" type="text"></p:inputText>
 			</div>
-			<div class="p-field p-col" >
+			<div class="p-field p-col">
 				<label for="apellido1">Primer Apellido</label>
 				<p:inputText id="apellido1" value="#{alumnop.apellido1}" type="text"></p:inputText>
 			</div>
-			<div class="p-field p-col" >
+			<div class="p-field p-col">
 				<label for="apellido2">Segundo Apellido</label>
 				<p:inputText id="apellido2" value="#{alumnop.apellido2}" type="text"></p:inputText>
 			</div>
-			<div class="p-field p-col" >
+			<div class="p-field p-col">
 				<label for="dni">DNI</label>
 				<p:inputText id="dni" value="#{alumnop.dni}" type="text"></p:inputText>
 			</div>
-			<div class="p-field p-col" >
+			<div class="p-field p-col">
 				<label for="email_institucional">Email institucional</label>
 				<p:inputText id="email_institucional"
 					value="#{alumnop.email_institucional}" type="text"></p:inputText>
 			</div>
-			<div class="p-field p-col" >
+			<div class="p-field p-col">
 				<label for="email_personal">Email personal</label>
 				<p:inputText id="email_personal" value="#{alumnop.email_personal}"
 					type="text"></p:inputText>
 			</div>
-			<div class="p-field p-col" >
+			<div class="p-field p-col">
 				<label for="movil">Movil</label>
 				<p:inputText id="movil" value="#{alumnop.movil}" type="text"></p:inputText>
 			</div>
-			<div class="p-field p-col" >
+			<div class="p-field p-col">
 				<label for="telefono">Telefono</label>
 				<p:inputText id="telefono" value="#{alumnop.telefono}" type="text"></p:inputText>
 			</div>
-			<div class="p-field p-col" >
+			<div class="p-field p-col">
 				<label for="direccion_notificacion">Direccion</label>
 				<p:inputText id="direccion_notificacion"
 					value="#{alumnop.direccion_notificacion}" type="text"></p:inputText>
 			</div>
-			<div class="p-field p-col" >
+			<div class="p-field p-col">
 				<label for="localidad_notificacion">Localidad</label>
 				<p:inputText id="localidad_notificacion"
 					value="#{alumnop.localidad_notificacion}" type="text"></p:inputText>
 			</div>
-			<div class="p-field p-col" >
+			<div class="p-field p-col">
 				<label for="provincia_notificacion">Provincia</label>
 				<p:inputText id="provincia_notificacion"
 					value="#{alumnop.provincia_notificacion}" type="text"></p:inputText>
 			</div>
-			<div class="p-field p-col" >
+			<div class="p-field p-col">
 				<label for="cp_notificacion">Codigo Postal</label>
 				<p:inputText id="cp_notificacion" value="#{alumnop.cp_notificacion}"
 					type="text"></p:inputText>
 			</div>
-
-			<p:commandButton type="button" value="Enviar" 
-				styleClass="ui-button-outlined" action="#{alumnop.crear}" />
 		</div>
-		
+		<div>
+		<p:commandButton type="button" value="Enviar"
+			styleClass="ui-button-outlined" action="#{alumnop.crear}" />
+		</div>
+
 
 
 	</h:form>

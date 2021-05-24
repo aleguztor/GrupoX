@@ -171,5 +171,15 @@ public class Asignatura {
 	public int hashCode() {
 		return Referencia.hashCode()+Codigo+Nombre.hashCode()+Creditos;
 	}
+
+	@Override
+	public String toString() {
+		return "Asignatura [Referencia=" + Referencia + ", Codigo=" + Codigo + ", Creditos=" + Creditos + ", Ofertada="
+				+ Ofertada + ", Nombre=" + Nombre + ", Curso=" + Curso + ", Caracter=" + Caracter + ", Duracion="
+				+ Duracion + ", Unidad_Temporal=" + Unidad_Temporal + ", Idioma_de_imparticion=" + Idioma_de_imparticion
+				+ ", gpa=" + gpa + ", clases=" + clases + ", titulacion=" + titulacion + ", am=" + am + "]";
+	}
+	
+	
 	
 }

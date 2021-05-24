@@ -7,7 +7,16 @@ import javax.persistence.*;
 @Entity
 @IdClass(Grupos_Por_Asignatura.Grupos_Por_Asignatura_PK.class)
 public class Grupos_Por_Asignatura implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4048381271054926555L;
+
 	public static class Grupos_Por_Asignatura_PK implements Serializable {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -7704113819650465481L;
 		@Column(nullable = false)
 		private String Curso_Academico;
 		@Column(nullable = false)
@@ -22,20 +31,74 @@ public class Grupos_Por_Asignatura implements Serializable {
 			grupo = g;
 			asignatura = a;
 		}
-		@Override
-		public boolean equals(Object o) {
-			if(o instanceof Grupos_Por_Asignatura_PK) {
-				if(((Grupos_Por_Asignatura_PK) o).asignatura.equals(asignatura) && ((Grupos_Por_Asignatura_PK)o).Curso_Academico.equals(Curso_Academico) && ((Grupos_Por_Asignatura_PK) o).grupo.equals(grupo)) {
-					return true;
-				}
-			}
-			return false;
+
+		public String getCurso_Academico() {
+			return Curso_Academico;
 		}
-		
+
+		public void setCurso_Academico(String curso_Academico) {
+			Curso_Academico = curso_Academico;
+		}
+
+		public Long getGrupo() {
+			return grupo;
+		}
+
+		public void setGrupo(Long grupo) {
+			this.grupo = grupo;
+		}
+
+		public String getAsignatura() {
+			return asignatura;
+		}
+
+		public void setAsignatura(String asignatura) {
+			this.asignatura = asignatura;
+		}
+
 		@Override
 		public int hashCode() {
-			return asignatura.hashCode() + grupo.hashCode() + Curso_Academico.hashCode();
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((Curso_Academico == null) ? 0 : Curso_Academico.hashCode());
+			result = prime * result + ((asignatura == null) ? 0 : asignatura.hashCode());
+			result = prime * result + ((grupo == null) ? 0 : grupo.hashCode());
+			return result;
 		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Grupos_Por_Asignatura_PK other = (Grupos_Por_Asignatura_PK) obj;
+			if (Curso_Academico == null) {
+				if (other.Curso_Academico != null)
+					return false;
+			} else if (!Curso_Academico.equals(other.Curso_Academico))
+				return false;
+			if (asignatura == null) {
+				if (other.asignatura != null)
+					return false;
+			} else if (!asignatura.equals(other.asignatura))
+				return false;
+			if (grupo == null) {
+				if (other.grupo != null)
+					return false;
+			} else if (!grupo.equals(other.grupo))
+				return false;
+			return true;
+		}
+
+		@Override
+		public String toString() {
+			return "Grupos_Por_Asignatura_PK [Curso_Academico=" + Curso_Academico + ", grupo=" + grupo + ", asignatura="
+					+ asignatura + "]";
+		}
+		
 		
 	}
 	@Id
@@ -102,17 +165,56 @@ public class Grupos_Por_Asignatura implements Serializable {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if(o instanceof Grupos_Por_Asignatura) {
-			if(((Grupos_Por_Asignatura) o).Curso_Academico.equals(Curso_Academico)) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	@Override
 	public int hashCode() {
-		return Curso_Academico.hashCode();
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Curso_Academico == null) ? 0 : Curso_Academico.hashCode());
+		result = prime * result + (Oferta ? 1231 : 1237);
+		result = prime * result + ((asignatura == null) ? 0 : asignatura.hashCode());
+		result = prime * result + ((encuestas == null) ? 0 : encuestas.hashCode());
+		result = prime * result + ((grupo == null) ? 0 : grupo.hashCode());
+		return result;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Grupos_Por_Asignatura other = (Grupos_Por_Asignatura) obj;
+		if (Curso_Academico == null) {
+			if (other.Curso_Academico != null)
+				return false;
+		} else if (!Curso_Academico.equals(other.Curso_Academico))
+			return false;
+		if (Oferta != other.Oferta)
+			return false;
+		if (asignatura == null) {
+			if (other.asignatura != null)
+				return false;
+		} else if (!asignatura.equals(other.asignatura))
+			return false;
+		if (encuestas == null) {
+			if (other.encuestas != null)
+				return false;
+		} else if (!encuestas.equals(other.encuestas))
+			return false;
+		if (grupo == null) {
+			if (other.grupo != null)
+				return false;
+		} else if (!grupo.equals(other.grupo))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Grupos_Por_Asignatura [Curso_Academico=" + Curso_Academico + ", Oferta=" + Oferta + ", encuestas="
+				+ encuestas + ", grupo=" + grupo + ", asignatura=" + asignatura + "]";
+	}
+
+	
 }

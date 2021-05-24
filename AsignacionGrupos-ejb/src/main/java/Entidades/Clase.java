@@ -8,11 +8,20 @@ import javax.persistence.*;
 @Entity
 @IdClass(Entidades.Clase.Clase_PK.class)
 public class Clase implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5178905615219599879L;
+
 	public static class Clase_PK implements Serializable{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 4165377919643269695L;
 		private Long grupo;
 		private Date dia;
 		private Date horainicio;
-		private static final long serialVersionUID = 1L;
+		
 
 		public Clase_PK() {}
 		
@@ -82,6 +91,13 @@ public class Clase implements Serializable {
 				return false;
 			return true;
 		}
+
+		@Override
+		public String toString() {
+			return "Clase_PK [grupo=" + grupo + ", dia=" + dia + ", horainicio=" + horainicio + "]";
+		}
+
+		
 			
 	}
 	@Id
@@ -94,7 +110,7 @@ public class Clase implements Serializable {
 	private Grupo grupo;
 	@Temporal(TemporalType.TIME)
 	private Date Horafin;
-	private static final long serialVersionUID = 1L;
+	
 	@ManyToOne
 	private Asignatura asignatura;
 
@@ -194,6 +210,14 @@ public class Clase implements Serializable {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Clase [dia=" + dia + ", horainicio=" + horainicio + ", grupo=" + grupo + ", Horafin=" + Horafin
+				+ ", asignatura=" + asignatura + "]";
+	}
+
+	
 	
    
 }

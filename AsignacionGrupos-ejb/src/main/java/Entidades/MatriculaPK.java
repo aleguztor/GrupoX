@@ -1,7 +1,7 @@
 package Entidades;
 
 import java.io.Serializable;
-import java.lang.Integer;
+
 
 /**
  * ID class for entity: Matricula
@@ -10,9 +10,13 @@ import java.lang.Integer;
 public class MatriculaPK  implements Serializable {   
    
 	         
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5928146559444850991L;
 	private String curso_academico;         
 	private Long expedientes_num_expedientes;
-	private static final long serialVersionUID = 1L;
+	
 
 	public MatriculaPK() {}
 	
@@ -39,34 +43,46 @@ public class MatriculaPK  implements Serializable {
 	public void setExpedientes_num_expedientes(Long expedientes_num_expedientes) {
 		this.expedientes_num_expedientes = expedientes_num_expedientes;
 	}
-	
-   
-	/*
-	 * @see java.lang.Object#equals(Object)
-	 */	
-	public boolean equals(Object o) {
-		if (o == this) {
-			return true;
-		}
-		if (!(o instanceof MatriculaPK)) {
-			return false;
-		}
-		MatriculaPK other = (MatriculaPK) o;
-		return true
-			&& (getCurso_academico() == null ? other.getCurso_academico() == null : getCurso_academico().equals(other.getCurso_academico()))
-			&& (getExpedientes_num_expedientes() == null ? other.getExpedientes_num_expedientes() == null : getExpedientes_num_expedientes().equals(other.getExpedientes_num_expedientes()));
-	}
-	
-	/*	 
-	 * @see java.lang.Object#hashCode()
-	 */	
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (getCurso_academico() == null ? 0 : getCurso_academico().hashCode());
-		result = prime * result + (getExpedientes_num_expedientes() == null ? 0 : getExpedientes_num_expedientes().hashCode());
+		result = prime * result + ((curso_academico == null) ? 0 : curso_academico.hashCode());
+		result = prime * result + ((expedientes_num_expedientes == null) ? 0 : expedientes_num_expedientes.hashCode());
 		return result;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MatriculaPK other = (MatriculaPK) obj;
+		if (curso_academico == null) {
+			if (other.curso_academico != null)
+				return false;
+		} else if (!curso_academico.equals(other.curso_academico))
+			return false;
+		if (expedientes_num_expedientes == null) {
+			if (other.expedientes_num_expedientes != null)
+				return false;
+		} else if (!expedientes_num_expedientes.equals(other.expedientes_num_expedientes))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "MatriculaPK [curso_academico=" + curso_academico + ", expedientes_num_expedientes="
+				+ expedientes_num_expedientes + "]";
+	}
+	
+   
+	
    
    
 }

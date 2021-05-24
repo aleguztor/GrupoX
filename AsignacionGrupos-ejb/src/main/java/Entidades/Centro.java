@@ -7,7 +7,11 @@ import javax.persistence.*;
 
 @Entity
 public class Centro implements Serializable{
-	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6457694112055166402L;
 	@Id 
 	private Long ID;
 	@Column(nullable=false, unique = true)
@@ -54,6 +58,18 @@ public class Centro implements Serializable{
 	public void setTLF_Conserjeria(String tLF_Conserjeria) {
 		TLF_Conserjeria = tLF_Conserjeria;
 	}
+	
+	
+	public List<Titulacion> getTitulaciones() {
+		return titulaciones;
+	}
+
+	public void setTitulaciones(List<Titulacion> titulaciones) {
+		this.titulaciones = titulaciones;
+	}
+
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -62,8 +78,10 @@ public class Centro implements Serializable{
 		result = prime * result + ((ID == null) ? 0 : ID.hashCode());
 		result = prime * result + ((Nombre == null) ? 0 : Nombre.hashCode());
 		result = prime * result + ((TLF_Conserjeria == null) ? 0 : TLF_Conserjeria.hashCode());
+		result = prime * result + ((titulaciones == null) ? 0 : titulaciones.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -88,9 +106,23 @@ public class Centro implements Serializable{
 				return false;
 		} else if (!Nombre.equals(other.Nombre))
 			return false;
-		if (TLF_Conserjeria != other.TLF_Conserjeria)
+		if (TLF_Conserjeria == null) {
+			if (other.TLF_Conserjeria != null)
+				return false;
+		} else if (!TLF_Conserjeria.equals(other.TLF_Conserjeria))
+			return false;
+		if (titulaciones == null) {
+			if (other.titulaciones != null)
+				return false;
+		} else if (!titulaciones.equals(other.titulaciones))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Centro [ID=" + ID + ", Nombre=" + Nombre + ", Direccion=" + Direccion + ", TLF_Conserjeria="
+				+ TLF_Conserjeria + ", titulaciones=" + titulaciones + "]";
 	}
 	
 	

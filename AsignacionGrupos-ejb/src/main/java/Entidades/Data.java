@@ -1,5 +1,5 @@
 package Entidades;
-import java.util.List;
+
 
 import javax.persistence.*;
 
@@ -79,6 +79,60 @@ public class Data {
 
 	public void setCreditos_TF(int creditos_TF) {
 		this.creditos_TF = creditos_TF;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + creditos_CF;
+		result = prime * result + creditos_FB;
+		result = prime * result + creditos_OB;
+		result = prime * result + creditos_OP;
+		result = prime * result + creditos_TF;
+		result = prime * result + creditos_superados;
+		result = prime * result + ((grupos_asignados == null) ? 0 : grupos_asignados.hashCode());
+		result = prime * result + nota_media;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Data other = (Data) obj;
+		if (creditos_CF != other.creditos_CF)
+			return false;
+		if (creditos_FB != other.creditos_FB)
+			return false;
+		if (creditos_OB != other.creditos_OB)
+			return false;
+		if (creditos_OP != other.creditos_OP)
+			return false;
+		if (creditos_TF != other.creditos_TF)
+			return false;
+		if (creditos_superados != other.creditos_superados)
+			return false;
+		if (grupos_asignados == null) {
+			if (other.grupos_asignados != null)
+				return false;
+		} else if (!grupos_asignados.equals(other.grupos_asignados))
+			return false;
+		if (nota_media != other.nota_media)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Data [grupos_asignados=" + grupos_asignados + ", nota_media=" + nota_media + ", creditos_superados="
+				+ creditos_superados + ", creditos_FB=" + creditos_FB + ", creditos_OB=" + creditos_OB
+				+ ", creditos_OP=" + creditos_OP + ", creditos_CF=" + creditos_CF + ", creditos_TF=" + creditos_TF
+				+ "]";
 	}
 
 	

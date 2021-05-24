@@ -182,23 +182,138 @@ public class Alumno implements Serializable{
 		this.pdf = pdf;
 	}
 
-	@Override
-	public boolean equals(Object o) {
-		if(o instanceof Alumno) {
-			if(((Alumno) o).DNI.equals(DNI) && ((Alumno) o).Nombre.equals(Nombre) && ((Alumno) o).Email_institucional.equals(Email_institucional)) {
-				return true;
-			}
-		}
-		return false;
+	public List<Grupo> getGrupos() {
+		return grupos;
 	}
-	
+
+	public void setGrupos(List<Grupo> grupos) {
+		this.grupos = grupos;
+	}
+
 	@Override
 	public int hashCode() {
-		return Id.hashCode()+DNI.hashCode()+Nombre.hashCode()+Apellido1.hashCode()+Email_institucional.hashCode();
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Apellido1 == null) ? 0 : Apellido1.hashCode());
+		result = prime * result + ((Apellido2 == null) ? 0 : Apellido2.hashCode());
+		result = prime * result + ((CP_notificacion == null) ? 0 : CP_notificacion.hashCode());
+		result = prime * result + ((DNI == null) ? 0 : DNI.hashCode());
+		result = prime * result + ((Direccion_notificacion == null) ? 0 : Direccion_notificacion.hashCode());
+		result = prime * result + ((Email_institucional == null) ? 0 : Email_institucional.hashCode());
+		result = prime * result + ((Email_personal == null) ? 0 : Email_personal.hashCode());
+		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+		result = prime * result + ((Localidad_notificacion == null) ? 0 : Localidad_notificacion.hashCode());
+		result = prime * result + ((Movil == null) ? 0 : Movil.hashCode());
+		result = prime * result + ((Nombre == null) ? 0 : Nombre.hashCode());
+		result = prime * result + ((Provincia_notificacion == null) ? 0 : Provincia_notificacion.hashCode());
+		result = prime * result + ((Telefono == null) ? 0 : Telefono.hashCode());
+		result = prime * result + ((expedientes == null) ? 0 : expedientes.hashCode());
+		result = prime * result + ((grupos == null) ? 0 : grupos.hashCode());
+		result = prime * result + ((pdf == null) ? 0 : pdf.hashCode());
+		return result;
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Alumno other = (Alumno) obj;
+		if (Apellido1 == null) {
+			if (other.Apellido1 != null)
+				return false;
+		} else if (!Apellido1.equals(other.Apellido1))
+			return false;
+		if (Apellido2 == null) {
+			if (other.Apellido2 != null)
+				return false;
+		} else if (!Apellido2.equals(other.Apellido2))
+			return false;
+		if (CP_notificacion == null) {
+			if (other.CP_notificacion != null)
+				return false;
+		} else if (!CP_notificacion.equals(other.CP_notificacion))
+			return false;
+		if (DNI == null) {
+			if (other.DNI != null)
+				return false;
+		} else if (!DNI.equals(other.DNI))
+			return false;
+		if (Direccion_notificacion == null) {
+			if (other.Direccion_notificacion != null)
+				return false;
+		} else if (!Direccion_notificacion.equals(other.Direccion_notificacion))
+			return false;
+		if (Email_institucional == null) {
+			if (other.Email_institucional != null)
+				return false;
+		} else if (!Email_institucional.equals(other.Email_institucional))
+			return false;
+		if (Email_personal == null) {
+			if (other.Email_personal != null)
+				return false;
+		} else if (!Email_personal.equals(other.Email_personal))
+			return false;
+		if (Id == null) {
+			if (other.Id != null)
+				return false;
+		} else if (!Id.equals(other.Id))
+			return false;
+		if (Localidad_notificacion == null) {
+			if (other.Localidad_notificacion != null)
+				return false;
+		} else if (!Localidad_notificacion.equals(other.Localidad_notificacion))
+			return false;
+		if (Movil == null) {
+			if (other.Movil != null)
+				return false;
+		} else if (!Movil.equals(other.Movil))
+			return false;
+		if (Nombre == null) {
+			if (other.Nombre != null)
+				return false;
+		} else if (!Nombre.equals(other.Nombre))
+			return false;
+		if (Provincia_notificacion == null) {
+			if (other.Provincia_notificacion != null)
+				return false;
+		} else if (!Provincia_notificacion.equals(other.Provincia_notificacion))
+			return false;
+		if (Telefono == null) {
+			if (other.Telefono != null)
+				return false;
+		} else if (!Telefono.equals(other.Telefono))
+			return false;
+		if (expedientes == null) {
+			if (other.expedientes != null)
+				return false;
+		} else if (!expedientes.equals(other.expedientes))
+			return false;
+		if (grupos == null) {
+			if (other.grupos != null)
+				return false;
+		} else if (!grupos.equals(other.grupos))
+			return false;
+		if (pdf == null) {
+			if (other.pdf != null)
+				return false;
+		} else if (!pdf.equals(other.pdf))
+			return false;
+		return true;
+	}
+
 	@Override
 	public String toString() {
-		return "Alumno "+Id+"\nNombre: "+Nombre+"Apellido1: "+Apellido1+"DNI: "+DNI;
+		return "Alumno [Id=" + Id + ", DNI=" + DNI + ", Nombre=" + Nombre + ", Apellido1=" + Apellido1 + ", Apellido2="
+				+ Apellido2 + ", Email_institucional=" + Email_institucional + ", Email_personal=" + Email_personal
+				+ ", Telefono=" + Telefono + ", Movil=" + Movil + ", Direccion_notificacion=" + Direccion_notificacion
+				+ ", Localidad_notificacion=" + Localidad_notificacion + ", Provincia_notificacion="
+				+ Provincia_notificacion + ", CP_notificacion=" + CP_notificacion + ", expedientes=" + expedientes
+				+ ", grupos=" + grupos + ", pdf=" + pdf + "]";
 	}
+
+	
 }

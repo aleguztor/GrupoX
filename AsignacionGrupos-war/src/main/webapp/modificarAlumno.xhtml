@@ -5,79 +5,84 @@
 
 <h:head>
 	<title>Insertar Alumno</title>
+	<style>
+/* reset on the showcase style*/
+body .ui-panelgrid .ui-panelgrid-cell {
+	background-color: transparent;
+}
+
+/* example use of styles for your form */
+.my-heading-row {
+	background-color: var(- -surface-c);
+	font-weight: bold;
+}
+</style>
 </h:head>
 
 <h:body>
 
+	<form>
+		<div class="card">
+			<h5>Alumno</h5>
 
-	<h:form>
 
-		<div class="ui-fluid p-formgrid p-grid">
-			<div class="p-field p-col">
-				<label for="nombre">Nombre</label>
-				<p:inputText id="nombre" value="#{alumnop.nombre}" type="text"></p:inputText>
-			</div>
-			<div class="p-field p-col">
-				<label for="apellido1">Primer Apellido</label>
-				<p:inputText id="apellido1" value="#{alumnop.apellido1}" type="text"></p:inputText>
-			</div>
-			<div class="p-field p-col">
-				<label for="apellido2">Segundo Apellido</label>
-				<p:inputText id="apellido2" value="#{alumnop.apellido2}" type="text"></p:inputText>
-			</div>
-			<div class="p-field p-col">
-				<label for="dni">DNI</label>
-				<p:inputText id="dni" value="#{alumnop.dni}" type="text"></p:inputText>
-			</div>
-			<div class="p-field p-col">
-				<label for="email_institucional">Email institucional</label>
-				<p:inputText id="email_institucional"
-					value="#{alumnop.email_institucional}" type="text"></p:inputText>
-			</div>
-			<div class="p-field p-col">
-				<label for="email_personal">Email personal</label>
-				<p:inputText id="email_personal" value="#{alumnop.email_personal}"
-					type="text"></p:inputText>
-			</div>
-			<div class="p-field p-col">
-				<label for="movil">Movil</label>
-				<p:inputText id="movil" value="#{alumnop.movil}" type="text"></p:inputText>
-			</div>
-			<div class="p-field p-col">
-				<label for="telefono">Telefono</label>
-				<p:inputText id="telefono" value="#{alumnop.telefono}" type="text"></p:inputText>
-			</div>
-			<div class="p-field p-col">
-				<label for="direccion_notificacion">Direccion</label>
-				<p:inputText id="direccion_notificacion"
-					value="#{alumnop.direccion_notificacion}" type="text"></p:inputText>
-			</div>
-			<div class="p-field p-col">
-				<label for="localidad_notificacion">Localidad</label>
-				<p:inputText id="localidad_notificacion"
-					value="#{alumnop.localidad_notificacion}" type="text"></p:inputText>
-			</div>
-			<div class="p-field p-col">
-				<label for="provincia_notificacion">Provincia</label>
-				<p:inputText id="provincia_notificacion"
-					value="#{alumnop.provincia_notificacion}" type="text"></p:inputText>
-			</div>
-			<div class="p-field p-col">
-				<label for="cp_notificacion">Codigo Postal</label>
-				<p:inputText id="cp_notificacion" value="#{alumnop.cp_notificacion}"
-					type="text"></p:inputText>
-			</div>
-		</div>
-		<div>
-		<p:commandButton type="button" value="Enviar"
-			styleClass="ui-button-outlined" action="#{alumnop.crear}" />
+			<!--
+    Note: Rows and columns can have style, styleClass, and id.
+    Note: A column with a defined styleClass will ignore the styleClass specified in the columnClasses list.
+    Note: Note the use of ui-fluid to ensure that components are sized correctly and the use of ui-panelgrid-blank to remove borders.
+    -->
+			<p:panelGrid columns="4"
+				columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+				layout="grid" styleClass="ui-panelgrid-blank ui-fluid"
+				style="border:0px none; background-color:transparent;">
+
+				<p:row styleClass="my-heading-row">
+            Nombre
+       		 </p:row>
+
+				<p:outputLabel for="@next" value="Nombre" />
+				<p:inputText value="#{modAlumno.nombre}" />
+
+				<p:outputLabel for="@next" value="Primer Apellido" />
+				<p:inputText value="#{modAlumno.apellido1}" />/>
+
+			<p:outputLabel for="@next" value="Segundo Apellido" />
+				<p:inputText value="#{modAlumno.apellido2}" />
+
+				<p:row id="my-row-id" styleClass="my-heading-row"
+					style="font-weight: bold">
+            Contacto
+       		 </p:row>
+
+				<p:outputLabel for="@next" value="Email" />
+				<p:inputText value="#{modAlumno.email_personal}" />
+
+				<p:outputLabel for="@next" value="Email Personal" />
+				<p:inputText value="#{modAlumno.email_institucional}" /> />
+			<p:outputLabel for="@next" value="Movil" />
+				<p:inputText value="#{modAlumno.movil}" />
+				<p:outputLabel for="@next" value="Telefono" />
+				<p:inputText value="#{modAlumno.telefono}" />
+
+				<p:outputLabel for="@next" value="Direccion" />
+				<p:inputText value="#{modAlumno.direccion_notificacion}" />
+				<p:outputLabel for="@next" value="Localidad" />
+				<p:inputText value="#{modAlumno.localidad_notificacion}" />
+				<p:outputLabel for="@next" value="CP" />
+				<p:inputText value="#{modAlumno.cp_notificacion}" />
+
+
+
+				<p:row>
+					<p:column styleClass="ui-grid-col-12">
+						<p:commandButton type="button" value="Insertar"
+							action="#{modAlumno.insertar()}" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
 		</div>
 
-
-
-	</h:form>
-
-
+	</form>
 
 
 

@@ -355,7 +355,7 @@ public class CrudEJB implements CrudEJBLocal {
 
 	@Override
 	public void insertarClase(Clase c) throws ClaseException {
-		Query q = em.createQuery(qlString)
+		Query q = em.createQuery("SELECT clase FROM CLASE clase where clase.horainicio= :hora and clase.dia = :dia and clase.grupo = :grupo ",Clase.class).setParameter("hora", c.getDia());
 		if(cl == null)
 			em.persist(cl);
 		else

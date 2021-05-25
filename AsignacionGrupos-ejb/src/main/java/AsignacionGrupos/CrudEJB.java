@@ -58,7 +58,7 @@ public class CrudEJB implements CrudEJBLocal {
 	@Override
 	public void modificarExpediente(Expediente e) throws ExpedienteNoEncontradoException {
 		Expediente ex = existeExpediente(e);
-		em.merge(e);
+		em.merge(ex);
 		
 	}
 
@@ -353,44 +353,44 @@ public class CrudEJB implements CrudEJBLocal {
 	}
 
 
-//	@Override
-//	public void insertarClase(Clase c) throws ClaseException {
-//		Clase cl= em.find(Clase.class,c.getClasePK());
-//		if(cl == null)
-//			em.persist(cl);
-//		else
-//			throw new ClaseException();
-//	}
+	@Override
+	public void insertarClase(Clase c) throws ClaseException {
+		Query q = em.createQuery(qlString)
+		if(cl == null)
+			em.persist(cl);
+		else
+			throw new ClaseException();
+	}
 
-//	@Override
-//	public void modificarClase(Clase c) throws ClaseException {
-//		Clase cl = existeClase(c);
-//		if(cl==null)
-//			throw new ClaseException();
-//		else 
-//			em.merge(cl);
-//		
-//	}
+	@Override
+	public void modificarClase(Clase c) throws ClaseException {
+		Clase cl = existeClase(c);
+		if(cl==null)
+			throw new ClaseException();
+		else 
+			em.merge(cl);
+		
+	}
 
-//	@Override
-//	public void eliminarClase(Clase c) throws ClaseException {
-//		Clase cl = existeClase(c);
-//		if(cl==null)
-//			throw new ClaseException();
-//		else 
-//			em.remove(cl);
-//		
-//	}
+	@Override
+	public void eliminarClase(Clase c) throws ClaseException {
+		Clase cl = existeClase(c);
+		if(cl==null)
+			throw new ClaseException();
+		else 
+			em.remove(cl);
+		
+	}
 
-//	@Override
-//	public Clase existeClase(Clase c) throws ClaseException {
-//		Clase cl = em.find(Clase.class, c.getClasePK());
-//		if(cl == null)
-//			throw new ClaseException();
-//		else
-//			return cl;
-//		
-//	}
+	@Override
+	public Clase existeClase(Clase c) throws ClaseException {
+		Clase cl = em.find(Clase.class, c.getClasePK());
+		if(cl == null)
+				throw new ClaseException();
+		else
+			return cl;
+		
+	}
 
 	@Override
 	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {

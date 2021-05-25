@@ -78,10 +78,9 @@ public interface CrudEJBLocal {
 	public Centro existeCentro (Centro c) throws CentroException;
 	public void eliminarCentro (Centro c) throws CentroException;
 	
-	
-//	public void insertarClase(Clase c)throws ClaseException;
-//	public void modificarClase(Clase c)throws ClaseException;
-//	public void eliminarClase(Clase c)throws ClaseException;
-//	public Clase existeClase(Clase c)throws ClaseException;
+		public void insertarClase(Clase c)throws ClaseException;
+	public void modificarClase(Clase c)throws ClaseException;
+	public void eliminarClase(Clase c)throws ClaseException;
+	public Clase existeClase(Clase c)throws ClaseException;
 
 }

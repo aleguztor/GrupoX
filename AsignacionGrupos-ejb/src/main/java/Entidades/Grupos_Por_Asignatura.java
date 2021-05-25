@@ -98,6 +98,8 @@ public class Grupos_Por_Asignatura implements Serializable {
 			return "Grupos_Por_Asignatura_PK [Curso_Academico=" + Curso_Academico + ", grupo=" + grupo + ", asignatura="
 					+ asignatura + "]";
 		}
+
+	
 		
 		
 	}
@@ -171,7 +173,6 @@ public class Grupos_Por_Asignatura implements Serializable {
 		result = prime * result + ((Curso_Academico == null) ? 0 : Curso_Academico.hashCode());
 		result = prime * result + (Oferta ? 1231 : 1237);
 		result = prime * result + ((asignatura == null) ? 0 : asignatura.hashCode());
-		result = prime * result + ((encuestas == null) ? 0 : encuestas.hashCode());
 		result = prime * result + ((grupo == null) ? 0 : grupo.hashCode());
 		return result;
 	}
@@ -197,11 +198,6 @@ public class Grupos_Por_Asignatura implements Serializable {
 				return false;
 		} else if (!asignatura.equals(other.asignatura))
 			return false;
-		if (encuestas == null) {
-			if (other.encuestas != null)
-				return false;
-		} else if (!encuestas.equals(other.encuestas))
-			return false;
 		if (grupo == null) {
 			if (other.grupo != null)
 				return false;
@@ -212,9 +208,11 @@ public class Grupos_Por_Asignatura implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Grupos_Por_Asignatura [Curso_Academico=" + Curso_Academico + ", Oferta=" + Oferta + ", encuestas="
-				+ encuestas + ", grupo=" + grupo + ", asignatura=" + asignatura + "]";
+		return "Grupos_Por_Asignatura [Curso_Academico=" + Curso_Academico + ", Oferta=" + Oferta + ", grupo=" + grupo
+				+ ", asignatura=" + asignatura + "]";
 	}
+
+	
 
 	
 }

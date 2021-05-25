@@ -202,24 +202,10 @@ public class Grupo implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Asignar == null) ? 0 : Asignar.hashCode());
 		result = prime * result + ((Curso == null) ? 0 : Curso.hashCode());
 		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
-		result = prime * result + ((Ingles == null) ? 0 : Ingles.hashCode());
 		result = prime * result + ((Letra == null) ? 0 : Letra.hashCode());
-		result = prime * result + ((Plazas == null) ? 0 : Plazas.hashCode());
-		result = prime * result + ((PlazasNuevoIngreso == null) ? 0 : PlazasNuevoIngreso.hashCode());
-		result = prime * result + ((PlazasRepetidores == null) ? 0 : PlazasRepetidores.hashCode());
 		result = prime * result + ((Turno_manyana_tarde == null) ? 0 : Turno_manyana_tarde.hashCode());
-		result = prime * result + ((Visible == null) ? 0 : Visible.hashCode());
-		result = prime * result + ((alumno == null) ? 0 : alumno.hashCode());
-		result = prime * result + ((am == null) ? 0 : am.hashCode());
-		result = prime * result + ((clases == null) ? 0 : clases.hashCode());
-		result = prime * result + ((gpa == null) ? 0 : gpa.hashCode());
-		result = prime * result + ((grupo == null) ? 0 : grupo.hashCode());
-		result = prime * result + ((grupos == null) ? 0 : grupos.hashCode());
-		result = prime * result + (idiomaIngles ? 1231 : 1237);
-		result = prime * result + ((titulacion == null) ? 0 : titulacion.hashCode());
 		return result;
 	}
 
@@ -232,11 +218,6 @@ public class Grupo implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Grupo other = (Grupo) obj;
-		if (Asignar == null) {
-			if (other.Asignar != null)
-				return false;
-		} else if (!Asignar.equals(other.Asignar))
-			return false;
 		if (Curso == null) {
 			if (other.Curso != null)
 				return false;
@@ -247,77 +228,15 @@ public class Grupo implements Serializable {
 				return false;
 		} else if (!Id.equals(other.Id))
 			return false;
-		if (Ingles == null) {
-			if (other.Ingles != null)
-				return false;
-		} else if (!Ingles.equals(other.Ingles))
-			return false;
 		if (Letra == null) {
 			if (other.Letra != null)
 				return false;
 		} else if (!Letra.equals(other.Letra))
 			return false;
-		if (Plazas == null) {
-			if (other.Plazas != null)
-				return false;
-		} else if (!Plazas.equals(other.Plazas))
-			return false;
-		if (PlazasNuevoIngreso == null) {
-			if (other.PlazasNuevoIngreso != null)
-				return false;
-		} else if (!PlazasNuevoIngreso.equals(other.PlazasNuevoIngreso))
-			return false;
-		if (PlazasRepetidores == null) {
-			if (other.PlazasRepetidores != null)
-				return false;
-		} else if (!PlazasRepetidores.equals(other.PlazasRepetidores))
-			return false;
 		if (Turno_manyana_tarde == null) {
 			if (other.Turno_manyana_tarde != null)
 				return false;
 		} else if (!Turno_manyana_tarde.equals(other.Turno_manyana_tarde))
-			return false;
-		if (Visible == null) {
-			if (other.Visible != null)
-				return false;
-		} else if (!Visible.equals(other.Visible))
-			return false;
-		if (alumno == null) {
-			if (other.alumno != null)
-				return false;
-		} else if (!alumno.equals(other.alumno))
-			return false;
-		if (am == null) {
-			if (other.am != null)
-				return false;
-		} else if (!am.equals(other.am))
-			return false;
-		if (clases == null) {
-			if (other.clases != null)
-				return false;
-		} else if (!clases.equals(other.clases))
-			return false;
-		if (gpa == null) {
-			if (other.gpa != null)
-				return false;
-		} else if (!gpa.equals(other.gpa))
-			return false;
-		if (grupo == null) {
-			if (other.grupo != null)
-				return false;
-		} else if (!grupo.equals(other.grupo))
-			return false;
-		if (grupos == null) {
-			if (other.grupos != null)
-				return false;
-		} else if (!grupos.equals(other.grupos))
-			return false;
-		if (idiomaIngles != other.idiomaIngles)
-			return false;
-		if (titulacion == null) {
-			if (other.titulacion != null)
-				return false;
-		} else if (!titulacion.equals(other.titulacion))
 			return false;
 		return true;
 	}
@@ -325,12 +244,10 @@ public class Grupo implements Serializable {
 	@Override
 	public String toString() {
 		return "Grupo [Id=" + Id + ", Curso=" + Curso + ", Letra=" + Letra + ", Turno_manyana_tarde="
-				+ Turno_manyana_tarde + ", Ingles=" + Ingles + ", Visible=" + Visible + ", Asignar=" + Asignar
-				+ ", Plazas=" + Plazas + ", PlazasNuevoIngreso=" + PlazasNuevoIngreso + ", PlazasRepetidores="
-				+ PlazasRepetidores + ", idiomaIngles=" + idiomaIngles + ", gpa=" + gpa + ", titulacion=" + titulacion
-				+ ", clases=" + clases + ", grupos=" + grupos + ", grupo=" + grupo + ", am=" + am + ", alumno=" + alumno
-				+ "]";
+				+ Turno_manyana_tarde + "]";
 	}
+
+	
 
 	
 }

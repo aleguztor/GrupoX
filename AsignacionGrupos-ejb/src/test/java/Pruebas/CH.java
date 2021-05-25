@@ -63,7 +63,7 @@ public class CH {
 		Grupo nuevo= new Grupo("1º", "a", "Mañana");
 		try {
 			cambh.CambioHorarioyGrupo(al, a, nuevo);
-			assertEquals(al.getAlumno_Grupos().indexOf(c),-1);
+			assertEquals(al.getAlumno_Grupos().indexOf(a),-1);
 			grupos=al.getAlumno_Grupos();
 			assertEquals(grupos.get(grupos.indexOf(nuevo)),nuevo);
 		}catch(Exception e) {

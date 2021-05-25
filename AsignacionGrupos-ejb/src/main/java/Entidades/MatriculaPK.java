@@ -80,6 +80,8 @@ public class MatriculaPK  implements Serializable {
 		return "MatriculaPK [curso_academico=" + curso_academico + ", expedientes_num_expedientes="
 				+ expedientes_num_expedientes + "]";
 	}
+
+	
 	
    
 	

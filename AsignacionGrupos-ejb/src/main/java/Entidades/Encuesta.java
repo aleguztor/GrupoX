@@ -86,6 +86,8 @@ public class Encuesta implements Serializable{
 		}
 
 		
+
+		
 	}
 	
 	@Id
@@ -146,7 +148,6 @@ public class Encuesta implements Serializable{
 		result = prime * result + ((Fecha_envio == null) ? 0 : Fecha_envio.hashCode());
 		result = prime * result + ((Turno_Preferente == null) ? 0 : Turno_Preferente.hashCode());
 		result = prime * result + ((expediente == null) ? 0 : expediente.hashCode());
-		result = prime * result + ((gpa == null) ? 0 : gpa.hashCode());
 		return result;
 	}
 
@@ -174,19 +175,16 @@ public class Encuesta implements Serializable{
 				return false;
 		} else if (!expediente.equals(other.expediente))
 			return false;
-		if (gpa == null) {
-			if (other.gpa != null)
-				return false;
-		} else if (!gpa.equals(other.gpa))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Encuesta [Fecha_envio=" + Fecha_envio + ", Turno_Preferente=" + Turno_Preferente + ", expediente="
-				+ expediente + ", gpa=" + gpa + "]";
+				+ expediente + "]";
 	}
+
+	
 
 	
 

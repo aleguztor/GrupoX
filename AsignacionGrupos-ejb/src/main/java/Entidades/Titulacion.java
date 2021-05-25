@@ -18,7 +18,7 @@ public class Titulacion implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -5535002232396027395L;
-	@Id @GeneratedValue (strategy = GenerationType.AUTO)
+	@Id @GeneratedValue 
 	private Integer codigo;
 	@Column(nullable = false)
 	private String nombre;
@@ -99,12 +99,8 @@ public class Titulacion implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((asignaturas == null) ? 0 : asignaturas.hashCode());
-		result = prime * result + ((centros == null) ? 0 : centros.hashCode());
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		result = prime * result + ((creditos == null) ? 0 : creditos.hashCode());
-		result = prime * result + ((expedientes == null) ? 0 : expedientes.hashCode());
-		result = prime * result + ((grupos == null) ? 0 : grupos.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		return result;
 	}
@@ -118,16 +114,6 @@ public class Titulacion implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Titulacion other = (Titulacion) obj;
-		if (asignaturas == null) {
-			if (other.asignaturas != null)
-				return false;
-		} else if (!asignaturas.equals(other.asignaturas))
-			return false;
-		if (centros == null) {
-			if (other.centros != null)
-				return false;
-		} else if (!centros.equals(other.centros))
-			return false;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -137,16 +123,6 @@ public class Titulacion implements Serializable {
 			if (other.creditos != null)
 				return false;
 		} else if (!creditos.equals(other.creditos))
-			return false;
-		if (expedientes == null) {
-			if (other.expedientes != null)
-				return false;
-		} else if (!expedientes.equals(other.expedientes))
-			return false;
-		if (grupos == null) {
-			if (other.grupos != null)
-				return false;
-		} else if (!grupos.equals(other.grupos))
 			return false;
 		if (nombre == null) {
 			if (other.nombre != null)
@@ -158,9 +134,10 @@ public class Titulacion implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Titulacion [codigo=" + codigo + ", nombre=" + nombre + ", creditos=" + creditos + ", asignaturas="
-				+ asignaturas + ", centros=" + centros + ", expedientes=" + expedientes + ", grupos=" + grupos + "]";
+		return "Titulacion [codigo=" + codigo + ", nombre=" + nombre + ", creditos=" + creditos + "]";
 	}
+
+	
 
 	
    

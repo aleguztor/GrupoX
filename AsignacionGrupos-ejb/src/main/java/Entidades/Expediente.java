@@ -19,6 +19,8 @@ public class Expediente implements Serializable{
 	private boolean Activo;
 	@Column(nullable = true)
 	private double Nota_Media_Provisional;
+	
+
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Alumno alumno;
@@ -96,9 +98,6 @@ public class Expediente implements Serializable{
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((Num_Expediente == null) ? 0 : Num_Expediente.hashCode());
 		result = prime * result + ((alumno == null) ? 0 : alumno.hashCode());
-		result = prime * result + ((encuesta == null) ? 0 : encuesta.hashCode());
-		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
-		result = prime * result + ((titulacion == null) ? 0 : titulacion.hashCode());
 		return result;
 	}
 
@@ -125,29 +124,13 @@ public class Expediente implements Serializable{
 				return false;
 		} else if (!alumno.equals(other.alumno))
 			return false;
-		if (encuesta == null) {
-			if (other.encuesta != null)
-				return false;
-		} else if (!encuesta.equals(other.encuesta))
-			return false;
-		if (matricula == null) {
-			if (other.matricula != null)
-				return false;
-		} else if (!matricula.equals(other.matricula))
-			return false;
-		if (titulacion == null) {
-			if (other.titulacion != null)
-				return false;
-		} else if (!titulacion.equals(other.titulacion))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Expediente [Num_Expediente=" + Num_Expediente + ", Activo=" + Activo + ", Nota_Media_Provisional="
-				+ Nota_Media_Provisional + ", alumno=" + alumno + ", titulacion=" + titulacion + ", encuesta="
-				+ encuesta + ", matricula=" + matricula + "]";
+				+ Nota_Media_Provisional + ", alumno=" + alumno + "]";
 	}
 
 	

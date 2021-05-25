@@ -23,28 +23,34 @@ public class AlumnoController {
 	private Alumno alumno ;
 	private String dni;
 	
-	public AlumnoController() {
-		alumno = new Alumno();
-	}
+
 	
 	public void modificarAlumno() throws AlumnoDuplicadoException 
 	{
-		
-		
-		
+			
 	}
+	
 	public String getDni() {
 		return dni;
 	}
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-	public Alumno getAlumnoporDni() throws AlumnoNoEncontradoException {
+	
+	
+	public String buscar() throws AlumnoNoEncontradoException {
 		alumno  = crud.buscarAlumnoPorDNI(dni);
 		
+		return "succes";
+		
+		
+	}
+	
+	public Alumno getAlumno() {
 		return alumno;
-		
-		
+	}
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
 	}
 	public String getNombreAlumno() {
 		return alumno.getNombre();
@@ -55,7 +61,7 @@ public class AlumnoController {
 	public String getSegundoApellido() {
 		return alumno.getApellido2();
 	}
-	public String getDNI() {
+	public String getDniAl() {
 		return alumno.getDNI();
 	}
 	public String getEmailinstitucional() {

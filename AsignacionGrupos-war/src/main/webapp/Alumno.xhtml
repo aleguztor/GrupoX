@@ -4,10 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-  <title>Busqueda de un alumno</title>
+	<title>Busqueda de un alumno</title>
 </h:head>
 
 <h:body>
@@ -15,43 +16,54 @@
 		<table>
 			<tr>
 				<td>Dame DNI</td>
-				<td><h:inputText value="#{AlumnoController.alumnopordni}"/></td>
+				<td><h:inputText value="#{alumnoController.dni}" /></td>
 			</tr>
 			<tr>
+				<td><p:commandButton type="button" value="Enviar"
+						styleClass="ui-button-outlined"
+						action="#{alumnoController.buscar()}" /></td>
+			</tr>
+
+
+		</table>
+		</h:form>
+		 <table>
+	<tr>
 				<td>Nombre:</td>
-				<td><h:outputText value="#{AlumnoController.nombrealumno}"/></td>
+				<td><h:outputText value="#{alumnoController.nombreAlumno}"/></td>
 			</tr>
 			<tr>
 				<td>Primer apellido:</td>
-				<td><h:outputText value="#{AlumnoController.apellidoalumno}"/></td>
+				<td><h:outputText value="#{alumnoController.primerApellido}"/></td>
 			</tr>
 			<tr>
 				<td>Segundo apellido:</td>
-				<td><h:outputText value="#{AlumnoController.segundoapellido}"/></td>
+				<td><h:outputText value="#{alumnoController.segundoApellido}"/></td>
 			</tr>
 			<tr>
 				<td>DNI:</td>
-				<td><h:outputText value="#{AlumnoController.dni}"/></td>
+				<td><h:outputText value="#{alumnoController.dniAl}"/></td>
 			</tr>
 			<tr>
 				<td>Email constitucional:</td>
-				<td><h:outputText value="#{AlumnoController.emailinstitucional}"/></td>
+				<td><h:outputText value="#{alumnoController.emailinstitucional}"/></td>
 			</tr>
 			<tr>
 				<td>Email personal:</td>
-				<td><h:outputText value="#{AlumnoController.emailpersonal}"/></td>
+				<td><h:outputText value="#{alumnoController.emailPersonal}"/></td>
 			</tr>
 			<tr>
 				<td>Teléfono:</td>
-				<td><h:outputText value="#{AlumnoController.tlf}"/></td>
+				<td><h:outputText value="#{alumnoController.tlf}"/></td>
 			</tr>
 			<tr>
 				<td>Móvil:</td>
-				<td><h:outputText value="#{AlumnoController.movil}"/></td>
+				<td><h:outputText value="#{alumnoController.movil}"/></td>
 			</tr>
-			
-		</table>
-	</h:form>
+	</table>
+		
+	
+	
 </h:body>
 
 </html>

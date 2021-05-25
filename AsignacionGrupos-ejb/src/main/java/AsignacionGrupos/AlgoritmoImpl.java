@@ -38,6 +38,7 @@ public class AlgoritmoImpl implements AlgoritmoIntf{
 		}
 		
 	}
+	
 	@PersistenceContext(name="AsignacionGrupos")
 	private EntityManager em;
 	private boolean eq = true;

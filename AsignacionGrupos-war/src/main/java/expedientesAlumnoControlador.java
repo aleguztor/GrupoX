@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -6,8 +7,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 
 import AsignacionGrupos.CrudEJBLocal;
 import Entidades.Expediente;
@@ -18,26 +17,29 @@ import Exceptions.ExpedienteNoEncontradoException;
 public class expedientesAlumnoControlador implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	private List<Expediente> expedientes;
+	private List<Expediente> expedientes = new LinkedList<Expediente>();
 	private Expediente expediente;
+	private Long id;
 		
 	@Inject
 	private CrudEJBLocal crud;
 	
-	@Inject
-	private listadoAlumnosControlador alc;
-	
 	@PostConstruct
 	public void init() {
 		try {
-			expedientes = crud.obtenerExpedientesAlumno(alc.getidAlumno());
-		} catch (ExpedienteNoEncontradoException e) {
+		id = (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("id");
+		expedientes = crud.obtenerExpedientesAlumno(id);
+		}catch(ExpedienteNoEncontradoException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public List<Expediente> getExpedientes(){
 		return expedientes;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 	
 	

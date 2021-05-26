@@ -37,7 +37,7 @@ public class listadoAlumnosControlador implements Serializable {
     }
     
     public String editId(Long l) {
-		idAlumno = l;
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("id", idAlumno);
 		return "success";
 	}
     

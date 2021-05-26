@@ -11,24 +11,11 @@
     <h:body>
     	<h:form>
 			<p:dataTable var="alumno" value="#{listado.alumnos}">
-		            <p:column headerText="DNI">
-		                <h:outputText value="#{alumno.DNI}" />
-		            </p:column>
-		
-		            <p:column headerText="Nombre">
-		                <h:outputText value="#{alumno.nombre}" />
-		            </p:column>
-		
-		            <p:column headerText="Primer apellido">
-		                <h:outputText value="#{alumno.apellido1}" />
-		            </p:column>
-		
-		            <p:column headerText="Segundo apellido">
-		                <h:outputText value="#{alumno.apellido2}" />
-		            </p:column>
-		            <p:column headerText="Email institucional">
-		                <h:outputText value="#{alumno.email_institucional}" />
-		            </p:column>
+		            <p:column headerText="DNI" field="DNI" sortable="true" filterable="true"/>
+		            <p:column headerText="Nombre" field="nombre" sortable="true" filterable="true"/>
+		            <p:column headerText="Primer apellido" field="apellido1" sortable="true" filterable="true"/>
+		            <p:column headerText="Segundo apellido" field="apellido2" sortable="true" filterable="true"/>
+		            <p:column headerText="Email institucional" field="email_institucional" sortable="true" filterable="true"/>
 		            <p:column headerText="Expedientes">
 		                <h:button action="#{listado.editId(alumno.id)}" outcome="expedientesAlumno.xhtml" value="Mostrar"/>
 		            </p:column>

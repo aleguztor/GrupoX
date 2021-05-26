@@ -3,7 +3,9 @@ package AsignacionGrupos;
 import java.util.List;
 
 import javax.ejb.Local;
-import javax.ejb.LocalBean;
+
+import javax.ws.rs.core.UriBuilder;
+
 
 import Entidades.Alumno;
 import Entidades.Asignatura;
@@ -15,21 +17,34 @@ import Entidades.Matricula;
 import Entidades.Optativa;
 import Entidades.Titulacion;
 import Exceptions.AlumnoDuplicadoException;
+import Exceptions.AlumnoInactivoException;
 import Exceptions.AlumnoNoEncontradoException;
 import Exceptions.AsignaturaDuplicadaException;
 import Exceptions.AsignaturaNoEncontradaException;
 import Exceptions.CentroException;
 import Exceptions.ClaseException;
+import Exceptions.ContraseniaInvalidaException;
 import Exceptions.ExpedienteDuplicadoException;
 import Exceptions.ExpedienteNoEncontradoException;
 import Exceptions.GrupoNoEncontradoException;
 import Exceptions.MatriculaNoEncontradaException;
 import Exceptions.OptativaNoEncontradaExpception;
 import Exceptions.TitulacionException;
+import Exceptions.ValidacionIncorrectaException;
 
 
 @Local
 public interface CrudEJBLocal {
+	
+	
+	/*
+	 * public void registrarAlumno(Alumno a, UriBuilder uriBuilder) throws
+	 * AlumnoDuplicadoException; public void validarAlumno(Long id, String
+	 * validacion) throws AlumnoNoEncontradoException,
+	 * ValidacionIncorrectaException; public void compruebaLogin(Alumno a) throws
+	 * AlumnoNoEncontradoException , AlumnoInactivoException,
+	 * ContraseniaInvalidaException;
+	 */
 	public Expediente existeExpediente(Expediente e) throws ExpedienteNoEncontradoException;
 	public void modificarExpediente(Expediente e) throws ExpedienteNoEncontradoException;
 	public void eliminarExpediente(Expediente e) throws ExpedienteNoEncontradoException;

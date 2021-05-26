@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
-
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +12,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 @Entity
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Alumno implements Serializable{
 	
 	/**
@@ -44,7 +50,15 @@ public class Alumno implements Serializable{
 	private List<Grupo> grupos;
 	private File pdf;
 	
-	
+	/*
+	 * @XmlTransient
+	 * 
+	 * @JsonbTransient private String contrasenia;
+	 * 
+	 * @XmlTransient
+	 * 
+	 * @JsonbTransient private String cadenaValidacion;
+	 */
 
 	public Alumno() {}
 	
@@ -54,11 +68,28 @@ public class Alumno implements Serializable{
 		DNI = dni;
 		Email_institucional = ei;		
 	}
+	
+	
+
+	/*
+	 * public String getContrasenia() { return contrasenia; }
+	 * 
+	 * public void setContrasenia(String contrasenia) { this.contrasenia =
+	 * contrasenia; }
+	 * 
+	 * public String getCadenaValidacion() { return cadenaValidacion; }
+	 * 
+	 * public void setCadenaValidacion(String cadenaValidacion) {
+	 * this.cadenaValidacion = cadenaValidacion; }
+	 */
 
 	public Long getId() {
 		return Id;
 	}
-
+	
+	public void setId(Long id) {
+		this.Id = id;
+	}
 	
 
 	public String getDNI() {

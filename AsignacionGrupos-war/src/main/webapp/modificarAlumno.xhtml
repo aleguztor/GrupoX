@@ -5,84 +5,96 @@
 
 <h:head>
 	<title>Insertar Alumno</title>
-	<style>
-/* reset on the showcase style*/
-body .ui-panelgrid .ui-panelgrid-cell {
-	background-color: transparent;
-}
 
-/* example use of styles for your form */
-.my-heading-row {
-	background-color: var(- -surface-c);
-	font-weight: bold;
-}
-</style>
 </h:head>
 
 <h:body>
+	<div class="card">
+		<h:form id="alumnoForm">
+			<span class="ui-float-label"> <p:inputText id="nombre"
+					value="#{alumnoBean.alumno.nombre}" required="true">
+				</p:inputText>  <p:outputLabel
+					for="@previous" value="Nombre" /> <h:message for="nombre" />
+			</span>
+			<span class="ui-float-label"> <p:inputText id="apellido1"
+					value="#{alumnoBean.alumno.apellido1}" required="true"></p:inputText>
+				<p:outputLabel for="@previous" value="Primer Apellido" /> <h:message
+					for="apellido1" />
+			</span>
+			<span class="ui-float-label"> <p:inputText id="apellido2"
+					value="#{alumnoBean.alumno.apellido2}"></p:inputText> <p:outputLabel
+					for="@previous" value="Segundo Apellido" />
+			</span>
+			<span class="ui-float-label"> <p:inputText id="dni"
+					value="#{alumnoBean.alumno.DNI}" required="true"></p:inputText> <p:outputLabel
+					for="@previous" value="DNI" /> <h:message for="dni" />
+			</span>
+			<span class="ui-float-label"> <p:inputText id="emailinsti"
+					value="#{alumnoBean.alumno.email_institucional}" required="true">
+					<f:validateRegex
+						pattern="[0-9a-zA-Z._-]+@[0-9a-zA-Z._-]+\.[0-9a-zA-Z._-]+)+" />
+				</p:inputText> <p:outputLabel for="@previous" value="Email Institucional" />
+				<h:message for="emailinsti" />
+			</span>
+			<span class="ui-float-label"> <p:inputText id="emailperso"
+					value="#{alumnoBean.alumno.email_personal}">
+					<f:validateRegex
+						pattern="[0-9a-zA-Z._-]+@[0-9a-zA-Z._-]+\.[0-9a-zA-Z._-]+)+" />
+				</p:inputText> <p:outputLabel for="@previous" value="Email Personal" />
+				<h:message for="emailperso" />
+			</span>
+			<span class="ui-float-label"> <p:inputText id="movil"
+					value="#{alumnoBean.alumno.movil}"></p:inputText> <p:outputLabel
+					for="@previous" value="Movil" /></span>
+					<span class="ui-float-label">
+					 <p:inputText id="telefono"
+					value="#{alumnoBean.alumno.telefono}"></p:inputText> <p:outputLabel
+					for="@previous" value="Telefono" />
+			</span>
+			<span class="ui-float-label"> <p:inputText id="direccion"
+					value="#{alumnoBean.alumno.direccion_notificacion}"></p:inputText>
+				<p:outputLabel for="@previous" value="Direccion" /> 
+				</span>
+				<span class="ui-float-label"><p:inputText
+					id="localidad" value="#{alumnoBean.alumno.localidad_notificacion}"></p:inputText>
+				<p:outputLabel for="@previous" value="Localidad" /> </span> 
+				<span class="ui-float-label">
+				<p:inputText
+					id="provincia" value="#{alumnoBean.alumno.provincia_notificacion}"></p:inputText>
+				<p:outputLabel for="@previous" value="Provincia" /> 
+				</span>
+				<span class="ui-float-label">
+				<p:inputText
+					id="cp" value="#{alumnoBean.alumno.CP_notificacion}"></p:inputText>
+				<p:outputLabel for="@previous" value="Codigo Postal" />
+			</span>
+			<p:commandButton type="button" value="Insertar"
+				action="#{alumnoBean.doCrearAlumno}">
+				<f:ajax execute=":alumnoForm" render=":listaAlumnos" />
+			</p:commandButton>
+		</h:form>
+	</div>
 
-	<form>
+
+	<h:form id="tablaalumnos">
 		<div class="card">
-			<h5>Alumno</h5>
-
-
-			<!--
-    Note: Rows and columns can have style, styleClass, and id.
-    Note: A column with a defined styleClass will ignore the styleClass specified in the columnClasses list.
-    Note: Note the use of ui-fluid to ensure that components are sized correctly and the use of ui-panelgrid-blank to remove borders.
-    -->
-			<p:panelGrid columns="4"
-				columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
-				layout="grid" styleClass="ui-panelgrid-blank ui-fluid"
-				style="border:0px none; background-color:transparent;">
-
-				<p:row styleClass="my-heading-row">
-            Nombre
-       		 </p:row>
-
-				<p:outputLabel for="@next" value="Nombre" />
-				<p:inputText value="#{modAlumno.nombre}" />
-
-				<p:outputLabel for="@next" value="Primer Apellido" />
-				<p:inputText value="#{modAlumno.apellido1}" />/>
-
-			<p:outputLabel for="@next" value="Segundo Apellido" />
-				<p:inputText value="#{modAlumno.apellido2}" />
-
-				<p:row id="my-row-id" styleClass="my-heading-row"
-					style="font-weight: bold">
-            Contacto
-       		 </p:row>
-
-				<p:outputLabel for="@next" value="Email" />
-				<p:inputText value="#{modAlumno.email_personal}" />
-
-				<p:outputLabel for="@next" value="Email Personal" />
-				<p:inputText value="#{modAlumno.email_institucional}" /> />
-			<p:outputLabel for="@next" value="Movil" />
-				<p:inputText value="#{modAlumno.movil}" />
-				<p:outputLabel for="@next" value="Telefono" />
-				<p:inputText value="#{modAlumno.telefono}" />
-
-				<p:outputLabel for="@next" value="Direccion" />
-				<p:inputText value="#{modAlumno.direccion_notificacion}" />
-				<p:outputLabel for="@next" value="Localidad" />
-				<p:inputText value="#{modAlumno.localidad_notificacion}" />
-				<p:outputLabel for="@next" value="CP" />
-				<p:inputText value="#{modAlumno.cp_notificacion}" />
-
-
-
-				<p:row>
-					<p:column styleClass="ui-grid-col-12">
-						<p:commandButton type="button" value="Insertar"
-							action="#{modAlumno.insertar()}" />
-					</p:column>
-				</p:row>
-			</p:panelGrid>
+			<p:dataTable id="listaAlumnos" var="alumno"
+				value="#{alumnoBean.listaAlumnos()}">
+				<p:column field="DNI" />
+				<p:column field="nombre" headerText="Nombre" />
+				<p:column field="apellido1" headerText="Primer Apellido" />
+				<p:column field="apellido2" headerText="Segundo Apellido" />
+				<p:column field="email_personal" headerText="Correo Personal"
+					sortable="false" filterable="false" />
+				<p:column field="email_institucional"
+					headerText="Correo Institucional" sortable="false"
+					filterable="false" />
+				<p:column field="email_personal" headerText="Correo Personal"
+					sortable="false" filterable="false" />
+			</p:dataTable>
 		</div>
+	</h:form>
 
-	</form>
 
 
 

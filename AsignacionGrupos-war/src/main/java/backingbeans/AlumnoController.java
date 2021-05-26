@@ -41,7 +41,7 @@ public class AlumnoController {
 	public String buscar() throws AlumnoNoEncontradoException {
 		alumno  = crud.buscarAlumnoPorDNI(dni);
 		
-		return "succes";
+		return "success";
 		
 		
 	}

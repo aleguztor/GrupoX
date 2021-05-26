@@ -426,6 +426,15 @@ public class CrudEJB implements CrudEJBLocal {
 	public List<Alumno> getAlumnos() {
 		return em.createQuery("SELECT a FROM Alumno a", Alumno.class).getResultList();
 	}
+	
+	@Override
+	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException{
+		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE alumno_Id = "+id+";", Expediente.class);
+		if(q.getResultList() == null) {
+			throw new ExpedienteNoEncontradoException();
+		}
+		return q.getResultList();
+	}
 
 	
 

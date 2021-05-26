@@ -79,9 +79,11 @@ import Exceptions.*;
 			Alumno al = buscarAlumnoPorDNI(a.getDNI());
 			if(al != null) {
 				throw new AlumnoDuplicadoException();
+			}else {
+				em.persist(a);
 			}
 		} catch (AlumnoNoEncontradoException e) {
-			em.persist(a);
+			e.printStackTrace();
 		}
 			
 		

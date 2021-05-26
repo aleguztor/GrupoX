@@ -18,7 +18,7 @@ public class Base {
 		Alumno a1 = new Alumno("Mario", "Vazquez", "12345678a", "mario@uma.es");
 		Alumno a2 = new Alumno("Juan", "Moreno", "23456789b", "juan@uma.es");
 		Alumno a3 = new Alumno("Marta", "Ruiz", "34567890c", "marta@uma.es");
-		Alumno a4 = new Alumno("Pedro", "Muñoz", "45678901d", "pedro@uma.es");
+		Alumno a4 = new Alumno("Pedro", "Muï¿½oz", "45678901d", "pedro@uma.es");
 		Alumno a5 = new Alumno("Maria", "Garcia","56789012e", "maria@uma.es");
 		Alumno a6 = new Alumno("Luis", "Ramos", "67890123f", "luis@uma.es");
 		
@@ -184,6 +184,7 @@ public class Base {
 		alumnos.add(a5);
 		alumnos.add(a6);
 		gpa.add(g1);
+		gpa.add(g1ing);
 		gpa.add(g2);
 		gpa.add(g3);
 		gpa.add(g4);

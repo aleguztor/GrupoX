@@ -4,6 +4,7 @@ package backingbeans;
 
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -28,6 +29,11 @@ public class AlumnoController {
 	public void modificarAlumno() throws AlumnoDuplicadoException 
 	{
 			
+	}
+	
+	public String pasarDNI(String DNI) {
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("dni", DNI);
+		return "success";
 	}
 	
 	public String getDni() {

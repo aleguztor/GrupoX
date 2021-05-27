@@ -61,7 +61,9 @@
 				<td><h:outputText value="#{alumnoController.movil}"/></td>
 			</tr>
 	</table>
-		
+		<h:form>
+			<p:commandButton value="Modificar" action="#{alumnoController.pasarDNI(dniAl)}" outcome="modificarAlumno.xhtml"></p:commandButton>
+		</h:form>
 	
 	
 </h:body>

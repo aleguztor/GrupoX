@@ -1,4 +1,5 @@
 package backingbeans;
+
 import java.io.IOException;
 
 import javax.faces.application.FacesMessage;
@@ -12,51 +13,57 @@ import javax.inject.Named;
 public class Login {
 	private String username;
 	private String password;
-	    
-	    
-	 public void login() {
-	        
-	        FacesContext context = FacesContext.getCurrentInstance();
 
-	        if(this.username.equals("secretaria") && this.password.equals("secretaria")){
-	            context.getExternalContext().getSessionMap().put("user", username);
-	            try {
-					context.getExternalContext().redirect("index.xhtml");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-	        }
-	        else  {
-                    //Send an error message on Login Failure 
-	            context.addMessage(null, new FacesMessage("Authentication Failed. Check username or password."));
+	public void login() {
 
-	        } 
-	    }
+		FacesContext context = FacesContext.getCurrentInstance();
 
-	    public void logout() {
-	    	FacesContext context = FacesContext.getCurrentInstance();
-	    	context.getExternalContext().invalidateSession();
-	        try {
-				context.getExternalContext().redirect("Login.xhtml");
+		if (this.username.equals("secretaria") && this.password.equals("secretaria")) {
+			context.getExternalContext().getSessionMap().put("user", username);
+			try {
+				context.getExternalContext().redirect("index.xhtml");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-	    }
-	    
-	    
-		 public String getUsername() {
-				return username;
-			}
+		} else if (this.username.equals("admin") && this.password.equals("admin")) {
+			context.getExternalContext().getSessionMap().put("user", username);
 
-			public void setUsername(String username) {
-				this.username = username;
-			}
+			try {
+				context.getExternalContext().redirect("modificarAlumno.xhtml");
+			} catch (IOException e) {
+				e.printStackTrace();
 
-			public String getPassword() {
-				return password;
 			}
+		} else {
+			// Send an error message on Login Failure
+			context.addMessage(null, new FacesMessage("Authentication Failed. Check username or password."));
 
-			public void setPassword(String password) {
-				this.password = password;
-			}
+		}
+	}
+
+	public void logout() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().invalidateSession();
+		try {
+			context.getExternalContext().redirect("Login.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

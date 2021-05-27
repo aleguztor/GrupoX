@@ -18,11 +18,12 @@ import Exceptions.*;
 
 @Named("alumnoBean")
 @RequestScoped
-public class ModAlumno {
+public class insAlumno {
 
 	
 	private Alumno alumno;
-	private static final Logger LOG = Logger.getLogger(ModAlumno.class.getCanonicalName());
+	
+	private static final Logger LOG = Logger.getLogger(insAlumno.class.getCanonicalName());
 	
 	@Inject 
 	CrudEJBLocal crud;
@@ -49,6 +50,7 @@ public class ModAlumno {
 	public List<Alumno> listaAlumnos(){
 		 return crud.getAlumnos();
 	}
+
 	
 	
 }

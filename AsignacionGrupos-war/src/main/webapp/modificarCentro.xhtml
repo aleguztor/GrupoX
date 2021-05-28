@@ -4,13 +4,36 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      >
+      xmlns:p="http://primefaces.org/ui">
       
 <h:head>
   <title>Centro</title>
 </h:head>
 
 <h:body>
+	<h:form>
+		<p:panelGrid columns="4" layout="flex"
+					columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4 "
+					contentStyleClass="p-align-baseline ui-fluid">
+		<p:outputLabel for="nombre" value="Nombre: "/>
+		<p:inputText id="nombre" value="#{modificarCentro.centro.nombre}"/>
+		
+		<p:outputLabel for="direccion" value="Direccion: "/>
+		<p:inputText id="direccion" value="#{modificarCentro.centro.direccion}"/>
+		
+		<p:outputLabel for="telefono" value="Telefono:  "/>
+		<p:inputText id="telefono" value="#{modificarCentro.centro.telefono}"/>		
+		
+		<p:dataTable id="titulaciones" var="titulacion">
+			<f:facet name="header">Titulaciones</f:facet>
+			<p:column headerText="#{titulacion.}"/>
+		
+		</p:dataTable>
+		
+		</p:panelGrid>
+	</h:form>
+
+
 	<h:form>
 		<table>
 			<tr>

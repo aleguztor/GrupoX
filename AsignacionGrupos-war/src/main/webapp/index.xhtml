@@ -17,6 +17,13 @@
 	<h:button outcome="modificarAsignatura.xhtml" value="MODIFICAR ASIGNATURA"/>
 	<h:button outcome="Alumno.xhtml" value="ALUMNO"/>
 	<h:button outcome="listadoAlumnos.xhtml" value="LISTADO DE ALUMNOS"/>
+	
+	<h:panelGroup rendered="#{not empty user}">
+    <p>Welcome, #{user}</p>
+    <h:form>
+        <h:commandButton value="logout" action="#{login.logout}" />
+    </h:form>
+</h:panelGroup>
 </h:body>
 
 </html>

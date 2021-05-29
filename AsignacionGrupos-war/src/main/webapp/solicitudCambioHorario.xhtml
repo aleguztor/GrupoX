@@ -16,7 +16,7 @@
 		<table>
 			<tr>
 				<td>A que curso quieres cambiarte</td>
-				<td><h:inputText value="#{solicitudBean.nuevocurso}" /></td>
+				<td><h:inputText value="#{solicitudBean.nuevoCurso}" /></td>
 			</tr>
 
 		</table>
@@ -35,7 +35,7 @@
 	</table>
 	<h:form>
 		<p:commandButton value="Solicitud"
-			action="#{alumnoController.pasarDNI(dniAl)}"
+			action="#{solicitudBean.subirencuesta}"
 			outcome="solicitudCambioHorario.xhtml"></p:commandButton>
 	</h:form>
 

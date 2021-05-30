@@ -21,30 +21,31 @@
 
 		</table>
 	</h:form>
-	<table>
-		<tr>
-			<td>Escriba las razones de su cambio</td>
-			<td><h:inputText value="#{solicitudBean.razones}" /></td>
-		</tr>
-		<tr>
-			<td>Debe aportar un documento</td>
-			<td><h:inputFile value="#{solicitudBean.archivo}" /></td>
-			
-		</tr>
-		<tr>
-			<td>DNI</td>
-			<td><h:inputText value="#{solicitudBean.dni}" /></td>
-			
-		</tr>
-
-	</table>
 	<h:form>
-	
-		<h:commandButton id="enviar"
-			value="Enviar"
-			action="crearEncuesta" />
+		<table>
+			<tr>
+				<td>Escriba las razones de su cambio</td>
+				<td><h:inputText value="#{solicitudBean.razones}" /></td>
+			</tr>
+
+			<tr>
+				<td>DNI</td>
+				<td><h:inputText value="#{solicitudBean.dni}" /></td>
+
+			</tr>
+
+		</table>
 	</h:form>
-	
+	<h:form enctype="multipart/form-data"> DOCUMENTO
+    	<h:inputFile value="#{solicitudBean.archivo}" />
+
+	</h:form>
+
+	<h:form>
+
+		<h:commandButton id="enviar" value="Enviar" action="crearEncuesta" />
+	</h:form>
+
 
 
 </h:body>

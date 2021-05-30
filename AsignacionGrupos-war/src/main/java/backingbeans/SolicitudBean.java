@@ -22,14 +22,12 @@ public class SolicitudBean {
 	
 	@Inject 
 	CrudEJBLocal crud;
-	public String setCrearEncuesta() throws Exception {
-		if(archivo==null || razones==null || curso==null) {
-			throw new Exception("faltan datos");
-		}else {
+	public String getCrearEncuesta() throws Exception {
+		
 			Date d = new Date(System.currentTimeMillis());
 			Encuesta e= new Encuesta(d,curso,razones,archivo,dni);
 			crud.insertarEncuesta(e);
-		}
+		
 		return "Encuesta enviada";
 	}
 	public File getArchivo() {

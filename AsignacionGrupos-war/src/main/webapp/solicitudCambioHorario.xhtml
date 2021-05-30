@@ -16,7 +16,7 @@
 		<table>
 			<tr>
 				<td>A que curso quieres cambiarte</td>
-				<td><h:inputText value="#{solicitudBean.nuevoCurso}" /></td>
+				<td><h:inputText value="#{solicitudBean.curso}" /></td>
 			</tr>
 
 		</table>
@@ -28,16 +28,23 @@
 		</tr>
 		<tr>
 			<td>Debe aportar un documento</td>
-			<td><h:inputFile value="#{solicitudBean.uploadedFile}" /></td>
-			<td><h:commandButton id="botonsubirtodo" action="#{solicitudBean.solicitud}" value="Solicitud" /></td>
+			<td><h:inputFile value="#{solicitudBean.archivo}" /></td>
+			
+		</tr>
+		<tr>
+			<td>DNI</td>
+			<td><h:inputText value="#{solicitudBean.dni}" /></td>
+			
 		</tr>
 
 	</table>
 	<h:form>
-		<p:commandButton value="Solicitud"
-			action="#{solicitudBean.subirencuesta}"
-			outcome="solicitudCambioHorario.xhtml"></p:commandButton>
+	
+		<h:commandButton id="enviar"
+			value="Enviar"
+			action="crearEncuesta" />
 	</h:form>
+	
 
 
 </h:body>

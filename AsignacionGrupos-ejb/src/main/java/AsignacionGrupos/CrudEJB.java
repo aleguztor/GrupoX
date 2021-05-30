@@ -54,7 +54,7 @@ import Exceptions.*;
 	@Override
 	public void modificarExpediente(Expediente e) throws ExpedienteNoEncontradoException {
 		Expediente ex = existeExpediente(e);
-		em.merge(ex);
+		em.merge(e);
 		
 	}
 
@@ -69,7 +69,7 @@ import Exceptions.*;
 	public void insertarExpediente(Expediente e) throws  ExpedienteDuplicadoException {
 		Expediente ex = em.find(Expediente.class, e.getNum_Expediente());
 		if(ex == null)
-			em.persist(ex);
+			em.persist(e);
 		else 
 			throw new ExpedienteDuplicadoException();
 	}

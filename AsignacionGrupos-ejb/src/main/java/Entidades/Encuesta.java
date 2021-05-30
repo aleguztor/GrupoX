@@ -97,6 +97,15 @@ public class Encuesta implements Serializable{
 	private String razones;
 	private String cursoacambiar;
 	private File Documentos;
+	private String dameDNI;
+	public String getDameDNI() {
+		return dameDNI;
+	}
+
+	public void setDameDNI(String dameDNI) {
+		this.dameDNI = dameDNI;
+	}
+
 	public String getRazones() {
 		return razones;
 	}
@@ -135,11 +144,12 @@ public class Encuesta implements Serializable{
 		expediente = e;
 		Turno_Preferente = tp;
 	}
-	public Encuesta(Date d, String cursoacambiar, String r, File f ) {
+	public Encuesta(Date d, String cursoacambiar, String r, File f, String dni ) {
 		Fecha_envio = d;
 		this.cursoacambiar = cursoacambiar;
 		razones = r;
 		Documentos=f;
+		dameDNI=dni;
 	}
 	
 	public Date getFecha_envio() {

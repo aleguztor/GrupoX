@@ -14,28 +14,47 @@ import Entidades.Encuesta;
 @RequestScoped
 public class SolicitudBean {
 	
-	File archivo;
-	String razones;
-	String curso;
+	private File archivo;
+	private String razones;
+	private String curso;
+	private String dni;
+	
+	
 	@Inject 
 	CrudEJBLocal crud;
-	public void crearEncuesta() throws Exception {
+	public String setCrearEncuesta() throws Exception {
 		if(archivo==null || razones==null || curso==null) {
 			throw new Exception("faltan datos");
 		}else {
 			Date d = new Date(System.currentTimeMillis());
-			Encuesta e= new Encuesta(d,curso,razones,archivo);
+			Encuesta e= new Encuesta(d,curso,razones,archivo,dni);
 			crud.insertarEncuesta(e);
 		}
+		return "Encuesta enviada";
+	}
+	public File getArchivo() {
+		return archivo;
+	}
+	public void setArchivo(File archivo) {
+		this.archivo = archivo;
+	}
+	public String getRazones() {
+		return razones;
+	}
+	public void setRazones(String razones) {
+		this.razones = razones;
+	}
+	public String getCurso() {
+		return curso;
+	}
+	public void setCurso(String curso) {
+		this.curso = curso;
+	}
+	public String getDni() {
+		return dni;
+	}
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
 	
-	}
-	public void nuevoCurso(String c) {
-		curso=c;
-	}
-	public void razones(String r) {
-		razones=r;
-	}
-	public void uploadedFile(File f) {
-		archivo=f;
-	}
 }

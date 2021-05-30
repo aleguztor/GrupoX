@@ -11,9 +11,7 @@ import AsignacionGrupos.CrudEJBLocal;
 @Named
 @RequestScoped
 public class SolicitudBean {
-	private File archivo;
-	private String curso;
-	private String razones;
+	
 	@Inject 
 	CrudEJBLocal crud;
 	

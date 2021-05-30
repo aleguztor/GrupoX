@@ -135,6 +135,12 @@ public class Encuesta implements Serializable{
 		expediente = e;
 		Turno_Preferente = tp;
 	}
+	public Encuesta(Date d, String cursoacambiar, String r, File f ) {
+		Fecha_envio = d;
+		this.cursoacambiar = cursoacambiar;
+		razones = r;
+		Documentos=f;
+	}
 	
 	public Date getFecha_envio() {
 		return Fecha_envio;

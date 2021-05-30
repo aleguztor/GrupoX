@@ -8,7 +8,7 @@ import Exceptions.NoExisteGrupoEnAlumno;
 
 import static org.junit.Assert.*;
 
-
+import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -66,6 +66,21 @@ public class Encuestas {
 			a = crud.buscarAlumnoPorDNI("12345678a");
 			assertEquals(a.getExpedientes().get(0).getEncuesta().get(0).getExpediente().getNum_Expediente(), e.getNum_Expediente());
 		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+	}
+	
+	@Test 
+	public void testcrearEncuesta() {
+		Date d=new Date(System.currentTimeMillis());
+	
+		String curso="Quiero el 2";
+		String razones="Me enfado con el de la derecha";
+		File f= new File("pruebapdf.txt");
+		Encuesta e= new Encuesta(d,curso, razones, f);
+		try {
+		crud.insertarEncuesta(e);
+		}catch(Exception e1) {
 			e1.printStackTrace();
 		}
 	}

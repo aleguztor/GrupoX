@@ -11,6 +11,7 @@ import Entidades.Alumno;
 import Entidades.Asignatura;
 import Entidades.Centro;
 import Entidades.Clase;
+import Entidades.Encuesta;
 import Entidades.Expediente;
 import Entidades.Grupo;
 import Entidades.Matricula;
@@ -24,6 +25,7 @@ import Exceptions.AsignaturaNoEncontradaException;
 import Exceptions.CentroException;
 import Exceptions.ClaseException;
 import Exceptions.ContraseniaInvalidaException;
+import Exceptions.EncuestaException;
 import Exceptions.ExpedienteDuplicadoException;
 import Exceptions.ExpedienteNoEncontradoException;
 import Exceptions.GrupoNoEncontradoException;
@@ -97,6 +99,8 @@ public interface CrudEJBLocal {
 	public void modificarClase(Clase c)throws ClaseException;
 	public void eliminarClase(Clase c)throws ClaseException;
 	public Clase existeClase(Clase c)throws ClaseException;
+	
+	public void insertarEncuesta(Encuesta e)throws EncuestaException;
 
 	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException;
 }

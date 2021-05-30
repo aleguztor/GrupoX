@@ -16,6 +16,7 @@ import Entidades.Alumno;
 import Entidades.Asignatura;
 import Entidades.Centro;
 import Entidades.Clase;
+import Entidades.Encuesta;
 import Entidades.Expediente;
 import Entidades.Grupo;
 import Entidades.Matricula;
@@ -432,6 +433,16 @@ import Exceptions.*;
 		}
 		return q.getResultList();
 	}
+	
+	public void insertarEncuesta(Encuesta e)throws EncuestaException{
+		Encuesta ce = em.find(Encuesta.class,e.getFecha_envio());
+		if(ce == null)
+			em.persist(ce);
+		else
+			throw new EncuestaException();
+	}
+	
+	
 
 	/*
 	 * @Override public void registrarAlumno(Alumno a, UriBuilder uriBuilder) throws

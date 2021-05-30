@@ -433,11 +433,11 @@ import Exceptions.*;
 		}
 		return q.getResultList();
 	}
-	
+	@Override
 	public void insertarEncuesta(Encuesta e)throws EncuestaException{
 		Encuesta ce = em.find(Encuesta.class,e.getFecha_envio());
 		if(ce == null)
-			em.persist(ce);
+			em.persist(e);
 		else
 			throw new EncuestaException();
 	}

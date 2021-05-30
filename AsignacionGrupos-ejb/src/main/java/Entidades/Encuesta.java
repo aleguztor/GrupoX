@@ -1,5 +1,6 @@
 package Entidades;
 
+import java.io.File;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
@@ -93,6 +94,33 @@ public class Encuesta implements Serializable{
 	@Id
 	private Date Fecha_envio;
 	private String Turno_Preferente;
+	private String razones;
+	private String cursoacambiar;
+	private File Documentos;
+	public String getRazones() {
+		return razones;
+	}
+
+	public void setRazones(String razones) {
+		this.razones = razones;
+	}
+
+	public String getCursoacambiar() {
+		return cursoacambiar;
+	}
+
+	public void setCursoacambiar(String cursoacambiar) {
+		this.cursoacambiar = cursoacambiar;
+	}
+
+	public File getDocumentos() {
+		return Documentos;
+	}
+
+	public void setDocumentos(File documentos) {
+		Documentos = documentos;
+	}
+
 	@ManyToOne
 	@Id
 	@JoinColumn(referencedColumnName="Num_Expediente")

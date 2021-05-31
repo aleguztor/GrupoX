@@ -47,7 +47,7 @@ import Exceptions.*;
 	public Expediente existeExpediente(Expediente e) throws ExpedienteNoEncontradoException {
 		Expediente ex = em.find(Expediente.class, e.getNum_Expediente());
 		if(ex==null) {
-			throw new ExpedienteNoEncontradoException();
+			return null;
 		}
 		return ex;
 	}
@@ -102,7 +102,7 @@ import Exceptions.*;
 	public Alumno existeAlumno(Alumno a) throws AlumnoNoEncontradoException {
 		Alumno al = buscarAlumnoPorDNI(a.getDNI());
 		if(al == null)
-			throw new AlumnoNoEncontradoException();
+			return null;
 		else
 			return al;
 	}
@@ -140,7 +140,7 @@ import Exceptions.*;
 	public Optativa existeOptativa(Optativa o) throws OptativaNoEncontradaExpception {
 		Optativa op = em.find(Optativa.class, o.getReferencia());
 		if(op == null)
-			throw new OptativaNoEncontradaExpception();
+			return null;
 		else
 			return op;
 	}
@@ -179,7 +179,7 @@ import Exceptions.*;
 	public Matricula existeMatricula(Matricula m) throws MatriculaNoEncontradaException {
 		Matricula ma = em.find(Matricula.class, m.getNum_archivo());
 		if(ma == null)
-			throw new MatriculaNoEncontradaException();
+			return null;
 		else 
 			return ma;
 	}
@@ -190,7 +190,7 @@ import Exceptions.*;
 	public void insertarGrupo(Grupo g) throws GrupoNoEncontradoException {
 		Grupo gr = em.find(Grupo.class, g.getId());
 		if(gr == null)
-			em.persist(gr);
+			em.persist(g);
 		else 
 			throw new GrupoNoEncontradoException();
 		
@@ -202,7 +202,7 @@ import Exceptions.*;
 		if(gr ==null)
 			throw new GrupoNoEncontradoException();
 		else 
-			em.merge(gr);
+			em.merge(g);
 		
 	}
 
@@ -220,7 +220,7 @@ import Exceptions.*;
 	public Grupo existeGrupo(Grupo g) throws GrupoNoEncontradoException {
 		Grupo	gr = em.find(Grupo.class,g.getId());
 		if(gr == null)
-			throw new GrupoNoEncontradoException();
+			return null;
 		else 
 			return gr;
 	}
@@ -229,7 +229,7 @@ import Exceptions.*;
 	public void insertarTitulacion(Titulacion t) throws TitulacionException {
 		Titulacion ti = em.find(Titulacion.class,t.getCodigo());
 		if(ti == null)
-			em.persist(ti);
+			em.persist(t);
 		else 
 			throw new TitulacionException();
 		
@@ -259,7 +259,7 @@ import Exceptions.*;
 	public Titulacion existeTitulacion(Titulacion t) throws TitulacionException {
 		Titulacion ti = em.find(Titulacion.class, t.getCodigo());
 		if(ti == null)
-			throw new TitulacionException();
+			return null;
 		else
 			return ti;
 
@@ -267,15 +267,12 @@ import Exceptions.*;
 
 	@Override
 	public void insertarAsignatura(Asignatura a) throws AsignaturaNoEncontradaException, AsignaturaDuplicadaException {
-		try {
-			Asignatura as = em.find(Asignatura.class,a.getCodigo());
-			if(as == null) {
-				throw new AsignaturaNoEncontradaException();
-			}else {
-				throw new AsignaturaDuplicadaException();
-			}
-		}catch(AsignaturaNoEncontradaException a1) {
+		Asignatura as = em.find(Asignatura.class,a.getCodigo());
+		if(as == null) {
+			throw new AsignaturaNoEncontradaException();
+		}else {
 			em.persist(a);
+			
 		}
 		
 	}
@@ -286,7 +283,7 @@ import Exceptions.*;
 		if(as==null)
 			throw new AsignaturaNoEncontradaException();
 		else 
-			em.merge(as);
+			em.merge(a);
 		
 	}
 
@@ -305,7 +302,7 @@ import Exceptions.*;
 	public Asignatura existeAsignatura(Asignatura a) throws AsignaturaNoEncontradaException {
 		Asignatura as = em.find(Asignatura.class, a.getReferencia());
 		if(as == null)
-			throw new AsignaturaNoEncontradaException();
+			return null;
 		else
 			return as;
 	}
@@ -328,7 +325,7 @@ import Exceptions.*;
 		if(ce==null)
 			throw new CentroException();
 		else 
-			em.merge(ce);
+			em.merge(c);
 		
 	}
 
@@ -336,7 +333,7 @@ import Exceptions.*;
 	public Centro existeCentro(Centro c) throws CentroException {
 		Centro ce = em.find(Centro.class, c.getID());
 		if(ce == null)
-			throw new CentroException();
+			return null;
 		else
 			return ce;
 	}
@@ -367,7 +364,7 @@ import Exceptions.*;
 		if(cl==null)
 			throw new ClaseException();
 		else 
-			em.merge(cl);
+			em.merge(c);
 		
 	}
 
@@ -386,7 +383,7 @@ import Exceptions.*;
 		Clase cl = em.createQuery("SELECT clase FROM CLASE clase where clase.horainicio= :hora and clase.dia = :dia and clase.grupo = :grupo ",Clase.class).setParameter("hora", c.getHorainicio()).setParameter("dia", c.getDia()).setParameter("grupo", c.getGrupo()).getSingleResult();
 		
 		if(cl == null)
-				throw new ClaseException();
+				return null;
 		else
 			return cl;
 		

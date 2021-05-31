@@ -10,14 +10,14 @@
     </h:head>
     <h:body>
     	<h:form>
-			<p:dataTable var="alumno" value="#{listado.alumnos}">
+			<p:dataTable var="a" value="#{listado.alumnos}">
 		            <p:column headerText="DNI" field="DNI" sortable="true" filterable="true"/>
 		            <p:column headerText="Nombre" field="nombre" sortable="true" filterable="true"/>
 		            <p:column headerText="Primer apellido" field="apellido1" sortable="true" filterable="true"/>
 		            <p:column headerText="Segundo apellido" field="apellido2" sortable="true" filterable="true"/>
 		            <p:column headerText="Email institucional" field="email_institucional" sortable="true" filterable="true"/>
 		            <p:column headerText="Expedientes">
-		                <h:button action="#{listado.editId(alumno.id)}" outcome="expedientesAlumno.xhtml" value="Mostrar"/>
+		                <h:button action="#{listado.alumno(a)}" outcome="prueba.xhtml" value="Mostrar"/>
 		            </p:column>
 		     </p:dataTable>
 		  </h:form>

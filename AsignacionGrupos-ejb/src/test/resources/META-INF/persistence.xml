@@ -13,6 +13,7 @@
 		<class>Entidades.Grupos_Por_Asignatura</class>
 		<class>Entidades.Optativa</class>
 		<class>Entidades.Asignaturas_matriculas</class>
+		<class>Entidades.EncuestaCambioHorario</class>
 		<shared-cache-mode>NONE</shared-cache-mode>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"/>

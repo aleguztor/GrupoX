@@ -19,9 +19,7 @@ public class listadoAlumnosControlador implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Alumno alumno;
-	
-	private Long idAlumno;
-	
+		
 	private List<Alumno> alumnos;
 
     @Inject
@@ -36,13 +34,11 @@ public class listadoAlumnosControlador implements Serializable {
     	return alumnos;
     }
     
-    public String editId(Long l) {
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("id", idAlumno);
-		return "success";
-	}
-    
-    public Long getidAlumno() {
-    	return idAlumno;
+    public synchronized void setAlumno(Alumno a) {
+    	alumno = a;
+    }
+    public synchronized Alumno getAlumno() {
+    	return alumno;
     }
        
 }

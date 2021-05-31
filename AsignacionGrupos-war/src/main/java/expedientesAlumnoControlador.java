@@ -19,7 +19,7 @@ public class expedientesAlumnoControlador implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private List<Expediente> expedientes = new LinkedList<Expediente>();
 	private Expediente expediente;
-	private Long id;
+	private Long id = (long) 1;
 		
 	@Inject
 	private CrudEJBLocal crud;
@@ -27,7 +27,7 @@ public class expedientesAlumnoControlador implements Serializable{
 	@PostConstruct
 	public void init() {
 		try {
-		id = (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("id");
+		//id = (Long) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("id");
 		expedientes = crud.obtenerExpedientesAlumno(id);
 		}catch(ExpedienteNoEncontradoException e) {
 			e.printStackTrace();

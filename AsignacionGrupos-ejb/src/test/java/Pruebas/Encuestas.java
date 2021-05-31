@@ -71,15 +71,15 @@ public class Encuestas {
 	}
 	
 	@Test 
-	public void testcrearEncuesta() {
-		Date d=new Date(System.currentTimeMillis());
+	public void testcrearEncuestaCambioHorario() {
+		Date d = new Date(System.currentTimeMillis());
 		String dni="12313123A";
 		String curso="Quiero el 2";
 		String razones="Me enfado con el de la derecha";
 		File f= new File("pruebapdf.txt");
-		Encuesta e= new Encuesta(d,curso, razones, f,dni);
+		EncuestaCambioHorario e= new EncuestaCambioHorario(d,curso, razones, f,dni);
 		try {
-		crud.insertarEncuesta(e);
+		crud.insertarEncuestaCambioHorario(e);
 		}catch(Exception e1) {
 			e1.printStackTrace();
 		}

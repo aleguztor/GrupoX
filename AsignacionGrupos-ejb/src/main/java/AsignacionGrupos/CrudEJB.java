@@ -17,6 +17,7 @@ import Entidades.Asignatura;
 import Entidades.Centro;
 import Entidades.Clase;
 import Entidades.Encuesta;
+import Entidades.EncuestaCambioHorario;
 import Entidades.Expediente;
 import Entidades.Grupo;
 import Entidades.Matricula;
@@ -441,7 +442,15 @@ import Exceptions.*;
 		else
 			throw new EncuestaException();
 	}
-	
+	@Override
+	public void insertarEncuestaCambioHorario(EncuestaCambioHorario e)throws EncuestaException{
+		EncuestaCambioHorario ce = em.find(EncuestaCambioHorario.class,e.getDameDNI());
+		if(ce == null)
+			em.persist(e);
+		else
+			throw new EncuestaException();
+	}
+
 	
 
 	/*

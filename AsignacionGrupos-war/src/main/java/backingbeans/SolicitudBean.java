@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import AsignacionGrupos.CrudEJBLocal;
-import Entidades.Encuesta;
+import Entidades.EncuestaCambioHorario;
 
 @Named
 @RequestScoped
@@ -24,9 +24,9 @@ public class SolicitudBean {
 	CrudEJBLocal crud;
 	public String getCrearEncuesta() throws Exception {
 		
-			Date d = new Date(System.currentTimeMillis());
-			Encuesta e= new Encuesta(d,curso,razones,archivo,dni);
-			crud.insertarEncuesta(e);
+		Date d = new Date(System.currentTimeMillis());
+		EncuestaCambioHorario e= new EncuestaCambioHorario(d,curso,razones,archivo,dni);
+			crud.insertarEncuestaCambioHorario(e);
 		
 		return "Encuesta enviada";
 	}

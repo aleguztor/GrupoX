@@ -12,6 +12,7 @@ import Entidades.Asignatura;
 import Entidades.Centro;
 import Entidades.Clase;
 import Entidades.Encuesta;
+import Entidades.EncuestaCambioHorario;
 import Entidades.Expediente;
 import Entidades.Grupo;
 import Entidades.Matricula;
@@ -101,6 +102,7 @@ public interface CrudEJBLocal {
 	public Clase existeClase(Clase c)throws ClaseException;
 	
 	public void insertarEncuesta(Encuesta e)throws EncuestaException;
+	public void insertarEncuestaCambioHorario(EncuestaCambioHorario e)throws EncuestaException;
 
 	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException;
 }

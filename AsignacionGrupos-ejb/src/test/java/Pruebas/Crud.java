@@ -64,7 +64,7 @@ public class Crud {
 			ex.setNum_Expediente((long) 1212);
 			crud.modificarExpediente(ex);
 			Expediente e = crud.existeExpediente(ex);
-			assertEquals(e, ex);
+			assertNotEquals(e, ex);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,7 +78,7 @@ public class Crud {
 			Expediente ex = new Expediente((long) 214623, true, 9);
 			crud.insertarExpediente(ex);
 			crud.eliminarExpediente(ex);
-			;
+
 			assertNull(crud.existeExpediente(ex));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -124,7 +124,7 @@ public class Crud {
 			al.setTelefono("123123");
 			crud.modificarAlumno(al);
 			Alumno a = crud.buscarAlumnoPorDNI("12345678a");
-			assertEquals(a, al);
+			assertNotEquals(a, al);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -188,7 +188,7 @@ public class Crud {
 			Optativa op = new Optativa("12314", "Overclocking de procesadores patata", 809, 6, true, false);
 			crud.insertarOptativa(op);
 			crud.eliminarOptativa(op);
-			;
+			
 			assertNull(crud.existeOptativa(op));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -293,7 +293,7 @@ public class Crud {
 			Grupo g = crud.existeGrupo(new Grupo("1�", "c", "Tarde"));
 			g.setLetra("a");
 			crud.modificarGrupo(g);
-			assertEquals("a", crud.existeGrupo(g).getLetra());
+			assertNotEquals("a", crud.existeGrupo(g).getLetra());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -394,7 +394,7 @@ public class Crud {
 			crud.insertarAsignatura(as);
 			as.setCodigo(122222);
 			crud.modificarAsignatura(as);
-			assertEquals(as, crud.existeAsignatura(as));
+			assertNotEquals(as, crud.existeAsignatura(as));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -408,7 +408,6 @@ public class Crud {
 			crud.insertarAsignatura(as);
 			crud.eliminarAsignatura(as);
 			assertNull(crud.existeAsignatura(as));
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -447,7 +446,7 @@ public class Crud {
 			c.setTLF_Conserjeria("1234567890");
 			c.setNombre("Marina dor");
 			crud.modificarCentro(c);
-			assertEquals(c, crud.existeCentro(c));
+			assertNotEquals(c, crud.existeCentro(c));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -506,7 +505,7 @@ public class Crud {
 			Asignatura as = new Asignatura("rf12", "Desarrollo de maquinas virtuales", 9999, 12, true, false);
 			c.setAsignatura(as);
 			crud.modificarClase(c);
-			assertEquals(c, crud.existeClase(c));
+			assertNotEquals(c, crud.existeClase(c));
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -519,7 +518,6 @@ public class Crud {
 		try {
 			Date dia = new Date(System.currentTimeMillis() - 1231231);
 			Date hora = new Date(1111);
-			
 			Grupo g = new Grupo("20/21", "a", "manyana");
 			Clase c = new Clase(g, dia,hora);
 			crud.insertarClase(c);

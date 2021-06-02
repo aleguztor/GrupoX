@@ -17,7 +17,8 @@
 		<table>
 			<tr>
 				<td>A que curso quieres cambiarte</td>
-				<td><h:inputText id="curso" value="#{solicitudBean.curso}" /></td>
+				<td><h:inputText id="curso" value="#{solicitudBean.curso}" required="true"
+                         requiredMessage="Falta curso a cambiar"/></td>
 			</tr>
 			<tr>
 				<td>Escriba las razones de su cambio</td>
@@ -25,7 +26,8 @@
 			</tr>
 			<tr>
 				<td>DNI</td>
-				<td><h:inputText id="dni" value="#{solicitudBean.dni}" /></td>
+				<td><h:inputText id="dni" value="#{solicitudBean.dni}" required="true"
+                         requiredMessage="DNI OBLIGATORIO"/></td>
 			</tr>
 			<tr>
 				<td>DOCUMENTO</td>

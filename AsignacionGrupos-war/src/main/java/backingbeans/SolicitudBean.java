@@ -24,12 +24,12 @@ public class SolicitudBean {
 	CrudEJBLocal crud;
 	
 	
-	public String testCrearEncuesta() throws Exception {
+	public String CrearEncuesta() throws Exception {
 		
 		Date d = new Date(System.currentTimeMillis());
 		EncuestaCambioHorario e= new EncuestaCambioHorario(d,curso,razones,archivo,dni);
 			crud.insertarEncuestaCambioHorario(e);
-		return "index.xhtml";
+		return "success";
 		
 	}
 	public File getArchivo() {

@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16214432364200" configfile="/AsignacionGrupos-war/src/main/webapp/WEB-INF/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16214432364200" configfile="/AsignacionGrupos-war/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf16226304203520" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf16226304558205" path="/solocitudCambioHorario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf16226304558206" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf16226304558205" path="/index.xhtml"/>
+  <links id="pf16226304558205" target="pf16226304558206" source="pf16226304203520" outcome="success" redirect="true" fromaction="#{solicitudBean.CrearEncuesta}"/>
+</pageflow:Pageflow>

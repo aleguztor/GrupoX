@@ -440,12 +440,10 @@ import Exceptions.*;
 			throw new EncuestaException();
 	}
 	@Override
-	public void insertarEncuestaCambioHorario(EncuestaCambioHorario e)throws EncuestaException{
-		EncuestaCambioHorario ce = em.find(EncuestaCambioHorario.class,e.getDameDNI());
-		if(ce == null)
+	public void insertarEncuestaCambioHorario(EncuestaCambioHorario e){
+		
 			em.persist(e);
-		else
-			throw new EncuestaException();
+		
 	}
 
 	

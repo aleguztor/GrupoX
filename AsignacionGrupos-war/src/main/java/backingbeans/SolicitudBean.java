@@ -22,13 +22,15 @@ public class SolicitudBean {
 	
 	@Inject 
 	CrudEJBLocal crud;
-	public String getCrearEncuesta() throws Exception {
+	
+	
+	public String testCrearEncuesta() throws Exception {
 		
 		Date d = new Date(System.currentTimeMillis());
 		EncuestaCambioHorario e= new EncuestaCambioHorario(d,curso,razones,archivo,dni);
 			crud.insertarEncuestaCambioHorario(e);
+		return "index.xhtml";
 		
-		return "Encuesta enviada";
 	}
 	public File getArchivo() {
 		return archivo;

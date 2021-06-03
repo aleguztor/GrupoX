@@ -56,11 +56,11 @@ public class Encuestas {
 //	@Requisitos({"RF5"})
 	@Test
 	public void testAsignarEncuesta() {
-		Date d = new Date(System.currentTimeMillis());
+		
 		try {
 			Alumno a = crud.buscarAlumnoPorDNI("12345678a");
 			Expediente e = a.getExpedientes().get(0);
-			Encuesta en = new Encuesta(d, e, "Manyana");
+			Encuesta en = new Encuesta(e, "Manyana");
 			en.setExpediente(e);
 			negocio.asignarEncuesta(e.getNum_Expediente(), en);
 			a = crud.buscarAlumnoPorDNI("12345678a");

@@ -392,18 +392,13 @@ import Exceptions.*;
 	@Override
 	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
 		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a WHERE a.DNI LIKE '"+dni+"'", Alumno.class);
-		if(q.getSingleResult() == null) {
-			throw new AlumnoNoEncontradoException();
-		}
 		return q.getSingleResult();
 	}
 
 	@Override
 	public void eliminarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
 		Alumno a = buscarAlumnoPorDNI(dni);
-		if(a == null) {
-			throw new AlumnoNoEncontradoException();
-		}
+		
 		em.remove(em.merge(a));
 		
 	}

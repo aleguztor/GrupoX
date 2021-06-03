@@ -1,7 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
 	<title>Insertar Alumno</title>
@@ -9,70 +8,68 @@
 </h:head>
 
 <h:body>
-	<div class="card">
-		<h:form id="alumnoForm">
-			<span class="ui-float-label"> <p:inputText id="nombre"
-					value="#{alumnoBean.alumno.nombre}" required="true">
-				</p:inputText>  <p:outputLabel
-					for="@previous" value="Nombre" /> <h:message for="nombre" />
-			</span>
-			<span class="ui-float-label"> <p:inputText id="apellido1"
-					value="#{alumnoBean.alumno.apellido1}" required="true"></p:inputText>
-				<p:outputLabel for="@previous" value="Primer Apellido" /> <h:message
-					for="apellido1" />
-			</span>
-			<span class="ui-float-label"> <p:inputText id="apellido2"
-					value="#{alumnoBean.alumno.apellido2}"></p:inputText> <p:outputLabel
-					for="@previous" value="Segundo Apellido" />
-			</span>
-			<span class="ui-float-label"> <p:inputText id="dni"
-					value="#{alumnoBean.alumno.DNI}" required="true"></p:inputText> <p:outputLabel
-					for="@previous" value="DNI" /> <h:message for="dni" />
-			</span>
-			<span class="ui-float-label"> <p:inputText id="emailinsti"
-					value="#{alumnoBean.alumno.email_institucional}" required="true">
-					<f:validateRegex
-						pattern="[0-9a-zA-Z._-]+@[0-9a-zA-Z._-]+\.[0-9a-zA-Z._-]+)+" />
-				</p:inputText> <p:outputLabel for="@previous" value="Email Institucional" />
-				<h:message for="emailinsti" />
-			</span>
-			<span class="ui-float-label"> <p:inputText id="emailperso"
-					value="#{alumnoBean.alumno.email_personal}">
-					<f:validateRegex
-						pattern="[0-9a-zA-Z._-]+@[0-9a-zA-Z._-]+\.[0-9a-zA-Z._-]+)+" />
-				</p:inputText> <p:outputLabel for="@previous" value="Email Personal" />
-				<h:message for="emailperso" />
-			</span>
-			<span class="ui-float-label"> <p:inputText id="movil"
-					value="#{alumnoBean.alumno.movil}"></p:inputText> <p:outputLabel
-					for="@previous" value="Movil" /></span>
-					<span class="ui-float-label">
-					 <p:inputText id="telefono"
-					value="#{alumnoBean.alumno.telefono}"></p:inputText> <p:outputLabel
-					for="@previous" value="Telefono" />
-			</span>
-			<span class="ui-float-label"> <p:inputText id="direccion"
-					value="#{alumnoBean.alumno.direccion_notificacion}"></p:inputText>
-				<p:outputLabel for="@previous" value="Direccion" /> 
-				</span>
-				<span class="ui-float-label"><p:inputText
-					id="localidad" value="#{alumnoBean.alumno.localidad_notificacion}"></p:inputText>
-				<p:outputLabel for="@previous" value="Localidad" /> </span> 
-				<span class="ui-float-label">
-				<p:inputText
-					id="provincia" value="#{alumnoBean.alumno.provincia_notificacion}"></p:inputText>
-				<p:outputLabel for="@previous" value="Provincia" /> 
-				</span>
-				<span class="ui-float-label">
-				<p:inputText
-					id="cp" value="#{alumnoBean.alumno.CP_notificacion}"></p:inputText>
-				<p:outputLabel for="@previous" value="Codigo Postal" />
-			</span>
-			<p:commandButton type="button" value="Insertar"
-				action="#{alumnoBean.doCrearAlumno}" outcome="listadoAlumnos.xhtml">
-			</p:commandButton>
-		</h:form>
-	</div>
+<!-- rehacer  -->
+	<h:form id="alumnoForm">
+		<h:inputText id="nombre" value="#{alumnoBean.alumno.nombre}"
+			required="true"/>
+		
+		<h:outputLabel for="@previous" value="Nombre" />
+		
+
+		<h:inputText id="apellido1" value="#{alumnoBean.alumno.apellido1}"
+			required="true" />
+		<h:outputLabel for="@previous" value="Primer Apellido" />
+		
+
+		<h:inputText id="apellido2" value="#{alumnoBean.alumno.apellido2}" />
+		<h:outputLabel for="@previous" value="Segundo Apellido" />
+
+		<h:inputText id="dni" value="#{alumnoBean.alumno.DNI}" required="true" />
+		<h:outputLabel for="@previous" value="DNI" />
+		
+
+		<h:inputText id="emailinsti"
+			value="#{alumnoBean.alumno.email_institucional}" required="true" />
+
+
+		<h:outputLabel for="@previous" value="Email Institucional" />
+		<h:message for="emailinsti" />
+
+		<h:inputText id="emailperso"
+			value="#{alumnoBean.alumno.email_personal}" />
+
+
+		<h:outputLabel for="@previous" value="Email Personal" />
+		
+
+		<h:inputText id="movil" value="#{alumnoBean.alumno.movil}" />
+		<h:outputLabel for="@previous" value="Movil" />
+
+		<h:inputText id="telefono" value="#{alumnoBean.alumno.telefono}" />
+		<h:outputLabel for="@previous" value="Telefono" />
+
+		<h:inputText id="direccion"
+			value="#{alumnoBean.alumno.direccion_notificacion}" />
+		<h:outputLabel for="@previous" value="Direccion" />
+
+		<h:inputText id="localidad"
+			value="#{alumnoBean.alumno.localidad_notificacion}" />
+		<h:outputLabel for="@previous" value="Localidad" />
+
+		<h:inputText id="provincia"
+			value="#{alumnoBean.alumno.provincia_notificacion}" />
+		<h:outputLabel for="@previous" value="Provincia" />
+
+
+		<h:inputText id="cp" value="#{alumnoBean.alumno.CP_notificacion}" />
+		<h:outputLabel for="@previous" value="Codigo Postal" />
+
+		<h:commandButton type="submit" value="Insertar"
+			action="#{alumnoBean.doCrearAlumno}" />
+
+	</h:form>
+
+
 </h:body>
 
 

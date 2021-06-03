@@ -12,14 +12,7 @@ public class Sesion {
 	        httpSession = (HttpSession) fc.getExternalContext().getSession(false);
 	    }
 	 
-	    /**
-	     * Método encargado de iniciar una sesión y establecer los datos 
-	     * a gestionar durante dicha sesión.
-	     *
-	     * @author Adrian Francisco Becerra Arias - shogunato184@gmail.com
-	     * @since 2017-06-01
-	     * @param Object
-	     */
+	   
 	    public static void setDatosSesion(String nomObjeto, Object objeto) {
 	        try {
 	            if (httpSession.getId() != null && !httpSession.getId().isEmpty()) {

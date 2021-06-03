@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Insertar Centro</title>
+</h:head>
+
+<h:body>
+<div id="centro">
+	<h:form id="centro_form" enctype="multipart/form-data">
+	
+	
+		<table>
+			<tr>
+				<td>CENTRO</td>
+				<td>
+				<h:inputText id="idcentro" value="#{centroController.id}" /></td>
+			</tr>
+			<tr>
+				<td>NOOMBRE</td>
+				<td><h:inputText id="nombrecentro" value="#{centroController.nombre}" /></td>
+			</tr>
+			<tr>
+				<td>DIRECCION</td>
+				<td>
+				<h:inputText id="direccion" value="#{centroController.direccion}" /></td>
+			</tr>
+			<tr>
+				<td>TELEFONO CONSERJERIA</td>
+				<td><h:inputText id="tlf" value="#{centroController.tlfConserjeria}" /></td>
+			</tr>
+			<tr>
+				<td><h:commandButton type="submit" value="Enviar"
+					action="#{centroController.CrearCentro}" /> 
+					</td>
+				<td> </td>
+			</tr>
+		</table>
+	</h:form>
+	<h:form>
+		<h:commandButton id="backButton" value="Back" action="index" />
+	</h:form>
+</div>
+</h:body>
+
+</html>

@@ -122,6 +122,7 @@ public class Crud {
 			al.setEmail_personal("pepito@gmail.com");
 			al.setLocalidad_notificacion("Malaga");
 			al.setTelefono("123123");
+			al.setNombre("pepitodelospalotes");
 			crud.modificarAlumno(al);
 			Alumno a = crud.buscarAlumnoPorDNI("12345678a");
 			assertNotEquals(a, al);

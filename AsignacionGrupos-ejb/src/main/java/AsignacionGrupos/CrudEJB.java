@@ -313,7 +313,7 @@ import Exceptions.*;
 	public void insertarCentro(Centro c) throws CentroException {
 		Centro ce = em.find(Centro.class,c.getID());
 		if(ce == null)
-			em.persist(ce);
+			em.persist(c);
 		else
 			throw new CentroException();
 		

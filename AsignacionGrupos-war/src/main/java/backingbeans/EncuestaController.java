@@ -1,5 +1,7 @@
 package backingbeans;
 
+import java.sql.Date;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,13 +16,14 @@ import Exceptions.EncuestaException;
 public class EncuestaController {
 	private Long numexpediente;
 	private String turnopreferente;
+	private Date date;
 	private
 	@Inject
 	CrudEJBLocal crud;
 	
 	public String CrearEncuesta() throws EncuestaException {
 		Expediente e= new Expediente(numexpediente,true,0);
-		Encuesta en= new Encuesta(e,turnopreferente);
+		Encuesta en= new Encuesta(date,e,turnopreferente);
 		crud.insertarEncuesta(en);
 		return "index.xhtml";
 	}
@@ -40,5 +43,14 @@ public class EncuestaController {
 	public void setTurnopreferente(String turnopreferente) {
 		this.turnopreferente = turnopreferente;
 	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
 	
 }

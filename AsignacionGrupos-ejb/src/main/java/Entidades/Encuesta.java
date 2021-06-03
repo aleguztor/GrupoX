@@ -92,7 +92,6 @@ public class Encuesta implements Serializable{
 	}
 	
 	@Id
-	@GeneratedValue
 	private Date Fecha_envio;
 	private String Turno_Preferente;
 	
@@ -106,8 +105,8 @@ public class Encuesta implements Serializable{
 	
 	public Encuesta() {}
 	
-	public Encuesta( Expediente e, String tp) {
-		
+	public Encuesta(Date f, Expediente e, String tp) {
+		Fecha_envio = f;
 		expediente = e;
 		Turno_Preferente = tp;
 	}

@@ -29,12 +29,12 @@ public class Base {
 		Expediente e5 = new Expediente((long)174615,true,5.0);
 		Expediente e6 = new Expediente((long)123642,true,5.0);
 		
-		Encuesta en1 = new Encuesta(e1, "Manyana");
-		Encuesta en2 = new Encuesta(e2, "Manyana");
-		Encuesta en3 = new Encuesta(e3, "Manyana");
-		Encuesta en4 = new Encuesta(e4, "Tarde");
-		Encuesta en5 = new Encuesta(e5, "Tarde");
-		Encuesta en6 = new Encuesta(e6, "Manyana");
+		Encuesta en1 = new Encuesta(d,e1, "Manyana");
+		Encuesta en2 = new Encuesta(d,e2, "Manyana");
+		Encuesta en3 = new Encuesta(d,e3, "Manyana");
+		Encuesta en4 = new Encuesta(d,e4, "Tarde");
+		Encuesta en5 = new Encuesta(d,e5, "Tarde");
+		Encuesta en6 = new Encuesta(d,e6, "Manyana");
 		
 		List<Encuesta> p = new LinkedList<>();
 		p.add(en1);

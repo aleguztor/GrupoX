@@ -20,6 +20,16 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
   <welcome-file-list>
     <welcome-file>faces/index.html</welcome-file>
   </welcome-file-list>
+    <filter>  
+    
+<filter-name>sec</filter-name>  
+<filter-class>backingbeans.Myfilter</filter-class>  
+</filter>  
+   
+<filter-mapping>  
+<filter-name>sec</filter-name>  
+<url-pattern>/Login.xhtml</url-pattern>  
+</filter-mapping> 
   
   
 </web-app>

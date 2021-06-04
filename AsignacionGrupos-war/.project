@@ -34,4 +34,21 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/webapp/images</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>src/main/webapp/images/gb3d8fc4c3d42ab4419fc2bc304cc06a93669bd58a36c5d53791b21d4b8bf236a2fab76a406716d4f0ca84dca17b1d3f789aa945d7966f1e7d11ab29b81d095e2_1280.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Descargas/adasds(2)/images/gb3d8fc4c3d42ab4419fc2bc304cc06a93669bd58a36c5d53791b21d4b8bf236a2fab76a406716d4f0ca84dca17b1d3f789aa945d7966f1e7d11ab29b81d095e2_1280.jpg</locationURI>
+		</link>
+		<link>
+			<name>src/main/webapp/images/marcauniversidaddemalagaVERTICAL.png</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Descargas/adasds(2)/images/marcauniversidaddemalagaVERTICAL.png</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

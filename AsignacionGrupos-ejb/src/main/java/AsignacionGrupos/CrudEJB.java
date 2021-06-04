@@ -81,9 +81,9 @@ import Exceptions.*;
 			Alumno al = buscarAlumnoPorDNI(a.getDNI());
 			if(al != null) {
 				throw new AlumnoDuplicadoException();
-			}else {
-				em.persist(a);
 			}
+				em.persist(a);
+			
 		} catch (AlumnoNoEncontradoException e) {
 			e.printStackTrace();
 		}
@@ -313,7 +313,7 @@ import Exceptions.*;
 	public void insertarCentro(Centro c) throws CentroException {
 		Centro ce = em.find(Centro.class,c.getID());
 		if(ce == null)
-			em.persist(ce);
+			em.persist(c);
 		else
 			throw new CentroException();
 		
@@ -392,8 +392,8 @@ import Exceptions.*;
 	@Override
 	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
 		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a WHERE a.DNI LIKE '"+dni+"'", Alumno.class);
-		if(q.getSingleResult() == null) {
-			throw new AlumnoNoEncontradoException();
+		if(q.getResultList().isEmpty()) {
+			return null;
 		}
 		return q.getSingleResult();
 	}
@@ -401,9 +401,7 @@ import Exceptions.*;
 	@Override
 	public void eliminarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
 		Alumno a = buscarAlumnoPorDNI(dni);
-		if(a == null) {
-			throw new AlumnoNoEncontradoException();
-		}
+		
 		em.remove(em.merge(a));
 		
 	}
@@ -440,59 +438,15 @@ import Exceptions.*;
 			throw new EncuestaException();
 	}
 	@Override
-	public void insertarEncuestaCambioHorario(EncuestaCambioHorario e)throws EncuestaException{
-		EncuestaCambioHorario ce = em.find(EncuestaCambioHorario.class,e.getDameDNI());
-		if(ce == null)
+	public void insertarEncuestaCambioHorario(EncuestaCambioHorario e){
+		
 			em.persist(e);
-		else
-			throw new EncuestaException();
+		
 	}
 
 	
 
-	/*
-	 * @Override public void registrarAlumno(Alumno a, UriBuilder uriBuilder) throws
-	 * AlumnoDuplicadoException { Alumno al = em.find(Alumno.class,a.getId()); if(al
-	 * != null) { throw new AlumnoDuplicadoException(); }
-	 * a.setCadenaValidacion(generarCadenaAleatoria()); em.persist(al); URI
-	 * uriValidacion = uriBuilder.build(a.getId(),a.getCadenaValidacion());
-	 * LOGGER.info(uriValidacion.toString());
-	 * 
-	 * }
-	 * 
-	 * private String generarCadenaAleatoria() { Random rnd = new
-	 * Random(System.currentTimeMillis()); StringBuilder sb = new StringBuilder();
-	 * 
-	 * for (int i = 0; i < TAM_CADENA_VALIDACION; i++) { int v = rnd.nextInt(62); if
-	 * (v < 26) { sb.append((char) ('a' + v)); } else if (v < 52) { sb.append((char)
-	 * ('A' + v - 26)); } else { sb.append((char) ('0' + v - 52)); } }
-	 * 
-	 * return sb.toString(); }
-	 * 
-	 * @Override public void validarAlumno(Long id, String validacion) throws
-	 * AlumnoNoEncontradoException, ValidacionIncorrectaException { Alumno al =
-	 * em.find(Alumno.class, id); if(al== null) throw new
-	 * AlumnoNoEncontradoException();
-	 * 
-	 * if(al.getCadenaValidacion() == null) return;
-	 * if(al.getCadenaValidacion().equals(validacion)) throw new
-	 * ValidacionIncorrectaException();
-	 * 
-	 * al.setCadenaValidacion(null); }
-	 * 
-	 * @Override public void compruebaLogin(Alumno a) throws
-	 * AlumnoNoEncontradoException, AlumnoInactivoException,
-	 * ContraseniaInvalidaException{ Alumno al = em.find(Alumno.class, a.getId());
-	 * if(al == null) throw new AlumnoNoEncontradoException();
-	 * 
-	 * if(al.getCadenaValidacion() != null) throw new AlumnoInactivoException();
-	 * 
-	 * if(!al.getContrasenia().equals(a.getContrasenia())) throw new
-	 * ContraseniaInvalidaException(); }
-	 */
-	
 
-	
 	
 	
 	

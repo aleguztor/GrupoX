@@ -117,14 +117,12 @@ public class Crud {
 	public void testModificarAlumno() {
 		try {
 			Alumno al = crud.buscarAlumnoPorDNI("12345678a");
-
-			al.setDireccion_notificacion("Calle la mia");
-			al.setEmail_personal("pepito@gmail.com");
-			al.setLocalidad_notificacion("Malaga");
-			al.setTelefono("123123");
+			String nombre= al.getNombre();
+			
+			al.setNombre("pepitodelospalotes");
 			crud.modificarAlumno(al);
-			Alumno a = crud.buscarAlumnoPorDNI("12345678a");
-			assertNotEquals(a, al);
+			
+			assertNotEquals("pepitodelospalotes", nombre);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -273,7 +271,18 @@ public class Crud {
 			e.printStackTrace();
 		}
 	}
-
+	
+//@Requisitos({"RF2"})
+	@Test
+	public void testEliminarGRupo() {
+		try {
+			Grupo g = crud.busquedaGrupo("1","B", "Manyana");
+			crud.eliminarGrupo(g);
+			assertNull(crud.busquedaGrupo("1","B", "Manyana"));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 //	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarGrupo() {
@@ -446,7 +455,7 @@ public class Crud {
 			c.setTLF_Conserjeria("1234567890");
 			c.setNombre("Marina dor");
 			crud.modificarCentro(c);
-			assertNotEquals(c, crud.existeCentro(c));
+			assertNotEquals("Escuela tecnica Civil", crud.existeCentro(c).getNombre());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -469,7 +478,7 @@ public class Crud {
 	public void testEliminarCentro() {
 		try {
 			Centro c = new Centro((long) 12313, "Escuela tecnica Civil", "Calle Ave del Paraiso 12", "999999999");
-			crud.insertarCentro(c);
+			crud.eliminarCentro(c);;
 			assertNull(crud.existeCentro(c));
 		} catch (Exception e) {
 			e.printStackTrace();

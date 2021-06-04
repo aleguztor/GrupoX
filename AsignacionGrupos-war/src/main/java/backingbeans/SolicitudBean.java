@@ -4,8 +4,13 @@ import java.io.File;
 import java.sql.Date;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.file.UploadedFile;
 
 import AsignacionGrupos.CrudEJBLocal;
 import Entidades.EncuestaCambioHorario;
@@ -22,14 +27,19 @@ public class SolicitudBean {
 	
 	@Inject 
 	CrudEJBLocal crud;
-	public String getCrearEncuesta() throws Exception {
+	
+	
+	public String CrearEncuesta() throws Exception {
 		
 		Date d = new Date(System.currentTimeMillis());
 		EncuestaCambioHorario e= new EncuestaCambioHorario(d,curso,razones,archivo,dni);
 			crud.insertarEncuestaCambioHorario(e);
+		return "index.xhtml";
 		
-		return "Encuesta enviada";
 	}
+
+	   
+	 
 	public File getArchivo() {
 		return archivo;
 	}

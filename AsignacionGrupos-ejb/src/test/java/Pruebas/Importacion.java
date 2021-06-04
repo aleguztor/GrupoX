@@ -50,10 +50,11 @@ public class Importacion {
 		Base.init(UNIDAD_PERSISTENCIA_PRUEBAS);
 	}
 	
+	@Ignore
 //	@Requisitos({"RF1"})
 	@Test
 	public void testImportacionAlumnos() {
-		Alumno a = new Alumno( "Carmelita", "Enríquez","95115697E", "06104200001@uma.es");
+		Alumno a = new Alumno( "Carmelita", "Enrï¿½quez","95115697E", "06104200001@uma.es");
 		try {
 			ie.ImportarExcel();
 			Alumno res = crud.buscarAlumnoPorDNI("95115697E");

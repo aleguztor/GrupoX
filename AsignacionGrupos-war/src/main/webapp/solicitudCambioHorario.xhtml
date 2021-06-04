@@ -12,42 +12,43 @@
 </h:head>
 
 <h:body>
-	<h:form>
+<div id="cambh">
+	<h:form id="cambiohorario_form" enctype="multipart/form-data">
+	
+	
 		<table>
 			<tr>
 				<td>A que curso quieres cambiarte</td>
-				<td><h:inputText value="#{solicitudBean.curso}" /></td>
+				<td>
+				<h:inputText id="curso" value="#{solicitudBean.curso}" required="true"
+                         requiredMessage="Falta curso a cambiar"/></td>
 			</tr>
-
-		</table>
-	</h:form>
-	<h:form>
-		<table>
 			<tr>
 				<td>Escriba las razones de su cambio</td>
-				<td><h:inputText value="#{solicitudBean.razones}" /></td>
+				<td><h:inputText id="razones" value="#{solicitudBean.razones}" /></td>
 			</tr>
-
 			<tr>
 				<td>DNI</td>
-				<td><h:inputText value="#{solicitudBean.dni}" /></td>
-
+				<td>
+				<h:inputText id="dni" value="#{solicitudBean.dni}" required="true"
+                         requiredMessage="DNI OBLIGATORIO"/></td>
 			</tr>
-
+			<tr>
+				<td>DOCUMENTO</td>
+				<td><h:inputFile id="archivo" value="#{solicitudBean.archivo}" /></td>
+			</tr>
+			<tr>
+				<td><h:commandButton type="submit" value="Enviar"
+					action="#{solicitudBean.CrearEncuesta}" /> 
+					</td>
+				<td> </td>
+			</tr>
 		</table>
 	</h:form>
-	<h:form enctype="multipart/form-data"> DOCUMENTO
-    	<h:inputFile value="#{solicitudBean.archivo}" />
-
-	</h:form>
-
 	<h:form>
-
-		<h:commandButton id="enviar" value="Enviar" action="crearEncuesta" />
+		<h:commandButton id="backButton" value="Back" action="index" />
 	</h:form>
-
-
-
+</div>
 </h:body>
 
 </html>

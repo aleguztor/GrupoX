@@ -2,7 +2,6 @@ package backingbeans;
 
 
 import java.util.List;
-import java.util.Random;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
@@ -21,7 +20,7 @@ import Exceptions.*;
 public class insAlumno {
 
 	
-	private Alumno alumno;
+	private Alumno alumno = new Alumno();
 	
 	private static final Logger LOG = Logger.getLogger(insAlumno.class.getCanonicalName());
 	
@@ -38,13 +37,12 @@ public class insAlumno {
 	
 	public String doCrearAlumno() {
 		try {
-			Random r = new Random();
-			alumno.setId(r.nextLong());
+			LOG.info("" + alumno.getDNI());
 			crud.insertarAlumno(alumno);
 		} catch (AlumnoDuplicadoException e) {
 				LOG.info("El alumno ya esta en Base de datos incluido");
 		}
-		return "success";
+		return "insertarAlumno.xhtml";
 	}
 	
 	public List<Alumno> listaAlumnos(){

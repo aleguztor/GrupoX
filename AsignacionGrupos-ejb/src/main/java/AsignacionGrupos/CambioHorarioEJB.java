@@ -10,7 +10,8 @@ import Exceptions.*;
 
 @Stateless
 public class CambioHorarioEJB implements CambioHorario {
- 
+	private CrudEJBLocal crud;
+	
 	@Override
 	public void CambioHorarioyGrupo(Alumno alum, Grupo antiguo, Grupo nuevo) throws AsignacionGruposException {
 		if(alum==null) {
@@ -19,7 +20,9 @@ public class CambioHorarioEJB implements CambioHorario {
 		
 		List<Grupo> grupos= alum.getAlumno_Grupos();
 		grupos.remove(antiguo);
-		grupos.add(nuevo);			
+		grupos.add(nuevo);	
+		alum.setGrupos(grupos);
+		crud.modificarAlumno(alum);
 	}
 
 

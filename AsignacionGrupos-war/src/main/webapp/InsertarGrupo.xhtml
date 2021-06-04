@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Grupo</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<table>
+			<tr>
+				<td>Curso</td>
+				<td><h:selectOneMenu value="#{grupoBean.grupo.curso}"
+				required="true">
+				<f:selectItem itemLabel="1º" itemValue="1"/>
+				<f:selectItem itemLabel="2º" itemValue="2"/>
+				<f:selectItem itemLabel="3º" itemValue="3"/>
+				<f:selectItem itemLabel="4º" itemValue="4"/>
+				</h:selectOneMenu></td>
+			</tr>
+			<tr>
+				<td>Letra</td>
+				<td><h:inputText value="#{grupoBean.grupo.letra}"/></td>
+			</tr>
+			<tr>
+				<td>Turno</td>
+				<td><h:selectOneMenu value="#{grupoBean.grupo.turno_manyana_tarde}">
+				<f:selectItem itemLabel="Mañana" itemValue="Manyana"/>
+				<f:selectItem itemLabel="Tarde" itemValue="Tarde"/>
+				</h:selectOneMenu></td>
+			</tr>
+			<tr>
+				<td>Ingles</td>
+				<td><h:selectOneMenu value="#{grupoBean.grupo.ingles}">
+				<f:selectItem itemLabel="Si" itemValue="Si"/>
+				<f:selectItem itemLabel="No" itemValue="No"/>
+				</h:selectOneMenu></td>
+			</tr>
+			<tr>
+				<td>Visible</td>
+				<td><h:selectOneMenu value="#{grupoBean.grupo.visible}">
+				<f:selectItem itemLabel="Si" itemValue="Si"/>
+				<f:selectItem itemLabel="No" itemValue="No"/>
+				</h:selectOneMenu></td>
+			</tr>
+			<tr>
+				<td>Asignar</td>
+				<td><h:selectOneMenu value="#{grupoBean.grupo.asignar}">
+				<f:selectItem itemLabel="Si" itemValue="Si"/>
+				<f:selectItem itemLabel="No" itemValue="No"/></h:selectOneMenu></td>
+			</tr>
+			<tr>
+				<td>Plazas</td>
+				<td><h:inputText value="#{grupoBean.grupo.plazas}"/></td>
+			</tr>
+			<tr>
+				<td><h:commandButton value="Enviar"/></td>
+				<td></td>
+			</tr>
+			
+		</table>
+	</h:form>
+</h:body>
+
+</html>

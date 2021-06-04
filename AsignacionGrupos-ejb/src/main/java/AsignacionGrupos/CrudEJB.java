@@ -187,12 +187,12 @@ import Exceptions.*;
 	
 
 	@Override
-	public void insertarGrupo(Grupo g) throws GrupoNoEncontradoException {
+	public void insertarGrupo(Grupo g) throws GrupoDuplicadoException {
 		Grupo gr = em.find(Grupo.class, g.getId());
 		if(gr == null)
 			em.persist(g);
 		else 
-			throw new GrupoNoEncontradoException();
+			throw new GrupoDuplicadoException();
 		
 	}
 

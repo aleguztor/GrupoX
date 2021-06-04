@@ -34,11 +34,4 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/main/webapp/resources/images/marcauniversidaddemalagaVERTICAL.png</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Escritorio/marcauniversidaddemalagaVERTICAL.png</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

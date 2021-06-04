@@ -6,7 +6,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -18,7 +19,7 @@ import Entidades.Expediente;
 import Entidades.Grupo;
 import Entidades.Matricula;
 
-@Stateless
+@Stateful
 public class AlgoritmoImpl implements AlgoritmoIntf{
 	
 	static class comparatorAlumno implements Comparator<Alumno>{
@@ -42,6 +43,7 @@ public class AlgoritmoImpl implements AlgoritmoIntf{
 	@PersistenceContext(name="AsignacionGrupos")
 	private EntityManager em;
 	private boolean eq = true;
+	@Inject
 	private CrudEJBLocal crud;
 	//Actualizar cosas en base con los metodos del CRUD
 	//Inicialmente tenemos un grupo de mañana y uno de tarde.

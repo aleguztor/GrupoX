@@ -16,30 +16,18 @@ import Exceptions.*;
 
 
 
-@Named("alumnoMod")
+@Named
 @RequestScoped
 public class modAlumno {
 
 	
-	private Alumno alumno;
-	private Alumno al;
+	private Alumno alumno = new Alumno();
+	private Alumno al = new Alumno();
 	String dni;
 	private static final Logger LOG = Logger.getLogger(modAlumno.class.getCanonicalName());
 	
 	@Inject 
 	CrudEJBLocal crud;
-	@PostConstruct
-	public void init() {
-		dni =  (String)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("dni");
-		try {
-			al = crud.buscarAlumnoPorDNI(dni);
-		} catch (AlumnoNoEncontradoException e) {
-			// TODO Auto-generated catch block
-			LOG.severe("Alumno no encontrado en BBDD");
-			e.printStackTrace();
-		}
-	}
-	
 	
 	
 	public String getDni() {
@@ -69,7 +57,10 @@ public class modAlumno {
 	public void setAl(Alumno al) {
 		this.al = al;
 	}
-
+	public String modificar(Alumno a) {
+		this.al = a;
+		return null;
+	}
 	public String doModificarAlumno() {
 		try {
 			
@@ -122,7 +113,7 @@ public class modAlumno {
 			e.printStackTrace();
 		}
 		
-		return "success";
+		return "index.xhtml";
 	}
 	
 	

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -13,7 +14,7 @@ import AsignacionGrupos.CrudEJBLocal;
 import Entidades.Alumno;
 
 @Named(value = "listado")
-@SessionScoped
+@RequestScoped
 public class listadoAlumnosControlador implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -40,5 +41,7 @@ public class listadoAlumnosControlador implements Serializable {
     public synchronized Alumno getAlumno() {
     	return alumno;
     }
+    
+    
        
 }

@@ -4,7 +4,6 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-      
     <h:head>
         <title>Aplicacion Asignacion Grupos</title>
     </h:head>
@@ -19,10 +18,12 @@
 		            <p:column headerText="Expedientes">
 		                <h:button action="#{listado.alumno(a)}" outcome="prueba.xhtml" value="Mostrar"/>
 		            </p:column>
+		            <p:column headerText="Modificar"> <h:button  outcome="modificarAlumno.xhtml" action="#{modAlumno.modificar(a)}" value="Modificar" />
+		            </p:column>
 		     </p:dataTable>
 		  </h:form>
 	<h:form>
-		 <h:commandButton id="backButton" value="Back"  action="index" />
+		 <h:commandButton id="backButton" value="Back"  outcome="index.xhtml" />
 	</h:form>
 	</h:body>
 </html>

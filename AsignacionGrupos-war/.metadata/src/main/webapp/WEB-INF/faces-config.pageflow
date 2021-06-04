@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16214432364200" configfile="/AsignacionGrupos-war/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="solocitudCambioHorario.xhtml" id="pf16226428365349" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf162264283653410" path="/solocitudCambioHorario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="solocitudCambioHorario.xhtml" id="pf16226428365349" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf162264283653410" path="/solocitudCambioHorario.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf162264283653411" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf162264283653410 pf16227371830160" path="index.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="insertarAlumno2.xhtml" id="pf16227371830171" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf16227371830160" path="/insertarAlumno2.xhtml"/>
   <links id="pf162264283653410" target="pf162264283653411" source="pf16226428365349" outcome="success" redirect="true" fromaction="#{solicitudBean.CrearEncuesta}"/>

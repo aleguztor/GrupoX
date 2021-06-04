@@ -42,7 +42,7 @@ public class insAlumno {
 		} catch (AlumnoDuplicadoException e) {
 				LOG.info("El alumno ya esta en Base de datos incluido");
 		}
-		return "listadoAlumnos.xhtml";
+		return "insertarAlumno.xhtml";
 	}
 	
 	public List<Alumno> listaAlumnos(){

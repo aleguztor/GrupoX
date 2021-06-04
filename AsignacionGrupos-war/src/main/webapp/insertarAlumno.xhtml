@@ -8,64 +8,90 @@
 </h:head>
 
 <h:body>
-<!-- rehacer  -->
-	<h:form id="alumnoForm">
-		<h:inputText id="nombre" value="#{alumnoBean.alumno.nombre}"
-			required="true"/>
-		
-		<h:outputLabel for="@previous" value="Nombre" />
-		
+	<h:form>
+		<table>
 
-		<h:inputText id="apellido1" value="#{alumnoBean.alumno.apellido1}"
-			required="true" />
-		<h:outputLabel for="@previous" value="Primer Apellido" />
-		
+			<tr>
+				<td><h:outputLabel value="Nombre" /></td>
 
-		<h:inputText id="apellido2" value="#{alumnoBean.alumno.apellido2}" />
-		<h:outputLabel for="@previous" value="Segundo Apellido" />
+			</tr>
 
-		<h:inputText id="dni" value="#{alumnoBean.alumno.DNI}" required="true" />
-		<h:outputLabel for="@previous" value="DNI" />
-		
+			<tr>
+				<td><h:inputText id="nombre"
+						value="#{alumnoBean.alumno.nombre}" required="true" /></td>
 
-		<h:inputText id="emailinsti"
-			value="#{alumnoBean.alumno.email_institucional}" required="true" />
+			</tr>
 
+			<tr>
+				<td><h:outputLabel value="Primer Apellido" /></td>
+				<td><h:outputLabel value="Segundo Apellido" /></td>
 
-		<h:outputLabel for="@previous" value="Email Institucional" />
-		<h:message for="emailinsti" />
+			</tr>
 
-		<h:inputText id="emailperso"
-			value="#{alumnoBean.alumno.email_personal}" />
+			<tr>
+				<td><h:inputText id="apellido1"
+						value="#{alumnoBean.alumno.apellido1}" required="true" /></td>
+				<td><h:inputText id="apellido2"
+						value="#{alumnoBean.alumno.apellido2}" /></td>
+			</tr>
 
+			<tr>
+				<td><h:outputLabel value="DNI" /></td>
+			</tr>
 
-		<h:outputLabel for="@previous" value="Email Personal" />
-		
+			<tr>
+				<td><h:inputText id="dni" value="#{alumnoBean.alumno.DNI}"
+						required="true" /></td>
+			</tr>
 
-		<h:inputText id="movil" value="#{alumnoBean.alumno.movil}" />
-		<h:outputLabel for="@previous" value="Movil" />
+			<tr>
+				<td><h:outputLabel value="Email Institucional" /></td>
+				<td><h:outputLabel value="Email Personal" /></td>
+			</tr>
 
-		<h:inputText id="telefono" value="#{alumnoBean.alumno.telefono}" />
-		<h:outputLabel for="@previous" value="Telefono" />
+			<tr>
+				<td><h:inputText id="emailinsti"
+						value="#{alumnoBean.alumno.email_institucional}" required="true" />
+				</td>
+				<td><h:inputText id="emailperso"
+						value="#{alumnoBean.alumno.email_personal}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel value="Movil" /></td>
+				<td><h:outputLabel value="Telefono" /></td>
+			</tr>
+			<tr>
+				<td><h:inputText id="movil" value="#{alumnoBean.alumno.movil}" /></td>
+				<td><h:inputText id="telefono"
+						value="#{alumnoBean.alumno.telefono}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel value="Direccion" /></td>
+				<td><h:outputLabel value="Localidad" /></td>
+			</tr>
+			<tr>
+				<td><h:inputText id="direccion"
+						value="#{alumnoBean.alumno.direccion_notificacion}" /></td>
+				<td><h:inputText id="localidad"
+						value="#{alumnoBean.alumno.localidad_notificacion}" /></td>
 
-		<h:inputText id="direccion"
-			value="#{alumnoBean.alumno.direccion_notificacion}" />
-		<h:outputLabel for="@previous" value="Direccion" />
+			</tr>
+			<tr>
+				<td><h:outputLabel value="Provincia" /></td>
+				<td><h:outputLabel value="Codigo Postal" /></td>
+			</tr>
+			<tr>
+				<td><h:inputText id="provincia"
+						value="#{alumnoBean.alumno.provincia_notificacion}" /></td>
+				<td><h:inputText id="cp"
+						value="#{alumnoBean.alumno.CP_notificacion}" /></td>
+			</tr>
 
-		<h:inputText id="localidad"
-			value="#{alumnoBean.alumno.localidad_notificacion}" />
-		<h:outputLabel for="@previous" value="Localidad" />
-
-		<h:inputText id="provincia"
-			value="#{alumnoBean.alumno.provincia_notificacion}" />
-		<h:outputLabel for="@previous" value="Provincia" />
-
-
-		<h:inputText id="cp" value="#{alumnoBean.alumno.CP_notificacion}" />
-		<h:outputLabel for="@previous" value="Codigo Postal" />
-
-		<h:commandButton type="submit" value="Insertar"
-			action="#{alumnoBean.doCrearAlumno}" />
+			<tr>
+				<td><h:commandButton type="submit" value="Insertar"
+						action="#{alumnoBean.doCrearAlumno}" /></td>
+			</tr>
+		</table>
 
 	</h:form>
 

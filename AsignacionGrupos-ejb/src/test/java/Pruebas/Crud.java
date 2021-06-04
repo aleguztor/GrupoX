@@ -271,7 +271,18 @@ public class Crud {
 			e.printStackTrace();
 		}
 	}
-
+	
+//@Requisitos({"RF2"})
+	@Test
+	public void testEliminarGRupo() {
+		try {
+			Grupo g = crud.busquedaGrupo("1","B", "Manyana");
+			crud.eliminarGrupo(g);
+			assertNull(crud.busquedaGrupo("1","B", "Manyana"));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 //	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarGrupo() {

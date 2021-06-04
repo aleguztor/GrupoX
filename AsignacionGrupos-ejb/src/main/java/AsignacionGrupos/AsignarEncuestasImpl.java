@@ -1,7 +1,7 @@
 package AsignacionGrupos;
 import java.util.List;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -13,7 +13,7 @@ import Exceptions.AlumnoNoEncontradoException;
 import Exceptions.ExpedienteNoEncontradoException;
 
 
-@Stateful
+@Stateless
 public class AsignarEncuestasImpl implements AsignarEncuestas{
 	
 	@PersistenceContext(name="AsignacionGrupos")

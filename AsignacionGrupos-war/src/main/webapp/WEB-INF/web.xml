@@ -30,6 +30,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 <filter-name>sec</filter-name>  
 <url-pattern>/Login.xhtml</url-pattern>  
 </filter-mapping> 
+ 
   
   
 </web-app>

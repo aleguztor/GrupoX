@@ -24,21 +24,26 @@ public class listadoAlumnosControlador implements Serializable {
 
     @Inject
     private CrudEJBLocal crud;
-
+    
+    public listadoAlumnosControlador() {
+    	
+    }
+        
     @PostConstruct
     public void init() {
         alumnos = crud.getAlumnos();
     }
     
-    public List<Alumno> getAlumnos(){
+    public synchronized List<Alumno> getAlumnos(){
     	return alumnos;
     }
     
-    public synchronized void setAlumno(Alumno a) {
-    	alumno = a;
-    }
     public synchronized Alumno getAlumno() {
     	return alumno;
+    }
+    
+    public synchronized void saveAlumno(Alumno a) {
+    	alumno = a;
     }
        
 }

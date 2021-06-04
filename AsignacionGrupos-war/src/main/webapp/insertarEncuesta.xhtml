@@ -57,15 +57,9 @@
 					</h:selectOneMenu> </td>	
 			</tr>
 			<tr>
-				<td>Fecha de hoy</td>
-				<td>
-					<h:inputDate id="date" value="#{encuestaController.date}" /></td>
+				<td>DNI</td>
+				<td><h:inputText id="dni" value="#{encuestaController.dni}" /></td>
 			</tr>
-			<tr>
-				<td>Expediente</td>
-				<td><h:inputText id="expediente" value="#{encuestaController.numexpediente}" /></td>
-			</tr>
-			
 			<tr>
 				<td><h:commandButton type="submit" value="Enviar"
 					action="#{encuestaController.CrearEncuesta}" /> 

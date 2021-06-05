@@ -1,6 +1,7 @@
 package backingbeans;
 
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
@@ -42,7 +43,18 @@ public class modAlumno {
 	}
 
 
-
+	public String outcome() throws AlumnoNoEncontradoException {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		this.dni = getAlumnoParam(fc);
+		
+		return "modificarAlumno";
+	}
+	public String getAlumnoParam(FacesContext fc)  {
+		Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
+		 
+		return params.get("dni");
+	}
+	
 	public Alumno getAlumno() {
 		return alumno;
 	}
@@ -64,8 +76,8 @@ public class modAlumno {
 	}
 	public String doModificarAlumno() {
 		try {
-			
-			
+			LOG.severe(alumno.getNombre());
+			al=crud.buscarAlumnoPorDNI(dni);
 			if(alumno.getApellido1() != null) {
 				al.setApellido1(alumno.getApellido1());
 			}
@@ -77,6 +89,7 @@ public class modAlumno {
 			}
 			if(alumno.getNombre()!=null) {
 				al.setNombre(alumno.getNombre());
+				
 			}
 			if(alumno.getEmail_institucional() != null) {
 				al.setEmail_institucional(alumno.getEmail_institucional());
@@ -114,7 +127,7 @@ public class modAlumno {
 			e.printStackTrace();
 		}
 		
-		return "index.xhtml";
+		return "index";
 	}
 	
 	

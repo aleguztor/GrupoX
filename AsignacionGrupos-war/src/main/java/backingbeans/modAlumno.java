@@ -55,6 +55,7 @@ public class modAlumno {
 		return params.get("dni");
 	}
 	
+	
 	public Alumno getAlumno() {
 		return alumno;
 	}

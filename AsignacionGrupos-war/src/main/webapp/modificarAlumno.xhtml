@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Modificar Alumno</title>
+	<f:metadata>
+	
+		<f:viewParam name="dni" value="#{modAlumno.dni}"></f:viewParam>
+	</f:metadata>
+</h:head>
+
+<h:body>
+
+	<h4>Modificacion del alumno: <h:outputLabel value="#{modAlumno.dni}"/></h4>
+	<h:form>
+		<table>
+
+			<tr>
+				<td><h:outputLabel value="Nombre" /></td>
+
+			</tr>
+
+			<tr>
+				<td><h:inputText id="nombre" value="#{modAlumno.alumno.nombre}" placeholder="#{modAlumno.al.nombre}"/></td>
+
+			</tr>
+
+			<tr>
+				<td><h:outputLabel value="Primer Apellido" /></td>
+				<td><h:outputLabel value="Segundo Apellido" /></td>
+
+			</tr>
+
+			<tr>
+				<td><h:inputText id="apellido1"
+						value="#{modAlumno.alumno.apellido1}" /></td>
+				<td><h:inputText id="apellido2"
+						value="#{modAlumno.alumno.apellido2}" /></td>
+			</tr>
+
+			<tr>
+				<td><h:outputLabel value="DNI" /></td>
+			</tr>
+
+			<tr>
+				<td><h:inputText id="dni" value="#{modAlumno.alumno.DNI}" /></td>
+			</tr>
+
+			<tr>
+				<td><h:outputLabel value="Email Institucional" /></td>
+				<td><h:outputLabel value="Email Personal" /></td>
+			</tr>
+
+			<tr>
+				<td><h:inputText id="emailinsti"
+						value="#{modAlumno.alumno.email_institucional}" required="true" />
+				</td>
+				<td><h:inputText id="emailperso"
+						value="#{modAlumno.alumno.email_personal}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel value="Movil" /></td>
+				<td><h:outputLabel value="Telefono" /></td>
+			</tr>
+			<tr>
+				<td><h:inputText id="movil" value="#{modAlumno.alumno.movil}" /></td>
+				<td><h:inputText id="telefono"
+						value="#{modAlumno.alumno.telefono}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel value="Direccion" /></td>
+				<td><h:outputLabel value="Localidad" /></td>
+			</tr>
+			<tr>
+				<td><h:inputText id="direccion"
+						value="#{modAlumno.alumno.direccion_notificacion}" /></td>
+				<td><h:inputText id="localidad"
+						value="#{modAlumno.alumno.localidad_notificacion}" /></td>
+
+			</tr>
+			<tr>
+				<td><h:outputLabel value="Provincia" /></td>
+				<td><h:outputLabel value="Codigo Postal" /></td>
+			</tr>
+			<tr>
+				<td><h:inputText id="provincia"
+						value="#{modAlumno.alumno.provincia_notificacion}" /></td>
+				<td><h:inputText id="cp"
+						value="#{modAlumno.alumno.CP_notificacion}" /></td>
+			</tr>
+
+			<tr>
+				<td><h:commandButton type="submit" value="Modificar"
+						action="#{modAlumno.doModificarAlumno}" /></td>
+			</tr>
+		</table>
+
+	</h:form>
+
+</h:body>
+</html>

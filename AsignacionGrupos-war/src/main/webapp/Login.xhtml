@@ -5,18 +5,57 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+  <title>Login</title>
+<h:outputStylesheet library="css" name="login.css"></h:outputStylesheet>
 
+</h:head>
+<img src="resources/images/marcauniversidaddemalagaVERTICAL.png" width="75" height="50" alt="BenKo?s Art" /> 
 <h1>Inicio de Sesion - Asignacion de Grupos</h1>
 
-<h:form id="myform">
+<h:form id="myform" styleClass="formulario">
   
     <h:messages globalOnly="true" style="color:red;margin:8px;" />
   
-    <h:outputText value="Username: "/>
-    <h:inputText label="Username" value="#{login.username}" /><br/><br/>
-    <h:outputText value="Password: "/>
-    <h:inputSecret value="#{login.password}" /><br/><br/>
-    <h:commandButton value="Iniciar sesion" action="#{login.login}" />
+    <h:outputText id="usertext" value="Username "/>
+    	<h:outputText value="&lt;br/&gt;" escape="false" />
+    <h:inputText id="username" label="Username" value="#{login.username}" /><br/><br/>
+    <h:outputText id="passtext" value="Password "/>
+    	<h:outputText value="&lt;br/&gt;" escape="false" />
+    <h:inputSecret id="login" value="#{login.password}" /><br/><br/>
+    <h:commandButton id="iniciarses" value="Iniciar sesion" action="#{login.login}" styleClass="boton" />
+    <h:outputText value="&lt;br/&gt;" escape="false" />
+    <h:form>
+    		<h:outputText value="&lt;br/&gt;" escape="false" />
+			<h:commandButton id="backButton" value="Back" action="index.html" styleClass="back" />
+		</h:form>
+		<h:outputText value="&lt;br/&gt;" escape="false" />
+			<h:outputText value="&lt;br/&gt;" escape="false" />
+</h:form>
+
+<h:form styleClass="partebaja">
+	<h:outputText value="&lt;br/&gt;" escape="false" />
+		<h:outputText value="&lt;br/&gt;" escape="false" />
+			<h:outputText value="&lt;br/&gt;" escape="false" />
+				<h:outputText value="&lt;br/&gt;" escape="false" />
+					<h:outputText value="&lt;br/&gt;" escape="false" />
+						<h:outputText value="&lt;br/&gt;" escape="false" />
+							<h:outputText value="&lt;br/&gt;" escape="false" />
+								<h:outputText value="&lt;br/&gt;" escape="false" />
+								<h:outputText value="&lt;br/&gt;" escape="false" />
+		<h:outputText value="&lt;br/&gt;" escape="false" />
+			<h:outputText value="&lt;br/&gt;" escape="false" />
+				<h:outputText value="&lt;br/&gt;" escape="false" />
+					<h:outputText value="&lt;br/&gt;" escape="false" />
+						<h:outputText value="&lt;br/&gt;" escape="false" />
+							<h:outputText value="&lt;br/&gt;" escape="false" />
+								<h:outputText value="&lt;br/&gt;" escape="false" />
+								<h:outputText value="&lt;br/&gt;" escape="false" />
+			<h:outputText value="&lt;br/&gt;" escape="false" />
+				<h:outputText value="&lt;br/&gt;" escape="false" />
+					<h:outputText value="&lt;br/&gt;" escape="false" />
+						<h:outputText value="&lt;br/&gt;" escape="false" />
+						
 </h:form>
 
 </html>

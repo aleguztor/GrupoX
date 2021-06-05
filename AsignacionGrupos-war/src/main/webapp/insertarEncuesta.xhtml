@@ -9,69 +9,39 @@
 
 <h:head>
 	<title>Encuesta Turno preferente</title>
+
 </h:head>
 
 <h:body>
-<script type="text/javascript">
-    PrimeFaces.locales['es'] = {
-        closeText: 'Cerrar',
-        prevText: 'Anterior',
-        nextText: 'Siguiente',
-        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-        dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
-        weekHeader: 'Semana',
-        firstDay: 1,
-        isRTL: false,
-        showMonthAfterYear: false,
-        yearSuffix: '',
-        timeOnlyTitle: 'Sólo hora',
-        timeText: 'Tiempo',
-        hourText: 'Hora',
-        minuteText: 'Minuto',
-        secondText: 'Segundo',
-        currentText: 'Fecha actual',
-        ampm: false,
-        month: 'Mes',
-        week: 'Semana',
-        day: 'Día',
-        allDayText: 'Todo el día',
-        today: 'Hoy',
-        clear: 'Claro'
-    };
-    </script>
-    
-<div id="centro">
-	<h:form id="centro_form" enctype="multipart/form-data">
-	
-	
-		<table>
-			<tr>
-				<td>Turno preferente</td>
-				<td>
-					<h:selectOneMenu value = "#{encuestaController.turnopreferente}"> 
-   						<f:selectItem itemValue = "Manyana" itemLabel = "Mañana" /> 
-   						<f:selectItem itemValue = "Tarde" itemLabel = "Tarde" /> 
-					</h:selectOneMenu> </td>	
-			</tr>
-			<tr>
-				<td>DNI</td>
-				<td><h:inputText id="dni" value="#{encuestaController.dni}" /></td>
-			</tr>
-			<tr>
-				<td><h:commandButton type="submit" value="Enviar"
-					action="#{encuestaController.CrearEncuesta}" /> 
-					</td>
-				<td> </td>
-			</tr>
-		</table>
-	</h:form>
-	<h:form>
-		<h:commandButton id="backButton" value="Back" action="index" />
-	</h:form>
-</div>
+
+	<div id="centro">
+		<h:form id="centro_form" enctype="multipart/form-data">
+
+
+			<table>
+				<tr>
+					<td id="turnopreferente">Turno preferente</td>
+					<td><h:selectOneMenu id="turnopreferentein"
+							value="#{encuestaController.turnopreferente}">
+							<f:selectItem itemValue="Manyana" itemLabel="Mañana" />
+							<f:selectItem itemValue="Tarde" itemLabel="Tarde" />
+						</h:selectOneMenu></td>
+				</tr>
+				<tr>
+					<td>DNI</td>
+					<td><h:inputText id="dni" value="#{encuestaController.dni}" /></td>
+				</tr>
+				<tr>
+					<td><h:commandButton id="submit" type="submit" value="Enviar"
+							action="#{encuestaController.CrearEncuesta}" /></td>
+					<td></td>
+				</tr>
+			</table>
+		</h:form>
+		<h:form>
+			<h:commandButton id="backButton" value="Back" action="index" />
+		</h:form>
+	</div>
 </h:body>
 
 </html>

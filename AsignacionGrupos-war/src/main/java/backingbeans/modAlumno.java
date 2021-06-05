@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.annotation.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -16,31 +17,29 @@ import Exceptions.*;
 
 
 
-@Named("alumnoMod")
+@Named
 @RequestScoped
 public class modAlumno {
 
 	
-	private Alumno alumno;
-	private Alumno al;
+	private Alumno alumno = new Alumno();
+	
+	private Alumno al = new Alumno();
 	String dni;
 	private static final Logger LOG = Logger.getLogger(modAlumno.class.getCanonicalName());
 	
 	@Inject 
 	CrudEJBLocal crud;
+	
 	@PostConstruct
 	public void init() {
-		dni =  (String)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("dni");
 		try {
 			al = crud.buscarAlumnoPorDNI(dni);
 		} catch (AlumnoNoEncontradoException e) {
 			// TODO Auto-generated catch block
-			LOG.severe("Alumno no encontrado en BBDD");
 			e.printStackTrace();
 		}
 	}
-	
-	
 	
 	public String getDni() {
 		return dni;
@@ -69,7 +68,10 @@ public class modAlumno {
 	public void setAl(Alumno al) {
 		this.al = al;
 	}
-
+	public String modificar(String dni) throws AlumnoNoEncontradoException {
+		this.al = crud.buscarAlumnoPorDNI(dni);
+		return "modificarAlumno.xhtml";
+	}
 	public String doModificarAlumno() {
 		try {
 			
@@ -79,6 +81,7 @@ public class modAlumno {
 			}
 			if(alumno.getApellido2()!= null) {
 				al.setApellido2(alumno.getApellido2());
+				LOG.info("EL ALUMNO HA SIDO MODIFICADO ");
 			}
 			if(alumno.getDNI()!=null) {
 				al.setDNI(alumno.getDNI());
@@ -122,7 +125,7 @@ public class modAlumno {
 			e.printStackTrace();
 		}
 		
-		return "success";
+		return "index.xhtml";
 	}
 	
 	

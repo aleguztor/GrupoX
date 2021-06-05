@@ -18,16 +18,19 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
  
   </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>faces/Login.xhtml</welcome-file>
+    <welcome-file>faces/index.html</welcome-file>
   </welcome-file-list>
-  
-  <filter>  
+    <filter>  
+    
 <filter-name>sec</filter-name>  
 <filter-class>backingbeans.Myfilter</filter-class>  
 </filter>  
    
 <filter-mapping>  
 <filter-name>sec</filter-name>  
-<url-pattern>/*</url-pattern>  
+<url-pattern>/Login.xhtml</url-pattern>  
 </filter-mapping> 
+ 
+  
+  
 </web-app>

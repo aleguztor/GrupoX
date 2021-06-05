@@ -1,0 +1,30 @@
+.formulario{
+	color: #000000;
+	position:center;
+	border: medium;
+	
+	
+	
+}
+.boton{
+	background-color: #00d5c2;
+	border: none;
+	padding: 15px; 
+	color: white;
+}	
+.back{
+	background-color: #ef2929;
+	border: none;
+	padding: 15px; 
+	color: white;
+	
+}
+.partebaja{
+	background-color:#333333;
+	
+	
+}
+body {
+	margin-top:150px;
+	 text-align:center;
+}

@@ -12,6 +12,7 @@
 </h:head>
 
 <h:body>
+<p:growl id="messages" showDetail="true"/>
 <div id="cambh">
 	<h:form id="cambiohorario_form" enctype="multipart/form-data">
 	
@@ -35,10 +36,10 @@
 			</tr>
 			<tr>
 				<td>DOCUMENTO</td>
-				<td><h:inputFile id="archivo" value="#{solicitudBean.archivo}" /></td>
+				<td>   <p:fileUpload value="#{solicitudBean.file}" mode="simple" skinSimple="true"/></td>
 			</tr>
 			<tr>
-				<td><h:commandButton type="submit" value="Enviar"
+				<td><h:commandButton id="botonencuesta" type="submit" value="Enviar"
 					action="#{solicitudBean.CrearEncuesta}" /> 
 					</td>
 				<td> </td>

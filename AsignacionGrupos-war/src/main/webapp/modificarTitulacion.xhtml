@@ -14,30 +14,30 @@
 	<h:form>
 		<table>
 			<tr>
-				<td>Nombre:</td>
-				<td><h:inputText value="#{modificarTitulacion.titulacion.nombre}"/></td>
+				<td id="nombre"> Nombre:</td>
+				<td><h:inputText id="nombretitu" value="#{modificarTitulacion.titulacion.nombre}"/></td>
 			</tr>
 			<tr>
-				<td>Codigo:</td>
-				<td><h:inputText value="#{modificarTitulacion.titulacion.codigo}"/></td>
+				<td id="codigo">Codigo:</td>
+				<td><h:inputText id="codigotitu" value="#{modificarTitulacion.titulacion.codigo}"/></td>
 			</tr>
 			<tr>
-				<td>Centro:</td>
-				<td><h:inputText value="#{modificarTitulacion.titulacion.centro.nombre}"></h:inputText></td>
+				<td id="centro">Centro:</td>
+				<td><h:inputText id="nombrecentro" value="#{modificarTitulacion.titulacion.centro.nombre}"></h:inputText></td>
 				<td><h:commandButton id="botonModificarCentro" action="#{modificarTitulacion.modificarCentro}" value="Modificar"/></td>
 			</tr>
 			<tr>
 				
-				<h:dataTable value="#{titulacion.listaAsignaturas}" var="a">
+				<h:dataTable id="lisaasignaturas" value="#{titulacion.listaAsignaturas}" var="a">
 					<h:column>
-						<f:facet name="header">Asignaturas</f:facet>
-						<h:outputText value="#{d}"></h:outputText>
+						<f:facet id="asignaturas" name="header">Asignaturas</f:facet>
+						<h:outputText id =" valor" value="#{d}"></h:outputText>
 					</h:column>
 					<h:column><h:commandButton id="modificarAsignatura" action="#{modificarTitulacion.modificarAsignatura}" value="Modificar"/></h:column>
 				</h:dataTable>
 			</tr>
 			<tr>
-				<td><h:commandButton value="Enviar"/></td>
+				<td><h:commandButton id="enviar" value="Enviar"/></td>
 				<td></td>
 			</tr>
 		</table>

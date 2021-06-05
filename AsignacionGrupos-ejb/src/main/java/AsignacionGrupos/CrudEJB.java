@@ -94,6 +94,9 @@ import Exceptions.*;
 	@Override
 	public void modificarAlumno(Alumno a) throws AlumnoNoEncontradoException {
 		Alumno al = existeAlumno(a);
+		if(al == null) {
+			throw new AlumnoNoEncontradoException();
+		}
 		em.merge(a);
 		
 	}
@@ -187,12 +190,12 @@ import Exceptions.*;
 	
 
 	@Override
-	public void insertarGrupo(Grupo g) throws GrupoNoEncontradoException {
+	public void insertarGrupo(Grupo g) throws GrupoDuplicadoException {
 		Grupo gr = em.find(Grupo.class, g.getId());
 		if(gr == null)
 			em.persist(g);
 		else 
-			throw new GrupoNoEncontradoException();
+			throw new GrupoDuplicadoException();
 		
 	}
 
@@ -425,7 +428,7 @@ import Exceptions.*;
 	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException{
 		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE alumno_Id = "+id+";", Expediente.class);
 		if(q.getResultList() == null) {
-			throw new ExpedienteNoEncontradoException();
+			return null;
 		}
 		return q.getResultList();
 	}

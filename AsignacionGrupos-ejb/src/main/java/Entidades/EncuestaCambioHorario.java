@@ -20,12 +20,12 @@ public class EncuestaCambioHorario implements Serializable {
 	private Date Fecha_envio;
 	private String razones;
 	private String cursoacambiar;
-	private File Documentos;
+	private byte[] Documentos;
 	@ManyToOne
 	private Alumno alumno;
 	public EncuestaCambioHorario() {}
 	
-	public EncuestaCambioHorario(Date d, String cursoacambiar, String r, File f, String dni ) {
+	public EncuestaCambioHorario(Date d, String cursoacambiar, String r, byte[] f, String dni ) {
 		Fecha_envio = d;
 		this.cursoacambiar = cursoacambiar;
 		razones = r;
@@ -83,13 +83,13 @@ public class EncuestaCambioHorario implements Serializable {
 
 
 
-	public File getDocumentos() {
+	public byte[] getDocumentos() {
 		return Documentos;
 	}
 
 
 
-	public void setDocumentos(File documentos) {
+	public void setDocumentos(byte[] documentos) {
 		Documentos = documentos;
 	}
 	@Override

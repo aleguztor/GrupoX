@@ -76,7 +76,7 @@ public class Encuestas {
 		String dni="12313123A";
 		String curso="Quiero el 2";
 		String razones="Me enfado con el de la derecha";
-		File f= new File("pruebapdf.txt");
+		byte[] f= new byte[1024];
 		EncuestaCambioHorario e= new EncuestaCambioHorario(d,curso, razones, f,dni);
 		try {
 		crud.insertarEncuestaCambioHorario(e);

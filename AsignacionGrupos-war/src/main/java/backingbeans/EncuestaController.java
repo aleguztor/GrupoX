@@ -34,7 +34,7 @@ public class EncuestaController {
 	
 	
 	public String CrearEncuesta() throws EncuestaException, AlumnoNoEncontradoException, ExpedienteNoEncontradoException {
-		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+		Date d = new Date(System.currentTimeMillis());
 		
 		Alumno a= crud.buscarAlumnoPorDNI(dni);
 		List<Expediente> lista= a.getExpedientes();
@@ -42,7 +42,7 @@ public class EncuestaController {
 		
 								// cogemos el expediente de alumno
 		List<Encuesta >encuestas= exp.getEncuesta();
-		Encuesta en= new Encuesta(date,exp,turnopreferente);
+		Encuesta en= new Encuesta(d,exp,turnopreferente);
 		
 		
 		AE.asignarEncuesta(exp.getNum_Expediente(), en);

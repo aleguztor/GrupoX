@@ -23,7 +23,8 @@ public class SolicitudBean {
 	private String razones;
 	private String curso;
 	private String dni;
-	
+
+    private UploadedFile file;
 	
 	@Inject 
 	CrudEJBLocal crud;
@@ -32,14 +33,29 @@ public class SolicitudBean {
 	public String CrearEncuesta() throws Exception {
 		
 		Date d = new Date(System.currentTimeMillis());
-		EncuestaCambioHorario e= new EncuestaCambioHorario(d,curso,razones,archivo,dni);
+		EncuestaCambioHorario e= new EncuestaCambioHorario(d,curso,razones,file.getContent(),dni);
 			crud.insertarEncuestaCambioHorario(e);
 		return "index.xhtml";
 		
 	}
 
-	   
-	 
+	public UploadedFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
+    public void upload() {
+        if (file != null) {
+            FacesMessage message = new FacesMessage("Successful", file.getFileName() + " is uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+    }
+    public void handleFileUpload(FileUploadEvent event) {
+        FacesMessage message = new FacesMessage("Successful", event.getFile().getFileName() + " is uploaded.");
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 	public File getArchivo() {
 		return archivo;
 	}

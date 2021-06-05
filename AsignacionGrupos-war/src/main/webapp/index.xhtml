@@ -36,11 +36,16 @@
 	<h:button outcome="insertarEncuesta.xhtml" value="ENCUESTA INI" styleClass="boton"/>
 	<h:outputText value="&lt;br/&gt;" escape="false" />
 	<h:button outcome="Prueba.xhtml" value="Pruebass" styleClass="boton"/>
+	
+	<h:button outcome="ModificarMatricula.xhtml" value="MODIFICAR MATRICULAR" styleClass="boton"/>
+	<h:outputText value="&lt;br/&gt;" escape="false" />
+
 
 	<h:button outcome="InsertarGrupo.xhtml" value="INSERTAR GRUPO" styleClass="boton"/>
 	<h:outputText value="&lt;br/&gt;" escape="false" />
 	<h:panelGroup rendered="#{not empty user}">
    
+   	
     <h:form>
         <h:commandButton value="logout" action="#{login.logout}" styleClass="boton2"/>
     </h:form>

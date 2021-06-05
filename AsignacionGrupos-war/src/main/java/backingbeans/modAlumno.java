@@ -23,7 +23,7 @@ public class modAlumno {
 
 	
 	private Alumno alumno = new Alumno();
-	@ManagedProperty("#{listado.a}")
+	
 	private Alumno al = new Alumno();
 	String dni;
 	private static final Logger LOG = Logger.getLogger(modAlumno.class.getCanonicalName());
@@ -81,6 +81,7 @@ public class modAlumno {
 			}
 			if(alumno.getApellido2()!= null) {
 				al.setApellido2(alumno.getApellido2());
+				LOG.info("EL ALUMNO HA SIDO MODIFICADO ");
 			}
 			if(alumno.getDNI()!=null) {
 				al.setDNI(alumno.getDNI());

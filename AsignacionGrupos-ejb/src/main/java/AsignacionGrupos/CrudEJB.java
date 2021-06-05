@@ -9,6 +9,7 @@ import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.core.UriBuilder;
 
@@ -192,8 +193,10 @@ import Exceptions.*;
 	@Override
 	public void insertarGrupo(Grupo g) throws GrupoDuplicadoException {
 		Grupo gr = em.find(Grupo.class, g.getId());
-		if(gr == null)
+		if(gr == null) {
+			g.setId(buscarNumeroGrupos());
 			em.persist(g);
+		}
 		else 
 			throw new GrupoDuplicadoException();
 		
@@ -418,6 +421,13 @@ import Exceptions.*;
 			throw new GrupoNoEncontradoException();
 		}
 		return q.getSingleResult();
+	}
+	
+	@Override 
+	public Long buscarNumeroGrupos() {
+		Query query =  em.createQuery("SELECT COUNT(g) FROM GRUPO g", Grupo.class);
+		Long resultado = (Long) query.getSingleResult();
+		return resultado + 1;
 	}
 	
 	@Override

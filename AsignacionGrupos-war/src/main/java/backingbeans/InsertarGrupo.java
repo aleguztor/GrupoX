@@ -30,16 +30,16 @@ public class InsertarGrupo {
 		this.grupo = grupo;
 	}
 	
-	public String doInsertar() {
-			try {
-				LOG.info("" + grupo.toString());
+	public String doInsertar() throws GrupoDuplicadoException{
+			//try {
+				//LOG.info("" + grupo.toString());
 				//Random r = new Random();
 				//grupo.setId(r.nextLong());
 				crud.insertarGrupo(grupo);
-			} catch (GrupoDuplicadoException e) {
+			//} catch (GrupoDuplicadoException e) {
 				// TODO Auto-generated catch block
-				LOG.info("El grupo ya esta en la Base de datos incluido");
-			}
+				//LOG.info("El grupo ya esta en la Base de datos incluido");
+			//}
 			LOG.info("HASTA AQUÍ HE LLEGADO");
 		return "index.xhtml";
 	}

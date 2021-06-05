@@ -432,6 +432,10 @@ import Exceptions.*;
 		}
 		return q.getResultList();
 	}
+	@Override //SIN COMPROBAD TEST
+	public List<Encuesta> getEncuestas(){
+		return em.createQuery("SELECT e FROM Encuesta e", Encuesta.class).getResultList();
+	}
 	@Override
 	public void insertarEncuesta(Encuesta e)throws EncuestaException{
 		Encuesta ce = em.find(Encuesta.class,e.getFecha_envio());

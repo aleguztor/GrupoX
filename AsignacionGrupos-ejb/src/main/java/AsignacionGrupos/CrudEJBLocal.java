@@ -29,6 +29,7 @@ import Exceptions.ContraseniaInvalidaException;
 import Exceptions.EncuestaException;
 import Exceptions.ExpedienteDuplicadoException;
 import Exceptions.ExpedienteNoEncontradoException;
+import Exceptions.GrupoDuplicadoException;
 import Exceptions.GrupoNoEncontradoException;
 import Exceptions.MatriculaNoEncontradaException;
 import Exceptions.OptativaNoEncontradaExpception;
@@ -72,7 +73,7 @@ public interface CrudEJBLocal {
 	
 	
 	
-	public void insertarGrupo(Grupo g) throws GrupoNoEncontradoException;
+	public void insertarGrupo(Grupo g) throws GrupoDuplicadoException;
 	public void modificarGrupo(Grupo g) throws GrupoNoEncontradoException;
 	public void eliminarGrupo(Grupo g) throws GrupoNoEncontradoException;
 	public Grupo existeGrupo(Grupo g) throws GrupoNoEncontradoException;

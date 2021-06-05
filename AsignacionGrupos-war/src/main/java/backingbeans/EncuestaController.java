@@ -3,17 +3,20 @@ package backingbeans;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import AsignacionGrupos.AsignarEncuestas;
 import AsignacionGrupos.CrudEJBLocal;
 import Entidades.Alumno;
 import Entidades.Encuesta;
 import Entidades.Expediente;
 import Exceptions.AlumnoNoEncontradoException;
 import Exceptions.EncuestaException;
+import Exceptions.ExpedienteNoEncontradoException;
 
 @Named
 @RequestScoped
@@ -26,16 +29,26 @@ public class EncuestaController {
 	@Inject
 	CrudEJBLocal crud;
 	
-
-	public String CrearEncuesta() throws EncuestaException, AlumnoNoEncontradoException {
+	@Inject
+	AsignarEncuestas AE;
+	
+	
+	public String CrearEncuesta() throws EncuestaException, AlumnoNoEncontradoException, ExpedienteNoEncontradoException {
 		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-
+		
 		Alumno a= crud.buscarAlumnoPorDNI(dni);
 		List<Expediente> lista= a.getExpedientes();
 		Expediente exp= lista.get(0);
 		
+								// cogemos el expediente de alumno
+		List<Encuesta >encuestas= exp.getEncuesta();
 		Encuesta en= new Encuesta(date,exp,turnopreferente);
-		crud.insertarEncuesta(en);
+		
+		
+		AE.asignarEncuesta(exp.getNum_Expediente(), en);
+		//crud.modificarExpediente(exp); 
+		//crud.insertarEncuesta(en); 
+		
 		return "index.xhtml";
 	}
 

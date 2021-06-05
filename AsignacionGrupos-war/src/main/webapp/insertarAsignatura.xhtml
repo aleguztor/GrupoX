@@ -5,12 +5,16 @@
 
 <h:head>
 	<title>Modificar Alumno</title>
-
+	<f:metadata>
+	
+		<f:viewParam name="dni" value="#{modAlumno.dni}"></f:viewParam>
+	</f:metadata>
 </h:head>
 
 <h:body>
+
+	<h4>Modificacion del alumno: <h:outputLabel value="#{modAlumno.dni}"/></h4>
 	<h:form>
-		
 		<table>
 
 			<tr>
@@ -19,8 +23,7 @@
 			</tr>
 
 			<tr>
-				<td><h:inputText id="nombre"
-						value="#{modAlumno.alumno.nombre}" /></td>
+				<td><h:inputText id="nombre" value="#{modAlumno.alumno.nombre}" placeholder="#{modAlumno.al.nombre}"/></td>
 
 			</tr>
 
@@ -89,12 +92,12 @@
 			</tr>
 
 			<tr>
-				<td><h:commandButton id="submit" type="submit" value="Modificar" outcome="listadoAlumnos.xhtml"
-						action="#{modAlumno.doModificarAlumno}" /></td>
+
+				<td><h:commandButton id="submit" type="submit" value="Modificar" outcome="listadoAlumnos.xhtml" action="#{modAlumno.doModificarAlumno}" /></td>
 			</tr>
 		</table>
 
 	</h:form>
-	
+
 </h:body>
 </html>

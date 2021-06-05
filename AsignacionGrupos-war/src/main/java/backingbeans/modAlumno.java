@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.annotation.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -22,6 +23,7 @@ public class modAlumno {
 
 	
 	private Alumno alumno = new Alumno();
+	
 	private Alumno al = new Alumno();
 	String dni;
 	private static final Logger LOG = Logger.getLogger(modAlumno.class.getCanonicalName());
@@ -29,6 +31,15 @@ public class modAlumno {
 	@Inject 
 	CrudEJBLocal crud;
 	
+	@PostConstruct
+	public void init() {
+		try {
+			al = crud.buscarAlumnoPorDNI(dni);
+		} catch (AlumnoNoEncontradoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	public String getDni() {
 		return dni;
@@ -57,9 +68,9 @@ public class modAlumno {
 	public void setAl(Alumno al) {
 		this.al = al;
 	}
-	public String modificar(Alumno a) {
-		this.al = a;
-		return null;
+	public String modificar(String dni) throws AlumnoNoEncontradoException {
+		this.al = crud.buscarAlumnoPorDNI(dni);
+		return "modificarAlumno.xhtml";
 	}
 	public String doModificarAlumno() {
 		try {
@@ -70,6 +81,7 @@ public class modAlumno {
 			}
 			if(alumno.getApellido2()!= null) {
 				al.setApellido2(alumno.getApellido2());
+				LOG.info("EL ALUMNO HA SIDO MODIFICADO ");
 			}
 			if(alumno.getDNI()!=null) {
 				al.setDNI(alumno.getDNI());

@@ -4,6 +4,7 @@ import Entidades.*;
 import Entidades.Encuesta.Expediente_Encuesta_PK;
 import Exceptions.AlumnoNoEncontradoException;
 import Exceptions.ExpedienteNoEncontradoException;
+import Exceptions.GrupoNoEncontradoException;
 import Exceptions.NoExisteGrupoEnAlumno;
 
 import static org.junit.Assert.*;
@@ -552,5 +553,30 @@ public class Crud {
 
 		}
 	}
+	@Test //MIRAR!!
+	public void testBuscarAlumno() {
+		try {
+			Alumno a1 = new Alumno("Mario", "Vazquez", "12345678a", "mario@uma.es");
+			Alumno buscado= crud.buscarAlumnoPorDNI("12345678a");
+			assertEquals(buscado, a1);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testEliminarGrupo() {
+		Grupo a = new Grupo("1", "B","Manyana");
+		try {
+			crud.eliminarGrupo(a);
+			assertNotEquals(crud.existeGrupo(a), a);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 
 }

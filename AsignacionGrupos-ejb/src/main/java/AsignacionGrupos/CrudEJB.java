@@ -397,7 +397,7 @@ import Exceptions.*;
 
 	@Override
 	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
-		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a WHERE a.DNI LIKE '"+dni+"'", Alumno.class);
+		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a WHERE a.DNI= :dni" , Alumno.class);
 		if(q.getResultList().isEmpty()) {
 			return null;
 		}
@@ -441,6 +441,10 @@ import Exceptions.*;
 			return null;
 		}
 		return q.getResultList();
+	}
+	@Override //SIN COMPROBAD TEST
+	public List<Encuesta> getEncuestas(){
+		return em.createQuery("SELECT e FROM Encuesta e", Encuesta.class).getResultList();
 	}
 	@Override
 	public void insertarEncuesta(Encuesta e)throws EncuestaException{

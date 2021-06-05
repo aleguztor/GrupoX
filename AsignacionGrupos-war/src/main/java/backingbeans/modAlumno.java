@@ -23,7 +23,6 @@ public class modAlumno {
 
 	
 	private Alumno alumno = new Alumno();
-	
 	private Alumno al = new Alumno();
 	String dni;
 	private static final Logger LOG = Logger.getLogger(modAlumno.class.getCanonicalName());
@@ -31,15 +30,6 @@ public class modAlumno {
 	@Inject 
 	CrudEJBLocal crud;
 	
-	@PostConstruct
-	public void init() {
-		try {
-			al = crud.buscarAlumnoPorDNI(dni);
-		} catch (AlumnoNoEncontradoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 	public String getDni() {
 		return dni;
@@ -81,7 +71,6 @@ public class modAlumno {
 			}
 			if(alumno.getApellido2()!= null) {
 				al.setApellido2(alumno.getApellido2());
-				LOG.info("EL ALUMNO HA SIDO MODIFICADO ");
 			}
 			if(alumno.getDNI()!=null) {
 				al.setDNI(alumno.getDNI());
@@ -131,4 +120,3 @@ public class modAlumno {
 	
 	
 }
-

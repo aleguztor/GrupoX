@@ -25,14 +25,4 @@ public class CambioHorarioEJB implements CambioHorario {
 		crud.modificarAlumno(alum);
 	}
 
-
-
-	@Override
-	public long numeroPlazas(Grupo grupo) throws AsignacionGruposException {
-		return grupo.getPlazas();
-		
-	}
-
-
-
 }

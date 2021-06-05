@@ -3,7 +3,10 @@ package Pruebas;
 import Entidades.*;
 import Entidades.Encuesta.Expediente_Encuesta_PK;
 import Exceptions.AlumnoNoEncontradoException;
+import Exceptions.AsignacionGruposException;
 import Exceptions.ExpedienteNoEncontradoException;
+import Exceptions.GrupoNoEncontradoException;
+import Exceptions.MatriculaNoEncontradaException;
 import Exceptions.NoExisteGrupoEnAlumno;
 
 import static org.junit.Assert.*;
@@ -70,5 +73,59 @@ public class ModAlumnos {
 		}
 		
 	}
+	@Test
+	public void testCambioHorarioyGrupo() {
+		Alumno a1 = new Alumno("Mario", "Vazquez", "12345678a", "mario@uma.es");
+		Grupo a = new Grupo("1", "B","Manyana");
+		Grupo nuevo=new Grupo("1","A","Manyana");
+		try {
+			modg.CambioHorarioyGrupo(a1, a, nuevo);
+			assertNull(a1.getGrupos().contains(a));
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+	}
+	@Test
+	public void testObtenerMatriculaPorGrupo() {
+		
+		Grupo b = new Grupo("1", "C","Manyana");
+		try {
+			
+			assertNotNull(modg.obtenerMatriculaPorGrupo(b));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void testObtenerGrupoPorMatricula() {
+		Date d = new Date(System.currentTimeMillis());
+		Expediente e1 = new Expediente((long)214623,true,5.0);
+		MatriculaPK pk = new MatriculaPK("2", (long)214623);
+		Matricula m1 = new Matricula(pk,e1,'I',d);
+		try {
+			assertNotNull(modg.obtenerGrupoPorMatricula(m1));
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void testBusquedaDeGrupo() {
+		Grupo a = new Grupo("1", "B","Manyana");
+		try {
+			
+			assertEquals(modg.busquedaGrupo("1", "B", "Manyana"),a );
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+
 	
 }

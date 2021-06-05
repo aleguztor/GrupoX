@@ -12,14 +12,16 @@ import javax.persistence.*;
  *
  */
 @Entity
+@SequenceGenerator(name="grupo", initialValue=1, allocationSize=200)
 public class Grupo implements Serializable {
 	   
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5977597351027478889L;
+	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="grupo")
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
 	@Column(nullable = false)
 	private String Curso;
@@ -55,9 +57,12 @@ public class Grupo implements Serializable {
 	
 	
 
-	public Grupo() {}
+	public Grupo() {
+		super();
+	}
 	
 	public Grupo(String c, String l, String t) {
+		super();
 		Curso = c;
 		Letra = l;
 		Turno_manyana_tarde = t;

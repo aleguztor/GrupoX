@@ -13,8 +13,9 @@
 </h:head>
 <img src="resources/images/marcauniversidaddemalagaVERTICAL.png" width="200" height="150" alt="BenKo?s Art" /> 
 <h1> MENU DE INICIO SECRETARIA</h1>
+
 <h:body>
-<h:outputText value="&lt;br/&gt;" escape="false" />
+ <p>Welcome, #{user}</p>
 <h:outputText value="&lt;br/&gt;" escape="false" />
 	<h:button outcome="insertarAlumno.xhtml" value="INSERTAR ALUMNO" styleClass="boton"/>
 	
@@ -39,9 +40,9 @@
 	<h:button outcome="InsertarGrupo.xhtml" value="INSERTAR GRUPO" styleClass="boton"/>
 	<h:outputText value="&lt;br/&gt;" escape="false" />
 	<h:panelGroup rendered="#{not empty user}">
-    <p>Welcome, #{user}</p>
+   
     <h:form>
-        <h:commandButton value="logout" action="#{login.logout}" styleClass="boton"/>
+        <h:commandButton value="logout" action="#{login.logout}" styleClass="boton2"/>
     </h:form>
 </h:panelGroup>
 </h:body>

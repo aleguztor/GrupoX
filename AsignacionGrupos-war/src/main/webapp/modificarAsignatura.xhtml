@@ -22,24 +22,24 @@
 				<p:panelGrid columns="4" layout="flex"
 					columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4 "
 					contentStyleClass="p-align-baseline ui-fluid">
-					<p:outputLabel for="referencia" value="Referencia: " />
+					<p:outputLabel id="outputtext" for="referencia" value="Referencia: " />
 					<p:inputText id="referencia" value="#{modificarAsignatura.asignatura.ref}"/>
 				
-					<p:outputLabel for="codigo" value="Código: " />
+					<p:outputLabel id="outputcodigo" for="codigo" value="Código: " />
 					<p:inputText id="codigo" value="#{modificarAsignatura.asignatura.codigo}"/>
 					
 					
-					<p:outputLabel for="nombre" value="Nombre: " />
+					<p:outputLabel id="outputnombre" for="nombre" value="Nombre: " />
 					<p:inputText id="nombre" value="#{modificarAsignatura.asignatura.nombre}"/>
 					
 					
-					<p:outpuLabel for="ofertada" value="Ofertada: " />
+					<p:outpuLabel id="outputofertada" for="ofertada" value="Ofertada: " />
 					<p:selectOneMenu id="ofertada" value="#{modificarAsignatura.asignatura.ofertada}">
 						<f:selectItem itemLabel="Si" itemValue="SI"/>
 						<f:selectItem itemLabel="No" itemValue="No"/>
 					</p:selectOneMenu>
 					
-					<p:outpuLabel for="curso" value="Curso: " />
+					<p:outpuLabel id="outputcurso"for="curso" value="Curso: " />
 					<p:selectOneMenu id="curso" value="#{modificarAsignatura.asignatura.curso}">
 						<f:selectItem itemLabel="1º" itemValue="1º"/>
 						<f:selectItem itemLabel="2º" itemValue="2º"/>
@@ -47,7 +47,7 @@
 						<f:selectItem itemLabel="4º" itemValue="4º"/>						
 					</p:selectOneMenu>
 					
-					<p:outpuLabel for="caracter" value="Caracter: " />
+					<p:outpuLabel id="outputcaracter" for="caracter" value="Caracter: " />
 					<p:selectOneMenu id="caracter" value="#{modificarAsignatura.asignatura.caracter}">
 						<f:selectItem itemLabel="OB" itemValue="OB"/>
 						<f:selectItem itemLabel="BA" itemValue="BA"/>
@@ -55,24 +55,24 @@
 					</p:selectOneMenu>
 					
 					
-					<p:outpuLabel for="unidad_temporal" value="Cuatrimestre: " />
+					<p:outpuLabel id="outputcuatri" for="unidad_temporal" value="Cuatrimestre: " />
 					<p:selectOneMenu id="unidad_temporal" value="#{modificarAsignatura.asignatura.unidad_Temporal}">
 						<f:selectItem itemLabel="1º" itemValue="1º"/>
 						<f:selectItem itemLabel="2º" itemValue="2º"/>				
 					</p:selectOneMenu>
 					
-					<p:outputLabel for="idioma" value="Idioma: " />
+					<p:outputLabel id="outputidioma" for="idioma" value="Idioma: " />
 					<p:inputText id="idioma" value="#{modificarAsignatura.asignatura.idioma_de_imparticion}"/>
 					
-					<p:outputLabel for="plazas" value="Plazas:  " />
+					<p:outputLabel id="outputplaza" for="plazas" value="Plazas:  " />
 					<p:inputText id="plazas" value="#{modificarAsignatura.asignatura.plazas}"/>
 					
 					
-					<p:outputLabel for="mencion" value="Mencion: " />
+					<p:outputLabel id="outputmencion" for="mencion" value="Mencion: " />
 					<p:inputText id="mencion" value="#{modificarAsignatura.asignatura.mencion}"/>
 					
 					
-					<p:commandButton type="button" value="Insertar"
+					<p:commandButton id="outputbutton" type="button" value="Insertar"
 				action="modificarAsignatura.doModificar" >
 			</p:commandButton>
 					

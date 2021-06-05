@@ -18,25 +18,25 @@
 	
 		<table>
 			<tr>
-				<td>CENTRO</td>
+				<td id="centrotext">CENTRO</td>
 				<td>
 				<h:inputText id="idcentro" value="#{centroController.id}" /></td>
 			</tr>
 			<tr>
-				<td>NOOMBRE</td>
+				<td id="nombretext">NOOMBRE</td>
 				<td><h:inputText id="nombrecentro" value="#{centroController.nombre}" /></td>
 			</tr>
 			<tr>
-				<td>DIRECCION</td>
+				<td id="direcciontext">DIRECCION</td>
 				<td>
 				<h:inputText id="direccion" value="#{centroController.direccion}" /></td>
 			</tr>
 			<tr>
-				<td>TELEFONO CONSERJERIA</td>
+				<td id="telftext">TELEFONO CONSERJERIA</td>
 				<td><h:inputText id="tlf" value="#{centroController.tlfConserjeria}" /></td>
 			</tr>
 			<tr>
-				<td><h:commandButton type="submit" value="Enviar"
+				<td><h:commandButton id="submit" type="submit" value="Enviar"
 					action="#{centroController.CrearCentro}" /> 
 					</td>
 				<td> </td>

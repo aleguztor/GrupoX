@@ -394,7 +394,7 @@ import Exceptions.*;
 
 	@Override
 	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
-		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a WHERE a.DNI LIKE '"+dni+"'", Alumno.class);
+		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a WHERE a.DNI= :dni" , Alumno.class);
 		if(q.getResultList().isEmpty()) {
 			return null;
 		}

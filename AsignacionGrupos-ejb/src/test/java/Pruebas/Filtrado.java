@@ -5,6 +5,7 @@ import Entidades.Encuesta.Expediente_Encuesta_PK;
 import Exceptions.AlumnoNoEncontradoException;
 import Exceptions.ExpedienteNoEncontradoException;
 import Exceptions.NoExisteGrupoEnAlumno;
+import Exceptions.TitulacionNoEncontradaException;
 
 import static org.junit.Assert.*;
 
@@ -66,4 +67,15 @@ public class Filtrado {
 			e.printStackTrace();
 		}
 	}	
+	@Test //MIRAR
+	public void testBuscarTitulacionPorNombre() {
+		String nombre="Desarrollo movil";
+		try {
+			Titulacion t= bf.buscarTitulacionPorNombre(nombre);
+			assertEquals(nombre,t.getNombre());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

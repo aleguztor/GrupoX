@@ -75,8 +75,7 @@ public class ModificarGrupoEJB implements ModificarGrupoAlumno{
 	
 	@Override
 	public Grupo busquedaGrupo(String c, String l, String t) throws GrupoNoEncontradoException {
-		TypedQuery<Grupo> q = em.createQuery("SELECT g FROM GRUPO g WHERE g.CURSO LIKE '"+c+"' AND g.LETRA LIKE '"+l+"'"
-				+ " AND g.TURNO_MANYANA_TARDE LIKE '"+t+"'", Grupo.class);
+		TypedQuery<Grupo> q = em.createQuery("SELECT g FROM GRUPO g WHERE g.CURSO= :c AND g.LETRA= :l AND g.TURNO_MANYANA_TARDE= :t", Grupo.class);
 		if(q.getSingleResult() == null) {
 			throw new GrupoNoEncontradoException();
 		}

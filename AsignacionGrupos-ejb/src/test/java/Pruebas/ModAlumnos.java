@@ -95,7 +95,7 @@ public class ModAlumnos {
 		try {
 			
 			assertNotNull(modg.obtenerMatriculaPorGrupo(b));
-		} catch (GrupoNoEncontradoException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -109,7 +109,7 @@ public class ModAlumnos {
 		try {
 			assertNotNull(modg.obtenerGrupoPorMatricula(m1));
 			
-		} catch (MatriculaNoEncontradaException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -11,140 +11,75 @@
 </h:head>
 
 <h:body>
-	<div id="cabecera">
 	
-	</div>
 	<div>
-	
-	
-		<div id="card">
-			<h:form>
-				<p:panelGrid columns="4" layout="flex"
-					columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4 "
-					contentStyleClass="p-align-baseline ui-fluid">
-					<p:outputLabel id="outputtext" for="referencia" value="Referencia: " />
-					<p:inputText id="referencia" value="#{modificarAsignatura.asignatura.ref}"/>
-				
-					<p:outputLabel id="outputcodigo" for="codigo" value="Código: " />
-					<p:inputText id="codigo" value="#{modificarAsignatura.asignatura.codigo}"/>
-					
-					
-					<p:outputLabel id="outputnombre" for="nombre" value="Nombre: " />
-					<p:inputText id="nombre" value="#{modificarAsignatura.asignatura.nombre}"/>
-					
-					
-					<p:outpuLabel id="outputofertada" for="ofertada" value="Ofertada: " />
-					<p:selectOneMenu id="ofertada" value="#{modificarAsignatura.asignatura.ofertada}">
-						<f:selectItem itemLabel="Si" itemValue="SI"/>
-						<f:selectItem itemLabel="No" itemValue="No"/>
-					</p:selectOneMenu>
-					
-					<p:outpuLabel id="outputcurso"for="curso" value="Curso: " />
-					<p:selectOneMenu id="curso" value="#{modificarAsignatura.asignatura.curso}">
-						<f:selectItem itemLabel="1º" itemValue="1º"/>
-						<f:selectItem itemLabel="2º" itemValue="2º"/>
-						<f:selectItem itemLabel="3º" itemValue="3º"/>
-						<f:selectItem itemLabel="4º" itemValue="4º"/>						
-					</p:selectOneMenu>
-					
-					<p:outpuLabel id="outputcaracter" for="caracter" value="Caracter: " />
-					<p:selectOneMenu id="caracter" value="#{modificarAsignatura.asignatura.caracter}">
-						<f:selectItem itemLabel="OB" itemValue="OB"/>
-						<f:selectItem itemLabel="BA" itemValue="BA"/>
-						<f:selectItem itemLabel="OP" itemValue="OP"/>					
-					</p:selectOneMenu>
-					
-					
-					<p:outpuLabel id="outputcuatri" for="unidad_temporal" value="Cuatrimestre: " />
-					<p:selectOneMenu id="unidad_temporal" value="#{modificarAsignatura.asignatura.unidad_Temporal}">
-						<f:selectItem itemLabel="1º" itemValue="1º"/>
-						<f:selectItem itemLabel="2º" itemValue="2º"/>				
-					</p:selectOneMenu>
-					
-					<p:outputLabel id="outputidioma" for="idioma" value="Idioma: " />
-					<p:inputText id="idioma" value="#{modificarAsignatura.asignatura.idioma_de_imparticion}"/>
-					
-					<p:outputLabel id="outputplaza" for="plazas" value="Plazas:  " />
-					<p:inputText id="plazas" value="#{modificarAsignatura.asignatura.plazas}"/>
-					
-					
-					<p:outputLabel id="outputmencion" for="mencion" value="Mencion: " />
-					<p:inputText id="mencion" value="#{modificarAsignatura.asignatura.mencion}"/>
-					
-					
-					<p:commandButton id="outputbutton" type="button" value="Insertar"
-				action="modificarAsignatura.doModificar" >
-			</p:commandButton>
-					
-				</p:panelGrid>
-			
-			
-			</h:form>
-		</div>
 		<h:form>
 			<table>
 				<tr>
-					<td>Referencia:</td>
-					<td><h:inputText value="#{modificarAsignatura.asignatura.ref}" /></td>
+					<td><h:outputLabel value="Referencia:"/></td>
+					<td><h:inputText value="#{modificarAsignatura.asignatura.referencia}" /></td>
 				</tr>
 				<tr>
-					<td>Codigo:</td>
+					<td><h:outputLabel value="Codigo"/></td>
 					<td><h:inputText
 							value="#{modificarAsignatura.asignatura.codigo}" /></td>
 				</tr>
 				<tr>
-					<td>Nombre:</td>
+					<td><h:outputLabel value="Nombre"/></td>
 					<td><h:inputText
 							value="#{modificarAsignatura.asignatura.nombre}" /></td>
 				</tr>
 				<tr>
-					<td>Ofertada:</td>
-					<td><h:selectOneMenu>
-							<f:selectItem itemLabel="Si" />
-							<f:selectItem itemLabel="No" />
+					<td><h:outputLabel value="Ofertada"/></td>
+					<td><h:selectOneMenu value="#{insertarAsignatura.asignatura.ofertada}">
+							<f:selectItem itemLabel="Si" itemValue="true" />
+							<f:selectItem itemLabel="No" itemValue="false"/>
 						</h:selectOneMenu></td>
 				</tr>
 				<tr>
-					<td>Curso:</td>
-					<td><h:selectOneMenu>
-							<f:selectItem itemLabel="1º" />
-							<f:selectItem itemLabel="2º" />
-							<f:selectItem itemLabel="3º" />
-							<f:selectItem itemLabel="4º" />
+					<td><h:outputLabel value="Curso" /></td>
+					<td><h:selectOneMenu value="#{insertarAsignatura.asignatura.curso}">
+							<f:selectItem itemLabel="1º" itemValue="1º"/>
+							<f:selectItem itemLabel="2º" itemValue="2º"/>
+							<f:selectItem itemLabel="3º" itemValue="3º"/>
+							<f:selectItem itemLabel="4º" itemValue="4º"/>
 						</h:selectOneMenu></td>
 				</tr>
 				<tr>
-					<td>Carácter:</td>
-					<td><h:selectOneMenu>
-							<f:selectItem itemLabel="OB" />
-							<f:selectItem itemLabel="BA" />
-							<f:selectItem itemLabel="OP" />
+					<td><h:outputLabel value="Carácter"/></td>
+					<td><h:selectOneMenu value="#{insertarAsignatura.asignatura.caracter}">
+							<f:selectItem itemLabel="OB" itemValue="OB"/>
+							<f:selectItem itemLabel="BA" itemValue="BA"/>
+							<f:selectItem itemLabel="OP" itemValue="OP"/>
 						</h:selectOneMenu></td>
 				</tr>
 				<tr>
-					<td>Cuatrimestre:</td>
-					<td><h:selectOneMenu>
-							<f:selectItem itemLabel="1º" />
-							<f:selectItem itemLabel="2º" />
+					<td><h:outputLabel value="Cuatrimestre"/></td>
+					<td><h:selectOneMenu value="#{insertarAsignatura.asignatura.unidad_temporal}">
+							<f:selectItem itemLabel="1º" itemValue="1" />
+							<f:selectItem itemLabel="2º" itemValue="2"/>
 						</h:selectOneMenu></td>
 				</tr>
 				<tr>
-					<td>Idioma:</td>
-					<td><h:inputText
-							value="#{modificarAsignatura.asignatura.idioma}" /></td>
+					<td><h:outputLabel  value="Idioma"/></td>
+					<td><h:selectOneMenu value="#{insertarAsignatura.asignatura.idioma_de_imparticion}">
+							<f:selectItem itemLabel="Si" itemValue="true" />
+							<f:selectItem itemLabel="No" itemValue="false"/>
+						</h:selectOneMenu></td>
 				</tr>
 				<tr>
-					<td>Plazas:</td>
+					<td><h:outputLabel value="Plazas" /></td>
 					<td><h:inputText
 							value="#{modificarAsignaturas.asignatura.plazas}" /></td>
 				</tr>
 				<tr>
-					<td>Mencion:</td>
+					<td><h:outputLabel value="Mencion"/></td>
 					<td><h:inputText
 							value="#{modificarAsignaturas.asignatura.mencion}" /></td>
 				</tr>
+			
 				<tr>
-					<td><h:commandButton value="Enviar" /></td>
+					<td><h:commandButton type="submit" value="Enviar" /></td>
 					<td></td>
 				</tr>
 			</table>

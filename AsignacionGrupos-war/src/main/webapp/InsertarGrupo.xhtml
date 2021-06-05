@@ -14,8 +14,8 @@
 	<h:form>
 		<table>
 			<tr>
-				<td>Curso</td>
-				<td><h:selectOneMenu value="#{grupoBean.grupo.curso}"
+				<td id="curso">Curso</td>
+				<td><h:selectOneMenu id="eleccioncurso" value="#{grupoBean.grupo.curso}"
 				required="true">
 				<f:selectItem itemLabel="1º" itemValue="1"/>
 				<f:selectItem itemLabel="2º" itemValue="2"/>
@@ -24,42 +24,42 @@
 				</h:selectOneMenu></td>
 			</tr>
 			<tr>
-				<td>Letra</td>
-				<td><h:inputText value="#{grupoBean.grupo.letra}"/></td>
+				<td id="letra">Letra</td>
+				<td><h:inputText id="inletra" value="#{grupoBean.grupo.letra}"/></td>
 			</tr>
 			<tr>
-				<td>Turno</td>
-				<td><h:selectOneMenu value="#{grupoBean.grupo.turno_manyana_tarde}">
+				<td id="turno">Turno</td>
+				<td><h:selectOneMenu id="inturno" value="#{grupoBean.grupo.turno_manyana_tarde}">
 				<f:selectItem itemLabel="Mañana" itemValue="Manyana"/>
 				<f:selectItem itemLabel="Tarde" itemValue="Tarde"/>
 				</h:selectOneMenu></td>
 			</tr>
 			<tr>
-				<td>Ingles</td>
-				<td><h:selectOneMenu value="#{grupoBean.grupo.ingles}">
+				<td id="ingles">Ingles</td>
+				<td><h:selectOneMenu id="iningles" value="#{grupoBean.grupo.ingles}">
 				<f:selectItem itemLabel="Si" itemValue="Si"/>
 				<f:selectItem itemLabel="No" itemValue="No"/>
 				</h:selectOneMenu></td>
 			</tr>
 			<tr>
-				<td>Visible</td>
-				<td><h:selectOneMenu value="#{grupoBean.grupo.visible}">
+				<td id="visible">Visible</td>
+				<td><h:selectOneMenu id="visiblein" value="#{grupoBean.grupo.visible}">
 				<f:selectItem itemLabel="Si" itemValue="Si"/>
 				<f:selectItem itemLabel="No" itemValue="No"/>
 				</h:selectOneMenu></td>
 			</tr>
 			<tr>
-				<td>Asignar</td>
-				<td><h:selectOneMenu value="#{grupoBean.grupo.asignar}">
+				<td id="asignar">Asignar</td>
+				<td><h:selectOneMenu id="inasignar" value="#{grupoBean.grupo.asignar}">
 				<f:selectItem itemLabel="Si" itemValue="Si"/>
 				<f:selectItem itemLabel="No" itemValue="No"/></h:selectOneMenu></td>
 			</tr>
 			<tr>
-				<td>Plazas</td>
-				<td><h:inputText value="#{grupoBean.grupo.plazas}"/></td>
+				<td id="plazas">Plazas</td>
+				<td><h:inputText id="inplazas" value="#{grupoBean.grupo.plazas}"/></td>
 			</tr>
 			<tr>
-				<td><h:commandButton type="submit" value="Enviar" action="#{grupoBean.doInsertar}"/></td>
+				<td><h:commandButton id="boton" type="submit" value="Enviar" action="#{grupoBean.doInsertar}"/></td>
 				<td></td>
 			</tr>
 			

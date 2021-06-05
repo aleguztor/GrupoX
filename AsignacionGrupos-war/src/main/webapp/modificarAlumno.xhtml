@@ -14,7 +14,7 @@
 		<table>
 
 			<tr>
-				<td><h:outputLabel value="Nombre" /></td>
+				<td><h:outputLabel id="nombreoutput" value="Nombre" /></td>
 
 			</tr>
 
@@ -25,8 +25,8 @@
 			</tr>
 
 			<tr>
-				<td><h:outputLabel value="Primer Apellido" /></td>
-				<td><h:outputLabel value="Segundo Apellido" /></td>
+				<td><h:outputLabel id="outputprimerape" value="Primer Apellido" /></td>
+				<td><h:outputLabel id="outputsegundoape" value="Segundo Apellido" /></td>
 
 			</tr>
 
@@ -38,7 +38,7 @@
 			</tr>
 
 			<tr>
-				<td><h:outputLabel value="DNI" /></td>
+				<td><h:outputLabel id="outputdni" value="DNI" /></td>
 			</tr>
 
 			<tr>
@@ -46,8 +46,8 @@
 			</tr>
 
 			<tr>
-				<td><h:outputLabel value="Email Institucional" /></td>
-				<td><h:outputLabel value="Email Personal" /></td>
+				<td><h:outputLabel id="outputemailinsti" value="Email Institucional" /></td>
+				<td><h:outputLabel id="outputeempers" value="Email Personal" /></td>
 			</tr>
 
 			<tr>
@@ -58,8 +58,8 @@
 						value="#{modAlumno.alumno.email_personal}" /></td>
 			</tr>
 			<tr>
-				<td><h:outputLabel value="Movil" /></td>
-				<td><h:outputLabel value="Telefono" /></td>
+				<td><h:outputLabel id="outputmovil" value="Movil" /></td>
+				<td><h:outputLabel id="outputtelef" value="Telefono" /></td>
 			</tr>
 			<tr>
 				<td><h:inputText id="movil" value="#{modAlumno.alumno.movil}" /></td>
@@ -67,8 +67,8 @@
 						value="#{modAlumno.alumno.telefono}" /></td>
 			</tr>
 			<tr>
-				<td><h:outputLabel value="Direccion" /></td>
-				<td><h:outputLabel value="Localidad" /></td>
+				<td><h:outputLabel id="outputdirec" value="Direccion" /></td>
+				<td><h:outputLabel id="outputloca" value="Localidad" /></td>
 			</tr>
 			<tr>
 				<td><h:inputText id="direccion"
@@ -78,8 +78,8 @@
 
 			</tr>
 			<tr>
-				<td><h:outputLabel value="Provincia" /></td>
-				<td><h:outputLabel value="Codigo Postal" /></td>
+				<td><h:outputLabel id="outputprovinc" value="Provincia" /></td>
+				<td><h:outputLabel id="outputcp" value="Codigo Postal" /></td>
 			</tr>
 			<tr>
 				<td><h:inputText id="provincia"
@@ -89,7 +89,7 @@
 			</tr>
 
 			<tr>
-				<td><h:commandButton type="submit" value="Modificar" outcome="listadoAlumnos.xhtml"
+				<td><h:commandButton id="submit" type="submit" value="Modificar" outcome="listadoAlumnos.xhtml"
 						action="#{modAlumno.doModificarAlumno}" /></td>
 			</tr>
 		</table>

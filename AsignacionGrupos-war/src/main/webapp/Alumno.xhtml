@@ -15,11 +15,11 @@
 	<h:form>
 		<table>
 			<tr>
-				<td>Dame DNI</td>
-				<td><h:inputText value="#{alumnoController.dni}" /></td>
+				<td id="dnitext">Dame DNI</td>
+				<td><h:inputText id="inputDni" value="#{alumnoController.dni}" /></td>
 			</tr>
 			<tr>
-				<td><p:commandButton type="button" value="Enviar"
+				<td><p:commandButton id="buscaralum" type="button" value="Enviar"
 						styleClass="ui-button-outlined"
 						action="#{alumnoController.buscar()}" /></td>
 			</tr>
@@ -29,40 +29,40 @@
 		</h:form>
 		 <table>
 	<tr>
-				<td>Nombre:</td>
-				<td><h:outputText value="#{alumnoController.nombreAlumno}"/></td>
+				<td id="nombre">Nombre:</td>
+				<td><h:outputText id="nombrein" value="#{alumnoController.nombreAlumno}"/></td>
 			</tr>
 			<tr>
-				<td>Primer apellido:</td>
-				<td><h:outputText value="#{alumnoController.primerApellido}"/></td>
+				<td id="primerapellido">Primer apellido:</td>
+				<td><h:outputText id="nombreape" value="#{alumnoController.primerApellido}"/></td>
 			</tr>
 			<tr>
-				<td>Segundo apellido:</td>
-				<td><h:outputText value="#{alumnoController.segundoApellido}"/></td>
+				<td id="segundoape">Segundo apellido:</td>
+				<td><h:outputText id="nombresegape" value="#{alumnoController.segundoApellido}"/></td>
 			</tr>
 			<tr>
-				<td>DNI:</td>
-				<td><h:outputText value="#{alumnoController.dniAl}"/></td>
+				<td id="dni">DNI:</td>
+				<td><h:outputText id="dniin" value="#{alumnoController.dniAl}"/></td>
 			</tr>
 			<tr>
-				<td>Email constitucional:</td>
-				<td><h:outputText value="#{alumnoController.emailinstitucional}"/></td>
+				<td id="emailins">Email constitucional:</td>
+				<td><h:outputText id="emailinsin" value="#{alumnoController.emailinstitucional}"/></td>
 			</tr>
 			<tr>
-				<td>Email personal:</td>
-				<td><h:outputText value="#{alumnoController.emailPersonal}"/></td>
+				<td id="emailpers">Email personal:</td>
+				<td><h:outputText id="emailpersin" value="#{alumnoController.emailPersonal}"/></td>
 			</tr>
 			<tr>
-				<td>Teléfono:</td>
-				<td><h:outputText value="#{alumnoController.tlf}"/></td>
+				<td id="tlf">Teléfono:</td>
+				<td><h:outputText id="tlfin" value="#{alumnoController.tlf}"/></td>
 			</tr>
 			<tr>
-				<td>Móvil:</td>
-				<td><h:outputText value="#{alumnoController.movil}"/></td>
+				<td id="movil">Móvil:</td>
+				<td><h:outputText id="movilin" value="#{alumnoController.movil}"/></td>
 			</tr>
 	</table>
 		<h:form>
-			<p:commandButton value="Modificar" action="#{alumnoController.pasarDNI(dniAl)}" outcome="modificarAlumno.xhtml"></p:commandButton>
+			<p:commandButton id="modificarboton" value="Modificar" action="#{alumnoController.pasarDNI(dniAl)}" outcome="modificarAlumno.xhtml"></p:commandButton>
 		</h:form>
 	<h:form>
 		 <h:commandButton id="backButton" value="Back"  action="index" />

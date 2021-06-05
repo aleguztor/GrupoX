@@ -1,0 +1,26 @@
+#usertext{
+	margin-top: 10px;
+	color: blue;
+	
+}
+.username{
+ 
+ 
+ }
+#passtext{
+	background-color: red;
+
+ }
+#login{
+	
+}
+#iniciarses{
+	color: red;
+	background-color: red;
+	width: 40px;
+	
+}
+html {
+
+ position: center;
+}

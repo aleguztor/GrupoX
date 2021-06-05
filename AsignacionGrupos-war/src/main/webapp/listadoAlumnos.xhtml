@@ -10,15 +10,15 @@
     <h:body>
     	<h:form>
 			<p:dataTable var="a" value="#{listado.alumnos}">
-		            <p:column headerText="DNI" field="DNI" sortable="true" filterable="true"/>
-		            <p:column headerText="Nombre" field="nombre" sortable="true" filterable="true"/>
-		            <p:column headerText="Primer apellido" field="apellido1" sortable="true" filterable="true"/>
-		            <p:column headerText="Segundo apellido" field="apellido2" sortable="true" filterable="true"/>
-		            <p:column headerText="Email institucional" field="email_institucional" sortable="true" filterable="true"/>
-		            <p:column headerText="Expedientes">
-		                <h:button action="#{listado.alumno(a)}" outcome="prueba.xhtml" value="Mostrar"/>
+		            <p:column id="dni" headerText="DNI" field="DNI" sortable="true" filterable="true"/>
+		            <p:column id="nombre" headerText="Nombre" field="nombre" sortable="true" filterable="true"/>
+		            <p:column id="primerapellidp" headerText="Primer apellido" field="apellido1" sortable="true" filterable="true"/>
+		            <p:column id="segundoapellido" headerText="Segundo apellido" field="apellido2" sortable="true" filterable="true"/>
+		            <p:column id="eminst" headerText="Email institucional" field="email_institucional" sortable="true" filterable="true"/>
+		            <p:column id="expedient" headerText="Expedientes">
+		                <h:button id="alumnoaction" action="#{listado.alumno(a)}" outcome="prueba.xhtml" value="Mostrar"/>
 		            </p:column>
-		            <p:column headerText="Modificar"> <h:button  outcome="modificarAlumno.xhtml" action="#{modAlumno.modificar(a)}" value="Modificar" />
+		            <p:column id="modificar" headerText="Modificar"> <h:button  outcome="modificarAlumno.xhtml" action="#{modAlumno.modificar(a)}" value="Modificar" />
 		            </p:column>
 		     </p:dataTable>
 		  </h:form>

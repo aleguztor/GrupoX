@@ -12,19 +12,19 @@
 		<table>
 
 			<tr>
-				<td><h:outputLabel value="Nombre" /></td>
+				<td><h:outputLabel id="nombretext" value="Nombre" /></td>
 
 			</tr>
 
 			<tr>
-				<td><h:inputText id="nombre"
+				<td><h:inputText id="nombrein"
 						value="#{alumnoBean.alumno.nombre}" required="true" /></td>
 
 			</tr>
 
 			<tr>
-				<td><h:outputLabel value="Primer Apellido" /></td>
-				<td><h:outputLabel value="Segundo Apellido" /></td>
+				<td><h:outputLabel id="textprimer" value="Primer Apellido" /></td>
+				<td><h:outputLabel id="textsegundo" value="Segundo Apellido" /></td>
 
 			</tr>
 
@@ -36,7 +36,7 @@
 			</tr>
 
 			<tr>
-				<td><h:outputLabel value="DNI" /></td>
+				<td><h:outputLabel id="dnitext" value="DNI" /></td>
 			</tr>
 
 			<tr>
@@ -45,8 +45,8 @@
 			</tr>
 
 			<tr>
-				<td><h:outputLabel value="Email Institucional" /></td>
-				<td><h:outputLabel value="Email Personal" /></td>
+				<td><h:outputLabel id="emailtext" value="Email Institucional" /></td>
+				<td><h:outputLabel id="emailpertext" value="Email Personal" /></td>
 			</tr>
 
 			<tr>
@@ -57,8 +57,8 @@
 						value="#{alumnoBean.alumno.email_personal}" /></td>
 			</tr>
 			<tr>
-				<td><h:outputLabel value="Movil" /></td>
-				<td><h:outputLabel value="Telefono" /></td>
+				<td><h:outputLabel id="moviltext" value="Movil" /></td>
+				<td><h:outputLabel id="telftext" value="Telefono" /></td>
 			</tr>
 			<tr>
 				<td><h:inputText id="movil" value="#{alumnoBean.alumno.movil}" /></td>
@@ -66,8 +66,8 @@
 						value="#{alumnoBean.alumno.telefono}" /></td>
 			</tr>
 			<tr>
-				<td><h:outputLabel value="Direccion" /></td>
-				<td><h:outputLabel value="Localidad" /></td>
+				<td><h:outputLabel id="direcciontext" value="Direccion" /></td>
+				<td><h:outputLabel id="localidadtext" value="Localidad" /></td>
 			</tr>
 			<tr>
 				<td><h:inputText id="direccion"
@@ -77,8 +77,8 @@
 
 			</tr>
 			<tr>
-				<td><h:outputLabel value="Provincia" /></td>
-				<td><h:outputLabel value="Codigo Postal" /></td>
+				<td><h:outputLabel id="textprov" value="Provincia" /></td>
+				<td><h:outputLabel id="textCP" value="Codigo Postal" /></td>
 			</tr>
 			<tr>
 				<td><h:inputText id="provincia"
@@ -88,7 +88,7 @@
 			</tr>
 
 			<tr>
-				<td><h:commandButton type="submit" value="Insertar"
+				<td><h:commandButton id="submit" type="submit" value="Insertar"
 						action="#{alumnoBean.doCrearAlumno}" /></td>
 			</tr>
 		</table>

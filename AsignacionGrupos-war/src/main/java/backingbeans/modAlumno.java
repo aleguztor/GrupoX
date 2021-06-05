@@ -23,7 +23,6 @@ public class modAlumno {
 
 	
 	private Alumno alumno = new Alumno();
-	@ManagedProperty("#{listado.a}")
 	private Alumno al = new Alumno();
 	String dni;
 	private static final Logger LOG = Logger.getLogger(modAlumno.class.getCanonicalName());
@@ -31,15 +30,6 @@ public class modAlumno {
 	@Inject 
 	CrudEJBLocal crud;
 	
-	@PostConstruct
-	public void init() {
-		try {
-			al = crud.buscarAlumnoPorDNI(dni);
-		} catch (AlumnoNoEncontradoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 	public String getDni() {
 		return dni;

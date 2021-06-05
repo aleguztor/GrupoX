@@ -17,10 +17,10 @@
   
     <h:messages globalOnly="true" style="color:red;margin:8px;" />
   
-    <h:outputText id="usertext" value="Username: "/>
+    <h:outputText id="usertext" value="Username "/>
     	<h:outputText value="&lt;br/&gt;" escape="false" />
     <h:inputText id="username" label="Username" value="#{login.username}" /><br/><br/>
-    <h:outputText id="passtext" value="Password: "/>
+    <h:outputText id="passtext" value="Password "/>
     	<h:outputText value="&lt;br/&gt;" escape="false" />
     <h:inputSecret id="login" value="#{login.password}" /><br/><br/>
     <h:commandButton id="iniciarses" value="Iniciar sesion" action="#{login.login}" styleClass="boton" />

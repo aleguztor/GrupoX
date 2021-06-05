@@ -1,26 +1,30 @@
-#usertext{
-	margin-top: 10px;
-	color: blue;
+.formulario{
+	color: #000000;
+	position:center;
+	border: medium;
+	
+	
 	
 }
-.username{
- 
- 
- }
-#passtext{
-	background-color: red;
-
- }
-#login{
+.boton{
+	background-color: #00d5c2;
+	border: none;
+	padding: 15px; 
+	color: white;
+}	
+.back{
+	background-color: #ef2929;
+	border: none;
+	padding: 15px; 
+	color: white;
 	
 }
-#iniciarses{
-	color: red;
-	background-color: red;
-	width: 40px;
+.partebaja{
+	background-color:#333333;
+	
 	
 }
-html {
-
- position: center;
+body {
+	margin-top:150px;
+	 text-align:center;
 }

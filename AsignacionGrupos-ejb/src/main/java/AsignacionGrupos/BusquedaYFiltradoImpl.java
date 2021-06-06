@@ -6,10 +6,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import Entidades.Alumno;
 import Entidades.Asignatura;
+import Entidades.Grupo;
 import Entidades.Titulacion;
 import Exceptions.*;
 
@@ -52,7 +54,7 @@ public class BusquedaYFiltradoImpl implements BusquedaYFiltrado{
 	
 	@Override
 	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
-		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM ALUMNO a WHERE a.DNI LIKE '"+dni+"'", Alumno.class);
+		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM ALUMNO a WHERE a.DNI= :dni", Alumno.class);
 		if(q.getSingleResult() == null) {
 			throw new AlumnoNoEncontradoException();
 		}
@@ -61,12 +63,13 @@ public class BusquedaYFiltradoImpl implements BusquedaYFiltrado{
 	
 	@Override
 	public Titulacion buscarTitulacionPorNombre(String nombre) throws TitulacionNoEncontradaException{
-		TypedQuery<Titulacion> q = em.createQuery("SELECT t FROM TITULACION WHERE t.NOMBRE LIKE '"+nombre+"'", Titulacion.class);
+		TypedQuery<Titulacion> q = em.createQuery("SELECT t FROM TITULACION WHERE t.NOMBRE= :nombre", Titulacion.class);
 		if(q.getSingleResult() == null) {
 			throw new TitulacionNoEncontradaException();
 		}
 		return q.getSingleResult();
 	}
+	
 	
 	
 	

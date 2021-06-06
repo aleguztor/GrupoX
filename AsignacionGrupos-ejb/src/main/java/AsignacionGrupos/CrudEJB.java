@@ -9,6 +9,7 @@ import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.core.UriBuilder;
 
@@ -192,8 +193,10 @@ import Exceptions.*;
 	@Override
 	public void insertarGrupo(Grupo g) throws GrupoDuplicadoException {
 		Grupo gr = em.find(Grupo.class, g.getId());
-		if(gr == null)
+		if(gr == null) {
+			g.setId(buscarNumeroGrupos());
 			em.persist(g);
+		}
 		else 
 			throw new GrupoDuplicadoException();
 		
@@ -390,11 +393,12 @@ import Exceptions.*;
 		else
 			return cl;
 		
+		
 	}
 
 	@Override
 	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
-		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a WHERE a.DNI LIKE '"+dni+"'", Alumno.class);
+		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a WHERE a.DNI= :dni" , Alumno.class);
 		if(q.getResultList().isEmpty()) {
 			return null;
 		}
@@ -419,6 +423,13 @@ import Exceptions.*;
 		return q.getSingleResult();
 	}
 	
+	@Override 
+	public Long buscarNumeroGrupos() {
+		Query query =  em.createQuery("SELECT COUNT(g) FROM GRUPO g", Grupo.class);
+		Long resultado = (Long) query.getSingleResult();
+		return resultado + 1;
+	}
+	
 	@Override
 	public List<Alumno> getAlumnos() {
 		return em.createQuery("SELECT a FROM Alumno a", Alumno.class).getResultList();
@@ -431,6 +442,10 @@ import Exceptions.*;
 			return null;
 		}
 		return q.getResultList();
+	}
+	@Override //SIN COMPROBAD TEST
+	public List<Encuesta> getEncuestas(){
+		return em.createQuery("SELECT e FROM Encuesta e", Encuesta.class).getResultList();
 	}
 	@Override
 	public void insertarEncuesta(Encuesta e)throws EncuestaException{

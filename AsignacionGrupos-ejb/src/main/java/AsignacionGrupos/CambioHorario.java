@@ -26,7 +26,4 @@ public interface CambioHorario {
 	 */
 
 	
-	
-	public long numeroPlazas(Grupo grupo) throws AsignacionGruposException;
-	
 }

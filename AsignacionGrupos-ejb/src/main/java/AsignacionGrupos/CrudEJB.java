@@ -411,9 +411,7 @@ import Exceptions.*;
 	public Grupo busquedaGrupo(String c, String l, String t) throws GrupoNoEncontradoException {
 		TypedQuery<Grupo> q = em.createQuery("SELECT g FROM Grupo g WHERE g.Curso LIKE '"+c+"' AND g.Letra LIKE '"+l+"'"
 				+ " AND g.Turno_Manyana_Tarde LIKE '"+t+"'", Grupo.class);
-		if(q.getSingleResult() == null) {
-			throw new GrupoNoEncontradoException();
-		}
+		
 		return q.getSingleResult();
 	}
 	
@@ -432,9 +430,7 @@ import Exceptions.*;
 	@Override
 	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException{
 		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE alumno_Id = "+id, Expediente.class);
-		if(q.getResultList() == null) {
-			throw new ExpedienteNoEncontradoException();
-		}
+
 		return q.getResultList();
 	}
 	@Override //SIN COMPROBAD TEST
@@ -456,9 +452,7 @@ import Exceptions.*;
 	@Override
 	public List<Matricula> buscarMatriculasPorExpediente(Long num) throws MatriculaNoEncontradaException{
 		TypedQuery<Matricula> q = em.createQuery("SELECT m FROM Matricula m WHERE expedientes_num_expedientes_Num_Expediente = "+num, Matricula.class);
-		if(q.getResultList() == null) {
-			throw new MatriculaNoEncontradaException();
-		}
+		
 		return q.getResultList();
 	}
 		

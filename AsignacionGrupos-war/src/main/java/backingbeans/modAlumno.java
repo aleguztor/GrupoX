@@ -73,11 +73,12 @@ public class modAlumno {
 	}
 	public String modificar(String dni) throws AlumnoNoEncontradoException {
 		this.al = crud.buscarAlumnoPorDNI(dni);
+		LOG.severe(al.getNombre());
 		return "modificarAlumno.xhtml";
 	}
 	public String doModificarAlumno() {
 		try {
-			LOG.severe(alumno.getNombre());
+			
 			al=crud.buscarAlumnoPorDNI(dni);
 			if(alumno.getApellido1() != null) {
 				al.setApellido1(alumno.getApellido1());

@@ -88,11 +88,12 @@ import Exceptions.*;
 
 	@Override
 	public void modificarAlumno(Alumno a) throws AlumnoNoEncontradoException {
-		Alumno al = existeAlumno(a);
-		if(al == null) {
-			throw new AlumnoNoEncontradoException();
-		}
+		/*
+		 * Alumno al = existeAlumno(a); if(al == null) { throw new
+		 * AlumnoNoEncontradoException(); }
+		 */
 		em.merge(a);
+		
 		
 	}
 

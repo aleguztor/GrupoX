@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>Matriculas alumno</title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<p:dataTable var="matricula" value="#{mat.matriculas}">
+					<p:column id="numarc" headerText="Numero de archivo" field="num_archivo" sortable="true" filterable="true"/>
+					<p:column id="act" headerText="Estado (A = Activo / I = Inactivo)" field="estado" sortable="true"/>
+		            <p:column id="tp" headerText="Turno preferente (M = Mañana / T = Tarde)" field="turno_preferente" sortable="true" filterable="true"/>
+		            <p:column id="ca" headerText="Curso academico" field="curso_academico" sortable="true"/>
+		            <p:column id="ni" headerText="Nuevo Ingreso (Y = Si / N = No)" field="nuevo_ingreso" sortable="true"/>
+		            <p:column id="la" headerText="Listado asignaturas" field="listado_asignaturas"/> 	       
+		     </p:dataTable>
+		  </h:form>
+		  <h:form>
+		  <h:commandButton id="listadobtn" action="listadoAlumnos" value="Volver al listado"/>
+		  <h:commandButton id="backButton" value="Back"  action="index" />
+	</h:form>
+	</h:body>
+</html>

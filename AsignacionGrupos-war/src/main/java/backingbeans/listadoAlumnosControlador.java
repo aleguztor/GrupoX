@@ -1,3 +1,4 @@
+package backingbeans;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -12,16 +13,16 @@ import javax.inject.Named;
 
 import AsignacionGrupos.CrudEJBLocal;
 import Entidades.Alumno;
+import Exceptions.AlumnoNoEncontradoException;
 
 @Named(value = "listado")
 @RequestScoped
 public class listadoAlumnosControlador implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	private Alumno alumno;
-		
+	private Alumno alumno;	
 	private List<Alumno> alumnos;
+	Long id;
 
     @Inject
     private CrudEJBLocal crud;
@@ -34,13 +35,21 @@ public class listadoAlumnosControlador implements Serializable {
     public List<Alumno> getAlumnos(){
     	return alumnos;
     }
+
+	public Alumno getAlumno() {
+		return alumno;
+	}
+
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
+
+	public void setAlumnos(List<Alumno> alumnos) {
+		this.alumnos = alumnos;
+	}
     
-    public synchronized void setAlumno(Alumno a) {
-    	alumno = a;
-    }
-    public synchronized Alumno getAlumno() {
-    	return alumno;
-    }
+	
+    
     
     
        

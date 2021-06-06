@@ -9,22 +9,19 @@
     </h:head>
     <h:body>
     	<h:form>
-			<p:dataTable var="expediente" value="#{expedientes.expedientes}">
-		            <p:column headerText="Numero de expediente">
-		                <h:outputText value="#{expediente.num_Expediente}" />
-		            </p:column>
-		
-		            <p:column headerText="Nota media provisional">
-		                <h:outputText value="#{expediente.nota_Media_Provisional}" />
-		            </p:column>
-		
-		            <p:column headerText="Titulacion">
-		                <h:outputText value="#{expediente.titulacion_codigo}" />
-		            </p:column>		       
+			<p:dataTable var="expediente" value="#{exp.expedientes}">
+		            <p:column id="numexp" headerText="Numero de expediente" field="num_Expediente" sortable="true" filterable="true"/>
+		            <p:column id="nmp" headerText="Nota media provisional" field="nota_Media_Provisional" sortable="true" filterable="true"/>
+		            <p:column id="titul" headerText="Titulacion" field="titulacion.codigo" sortable="true"/>
+		            <p:column headerText="Matricula">
+			            <h:commandButton id="pasoNumexp" action="#{mat.outcome}" outcome="matriculasAlumno.xhtml" includeViewParams="true" value="Mostrar">
+							<f:param name="numexp" value ="#{expediente.num_Expediente}"/>
+						</h:commandButton>	
+		            </p:column>  	       
 		     </p:dataTable>
-		     <h:commandButton outcome="listadoAlumnos.xhtml" value="Volver al listado"/>
 		  </h:form>
 		  <h:form>
+		 <h:commandButton id="listadobtn" action="listadoAlumnos" value="Volver al listado"/>
 		 <h:commandButton id="backButton" value="Back"  action="index" />
 	</h:form>
 	</h:body>

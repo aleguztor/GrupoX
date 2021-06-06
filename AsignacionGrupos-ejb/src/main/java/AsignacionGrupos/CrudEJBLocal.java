@@ -106,9 +106,7 @@ public interface CrudEJBLocal {
 	public void insertarEncuestaCambioHorario(EncuestaCambioHorario e)throws EncuestaException;
 
 	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException;
-<<<<<<< HEAD
 	public Long buscarNumeroGrupos();
-=======
 	public List<Encuesta> getEncuestas();
->>>>>>> branch 'master' of https://github.com/aleguztor/GrupoX
+	public List<Matricula> buscarMatriculasPorExpediente(Long num) throws MatriculaNoEncontradaException;
 }

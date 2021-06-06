@@ -40,8 +40,7 @@
 			</tr>
 
 			<tr id="row6">
-				<td id="dni-rellenar"><h:inputText id="dni" value="#{alumnoBean.alumno.DNI}"
-						required="true" /></td>
+				<td id="dni-rellenar"><h:inputText id="dni" value="#{alumnoBean.alumno.DNI}" required="true" /></td>
 			</tr>
 
 			<tr id="row7">
@@ -89,7 +88,7 @@
 
 			<tr id="row15">
 				<td id="boton"><h:commandButton id="submit" type="submit" value="Insertar"
-						action="#{alumnoBean.doCrearAlumno}" /></td>
+						action="#{alumnoBean.doCrearAlumno}"  outcome="index"/></td>
 			</tr>
 		</table>
 

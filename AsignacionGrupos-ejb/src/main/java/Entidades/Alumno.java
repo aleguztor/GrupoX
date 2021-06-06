@@ -248,11 +248,7 @@ public class Alumno implements Serializable{
 				return false;
 		} else if (!Email_institucional.equals(other.Email_institucional))
 			return false;
-		if (Id == null) {
-			if (other.Id != null)
-				return false;
-		} else if (!Id.equals(other.Id))
-			return false;
+		
 		if (Nombre == null) {
 			if (other.Nombre != null)
 				return false;

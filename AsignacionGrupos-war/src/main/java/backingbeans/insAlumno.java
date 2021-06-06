@@ -37,12 +37,12 @@ public class insAlumno {
 	
 	public String doCrearAlumno() {
 		try {
-			LOG.info("" + alumno.getDNI());
+			
 			crud.insertarAlumno(alumno);
 		} catch (AlumnoDuplicadoException e) {
 				LOG.info("El alumno ya esta en Base de datos incluido");
 		}
-		return "insertarAlumno.xhtml";
+		return "index";
 	}
 	
 	public List<Alumno> listaAlumnos(){

@@ -1,17 +1,14 @@
 package AsignacionGrupos;
 
-import java.net.URI;
-import java.util.List;
-import java.util.Random;
-import java.util.logging.Logger;
 
-import javax.ejb.Stateful;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.ws.rs.core.UriBuilder;
+
 
 import Entidades.Alumno;
 import Entidades.Asignatura;
@@ -32,10 +29,7 @@ import Exceptions.*;
 @Stateless
 	public class CrudEJB implements CrudEJBLocal {
 	
-		/*
-		 * private static final int TAM_CADENA_VALIDACION = 20; private static final
-		 * Logger LOGGER = Logger.getLogger(CrudEJB.class.getCanonicalName());
-		 */
+		
     /**
      * Default constructor. 
      */
@@ -398,7 +392,7 @@ import Exceptions.*;
 
 	@Override
 	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
-		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a WHERE a.DNI= :dni" , Alumno.class);
+		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a WHERE a.DNI LIKE '" + dni +"'", Alumno.class);
 		if(q.getResultList().isEmpty()) {
 			return null;
 		}

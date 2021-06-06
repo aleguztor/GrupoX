@@ -8,87 +8,87 @@
 </h:head>
 
 <h:body>
-	<h:form>
-		<table>
+	<h:form id="form-insert">
+		<table id="tabla">
 
-			<tr>
-				<td><h:outputLabel id="nombretext" value="Nombre" /></td>
+			<tr id="row1">
+				<td id="nombre-label"><h:outputLabel id="nombretext" value="Nombre" /></td>
 
 			</tr>
 
-			<tr>
-				<td><h:inputText id="nombrein"
+			<tr id="row2">
+				<td id="nombre-rellenar"><h:inputText id="nombrein"
 						value="#{alumnoBean.alumno.nombre}" required="true" /></td>
 
 			</tr>
 
-			<tr>
-				<td><h:outputLabel id="textprimer" value="Primer Apellido" /></td>
-				<td><h:outputLabel id="textsegundo" value="Segundo Apellido" /></td>
+			<tr id="row3">
+				<td id="apellido1-label"><h:outputLabel id="textprimer" value="Primer Apellido" /></td>
+				<td id="apellido2-label"><h:outputLabel id="textsegundo" value="Segundo Apellido" /></td>
 
 			</tr>
 
-			<tr>
-				<td><h:inputText id="apellido1"
+			<tr id="row4">
+				<td id="apellido1-rellenar"><h:inputText id="apellido1"
 						value="#{alumnoBean.alumno.apellido1}" required="true" /></td>
-				<td><h:inputText id="apellido2"
+				<td id="apellido2-rellenar"><h:inputText id="apellido2"
 						value="#{alumnoBean.alumno.apellido2}" /></td>
 			</tr>
 
-			<tr>
-				<td><h:outputLabel id="dnitext" value="DNI" /></td>
+			<tr id="row5">
+				<td id="dni-label"><h:outputLabel id="dnitext" value="DNI" /></td>
 			</tr>
 
-			<tr>
-				<td><h:inputText id="dni" value="#{alumnoBean.alumno.DNI}"
+			<tr id="row6">
+				<td id="dni-rellenar"><h:inputText id="dni" value="#{alumnoBean.alumno.DNI}"
 						required="true" /></td>
 			</tr>
 
-			<tr>
-				<td><h:outputLabel id="emailtext" value="Email Institucional" /></td>
-				<td><h:outputLabel id="emailpertext" value="Email Personal" /></td>
+			<tr id="row7">
+				<td id="emailInst-label"><h:outputLabel id="emailtext" value="Email Institucional" /></td>
+				<td id="emailPers-label"><h:outputLabel id="emailpertext" value="Email Personal" /></td>
 			</tr>
 
-			<tr>
-				<td><h:inputText id="emailinsti"
+			<tr id="row8">
+				<td id="emailInst-rellenar"><h:inputText id="emailinsti"
 						value="#{alumnoBean.alumno.email_institucional}" required="true" />
 				</td>
-				<td><h:inputText id="emailperso"
+				<td id="emailPers-rellenar"><h:inputText id="emailperso"
 						value="#{alumnoBean.alumno.email_personal}" /></td>
 			</tr>
-			<tr>
-				<td><h:outputLabel id="moviltext" value="Movil" /></td>
-				<td><h:outputLabel id="telftext" value="Telefono" /></td>
+			<tr id="row9">
+				<td id="movil-label"><h:outputLabel id="moviltext" value="Movil" /></td>
+				<td id="telef-label"><h:outputLabel id="telftext" value="Telefono" /></td>
 			</tr>
-			<tr>
-				<td><h:inputText id="movil" value="#{alumnoBean.alumno.movil}" /></td>
-				<td><h:inputText id="telefono"
+			<tr id="row10">
+				<td id="movil-rellenar"><h:inputText id="movil" value="#{alumnoBean.alumno.movil}" /></td>
+				<td id="telef-rellenar"><h:inputText id="telefono"
 						value="#{alumnoBean.alumno.telefono}" /></td>
 			</tr>
-			<tr>
-				<td><h:outputLabel id="direcciontext" value="Direccion" /></td>
-				<td><h:outputLabel id="localidadtext" value="Localidad" /></td>
+			<tr id="row11">
+				<td id="direcc-label"><h:outputLabel id="direcciontext" value="Direccion" /></td>
+				<td id="locali-label"><h:outputLabel id="localidadtext" value="Localidad" /></td>
 			</tr>
-			<tr>
-				<td><h:inputText id="direccion"
+			<tr id="row12">
+				<td id="direcc-rellenar"><h:inputText id="direccion"
 						value="#{alumnoBean.alumno.direccion_notificacion}" /></td>
-				<td><h:inputText id="localidad"
+				<td id="locali-rellenar"><h:inputText id="localidad"
 						value="#{alumnoBean.alumno.localidad_notificacion}" /></td>
 
 			</tr>
-			<tr>
-				<td><h:outputLabel id="textprov" value="Provincia" /></td>
-				<td><h:outputLabel id="textCP" value="Codigo Postal" /></td>
+			<tr id="row13">
+				<td id="prov-label"><h:outputLabel id="textprov" value="Provincia" /></td>
+				<td id="cp-label"><h:outputLabel id="textCP" value="Codigo Postal" /></td>
 			</tr>
-			<tr>
-				<td><h:inputText id="provincia"
+			<tr id="row14">
+				<td id="prov-rellenar"><h:inputText id="provincia"
 						value="#{alumnoBean.alumno.provincia_notificacion}" /></td>
-				<td><h:inputText id="cp"
+				<td id="cp-rellenar"><h:inputText id="cp"
 						value="#{alumnoBean.alumno.CP_notificacion}" /></td>
 			</tr>
 
-			<tr>
-				<td><h:commandButton id="submit" type="submit" value="Insertar"
+			<tr id="row15">
+				<td id="boton"><h:commandButton id="submit" type="submit" value="Insertar"
 						action="#{alumnoBean.doCrearAlumno}" /></td>
 			</tr>
 		</table>

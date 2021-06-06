@@ -1,103 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Modificar Alumno</title>
-	<f:metadata>
-	
-		<f:viewParam name="dni" value="#{modAlumno.dni}"></f:viewParam>
-	</f:metadata>
+	<title>Asignatura</title>
 </h:head>
 
 <h:body>
-
-	<h4>Modificacion del alumno: <h:outputLabel value="#{modAlumno.dni}"/></h4>
-	<h:form>
-		<table>
-
-			<tr>
-				<td><h:outputLabel id="nombreoutput" value="Nombre" /></td>
-
-			</tr>
-
-			<tr>
-				<td><h:inputText id="nombre" value="#{modAlumno.alumno.nombre}" placeholder="#{modAlumno.al.nombre}"/></td>
-
-			</tr>
-
-			<tr>
-				<td><h:outputLabel id="outputprimerape" value="Primer Apellido" /></td>
-				<td><h:outputLabel id="outputsegundoape" value="Segundo Apellido" /></td>
-
-			</tr>
-
-			<tr>
-				<td><h:inputText id="apellido1"
-						value="#{modAlumno.alumno.apellido1}" /></td>
-				<td><h:inputText id="apellido2"
-						value="#{modAlumno.alumno.apellido2}" /></td>
-			</tr>
-
-			<tr>
-				<td><h:outputLabel id="outputdni" value="DNI" /></td>
-			</tr>
-
-			<tr>
-				<td><h:inputText id="dni" value="#{modAlumno.alumno.DNI}" /></td>
-			</tr>
-
-			<tr>
-				<td><h:outputLabel id="outputemailinsti" value="Email Institucional" /></td>
-				<td><h:outputLabel id="outputeempers" value="Email Personal" /></td>
-			</tr>
-
-			<tr>
-				<td><h:inputText id="emailinsti"
-						value="#{modAlumno.alumno.email_institucional}" required="true" />
-				</td>
-				<td><h:inputText id="emailperso"
-						value="#{modAlumno.alumno.email_personal}" /></td>
-			</tr>
-			<tr>
-				<td><h:outputLabel id="outputmovil" value="Movil" /></td>
-				<td><h:outputLabel id="outputtelef" value="Telefono" /></td>
-			</tr>
-			<tr>
-				<td><h:inputText id="movil" value="#{modAlumno.alumno.movil}" /></td>
-				<td><h:inputText id="telefono"
-						value="#{modAlumno.alumno.telefono}" /></td>
-			</tr>
-			<tr>
-				<td><h:outputLabel id="outputdirec" value="Direccion" /></td>
-				<td><h:outputLabel id="outputloca" value="Localidad" /></td>
-			</tr>
-			<tr>
-				<td><h:inputText id="direccion"
-						value="#{modAlumno.alumno.direccion_notificacion}" /></td>
-				<td><h:inputText id="localidad"
-						value="#{modAlumno.alumno.localidad_notificacion}" /></td>
-
-			</tr>
-			<tr>
-				<td><h:outputLabel id="outputprovinc" value="Provincia" /></td>
-				<td><h:outputLabel id="outputcp" value="Codigo Postal" /></td>
-			</tr>
-			<tr>
-				<td><h:inputText id="provincia"
-						value="#{modAlumno.alumno.provincia_notificacion}" /></td>
-				<td><h:inputText id="cp"
-						value="#{modAlumno.alumno.CP_notificacion}" /></td>
-			</tr>
-
-			<tr>
-
-				<td><h:commandButton id="submit" type="submit" value="Modificar" outcome="listadoAlumnos.xhtml" action="#{modAlumno.doModificarAlumno}" /></td>
-			</tr>
-		</table>
-
+	
+	<div>
+		<h:form>
+			<table>
+				<tr>
+					<td><h:outputLabel value="Referencia:"/></td>
+					<td><h:inputText value="#{insertarAsignatura.asignatura.referencia}" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="Codigo"/></td>
+					<td><h:inputText converter="#{Integer}"
+							value="#{insertarAsignatura.asignatura.codigo}"/></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="Creditos"/></td>
+					<td><h:inputText converter="#{Integer}" value="#{insertarAsignatura.asignatura.creditos}"/></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="Nombre"/></td>
+					<td><h:inputText
+							value="#{insertarrAsignatura.asignatura.nombre}" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="Ofertada"/></td>
+					<td><h:selectOneMenu value="#{insertarAsignatura.asignatura.ofertada}">
+							<f:selectItem itemLabel="Si" itemValue="true" />
+							<f:selectItem itemLabel="No" itemValue="false"/>
+						</h:selectOneMenu></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="Curso" /></td>
+					<td><h:selectOneMenu value="#{insertarAsignatura.asignatura.curso}">
+							<f:selectItem itemLabel="1º" itemValue="1º"/>
+							<f:selectItem itemLabel="2º" itemValue="2º"/>
+							<f:selectItem itemLabel="3º" itemValue="3º"/>
+							<f:selectItem itemLabel="4º" itemValue="4º"/>
+						</h:selectOneMenu></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="Carácter"/></td>
+					<td><h:selectOneMenu value="#{insertarAsignatura.asignatura.caracter}">
+							<f:selectItem itemLabel="OB" itemValue="OB"/>
+							<f:selectItem itemLabel="BA" itemValue="BA"/>
+							<f:selectItem itemLabel="OP" itemValue="OP"/>
+						</h:selectOneMenu></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="Cuatrimestre"/></td>
+					<td><h:selectOneMenu  converter="#{Integer}" value="#{insertarAsignatura.asignatura.unidad_Temporal}">
+							<f:selectItem itemLabel="1º" itemValue="1" />
+							<f:selectItem itemLabel="2º" itemValue="2"/>
+						</h:selectOneMenu></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel  value="Idioma"/></td>
+					<td><h:selectOneMenu converter="#{Boolean}" value="#{insertarAsignatura.asignatura.idioma_de_imparticion}">
+							<f:selectItem itemLabel="Si" itemValue="true" />
+							<f:selectItem itemLabel="No" itemValue="false"/>
+						</h:selectOneMenu></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="Plazas" /></td>
+					<td><h:inputText converter="#{Integer}" value="#{insertarAsignaturas.asignatura.plazas}" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel value="Mencion"/></td>
+					<td><h:inputText value="#{insertarAsignaturas.asignatura.mencion}" /></td>
+				</tr>
+			
+				<tr>
+					<td><h:commandButton type="submit" value="Enviar" action="#{insertarAsignatura.doInsertar()}" outcome="index"/></td>
+					<td></td>
+				</tr>
+			</table>
+		</h:form>
+	</div>
+<h:form>
+		 <h:commandButton id="backButton" value="Back"  action="index" />
 	</h:form>
-
 </h:body>
+
 </html>

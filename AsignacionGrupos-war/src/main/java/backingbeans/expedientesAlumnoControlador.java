@@ -21,23 +21,19 @@ import Exceptions.ExpedienteNoEncontradoException;
 public class expedientesAlumnoControlador implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	private List<Expediente> expedientes = new LinkedList<Expediente>();
+	private List<Expediente> expedientes; // = new LinkedList<Expediente>();
 	private static final Logger LOG = Logger.getLogger(expedientesAlumnoControlador.class.getCanonicalName());
 	private Expediente expediente;
-	Long id = (long) 1;
+	private Long id;
 		
 	@Inject
 	CrudEJBLocal crud;
 	
-	@PostConstruct
-	public void init() {
-		try {
-			expedientes = crud.obtenerExpedientesAlumno(id);
-		}catch(ExpedienteNoEncontradoException e) {
-			e.printStackTrace();
-		}
-	}
-	
+	/*
+	 * @PostConstruct public void init() { try { expedientes =
+	 * crud.obtenerExpedientesAlumno(id); }catch(ExpedienteNoEncontradoException e)
+	 * { e.printStackTrace(); } }
+	 */
 	public Expediente getExpediente() {
 		return expediente;
 	}
@@ -62,9 +58,10 @@ public class expedientesAlumnoControlador implements Serializable{
 		return id;
 	}
 	
-	public String outcome() throws AlumnoNoEncontradoException {
+	public String outcome() throws AlumnoNoEncontradoException, ExpedienteNoEncontradoException {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		this.id = getAlumnoParam(fc);
+		this.expedientes= crud.obtenerExpedientesAlumno(id);
 		LOG.severe(Long.toString(id));
 		return "expedientesAlumno";
 	}

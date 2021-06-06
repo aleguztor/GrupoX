@@ -41,7 +41,7 @@ public class Login {
 		}
 	}
 
-	public void logout() {
+	public String logout() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.getExternalContext().invalidateSession();
 		try {
@@ -49,6 +49,7 @@ public class Login {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return "Login.xhtml";
 	}
 
 	public String getUsername() {

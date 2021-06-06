@@ -14,26 +14,24 @@ import javax.inject.Named;
 import AsignacionGrupos.CrudEJBLocal;
 import Entidades.Matricula;
 import Exceptions.AlumnoNoEncontradoException;
+import Exceptions.ExpedienteNoEncontradoException;
 import Exceptions.MatriculaNoEncontradaException;
 
 @Named(value="mat")
 @RequestScoped
 public class matriculaController implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private List<Matricula> matriculas = new LinkedList<>();
-	Long num_exp = (long) 234567890;
+	private List<Matricula> matriculas;
+	Long num_exp ;
 	
 	@Inject
 	private CrudEJBLocal crud;
 	
-	@PostConstruct
-	public void init() {
-		try {
-			matriculas = crud.buscarMatriculasPorExpediente(num_exp);
-		} catch (MatriculaNoEncontradaException e) {
-			e.printStackTrace();
-		}
-	}
+	/*
+	 * @PostConstruct public void init() { try { matriculas =
+	 * crud.buscarMatriculasPorExpediente(num_exp); } catch
+	 * (MatriculaNoEncontradaException e) { e.printStackTrace(); } }
+	 */
 
 	public List<Matricula> getMatriculas() {
 		return matriculas;
@@ -51,10 +49,10 @@ public class matriculaController implements Serializable{
 		this.num_exp = num_exp;
 	}
 	
-	public String outcome() throws AlumnoNoEncontradoException {
+	public String outcome() throws ExpedienteNoEncontradoException, MatriculaNoEncontradaException {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		this.num_exp = getAlumnoParam(fc);
-		
+		this.matriculas =crud.buscarMatriculasPorExpediente(num_exp);
 		return "matriculaAlumno";
 	}
 	public Long getAlumnoParam(FacesContext fc)  {

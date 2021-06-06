@@ -10,7 +10,7 @@
 </h:head>
 <h:body>
 	<h:form>
-		<p:dataTable var="a" value="#{listado.alumnos}">
+		<p:dataTable id="tabla" var="a" value="#{listado.alumnos}">
 			<p:column id="dni" headerText="DNI" field="DNI" sortable="true"
 				filterable="true" />
 			<p:column id="nombre" headerText="Nombre" field="nombre"
@@ -22,15 +22,10 @@
 			<p:column id="eminst" headerText="Email institucional"
 				field="email_institucional" sortable="true" filterable="true" />
 			<p:column id="expedient" headerText="Expedientes">
-
 				<h:commandButton id="pasoIdExp" action="#{exp.outcome}" includeViewParams="true" value="Mostrar">
 					<f:param name="id" value ="#{a.id}"/>
 				</h:commandButton>
 			</p:column>		
-			<p:column>
-				<h:button id="alumnoaction" action="#{listado.alumno(a)}"
-					outcome="prueba.xhtml" value="Mostrar" />
-			</p:column>
 			<p:column id="modBoton" headerText="Modificar">
 				<h:commandButton id="pasoParmAlumno" action="#{modAlumno.outcome}" outcome="modificarAlumno.xhtml" includeViewParams="true" value="Modificar">
 					<f:param name="dni" value="#{a.DNI}" />

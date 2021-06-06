@@ -6,55 +6,44 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-	<head>
-		<title>Asignacion de grupos</title>
-	</head>
-	<body>
-		<h:form id="groupsForm">
-            <p:dataTable value="#{algoritmo.alumnos}" 
-                         var="al" 
-                         style="width: 80%; margin:0 auto;" 
-                         paginator="true" 
-                         rows="5" 
-                         rowsPerPageTemplate="5,10,15,20,50" 
-                         lazy="true" 
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records">
-                <p:column>
-                    <f:facet name="header">Grupos</f:facet>                    
-                            <p:dataTable value="#{algoritmo.grupos}" 
-                                         var="g" 
-                                         lazy="true" 
-                                         paginator="true" 
-                                         rows="5" 
-                                         rowsPerPageTemplate="5,10,15,20,50"                                         
-                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                         currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                                         reflow="true"
-                                         >
-                                <p:column>
-                                    <p:panelGrid columns="4" style="margin: 5px 0; border: 0;">   
-                                        <p:column headerText="Name" priority="1">
+<head>
+<title>Asignacion de grupos</title>
+</head>
+<body>
+	<h:form id="groupsForm">
+		<p:dataTable value="#{algoritmo.alumnos}" var="al"
+			style="width: 80%; margin:0 auto;" paginator="true" rows="5"
+			rowsPerPageTemplate="5,10,15,20,50" lazy="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records">
+			<p:column>
+				<f:facet name="header">Grupos</f:facet>
+				<p:dataTable value="#{algoritmo.grupos}" var="g" lazy="true"
+					paginator="true" rows="5" rowsPerPageTemplate="5,10,15,20,50"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+					reflow="true">
+					<p:column>
+						<p:panelGrid columns="4" style="margin: 5px 0; border: 0;">
+							<p:column headerText="Name" priority="1">
                                             #{c.name}
                                         </p:column>
-                                        <p:column headerText="Email" priority="1">
+							<p:column headerText="Email" priority="1">
                                             #{c.email}
                                         </p:column>
-                                        <p:column headerText="Email" priority="2">
-                                            <p:commandButton value="Details"/>
-                                        </p:column>
-                                        <p:column headerText="Email" priority="3">
-                                            <p:commandButton value="Delete"/>
-                                        </p:column>
-                                    </p:panelGrid>
-                                    
-                                </p:column>
-                            </p:dataTable>
-                        </p:panel>
-                    </p:panel>
-                </p:column>
-            </p:dataTable>
-        </h:form>
+							<p:column headerText="Email" priority="2">
+								<p:commandButton value="Details" />
+							</p:column>
+							<p:column headerText="Email" priority="3">
+								<p:commandButton value="Delete" />
+							</p:column>
+						</p:panelGrid>
 
-	</body>
+					</p:column>
+				</p:dataTable>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+</body>
 </html>

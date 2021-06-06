@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+<<<<<<< HEAD
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
@@ -23,6 +24,37 @@
 		  <h:form>
 		 <h:commandButton id="listadobtn" action="listadoAlumnos" value="Volver al listado"/>
 		 <h:commandButton id="backButton" value="Back"  action="index" />
+=======
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Aplicacion Asignacion Grupos</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:dataTable var="expediente" value="#{exp.expedientes}">
+			<p:column id="numexp" headerText="Numero de expediente"
+				field="num_Expediente" sortable="true" filterable="true" />
+			<p:column id="nmp" headerText="Nota media provisional"
+				field="nota_Media_Provisional" sortable="true" filterable="true" />
+			<p:column id="titul" headerText="Titulacion"
+				field="titulacion.codigo" sortable="true" />
+			<p:column headerText="Matricula">
+				<h:commandButton id="pasoNumexp" action="#{mat.outcome}"
+					outcome="matriculasAlumno.xhtml" includeViewParams="true"
+					value="Mostrar">
+					<f:param name="numexp" value="#{expediente.num_Expediente}" />
+				</h:commandButton>
+			</p:column>
+		</p:dataTable>
+>>>>>>> 4acd2a535c7da39bc58a8913a4e0c14557574a9d
 	</h:form>
-	</h:body>
+	<h:form>
+		<h:commandButton id="listadobtn" action="listadoAlumnos"
+			value="Volver al listado" />
+		<h:commandButton id="backButton" value="Back" action="index" />
+	</h:form>
+</h:body>
 </html>

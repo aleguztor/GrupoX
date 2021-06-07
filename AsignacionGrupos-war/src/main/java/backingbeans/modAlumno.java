@@ -25,7 +25,7 @@ public class modAlumno {
 	
 	private Alumno alumno = new Alumno();
 	private Alumno al = new Alumno();
-	String dni;
+	private static  String dni;
 	private static final Logger LOG = Logger.getLogger(modAlumno.class.getCanonicalName());
 	
 	@Inject 
@@ -45,14 +45,14 @@ public class modAlumno {
 
 	public String outcome() throws AlumnoNoEncontradoException {
 		FacesContext fc = FacesContext.getCurrentInstance();
-		this.dni = getAlumnoParam(fc);
+		this.dni = getAlumnoParam(fc).trim();
 		
 		return "modificarAlumno";
 	}
 	public String getAlumnoParam(FacesContext fc)  {
 		Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
-		 
-		return params.get("dni");
+		LOG.severe(params.get("dni"));
+		return params.get("dni").toString();
 	}
 	
 	
@@ -71,64 +71,20 @@ public class modAlumno {
 	public void setAl(Alumno al) {
 		this.al = al;
 	}
-	public String modificar(String dni) throws AlumnoNoEncontradoException {
+	/*public String modificar(String dni) throws AlumnoNoEncontradoException {
 		this.al = crud.buscarAlumnoPorDNI(dni);
 		LOG.severe(al.getNombre());
 		return "modificarAlumno.xhtml";
-	}
-	public String doModificarAlumno() {
-		try {
-			
-			al=crud.buscarAlumnoPorDNI(dni);
-			if(alumno.getApellido1() != null) {
-				al.setApellido1(alumno.getApellido1());
-			}
-			if(alumno.getApellido2()!= null) {
-				al.setApellido2(alumno.getApellido2());
-			}
-			if(alumno.getDNI()!=null) {
-				al.setDNI(alumno.getDNI());
-			}
-			if(alumno.getNombre()!=null) {
-				al.setNombre(alumno.getNombre());
-				
-			}
-			if(alumno.getEmail_institucional() != null) {
-				al.setEmail_institucional(alumno.getEmail_institucional());
-			}
-			if(alumno.getEmail_personal() != null) {
-				al.setEmail_personal(alumno.getEmail_personal());
-			}
-			
-			if(alumno.getLocalidad_notificacion() != null) {
-				al.setLocalidad_notificacion(alumno.getLocalidad_notificacion());
-			}
-			if(alumno.getCP_notificacion() != null) {
-				al.setCP_notificacion(alumno.getCP_notificacion());
-			}
-			if(alumno.getProvincia_notificacion() != null) {
-				al.setProvincia_notificacion(alumno.getProvincia_notificacion());
-			}
-			if(alumno.getDireccion_notificacion() != null) {
-				al.setDireccion_notificacion(alumno.getDireccion_notificacion());
-			}
-			
-			if(alumno.getMovil() != null) {
-				al.setMovil(alumno.getMovil());
-			}
-			
-			if(alumno.getTelefono() !=null) {
-				al.setTelefono(alumno.getTelefono());
-			}
-			
-			crud.modificarAlumno(al);
-			
-		} catch (AlumnoNoEncontradoException e) {
-			// TODO Auto-generated catch block
-			LOG.severe("El alumno no esta en BBDD");
-			e.printStackTrace();
-		}
+	}*/
+	public String doModificarAlumno() throws AlumnoNoEncontradoException {
 		
+		this.al=crud.buscarAlumnoPorDNI(dni);
+		
+
+			crud.modificarAlumno(al, alumno);
+			
+
+	
 		return "index";
 	}
 	

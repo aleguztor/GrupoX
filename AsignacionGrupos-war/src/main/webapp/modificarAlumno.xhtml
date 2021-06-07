@@ -10,7 +10,7 @@
 
 
 <h:body>
-
+<p:growl id="messages" showDetail="true"/>
 	<h4>Modificacion del alumno: <h:outputLabel value="#{modiAlum.dni}"/></h4>
 	<h:form>
 		<table>
@@ -39,22 +39,12 @@
 			</tr>
 
 			<tr>
-				<td><h:outputLabel value="DNI" /></td>
-			</tr>
-
-			<tr>
-				<td><h:inputText id="dni" value="#{modiAlum.alumno.DNI}" /></td>
-			</tr>
-
-			<tr>
-				<td><h:outputLabel value="Email Institucional" /></td>
+				
 				<td><h:outputLabel value="Email Personal" /></td>
 			</tr>
 
 			<tr>
-				<td><h:inputText id="emailinsti"
-						value="#{modiAlum.alumno.email_institucional}" required="true" />
-				</td>
+				
 				<td><h:inputText id="emailperso"
 						value="#{modiAlum.alumno.email_personal}" /></td>
 			</tr>
@@ -91,11 +81,13 @@
 
 			<tr>
 				<td><h:commandButton type="submit" value="Modificar"
-						action="#{modiAlum.doModificarAlumno}" /></td>
+						action="#{modiAlum.doModificarAlumno}" outcome="listadoAlumnos.xhtml"/></td>
 			</tr>
 		</table>
 
 	</h:form>
-
+<h:form>
+		<h:commandButton id="backButton" value="Back" action="listadoAlumnos.xhtml" />
+	</h:form>
 </h:body>
 </html>

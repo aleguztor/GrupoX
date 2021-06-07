@@ -2,6 +2,7 @@ package AsignacionGrupos;
 
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -36,7 +37,7 @@ import Exceptions.*;
 	@PersistenceContext(unitName="AsignacionGrupos")
 	private EntityManager em;
 	
-  
+	private static final Logger LOG=Logger.getLogger(CrudEJB.class.getCanonicalName());
 
     @Override
 	public Expediente existeExpediente(Expediente e) throws ExpedienteNoEncontradoException {
@@ -87,12 +88,49 @@ import Exceptions.*;
 	}
 
 	@Override
-	public void modificarAlumno(Alumno a) throws AlumnoNoEncontradoException {
+	public void modificarAlumno(Alumno a, Alumno b) throws AlumnoNoEncontradoException {
 		/*
 		 * Alumno al = existeAlumno(a); if(al == null) { throw new
 		 * AlumnoNoEncontradoException(); }
 		 */
-		em.merge(a);
+		Alumno alumno= em.merge(a);
+		LOG.severe(a.toString());
+		if(!b.getApellido1().equals("")) {
+			alumno.setApellido1(b.getApellido1());
+		}
+		if(!b.getApellido2().equals("")) {
+			alumno.setApellido2(b.getApellido2());
+		}
+		
+		if(!b.getNombre().equals("")) {
+			alumno.setNombre(b.getNombre());
+			
+		}
+		
+		if(!b.getEmail_personal().equals("")) {
+			alumno.setEmail_personal(b.getEmail_personal());
+		}
+		
+		if(!b.getLocalidad_notificacion().equals("")) {
+			alumno.setLocalidad_notificacion(b.getLocalidad_notificacion());
+		}
+		if(!b.getCP_notificacion().equals("")) {
+			alumno.setCP_notificacion(b.getCP_notificacion());
+		}
+		if(!b.getProvincia_notificacion().equals("")) {
+			alumno.setProvincia_notificacion(b.getProvincia_notificacion());
+		}
+		if(!b.getDireccion_notificacion().equals("")) {
+			alumno.setDireccion_notificacion(b.getDireccion_notificacion());
+		}
+		
+		if(!b.getMovil().equals("")) {
+			alumno.setMovil(b.getMovil());
+		}
+		
+		if(!b.getTelefono().equals("")) {
+			alumno.setTelefono(b.getTelefono());
+		}
 		
 		
 	}
@@ -455,6 +493,12 @@ import Exceptions.*;
 		TypedQuery<Matricula> q = em.createQuery("SELECT m FROM Matricula m WHERE expedientes_num_expedientes_Num_Expediente = "+num, Matricula.class);
 		
 		return q.getResultList();
+	}
+	@Override
+	public void modificarCondDosAlumnos(Alumno nuevo, Alumno antiguo) throws AlumnoNoEncontradoException{
+		em.remove((em.merge(antiguo)));
+		
+		em.persist(nuevo);
 	}
 		
 	

@@ -55,7 +55,7 @@ public interface CrudEJBLocal {
 	public void insertarExpediente(Expediente e) throws ExpedienteDuplicadoException;
 	
 	public void insertarAlumno(Alumno a) throws AlumnoDuplicadoException;
-	public void modificarAlumno(Alumno al) throws AlumnoNoEncontradoException;
+	public void modificarAlumno(Alumno a, Alumno b) throws AlumnoNoEncontradoException;
 	public Alumno existeAlumno(Alumno a) throws AlumnoNoEncontradoException;
 	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException;
 	public void eliminarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException;
@@ -109,4 +109,5 @@ public interface CrudEJBLocal {
 	public Long buscarNumeroGrupos();
 	public List<Encuesta> getEncuestas();
 	public List<Matricula> buscarMatriculasPorExpediente(Long num) throws MatriculaNoEncontradaException;
+	public void modificarCondDosAlumnos(Alumno nuevo, Alumno antiguo)throws AlumnoNoEncontradoException;
 }

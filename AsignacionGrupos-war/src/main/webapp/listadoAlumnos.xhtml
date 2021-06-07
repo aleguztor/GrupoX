@@ -29,14 +29,14 @@
 			</p:column>		
 		
 			<p:column id="modBoton" headerText="Modificar">
-				<h:commandButton id="pasoParmAlumno" action="#{modiAlum.outcome}" outcome="modificarAlumno.xhtml" includeViewParams="true" value="Modificar">
+				<h:commandButton id="pasoParmAlumno" action="#{modiAlum.outcome}"  includeViewParams="true" value="Modificar">
 					<f:param name="dni" value="#{a.DNI}" />
 				</h:commandButton>
 			</p:column>
 		</p:dataTable>
 	</h:form>
 	<h:form>
-		<h:commandButton id="backButton" value="Back" outcome="index.xhtml" />
+		<h:commandButton id="backButton" value="Back" action="index" />
 	</h:form>
 </h:body>
 </html>

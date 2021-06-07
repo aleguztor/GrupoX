@@ -1,0 +1,59 @@
+{
+  "id": "e2faa864-7bb0-454a-afa4-f2146c2f6315",
+  "version": "2.0",
+  "name": "Pruebas",
+  "url": "http://localhost:8080/AsignacionGrupos-war/",
+  "tests": [{
+    "id": "75d56b7a-42f0-48a3-a442-428d5a6d0a89",
+    "name": "Prueba",
+    "commands": [{
+      "id": "cec06a27-626d-497f-bff2-088f7320fafd",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/AsignacionGrupos-war/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fe0951cd-0575-4b1c-9206-cad4e8823b1d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1054x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9cb86490-be43-423c-925d-dfa6e490a366",
+      "comment": "",
+      "command": "click",
+      "target": "css=.u-align-center > .u-text-1",
+      "targets": [
+        ["css=.u-align-center > .u-text-1", "css:finder"],
+        ["xpath=//section[@id='sec-cbd8']/div/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Sistemas de la Informacion\n')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "96daddb5-b9a3-40e5-b9d4-c4a76e1c38d0",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.u-align-center > .u-text-1",
+      "targets": [
+        ["css=.u-align-center > .u-text-1", "css:finder"],
+        ["xpath=//section[@id='sec-cbd8']/div/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Sistemas de la Informacion\n')]", "xpath:innerText"]
+      ],
+      "value": "Sistemas de la Informacion"
+    }]
+  }],
+  "suites": [{
+    "id": "0ad204ec-7db8-4177-91fc-051a6ac5e446",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": [],
+  "plugins": []
+}

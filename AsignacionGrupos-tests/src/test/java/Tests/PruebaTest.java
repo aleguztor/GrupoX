@@ -28,7 +28,7 @@ public class PruebaTest {
   JavascriptExecutor js;
   @Before
   public void setUp() {
-	System.setProperty("webdriver.chrome.driver", "D:\\Proyecto SII\\GrupoX\\AsignacionGrupos-tests\\src\\test\\resources\\chromedriver.exe");
+	System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
@@ -37,11 +37,5 @@ public class PruebaTest {
   public void tearDown() {
     driver.quit();
   }
-  @Test
-  public void prueba() {
-    driver.get("http://localhost:8080/AsignacionGrupos-war/");
-    driver.manage().window().setSize(new Dimension(1054, 808));
-    driver.findElement(By.cssSelector(".u-align-center > .u-text-1")).click();
-    assertThat(driver.findElement(By.cssSelector(".u-align-center > .u-text-1")).getText(), is("Sistemas de la Informacion"));
-  }
+  
 }

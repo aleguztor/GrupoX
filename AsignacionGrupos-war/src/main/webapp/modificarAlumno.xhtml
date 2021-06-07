@@ -11,7 +11,7 @@
 
 <h:body>
 
-	<h4>Modificacion del alumno: <h:outputLabel value="#{modAlumno.dni}"/></h4>
+	<h4>Modificacion del alumno: <h:outputLabel value="#{modiAlum.dni}"/></h4>
 	<h:form>
 		<table>
 
@@ -21,7 +21,7 @@
 			</tr>
 
 			<tr>
-				<td><h:inputText id="nombre" value="#{modAlumno.alumno.nombre}" placeholder="#{modAlumno.al.nombre}"/></td>
+				<td><h:inputText id="nombre" value="#{modiAlum.alumno.nombre}"/></td>
 
 			</tr>
 
@@ -33,9 +33,9 @@
 
 			<tr>
 				<td><h:inputText id="apellido1"
-						value="#{modAlumno.alumno.apellido1}" /></td>
+						value="#{modiAlum.alumno.apellido1}" /></td>
 				<td><h:inputText id="apellido2"
-						value="#{modAlumno.alumno.apellido2}" /></td>
+						value="#{modiAlum.alumno.apellido2}" /></td>
 			</tr>
 
 			<tr>
@@ -43,7 +43,7 @@
 			</tr>
 
 			<tr>
-				<td><h:inputText id="dni" value="#{modAlumno.alumno.DNI}" /></td>
+				<td><h:inputText id="dni" value="#{modiAlum.alumno.DNI}" /></td>
 			</tr>
 
 			<tr>
@@ -53,19 +53,19 @@
 
 			<tr>
 				<td><h:inputText id="emailinsti"
-						value="#{modAlumno.alumno.email_institucional}" required="true" />
+						value="#{modiAlum.alumno.email_institucional}" required="true" />
 				</td>
 				<td><h:inputText id="emailperso"
-						value="#{modAlumno.alumno.email_personal}" /></td>
+						value="#{modiAlum.alumno.email_personal}" /></td>
 			</tr>
 			<tr>
 				<td><h:outputLabel value="Movil" /></td>
 				<td><h:outputLabel value="Telefono" /></td>
 			</tr>
 			<tr>
-				<td><h:inputText id="movil" value="#{modAlumno.alumno.movil}" /></td>
+				<td><h:inputText id="movil" value="#{modiAlum.alumno.movil}" /></td>
 				<td><h:inputText id="telefono"
-						value="#{modAlumno.alumno.telefono}" /></td>
+						value="#{modiAlum.alumno.telefono}" /></td>
 			</tr>
 			<tr>
 				<td><h:outputLabel value="Direccion" /></td>
@@ -73,9 +73,9 @@
 			</tr>
 			<tr>
 				<td><h:inputText id="direccion"
-						value="#{modAlumno.alumno.direccion_notificacion}" /></td>
+						value="#{modiAlum.alumno.direccion_notificacion}" /></td>
 				<td><h:inputText id="localidad"
-						value="#{modAlumno.alumno.localidad_notificacion}" /></td>
+						value="#{modiAlum.alumno.localidad_notificacion}" /></td>
 
 			</tr>
 			<tr>
@@ -84,14 +84,14 @@
 			</tr>
 			<tr>
 				<td><h:inputText id="provincia"
-						value="#{modAlumno.alumno.provincia_notificacion}" /></td>
+						value="#{modiAlum.alumno.provincia_notificacion}" /></td>
 				<td><h:inputText id="cp"
-						value="#{modAlumno.alumno.CP_notificacion}" /></td>
+						value="#{modiAlum.alumno.CP_notificacion}" /></td>
 			</tr>
 
 			<tr>
 				<td><h:commandButton type="submit" value="Modificar"
-						action="#{modAlumno.doModificarAlumno}" /></td>
+						action="#{modiAlum.doModificarAlumno}" /></td>
 			</tr>
 		</table>
 

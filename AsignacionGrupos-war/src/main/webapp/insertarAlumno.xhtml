@@ -1,13 +1,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
-
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Insertar Alumno</title>
 
 </h:head>
 
 <h:body>
+<p:growl id="messages" showDetail="true"/>
 	<h:form id="form-insert">
 		<table id="tabla">
 
@@ -88,7 +89,7 @@
 
 			<tr id="row15">
 				<td id="boton"><h:commandButton id="submit" type="submit" value="Insertar"
-						action="#{alumnoBean.doCrearAlumno}"  outcome="index"/></td>
+						action="#{alumnoBean.doCrearAlumno}"  outcome="listadoAlumno"/></td>
 			</tr>
 		</table>
 

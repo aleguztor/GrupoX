@@ -18,7 +18,7 @@ import Exceptions.*;
 
 
 
-@Named
+@Named(value="modiAlum")
 @RequestScoped
 public class modAlumno {
 

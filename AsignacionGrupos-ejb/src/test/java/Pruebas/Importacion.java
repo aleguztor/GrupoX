@@ -58,7 +58,7 @@ public class Importacion {
 		try {
 			ie.ImportarExcel();
 			Alumno res = crud.buscarAlumnoPorDNI("95115697E");
-			assertEquals(res, a);
+			assertEquals(res.getDNI(), a.getDNI());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

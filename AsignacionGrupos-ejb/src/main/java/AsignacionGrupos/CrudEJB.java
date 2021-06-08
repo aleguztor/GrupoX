@@ -483,8 +483,9 @@ import Exceptions.*;
 	@Override
 	public List<Matricula> buscarMatriculasPorExpediente(Long num) throws MatriculaNoEncontradaException{
 		TypedQuery<Matricula> q = em.createQuery("SELECT m FROM Matricula m WHERE m.expedientes_num_expedientes.Num_Expediente = "+num, Matricula.class);
+		List<Matricula> m= q.getResultList();
 		
-		return q.getResultList();
+		return m;
 	}
 	@Override
 	public void modificarCondDosAlumnos(Alumno nuevo, Alumno antiguo) throws AlumnoNoEncontradoException{

@@ -620,8 +620,11 @@ public class Crud {
 		Matricula m1 = new Matricula(pk,e1,'I',d);
 		List<Matricula> matriculas = new LinkedList<>();
 		matriculas.add(m1);
+		
 		try {
-			assertEquals(crud.buscarMatriculasPorExpediente(e1.getNum_Expediente()),matriculas);
+			List<Matricula> buscar= crud.buscarMatriculasPorExpediente(e1.getNum_Expediente());
+			LOG.severe(matriculas.toString());
+			assertEquals(buscar,matriculas);
 		}catch(MatriculaNoEncontradaException e) {
 			e.printStackTrace();
 		}

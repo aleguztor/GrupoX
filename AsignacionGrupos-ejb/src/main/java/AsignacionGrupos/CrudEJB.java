@@ -513,7 +513,7 @@ import Exceptions.*;
 	}
 	@Override
 	public List<Titulacion> obtenerTitulaciones() {
-		TypedQuery<Titulacion> q = em.createQuery("SELECT t FROM Titulacion", Titulacion.class);
+		TypedQuery<Titulacion> q = em.createQuery("SELECT t FROM Titulacion t", Titulacion.class);
 		return q.getResultList();
 	}
 	

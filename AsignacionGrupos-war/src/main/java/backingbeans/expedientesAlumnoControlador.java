@@ -24,24 +24,16 @@ public class expedientesAlumnoControlador implements Serializable{
 	private List<Expediente> expedientes; // = new LinkedList<Expediente>();
 	private static final Logger LOG = Logger.getLogger(expedientesAlumnoControlador.class.getCanonicalName());
 	private Expediente expediente;
-<<<<<<< HEAD
-	Long id;
-=======
 	private Long id;
->>>>>>> 4acd2a535c7da39bc58a8913a4e0c14557574a9d
 		
 	@Inject
 	CrudEJBLocal crud;
 	
-<<<<<<< HEAD
-
-=======
 	/*
 	 * @PostConstruct public void init() { try { expedientes =
 	 * crud.obtenerExpedientesAlumno(id); }catch(ExpedienteNoEncontradoException e)
 	 * { e.printStackTrace(); } }
 	 */
->>>>>>> 4acd2a535c7da39bc58a8913a4e0c14557574a9d
 	public Expediente getExpediente() {
 		return expediente;
 	}
@@ -69,17 +61,16 @@ public class expedientesAlumnoControlador implements Serializable{
 	public String outcome() throws AlumnoNoEncontradoException, ExpedienteNoEncontradoException {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		this.id = getAlumnoParam(fc);
-<<<<<<< HEAD
-		expedientes = crud.obtenerExpedientesAlumno(id);
-=======
 		this.expedientes= crud.obtenerExpedientesAlumno(id);
 		LOG.severe(Long.toString(id));
->>>>>>> 4acd2a535c7da39bc58a8913a4e0c14557574a9d
 		return "expedientesAlumno";
 	}
 	public Long getAlumnoParam(FacesContext fc)  {
 		Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
+		 
 		return Long.parseLong(params.get("id"));
 	}
+	
+	
 	
 }

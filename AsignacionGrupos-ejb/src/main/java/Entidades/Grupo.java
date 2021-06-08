@@ -20,7 +20,6 @@ public class Grupo implements Serializable {
 	 */
 	private static final long serialVersionUID = 5977597351027478889L;
 	
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="grupo")
 	@Id
 	private Long Id;
 	@Column(nullable = false)
@@ -58,11 +57,10 @@ public class Grupo implements Serializable {
 	
 
 	public Grupo() {
-		super();
 	}
 	
-	public Grupo(String c, String l, String t) {
-		super();
+	public Grupo(Long id, String c, String l, String t) {
+		Id = id;
 		Curso = c;
 		Letra = l;
 		Turno_manyana_tarde = t;

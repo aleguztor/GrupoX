@@ -95,40 +95,40 @@ import Exceptions.*;
 		 */
 		Alumno alumno= em.merge(a);
 		LOG.severe(a.toString());
-		if(!b.getApellido1().equals("")) {
+		if(b.getApellido1() != null && !b.getApellido1().equals("")) {
 			alumno.setApellido1(b.getApellido1());
 		}
-		if(!b.getApellido2().equals("")) {
+		if(b.getApellido2() != null && !b.getApellido2().equals("") ) {
 			alumno.setApellido2(b.getApellido2());
 		}
 		
-		if(!b.getNombre().equals("")) {
+		if(b.getNombre() != null && !b.getNombre().equals("")) {
 			alumno.setNombre(b.getNombre());
 			
 		}
 		
-		if(!b.getEmail_personal().equals("")) {
+		if(b.getEmail_personal() != null && !b.getEmail_personal().equals("")) {
 			alumno.setEmail_personal(b.getEmail_personal());
 		}
 		
-		if(!b.getLocalidad_notificacion().equals("")) {
+		if(b.getLocalidad_notificacion() != null && !b.getLocalidad_notificacion().equals("")) {
 			alumno.setLocalidad_notificacion(b.getLocalidad_notificacion());
 		}
-		if(!b.getCP_notificacion().equals("")) {
+		if(b.getCP_notificacion() != null && !b.getCP_notificacion().equals("")) {
 			alumno.setCP_notificacion(b.getCP_notificacion());
 		}
-		if(!b.getProvincia_notificacion().equals("")) {
+		if(b.getProvincia_notificacion() != null && !b.getProvincia_notificacion().equals("")) {
 			alumno.setProvincia_notificacion(b.getProvincia_notificacion());
 		}
-		if(!b.getDireccion_notificacion().equals("")) {
+		if(b.getDireccion_notificacion() != null && !b.getDireccion_notificacion().equals("")) {
 			alumno.setDireccion_notificacion(b.getDireccion_notificacion());
 		}
 		
-		if(!b.getMovil().equals("")) {
+		if(b.getMovil() != null && !b.getMovil().equals("")) {
 			alumno.setMovil(b.getMovil());
 		}
 		
-		if(!b.getTelefono().equals("")) {
+		if(b.getTelefono() != null && !b.getTelefono().equals("")) {
 			alumno.setTelefono(b.getTelefono());
 		}
 		
@@ -227,7 +227,6 @@ import Exceptions.*;
 	public void insertarGrupo(Grupo g) throws GrupoDuplicadoException {
 		Grupo gr = em.find(Grupo.class, g.getId());
 		if(gr == null) {
-			g.setId(buscarNumeroGrupos());
 			em.persist(g);
 		}
 		else 
@@ -257,7 +256,7 @@ import Exceptions.*;
 
 	@Override
 	public Grupo existeGrupo(Grupo g) throws GrupoNoEncontradoException {
-		Grupo	gr = em.find(Grupo.class,g.getId());
+		Grupo gr = em.find(Grupo.class,g.getId());
 		if(gr == null)
 			return null;
 		else 
@@ -465,13 +464,6 @@ import Exceptions.*;
 		return q.getSingleResult();
 	}
 	
-	@Override 
-	public Long buscarNumeroGrupos() {
-		Query query =  em.createQuery("SELECT COUNT(g) FROM GRUPO g", Grupo.class);
-		Long resultado = (Long) query.getSingleResult();
-		return resultado + 1;
-	}
-	
 	@Override
 	public List<Alumno> getAlumnos() {
 		return em.createQuery("SELECT a FROM Alumno a", Alumno.class).getResultList();
@@ -479,7 +471,7 @@ import Exceptions.*;
 	
 	@Override
 	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException{
-		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE alumno_Id = "+id, Expediente.class);
+		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE e.alumno_Id = "+id, Expediente.class);
 
 		return q.getResultList();
 	}
@@ -501,7 +493,7 @@ import Exceptions.*;
 	}
 	@Override
 	public List<Matricula> buscarMatriculasPorExpediente(Long num) throws MatriculaNoEncontradaException{
-		TypedQuery<Matricula> q = em.createQuery("SELECT m FROM Matricula m WHERE expedientes_num_expedientes_Num_Expediente = "+num, Matricula.class);
+		TypedQuery<Matricula> q = em.createQuery("SELECT m FROM Matricula m WHERE m.expedientes_num_expedientes_Num_Expediente = "+num, Matricula.class);
 		
 		return q.getResultList();
 	}
@@ -517,8 +509,8 @@ import Exceptions.*;
 		return q.getResultList();
 	}
 	@Override
-	public Titulacion ObtenerTitulacionPorId(Integer eas) throws TitulacionException{
-		TypedQuery<Titulacion> q = em.createQuery("SELECT m FROM Titulacion m WHERE codigo = "+eas, Titulacion.class);
+	public Titulacion obtenerTitulacionPorId(Integer eas) throws TitulacionException{
+		TypedQuery<Titulacion> q = em.createQuery("SELECT m FROM Titulacion m WHERE m.codigo = "+eas, Titulacion.class);
 		
 		return q.getSingleResult();
 	}

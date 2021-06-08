@@ -40,7 +40,7 @@ public class insertarAsignatura {
 	}
 	
 	public String doInsertar() throws AsignaturaDuplicadaException, AsignaturaNoEncontradaException, TitulacionException {
-		Titulacion t=crud.ObtenerTitulacionPorId(titu);
+		Titulacion t=crud.obtenerTitulacionPorId(titu);
 		
 		asignatura.setTitulacion(t);
 		 LOG.severe(asignatura.toString());

@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
@@ -622,7 +623,7 @@ public class Crud {
 		matriculas.add(m1);
 		
 		try {
-			List<Matricula> buscar= crud.buscarMatriculasPorExpediente(e1.getNum_Expediente());
+			List<Matricula> buscar= new LinkedList<>(crud.buscarMatriculasPorExpediente(e1.getNum_Expediente()));
 			LOG.severe(matriculas.toString());
 			assertEquals(buscar,matriculas);
 		}catch(MatriculaNoEncontradaException e) {

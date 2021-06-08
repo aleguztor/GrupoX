@@ -49,7 +49,7 @@ public class EncuestaController {
 		
 		AE.asignarEncuesta(exp.getNum_Expediente(), en);
 		//crud.modificarExpediente(exp); 
-		crud.insertarEncuesta(en); 
+		crud.insertarEncuesta(en,exp); 
 		
 		return "index.xhtml";
 	}

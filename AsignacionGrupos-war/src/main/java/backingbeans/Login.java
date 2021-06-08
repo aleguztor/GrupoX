@@ -21,15 +21,15 @@ public class Login {
 		if (this.username.equals("secretaria") && this.password.equals("secretaria")) {
 			context.getExternalContext().getSessionMap().put("user", username);
 			try {
-				context.getExternalContext().redirect("index.xhtml");
+				context.getExternalContext().redirect("Main.html");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		} else if (this.username.equals("admin") && this.password.equals("admin")) {
+		} else if (this.username.equals("alumno") && this.password.equals("alumno")) {
 			context.getExternalContext().getSessionMap().put("user", username);
 
 			try {
-				context.getExternalContext().redirect("modificarAlumno.xhtml");
+				context.getExternalContext().redirect("index.xhtml");
 			} catch (IOException e) {
 				e.printStackTrace();
 

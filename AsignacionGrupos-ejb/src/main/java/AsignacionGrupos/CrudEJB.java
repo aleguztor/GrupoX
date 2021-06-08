@@ -467,7 +467,7 @@ import Exceptions.*;
 	
 	@Override
 	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException{
-		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE e.alumno_Id = "+id, Expediente.class);
+		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE alumno_Id = "+id, Expediente.class);
 
 		return q.getResultList();
 	}
@@ -476,12 +476,10 @@ import Exceptions.*;
 		return em.createQuery("SELECT e FROM Encuesta e", Encuesta.class).getResultList();
 	}
 	@Override
-	public void insertarEncuesta(Encuesta e)throws EncuestaException{
-		Encuesta ce = em.find(Encuesta.class,e.getFecha_envio());
-		if(ce == null)
-			em.persist(e);
-		else
-			throw new EncuestaException();
+	public void insertarEncuesta(Encuesta e, Expediente ese){
+		Encuesta.Expediente_Encuesta_PK fadfa= new Encuesta.Expediente_Encuesta_PK(ese.getNum_Expediente(),e.getFecha_envio());
+		em.persist(fadfa);
+		em.persist(e);
 	}
 	@Override
 	public void insertarEncuestaCambioHorario(EncuestaCambioHorario e){

@@ -56,7 +56,8 @@ public class Importacion {
 	public void testImportacionAlumnos() {
 		Alumno a = new Alumno( "Carmelita", "Enr�quez","95115697E", "06104200001@uma.es");
 		try {
-			ie.ImportarExcel();
+			String ruta = "target/PruebaAlumnadoFAKE.xlsx";
+			ie.ImportarExcel(ruta);
 			Alumno res = crud.buscarAlumnoPorDNI("95115697E");
 			assertEquals(res.getDNI(), a.getDNI());
 		} catch (Exception e) {

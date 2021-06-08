@@ -21,14 +21,12 @@ public class ImportacionExcelImpl implements ImportacionExcel {
 	private EntityManager em;
 
 	@Override
-	public void ImportarExcel() throws ExcelNoEncontradoException{
+	public void ImportarExcel(String ruta) throws ExcelNoEncontradoException{
 	
-        String excelFilePath = "target/PruebaAlumnadoFAKE.xlsx";
- 
-        
+  
         try {
             
-            FileInputStream inputStream = new FileInputStream(excelFilePath);
+            FileInputStream inputStream = new FileInputStream(ruta);
  
             Workbook workbook = new XSSFWorkbook(inputStream);
  

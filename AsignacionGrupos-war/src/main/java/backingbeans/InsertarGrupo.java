@@ -46,17 +46,10 @@ public class InsertarGrupo {
 	}
 
 	public String doInsertar() throws GrupoDuplicadoException{
-			//try {
-				//LOG.info("" + grupo.toString());
-				//Random r = new Random();
-				//grupo.setId(r.nextLong());
+			
 				crud.insertarGrupo(grupo);
-			//} catch (GrupoDuplicadoException e) {
-				// TODO Auto-generated catch block
-				//LOG.info("El grupo ya esta en la Base de datos incluido");
-			//}
-			LOG.info("HASTA AQUÍ HE LLEGADO");
-		return "index.xhtml";
+			
+		return "Main.html";
 	}
 	
 }

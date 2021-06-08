@@ -63,7 +63,7 @@
 			<tr>
 				<td id="asignar">Asignar</td>
 				<td><h:selectOneMenu id="inasignar"
-						value="#{grupoBean.grupo.asignar}"/>
+						value="#{grupoBean.grupo.asignar}">
 						<f:selectItem itemLabel="Si" itemValue="Si" />
 						<f:selectItem itemLabel="No" itemValue="No" />
 					</h:selectOneMenu></td>
@@ -76,7 +76,7 @@
 			</tr>
 			<tr>
 				<td><h:commandButton id="boton" type="submit" value="Enviar"
-						action="#{grupoBean.doInsertar}" /></td>
+						action="#{grupoBean.doInsertar}"  /></td>
 				<td></td>
 			</tr>
 			<tr>
@@ -85,16 +85,27 @@
 		</table>
 	</h:form>
 	<h:form>
-		<p:dataTable var="a" value="#{insertarGrupo.grupos}">
-			<p:column id="codigo" headerText="Codigo" field="codigo"
+		<p:dataTable var="a" value="#{grupoBean.grupos}">
+			<p:column id="idcodigo" headerText="Codigo" field="id"
 				sortable="true" filterable="true" />
-			<p:column id="nombre" headerText="Nombre" field="nombre"
+			<p:column id="Letra" headerText="Letra" field="letra"
 				sortable="true" filterable="true" />
-			<p:column id="creditos" headerText="Créditos" field="creditos"
+			<p:column id="Turno" headerText="Turno" field="turno_manyana_tarde"
 				sortable="true" filterable="true" />
-
-
-
+			<p:column id="Ingles" headerText="Ingles" field="ingles"
+				sortable="true" filterable="true" />
+			<p:column id="Visible" headerText="Visible" field="visible"
+				sortable="true" filterable="true" />
+			<p:column id="Asignar" headerText="Asignar" field="asignar"
+				sortable="true" filterable="true" />
+				<p:column id="Plazas" headerText="Plazas" field="plazas"
+				sortable="true" filterable="true" />
+			<p:column id="PlazasNuevoIngreso" headerText="PlazasNuevoIngreso" field="plazasNuevoIngreso"
+				sortable="true" filterable="true" />
+			<p:column id="PlazasRepetidores" headerText="PlazasRepetidores" field="plazasRepetidores"
+				sortable="true" filterable="true" />
+			
+					
 		</p:dataTable>
 	</h:form>
 

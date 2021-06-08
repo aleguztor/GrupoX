@@ -41,6 +41,7 @@ public class EncuestaController {
 		List<Expediente> lista= crud.obtenerExpedientesAlumno(a.getId());
 		LOG.severe(lista.toString());
 		Expediente exp= lista.get(0);
+		Encuesta.Expediente_Encuesta_PK fadfa= new Encuesta.Expediente_Encuesta_PK(exp.getNum_Expediente(),d);
 		
 								// cogemos el expediente de alumno
 		//List<Encuesta >encuestas= exp.getEncuesta();

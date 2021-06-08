@@ -516,6 +516,12 @@ import Exceptions.*;
 		}
 		return e;
 	}
+	@Override
+	public List<Grupo> obtenerGrupos(){
+		TypedQuery<Grupo> q = em.createQuery("SELECT a FROM Grupo a", Grupo.class);
+		
+		return q.getResultList();
+	}
 	
 
 }

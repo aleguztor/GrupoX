@@ -113,4 +113,5 @@ public interface CrudEJBLocal {
 	public void modificarCondDosAlumnos(Alumno nuevo, Alumno antiguo)throws AlumnoNoEncontradoException;
 	public List<Titulacion> obtenerTitulaciones();
 	public Titulacion obtenerTitulacionPorId(Integer codigo) throws TitulacionException;
+	public List<Grupo> obtenerGrupos();
 }

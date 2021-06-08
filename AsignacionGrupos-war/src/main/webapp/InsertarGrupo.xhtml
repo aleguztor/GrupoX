@@ -70,9 +70,25 @@
 				<td><h:commandButton id="boton" type="submit" value="Enviar" action="#{grupoBean.doInsertar}"/></td>
 				<td></td>
 			</tr>
-			
+			<tr>
+				<h:commandButton id="backButton" value="Back" action="index" />
+			</tr>
 		</table>
 	</h:form>
+	<h:form>
+		<p:dataTable var="a" value="#{insertarGrupo.grupos}">
+			<p:column id="codigo" headerText="Codigo" field="codigo" sortable="true"
+				filterable="true" />
+			<p:column id="nombre" headerText="Nombre" field="nombre" sortable="true" 
+				filterable="true" />
+			<p:column id="creditos" headerText="Créditos" field="creditos" sortable="true" 
+				filterable="true" />
+			
+				
+		
+		</p:dataTable>
+	</h:form>
+	
 </h:body>
 
 </html>

@@ -1,34 +1,37 @@
 package Pruebas;
 
-import Entidades.*;
-import Entidades.Encuesta.Expediente_Encuesta_PK;
-import Exceptions.AlumnoNoEncontradoException;
-import Exceptions.ExpedienteNoEncontradoException;
-import Exceptions.GrupoNoEncontradoException;
-import Exceptions.NoExisteGrupoEnAlumno;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
 import java.util.logging.Logger;
 
-import javax.ejb.embeddable.EJBContainer;
-import javax.naming.Context;
 import javax.naming.NamingException;
 
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import org.junit.*;
-
-import AsignacionGrupos.*;
+import AsignacionGrupos.CrudEJBLocal;
+import Entidades.Alumno;
+import Entidades.Asignatura;
+import Entidades.Centro;
+import Entidades.Clase;
+import Entidades.EncuestaCambioHorario;
+import Entidades.Expediente;
+import Entidades.Grupo;
+import Entidades.Matricula;
+import Entidades.MatriculaPK;
+import Entidades.Optativa;
+import Entidades.Titulacion;
+import Exceptions.AlumnoNoEncontradoException;
+import Exceptions.EncuestaException;
+import Exceptions.ExpedienteNoEncontradoException;
+import Exceptions.MatriculaNoEncontradaException;
+import Exceptions.TitulacionException;
 
 public class Crud {
 	private static final Logger LOG = Logger.getLogger(Crud.class.getCanonicalName());
@@ -145,12 +148,18 @@ public class Crud {
 
 //	@Requisitos({"RF2"})
 	@Test
-	public void testBusquedaAlumno() {
+	public void testBusquedaAlumnoPorDNI() {
 		try {
 			assertNotNull(crud.buscarAlumnoPorDNI("12345678a"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+//	@Requisitos({"RF2"})
+	@Test
+	public void testGetAlumnos() {
+		assertNotNull(crud.getAlumnos().get(0));
 	}
 
 //	@Requisitos({"RF2"})
@@ -275,7 +284,7 @@ public class Crud {
 	
 //@Requisitos({"RF2"})
 	@Test
-	public void testEliminarGRupo() {
+	public void testEliminarGrupo() {
 		try {
 			Grupo g = crud.busquedaGrupo("1","B", "Manyana");
 			crud.eliminarGrupo(g);
@@ -288,7 +297,7 @@ public class Crud {
 	@Test
 	public void testInsertarGrupo() {
 		try {
-			Grupo g = new Grupo("4", "c", "Tarde");
+			Grupo g = new Grupo((long) 15, "4", "c", "Tarde");
 			crud.insertarGrupo(g);
 			assertEquals(g, crud.existeGrupo(g));
 		} catch (Exception e) {
@@ -300,7 +309,7 @@ public class Crud {
 	@Test
 	public void testModificarGrupo() {
 		try {
-			Grupo g = crud.existeGrupo(new Grupo("1ï¿½", "c", "Tarde"));
+			Grupo g = crud.existeGrupo(new Grupo((long) 15,"1ï¿½", "c", "Tarde"));
 			g.setLetra("a");
 			crud.modificarGrupo(g);
 			assertNotEquals("a", crud.existeGrupo(g).getLetra());
@@ -313,8 +322,8 @@ public class Crud {
 	@Test
 	public void testExisteGrupo() {
 		try {
-			Grupo g = crud.existeGrupo(new Grupo("1ï¿½", "b", "Manyana"));
-			assertNotNull(g);
+			Grupo a = new Grupo((long) 1,"1", "B","Manyana");
+			assertNotNull(crud.existeGrupo(a));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -403,9 +412,10 @@ public class Crud {
 		try {
 			Asignatura as = new Asignatura("rf11", "Desarrollo de maquinas virtuales", 9999, 12, true, false);
 			crud.insertarAsignatura(as);
+			int codigoant = as.getCodigo();
 			as.setCodigo(122222);
 			crud.modificarAsignatura(as);
-			assertNotEquals(as, crud.existeAsignatura(as));
+			assertNotEquals(codigoant, crud.existeAsignatura(as).getCodigo());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -494,7 +504,7 @@ public class Crud {
 
 			Date dia = new Date(System.currentTimeMillis() - 1231231);
 			Date hora = new Date(1111);
-			Grupo g = new Grupo("20/21", "a", "manyana");
+			Grupo g = new Grupo((long) 15,"20/21", "a", "manyana");
 			Clase c = new Clase(g,dia,hora);
 			crud.insertarClase(c);
 			assertEquals(c, crud.existeClase(c));
@@ -510,7 +520,7 @@ public class Crud {
 			Date dia = new Date(System.currentTimeMillis() - 1231231);
 			Date hora = new Date(1111);
 			
-			Grupo g = new Grupo("20/21", "a", "manyana");
+			Grupo g = new Grupo((long) 15,"20/21", "a", "manyana");
 			Clase c = new Clase(g, dia,hora);
 			crud.insertarClase(c);
 			Asignatura as = new Asignatura("rf12", "Desarrollo de maquinas virtuales", 9999, 12, true, false);
@@ -529,7 +539,7 @@ public class Crud {
 		try {
 			Date dia = new Date(System.currentTimeMillis() - 1231231);
 			Date hora = new Date(1111);
-			Grupo g = new Grupo("20/21", "a", "manyana");
+			Grupo g = new Grupo((long) 15,"20/21", "a", "manyana");
 			Clase c = new Clase(g, dia,hora);
 			crud.insertarClase(c);
 			crud.eliminarClase(c);
@@ -546,7 +556,7 @@ public class Crud {
 			Date dia = new Date(System.currentTimeMillis() - 1231231);
 			Date hora = new Date(1111);
 			
-			Grupo g = new Grupo("20/21", "a", "manyana");
+			Grupo g = new Grupo((long) 15,"20/21", "a", "manyana");
 			Clase c = new Clase(g, dia,hora);
 			crud.insertarClase(c);
 			assertEquals(c, crud.existeClase(c));
@@ -554,30 +564,80 @@ public class Crud {
 
 		}
 	}
-	@Test //MIRAR!!
-	public void testBuscarAlumno() {
-		try {
-			Alumno a1 = new Alumno("Mario", "Vazquez", "12345678a", "mario@uma.es");
-			Alumno buscado= crud.buscarAlumnoPorDNI("12345678a");
-			assertEquals(buscado, a1);
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}
+	
+//	@Requisitos({"RF2"})
+	@Ignore
+	public void testInsertarEncuesta() {
+		
 	}
 	
+//	@Requisitos({"RF2"})
 	@Test
-	public void testEliminarGrupo() {
-		Grupo a = new Grupo("1", "B","Manyana");
+	public void testInsertarEncuestaCambioHorario() {
+		Date d = new Date(System.currentTimeMillis());
+		EncuestaCambioHorario e = new EncuestaCambioHorario(d,"2º","123456789a");
 		try {
-			crud.eliminarGrupo(a);
-			assertNotEquals(crud.existeGrupo(a), a);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			crud.insertarEncuestaCambioHorario(e);
+			assertEquals(e,crud.existeEncuestaCambioHorario(e));
+		} catch (EncuestaException e1) {
+			e1.printStackTrace();
+		}	
+	}	
+	
+//	@Requisitos({"RF2"})
+	@Test
+	public void testObtenerExpedientesAlumno() {
+		long id = (long)214623;
+		try {
+			assertNotNull(crud.obtenerExpedientesAlumno(id).get(0));
+		}catch(ExpedienteNoEncontradoException e) {
+			e.printStackTrace();
+		}
+	}	
+	
+//	@Requisitos({"RF2"})
+	@Test
+	public void testGetEncuestas() {
+		assertNotNull(crud.getEncuestas());
+	}
+	
+//	@Requisitos({"RF2"})
+	@Test
+	public void testBuscarMatriculasPorExpediente() {
+		try {
+			assertNotNull(crud.buscarMatriculasPorExpediente((long)214623));
+		}catch(MatriculaNoEncontradaException e) {
+			e.printStackTrace();
+		}
+	}
+
+//	@Requisitos({"RF2"})
+	@Test
+	public void testModificarConDosAlumnos() {
+		Alumno a = new Alumno("Juan", "Vazquez", "8219412a", "juan@uma.es");
+		Alumno a1 = new Alumno("Mario", "Vazquez", "12345678a", "mario@uma.es");
+		try {
+			crud.modificarAlumno(a, a1);
+			assertNotNull(crud.buscarAlumnoPorDNI(a1.getDNI()));
+		}catch(AlumnoNoEncontradoException e) {
 			e.printStackTrace();
 		}
 	}
 	
+//	@Requisitos({"RF2"})
+	@Test
+	public void testObtenerTitulaciones() {
+		assertNotNull(crud.obtenerTitulaciones());
+	}
 	
-
+//	@Requisitos({"RF2"})
+	@Test
+	public void testObtenerTitulacionPorId() {
+		int codigo = 1041;
+		try {
+			assertNotNull(crud.obtenerTitulacionPorId(codigo));
+		}catch(TitulacionException e) {
+			e.printStackTrace();
+		}
+	}
 }

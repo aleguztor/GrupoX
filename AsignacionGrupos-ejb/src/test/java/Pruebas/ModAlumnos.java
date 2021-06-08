@@ -76,8 +76,8 @@ public class ModAlumnos {
 	@Test
 	public void testCambioHorarioyGrupo() {
 		Alumno a1 = new Alumno("Mario", "Vazquez", "12345678a", "mario@uma.es");
-		Grupo a = new Grupo("1", "B","Manyana");
-		Grupo nuevo=new Grupo("1","A","Manyana");
+		Grupo a = new Grupo((long)15,"1", "B","Manyana");
+		Grupo nuevo=new Grupo((long)16,"1","A","Manyana");
 		try {
 			modg.CambioHorarioyGrupo(a1, a, nuevo);
 			assertNull(a1.getGrupos().contains(a));
@@ -91,7 +91,7 @@ public class ModAlumnos {
 	@Test
 	public void testObtenerMatriculaPorGrupo() {
 		
-		Grupo b = new Grupo("1", "C","Manyana");
+		Grupo b = new Grupo((long)15,"1", "C","Manyana");
 		try {
 			
 			assertNotNull(modg.obtenerMatriculaPorGrupo(b));
@@ -116,7 +116,7 @@ public class ModAlumnos {
 	}
 	@Test
 	public void testBusquedaDeGrupo() {
-		Grupo a = new Grupo("1", "B","Manyana");
+		Grupo a = new Grupo((long)15,"1", "B","Manyana");
 		try {
 			
 			assertEquals(modg.busquedaGrupo("1", "B", "Manyana"),a );

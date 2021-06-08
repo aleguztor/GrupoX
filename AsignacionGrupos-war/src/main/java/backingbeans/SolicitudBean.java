@@ -33,7 +33,9 @@ public class SolicitudBean {
 	public String CrearEncuesta() throws Exception {
 		
 		Date d = new Date(System.currentTimeMillis());
-		EncuestaCambioHorario e= new EncuestaCambioHorario(d,curso,razones,file.getContent(),dni);
+		EncuestaCambioHorario e= new EncuestaCambioHorario(d,curso,dni);
+		e.setDocumentos(file.getContent());
+		e.setRazones(razones);
 			crud.insertarEncuestaCambioHorario(e);
 		return "index.xhtml";
 		

@@ -77,7 +77,9 @@ public class Encuestas {
 		String curso="Quiero el 2";
 		String razones="Me enfado con el de la derecha";
 		byte[] f= new byte[1024];
-		EncuestaCambioHorario e= new EncuestaCambioHorario(d,curso, razones, f,dni);
+		EncuestaCambioHorario e= new EncuestaCambioHorario(d,curso,dni);
+		e.setRazones(razones);
+		e.setDocumentos(f);
 		try {
 		crud.insertarEncuestaCambioHorario(e);
 		}catch(Exception e1) {

@@ -56,7 +56,7 @@ public class Limitacion {
 //	@Requisitos({"RF7"})
 	@Test
     public void TestLimitarPlazasNuevoIngreso() {
-        Grupo g = new Grupo("1�", "c","Tarde");
+        Grupo g = new Grupo((long)15,"1�", "c","Tarde");
         Long nplazas=(long) 10;
         try {
             limpla.limitarPlazasNuevoIngreso(g, nplazas);
@@ -71,7 +71,7 @@ public class Limitacion {
     @Test
     public void TestLimitarPlazasRepetidores() {
 
-        Grupo g=new Grupo("1�","c","Tarde");
+        Grupo g=new Grupo((long)15,"1�","c","Tarde");
         Long nplazas=(long)10;
         try {
             limpla.limitarPlazasRepetidores(g, nplazas);

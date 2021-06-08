@@ -36,6 +36,7 @@ public class Base {
 		Encuesta en5 = new Encuesta(d,e5, "Tarde");
 		Encuesta en6 = new Encuesta(d,e6, "Manyana");
 		
+		
 		List<Encuesta> p = new LinkedList<>();
 		p.add(en1);
 		e1.setEncuesta(p);
@@ -54,7 +55,7 @@ public class Base {
 		p.remove(en5);
 		p.add(en6);
 		e6.setEncuesta(p);
-		Titulacion t =  new Titulacion(1014,"Desarrollo movil",550);
+		Titulacion t =  new Titulacion(1041,"Grado en Ingenieria Informatica",240);
 		Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",101,12,true,true);
 		Asignatura as1 = new Asignatura("rf13","Desarrollo de maquinas virtuales",202,12,true,false);
 		List<Asignatura> asig = new LinkedList<>();
@@ -109,16 +110,16 @@ public class Base {
 		m4.setListado_asignaturas("202");
 		m5.setListado_asignaturas("202");
 		m6.setListado_asignaturas("202");
-		Grupo ing = new Grupo("1", "A", "Manyana");
+		Grupo ing = new Grupo((long) 0,"1", "A", "Manyana");
 		ing.setIdiomaIngles(true);
-		Grupo a = new Grupo("1", "B","Manyana");
-		Grupo b = new Grupo("1", "C","Manyana");
-		Grupo c = new Grupo("1", "D","Tarde");
-		Grupo de = new Grupo("1", "E","Tarde");
-		Grupo aa1 = new Grupo("2", "B","Manyana");
-		Grupo b1 = new Grupo("2", "C","Manyana");
-		Grupo c1 = new Grupo("2", "D","Tarde");
-		Grupo de1 = new Grupo("2", "E","Tarde");
+		Grupo a = new Grupo((long) 1,"1", "B","Manyana");
+		Grupo b = new Grupo((long) 2,"1", "C","Manyana");
+		Grupo c = new Grupo((long) 3,"1", "D","Tarde");
+		Grupo de = new Grupo((long) 4,"1", "E","Tarde");
+		Grupo aa1 = new Grupo((long) 5,"2", "B","Manyana");
+		Grupo b1 = new Grupo((long) 6,"2", "C","Manyana");
+		Grupo c1 = new Grupo((long) 7,"2", "D","Tarde");
+		Grupo de1 = new Grupo((long) 8,"2", "E","Tarde");
 		a.setPlazasNuevoIngreso((long)30);
 		b.setPlazasNuevoIngreso((long)30);
 		b.setPlazasRepetidores((long)20);

@@ -50,7 +50,7 @@ public class insAlumno {
 			crud.insertarAlumno(alumno);
 			try {
 				
-				expediente.setTitulacion(crud.ObtenerTitulacionPorId(1041));
+				expediente.setTitulacion(crud.obtenerTitulacionPorId(1041));
 				expediente.setAlumno(alumno);
 				expediente.setActivo(true);
 				expediente.setNota_Media_Provisional(0);

@@ -461,10 +461,10 @@ import Exceptions.*;
 	}
 	
 	@Override
-	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException{
+	public Expediente obtenerExpedienteAlumno(Long id) throws ExpedienteNoEncontradoException{
 		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE e.Num_Expediente = "+id, Expediente.class);
 
-		return q.getResultList();
+		return q.getSingleResult();
 	}
 	@Override //SIN COMPROBAD TEST
 	public List<Encuesta> getEncuestas(){

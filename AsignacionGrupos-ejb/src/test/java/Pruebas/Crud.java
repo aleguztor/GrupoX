@@ -8,6 +8,7 @@ import static org.junit.Assert.assertNull;
 import java.sql.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 import java.util.logging.Logger;
 
 import javax.naming.NamingException;
@@ -593,7 +594,7 @@ public class Crud {
 		List<Expediente> b= new LinkedList<>();
 		b.add(new Expediente((long)214623,true,5.0));
 		try {
-			assertEquals(crud.obtenerExpedientesAlumno(id).get(0),b);
+			assertEquals(crud.obtenerExpedienteAlumno(id).getNum_Expediente(),b.get(0).getNum_Expediente());
 		}catch(ExpedienteNoEncontradoException e) {
 			e.printStackTrace();
 		}

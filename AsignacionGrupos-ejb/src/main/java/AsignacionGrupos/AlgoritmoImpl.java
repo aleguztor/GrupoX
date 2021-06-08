@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -42,6 +43,7 @@ public class AlgoritmoImpl implements AlgoritmoIntf{
 	@PersistenceContext(name="AsignacionGrupos")
 	private EntityManager em;
 	private boolean eq = true;
+	@EJB
 	private CrudEJBLocal crud;
 	//Actualizar cosas en base con los metodos del CRUD
 	//Inicialmente tenemos un grupo de mañana y uno de tarde.

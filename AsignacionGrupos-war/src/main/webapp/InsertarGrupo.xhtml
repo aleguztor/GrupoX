@@ -11,63 +11,72 @@
 </h:head>
 
 <h:body>
-<p:growl id="messages" showDetail="true"/>
+	<p:growl id="messages" showDetail="true" />
 	<h:form>
 		<table>
-		<tr>
+			<tr>
 				<td id="ID ">ID del grupo, son numeros!!</td>
-				<td><h:inputText convert="#{Long}" id="idinput" value="#{grupoBean.grupo.id}" required="true" 
-								requiredMessage="Falta ID"/></td>
+				<td><h:inputText convert="#{Long}" id="idinput"
+						value="#{grupoBean.grupo.id}" required="true"
+						requiredMessage="Falta ID" /></td>
 			</tr>
-		
+
 			<tr>
 				<td id="curso">Curso</td>
-				<td><h:selectOneMenu id="eleccioncurso" value="#{grupoBean.grupo.curso}"
-				required="true" requiredMessage="Falta Curso">
-				<f:selectItem itemLabel="1º" itemValue="1"/>
-				<f:selectItem itemLabel="2º" itemValue="2"/>
-				<f:selectItem itemLabel="3º" itemValue="3"/>
-				<f:selectItem itemLabel="4º" itemValue="4"/>
-				</h:selectOneMenu></td>
+				<td><h:selectOneMenu id="eleccioncurso"
+						value="#{grupoBean.grupo.curso}" required="true"
+						requiredMessage="Falta Curso">
+						<f:selectItem itemLabel="1º" itemValue="1" />
+						<f:selectItem itemLabel="2º" itemValue="2" />
+						<f:selectItem itemLabel="3º" itemValue="3" />
+						<f:selectItem itemLabel="4º" itemValue="4" />
+					</h:selectOneMenu></td>
 			</tr>
 			<tr>
 				<td id="letra">Letra</td>
-				<td><h:inputText id="inletra" value="#{grupoBean.grupo.letra}"/></td>
+				<td><h:inputText id="inletra" value="#{grupoBean.grupo.letra}" /></td>
 			</tr>
 			<tr>
 				<td id="turno">Turno</td>
-				<td><h:selectOneMenu id="inturno" value="#{grupoBean.grupo.turno_manyana_tarde}">
-				<f:selectItem itemLabel="Mañana" itemValue="Manyana"/>
-				<f:selectItem itemLabel="Tarde" itemValue="Tarde"/>
-				</h:selectOneMenu></td>
+				<td><h:selectOneMenu id="inturno"
+						value="#{grupoBean.grupo.turno_manyana_tarde}">
+						<f:selectItem itemLabel="Mañana" itemValue="Manyana" />
+						<f:selectItem itemLabel="Tarde" itemValue="Tarde" />
+					</h:selectOneMenu></td>
 			</tr>
 			<tr>
 				<td id="ingles">Ingles</td>
-				<td><h:selectOneMenu id="iningles" value="#{grupoBean.grupo.ingles}">
-				<f:selectItem itemLabel="Si" itemValue="Si"/>
-				<f:selectItem itemLabel="No" itemValue="No"/>
-				</h:selectOneMenu></td>
+				<td><h:selectOneMenu id="iningles"
+						value="#{grupoBean.grupo.ingles}">
+						<f:selectItem itemLabel="Si" itemValue="Si" />
+						<f:selectItem itemLabel="No" itemValue="No" />
+					</h:selectOneMenu></td>
 			</tr>
 			<tr>
 				<td id="visible">Visible</td>
-				<td><h:selectOneMenu id="visiblein" value="#{grupoBean.grupo.visible}">
-				<f:selectItem itemLabel="Si" itemValue="Si"/>
-				<f:selectItem itemLabel="No" itemValue="No"/>
-				</h:selectOneMenu></td>
+				<td><h:selectOneMenu id="visiblein"
+						value="#{grupoBean.grupo.visible}">
+						<f:selectItem itemLabel="Si" itemValue="Si" />
+						<f:selectItem itemLabel="No" itemValue="No" />
+					</h:selectOneMenu></td>
 			</tr>
 			<tr>
 				<td id="asignar">Asignar</td>
-				<td><h:selectOneMenu id="inasignar" value="#{grupoBean.grupo.asignar}">
-				<f:selectItem itemLabel="Si" itemValue="Si"/>
-				<f:selectItem itemLabel="No" itemValue="No"/></h:selectOneMenu></td>
+				<td><h:selectOneMenu id="inasignar"
+						value="#{grupoBean.grupo.asignar}"/>
+						<f:selectItem itemLabel="Si" itemValue="Si" />
+						<f:selectItem itemLabel="No" itemValue="No" />
+					</h:selectOneMenu></td>
 			</tr>
 			<tr>
 				<td id="plazas">Plazas</td>
-				<td><h:inputText id="inplazas" value="#{grupoBean.grupo.plazas}" required="true"requiredMessage="Falta Curso"/>
-				</td>
+				<td><h:inputText id="inplazas"
+						value="#{grupoBean.grupo.plazas}" required="true"
+						requiredMessage="Falta Curso" /></td>
 			</tr>
 			<tr>
-				<td><h:commandButton id="boton" type="submit" value="Enviar" action="#{grupoBean.doInsertar}"/></td>
+				<td><h:commandButton id="boton" type="submit" value="Enviar"
+						action="#{grupoBean.doInsertar}" /></td>
 				<td></td>
 			</tr>
 			<tr>
@@ -77,18 +86,18 @@
 	</h:form>
 	<h:form>
 		<p:dataTable var="a" value="#{insertarGrupo.grupos}">
-			<p:column id="codigo" headerText="Codigo" field="codigo" sortable="true"
-				filterable="true" />
-			<p:column id="nombre" headerText="Nombre" field="nombre" sortable="true" 
-				filterable="true" />
-			<p:column id="creditos" headerText="Créditos" field="creditos" sortable="true" 
-				filterable="true" />
-			
-				
-		
+			<p:column id="codigo" headerText="Codigo" field="codigo"
+				sortable="true" filterable="true" />
+			<p:column id="nombre" headerText="Nombre" field="nombre"
+				sortable="true" filterable="true" />
+			<p:column id="creditos" headerText="Créditos" field="creditos"
+				sortable="true" filterable="true" />
+
+
+
 		</p:dataTable>
 	</h:form>
-	
+
 </h:body>
 
 </html>

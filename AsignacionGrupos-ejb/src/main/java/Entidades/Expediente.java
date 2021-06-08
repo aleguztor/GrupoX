@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
+//@SequenceGenerator(name="tab", initialValue=2, allocationSize=500)
 public class Expediente implements Serializable{
 	
 	/**

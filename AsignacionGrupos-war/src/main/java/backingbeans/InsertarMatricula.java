@@ -11,7 +11,7 @@ import Entidades.Matricula;
 import Exceptions.MatriculaDuplicadaException;
 import Exceptions.MatriculaNoEncontradaException;
 
-@Named("modificarMatriculaBean")
+@Named("insertarMatriculaBean")
 @RequestScoped
 public class InsertarMatricula {
 

@@ -16,35 +16,39 @@
 		<h:form>
 			<table>
 				<tr>
+                	<td><h:outputLabel value="Expediente Alumno"/></td>
+					<td><h:inputText value="#{insertarMatriculaBean.matricula.expedientes_num_expedientes}" /></td>
+				</tr>
+				<tr>
 					<td><h:outputLabel value="Curso académico"/></td>
-					<td><h:inputText value="#{modificarMatriculaBean.matricula.curso_academico}" /></td>
+					<td><h:inputText value="#{insertarMatriculaBean.matricula.curso_academico}" /></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Estado"/></td>
-					<td><h:inputText value="#{modificarMatriculaBean.matricula.estado}" /></td>
+					<td><h:inputText value="#{insertarMatriculaBean.matricula.estado}" /></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Num_Archivo"/></td>
-					<td><h:inputText value="#{modificarMatriculaBean.matricula.num_archivo}" /></td>
+					<td><h:inputText value="#{insertarMatriculaBean.matricula.num_archivo}" /></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Turno preferente"/></td>
-					<td><h:selectOneMenu value="#{modificarMatriculaBean.matricula.turno_preferente}">
-							<f:selectItem itemLabel="Mañana" itemValue="Manyana" />
-							<f:selectItem itemLabel="Tarde" itemValue="Tarde"/>
+					<td><h:selectOneMenu value="#{insertarMatriculaBean.matricula.turno_preferente}">
+							<f:selectItem itemLabel="Mañana" itemValue="M" />
+							<f:selectItem itemLabel="Tarde" itemValue="T"/>
 						</h:selectOneMenu></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Fecha de matricula" /></td>
-					<td><h:inputText value="#{modificarMatriculaBean.matricula.fecha_matricula}">
-						<f:convertDateTime pattern="dd/MM/yy"/>
+					<td><h:inputText value="#{insertarMatriculaBean.matricula.fecha_matricula}">
+						<f:convertDateTime pattern="dd/MM/yyyy"/>
 						</h:inputText></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Nuevo ingreso"/></td>
-					<td><h:selectOneMenu value="#{modificarMatriculaBean.matricula.nuevo_ingreso}">
-							<f:selectItem itemLabel="Si" itemValue="Si"/>
-							<f:selectItem itemLabel="No" itemValue="No"/>
+					<td><h:selectOneMenu value="#{insertarMatriculaBean.matricula.nuevo_ingreso}">
+							<f:selectItem itemLabel="Si" itemValue="S"/>
+							<f:selectItem itemLabel="No" itemValue="N"/>
 						</h:selectOneMenu></td>
 				</tr>
 				<tr>

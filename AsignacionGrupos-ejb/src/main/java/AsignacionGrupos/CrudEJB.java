@@ -64,11 +64,7 @@ import Exceptions.*;
 
 	@Override
 	public void insertarExpediente(Expediente e) throws  ExpedienteDuplicadoException {
-		Expediente ex = em.find(Expediente.class, e.getNum_Expediente());
-		if(ex == null)
-			em.persist(e);
-		else 
-			throw new ExpedienteDuplicadoException();
+		em.persist(e);
 	}
 
 	@Override

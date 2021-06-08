@@ -110,4 +110,5 @@ public interface CrudEJBLocal {
 	public List<Encuesta> getEncuestas();
 	public List<Matricula> buscarMatriculasPorExpediente(Long num) throws MatriculaNoEncontradaException;
 	public void modificarCondDosAlumnos(Alumno nuevo, Alumno antiguo)throws AlumnoNoEncontradoException;
+	public List<Titulacion> obtenerTitulaciones();
 }

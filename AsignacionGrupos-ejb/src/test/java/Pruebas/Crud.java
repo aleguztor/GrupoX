@@ -119,9 +119,9 @@ public class Crud {
 		try {
 			Alumno al = crud.buscarAlumnoPorDNI("12345678a");
 			String nombre= al.getNombre();
-			
-			al.setNombre("pepitodelospalotes");
-			crud.modificarAlumno(al);
+			Alumno ab = crud.buscarAlumnoPorDNI("12345678a");
+			ab.setNombre("pepitodelospalotes");
+			crud.modificarAlumno(al,ab);
 			
 			assertNotEquals("pepitodelospalotes", nombre);
 		} catch (Exception e) {

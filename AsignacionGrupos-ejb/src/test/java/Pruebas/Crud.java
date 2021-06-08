@@ -335,7 +335,7 @@ public class Crud {
 	@Test
 	public void testInsertarTitulacion() {
 		try {
-			Titulacion t = new Titulacion("Desarrollo movil", 540);
+			Titulacion t = new Titulacion(1014,"Desarrollo movil", 540);
 			crud.insertarTitulacion(t);
 			assertEquals(t, crud.existeTitulacion(t));
 		} catch (Exception e) {
@@ -348,11 +348,12 @@ public class Crud {
 	@Test
 	public void testModificarTitulacion() {
 		try {
-			Titulacion t = new Titulacion("Desarrollo movil", 540);
+			Titulacion t = new Titulacion(1014,"Desarrollo movil", 540);
 			crud.insertarTitulacion(t);
 			t.setCreditos(250);
 			t.setCodigo(666);
-			crud.modificarTitulacion(t);
+			Titulacion b= new Titulacion(666,"",250);
+			crud.modificarTitulacion(t,b);
 			assertEquals(t, crud.existeTitulacion(t));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -363,7 +364,7 @@ public class Crud {
 	@Test
 	public void testEliminarTitulacion() {
 		try {
-			Titulacion t = new Titulacion("Desarrollo movil", 540);
+			Titulacion t = new Titulacion(1014,"Desarrollo movil", 540);
 			crud.insertarTitulacion(t);
 			crud.eliminarTitulacion(t);
 			assertNull(crud.existeTitulacion(t));
@@ -376,7 +377,7 @@ public class Crud {
 	@Test
 	public void testExisteTitulacion() {
 		try {
-			Titulacion t = new Titulacion("Desarrollo movil", 540);
+			Titulacion t = new Titulacion(1014,"Desarrollo movil", 540);
 			crud.insertarTitulacion(t);
 			assertEquals(t, crud.existeTitulacion(t));
 		} catch (Exception e) {

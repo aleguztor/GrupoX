@@ -18,7 +18,7 @@ public class Titulacion implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -5535002232396027395L;
-	@Id @GeneratedValue 
+	@Id 
 	private Integer codigo;
 	@Column(nullable = false)
 	private String nombre;
@@ -36,7 +36,8 @@ public class Titulacion implements Serializable {
 	
 	public Titulacion() {}
 	
-	public Titulacion(String n, Integer c) {
+	public Titulacion(Integer cod,String n, Integer c) {
+		codigo=cod;
 		nombre = n;
 		creditos = c;
 	}

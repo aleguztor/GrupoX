@@ -81,7 +81,7 @@ public interface CrudEJBLocal {
 	
 	
 	public void insertarTitulacion(Titulacion t) throws TitulacionException;
-	public void modificarTitulacion(Titulacion t) throws TitulacionException;
+	public void modificarTitulacion(Titulacion t, Titulacion b) throws TitulacionException;
 	public void eliminarTitulacion(Titulacion t) throws TitulacionException;
 	public Titulacion existeTitulacion(Titulacion t)throws TitulacionException;
 	

@@ -275,12 +275,23 @@ import Exceptions.*;
 	}
 
 	@Override
-	public void modificarTitulacion(Titulacion t) throws TitulacionException {
+	public void modificarTitulacion(Titulacion t, Titulacion nueva) throws TitulacionException {
+				
 		Titulacion ti = existeTitulacion(t);
-		if(ti==null)
+		if(ti==null) {
 			throw new TitulacionException();
-		else 
-			em.merge(ti);
+		}else { 
+			Titulacion cambiar=em.merge(ti);
+			if(!nueva.getCodigo().equals("")) {
+				ti.setCodigo(nueva.getCodigo());
+			}
+			if(!nueva.getNombre().equals("")) {
+				ti.setNombre(nueva.getNombre());
+			}
+			if(!nueva.getCreditos().equals("")) {
+				ti.setCreditos(nueva.getCreditos());
+			}
+		}
 		
 	}
 

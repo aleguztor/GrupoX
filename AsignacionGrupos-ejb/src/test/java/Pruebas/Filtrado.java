@@ -59,7 +59,7 @@ public class Filtrado {
 			a.add(a1);
 			a.add(a2);
 			a.add(a3);
-			Titulacion t =  new Titulacion("Desarrollo movil",550);
+			Titulacion t =  new Titulacion(1014,"Desarrollo movil",550);
 			Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",9999,12,true,false);
 			List<Alumno> res = bf.filtradoAlumnos(t, as);
 			assertEquals(a, res);

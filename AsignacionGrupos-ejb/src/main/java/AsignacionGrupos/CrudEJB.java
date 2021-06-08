@@ -316,10 +316,10 @@ import Exceptions.*;
 	}
 
 	@Override
-	public void insertarAsignatura(Asignatura a) throws AsignaturaNoEncontradaException, AsignaturaDuplicadaException {
-		Asignatura as = em.find(Asignatura.class,a.getCodigo());
-		if(as == null) {
-			throw new AsignaturaNoEncontradaException();
+	public void insertarAsignatura(Asignatura a) throws AsignaturaDuplicadaException {
+		Asignatura as = em.find(Asignatura.class,a.getReferencia());
+		if(as != null) {
+			throw new AsignaturaDuplicadaException();
 		}else {
 			em.persist(a);
 			

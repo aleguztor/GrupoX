@@ -17,7 +17,7 @@
 			<table>
 				<tr>
 					<td><h:outputLabel value="Referencia:"/></td>
-					<td><h:inputText value="#{insertarAsignatura.asignatura.referencia}" /></td>
+					<td><h:inputText  value="#{insertarAsignatura.asignatura.referencia}" /></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Codigo"/></td>
@@ -75,10 +75,10 @@
 				
 				<tr>
 					<td><h:outputLabel value="ID Titulacion"/></td>
-					<td><h:inputText value="#{insertarAsignatura.titu}" /></td>
+					<td><h:inputText converter="#{Integer}" value="#{insertarAsignatura.titu}" /></td>
 				</tr>
 				<tr>
-					<td><h:commandButton type="submit" value="Enviar" action="#{insertarAsignatura.doInsertar()}" outcome="index"/></td>
+					<td><h:commandButton type="submit" value="Enviar" action="#{insertarAsignatura.doInsertar}" /></td>
 					<td></td>
 				</tr>
 				

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Solicitud cambio-horario</title>
+</h:head>
+
+<h:body>
+<p:growl id="messages" showDetail="true"/>
+<div id="cambh">
+	<h:form id="import_form" enctype="multipart/form-data">
+	
+	
+		<table>
+
+			<tr>
+				<td>DOCUMENTO DE ALUMNOS</td>
+				<td><h:inputFile id="file" value="#{importarControllador.uploadedFile}"/></td>
+			</tr>
+			<tr>
+				<td><h:commandButton id="botonencuesta" type="submit" value="Subir"
+					action="#{importarControllador.importarAlumnos}" ajax="false" /> 
+					</td>
+				<td> </td>
+			</tr>
+		</table>
+	</h:form>
+	<h:form>
+		<h:commandButton id="backButton" value="Back" action="index" />
+	</h:form>
+</div>
+</h:body>
+
+</html>

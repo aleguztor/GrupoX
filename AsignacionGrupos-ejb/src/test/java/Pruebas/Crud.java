@@ -593,7 +593,7 @@ public class Crud {
 		List<Expediente> b= new LinkedList<>();
 		b.add(new Expediente((long)214623,true,5.0));
 		try {
-			assertEquals(crud.obtenerExpedientesAlumno(id),b);
+			assertEquals(crud.obtenerExpedientesAlumno(id).get(0),b);
 		}catch(ExpedienteNoEncontradoException e) {
 			e.printStackTrace();
 		}
@@ -608,11 +608,19 @@ public class Crud {
 //	@Requisitos({"RF2"})
 	@Test
 	public void testBuscarMatriculasPorExpediente() {
-		
+		Date d = new Date(System.currentTimeMillis());
+		Expediente e1 = new Expediente((long)214623,true,5.0);
+		Alumno a1 = new Alumno("Mario", "Vazquez", "12345678a", "mario@uma.es");
+		List<Expediente> exps = new LinkedList<>();
+		exps.add(e1);
+		a1.setExpedientes(exps);
+		e1.setAlumno(a1);
+		MatriculaPK pk = new MatriculaPK("2", (long)214623);
+		Matricula m1 = new Matricula(pk,e1,'I',d);
 		List<Matricula> matriculas = new LinkedList<>();
-		matriculas.add(new Matricula());
+		matriculas.add(m1);
 		try {
-			assertEquals(crud.buscarMatriculasPorExpediente((long)214623),matriculas);
+			assertEquals(crud.buscarMatriculasPorExpediente(e1.getNum_Expediente()),matriculas);
 		}catch(MatriculaNoEncontradaException e) {
 			e.printStackTrace();
 		}

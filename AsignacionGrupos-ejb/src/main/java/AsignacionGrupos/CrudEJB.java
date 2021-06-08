@@ -482,7 +482,7 @@ import Exceptions.*;
 	}
 	@Override
 	public List<Matricula> buscarMatriculasPorExpediente(Long num) throws MatriculaNoEncontradaException{
-		TypedQuery<Matricula> q = em.createQuery("SELECT m FROM Matricula m WHERE m.expedientes_num_expedientes_Num_Expediente = "+num, Matricula.class);
+		TypedQuery<Matricula> q = em.createQuery("SELECT m FROM Matricula m WHERE m.expedientes_num_expedientes.Num_Expediente = "+num, Matricula.class);
 		
 		return q.getResultList();
 	}

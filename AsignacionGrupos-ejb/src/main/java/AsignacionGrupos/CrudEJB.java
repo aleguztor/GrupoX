@@ -522,6 +522,14 @@ import Exceptions.*;
 		
 		return q.getSingleResult();
 	}
+	@Override
+	public EncuestaCambioHorario existeEncuestaCambioHorario(EncuestaCambioHorario en) throws EncuestaException {
+		EncuestaCambioHorario e = em.find(EncuestaCambioHorario.class, en.getDNI());
+		if(e == null) {
+			throw new EncuestaException();
+		}
+		return e;
+	}
 	
 
 }

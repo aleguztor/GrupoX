@@ -104,6 +104,7 @@ public interface CrudEJBLocal {
 	
 	public void insertarEncuesta(Encuesta e)throws EncuestaException;
 	public void insertarEncuestaCambioHorario(EncuestaCambioHorario e)throws EncuestaException;
+	public EncuestaCambioHorario existeEncuestaCambioHorario(EncuestaCambioHorario e)throws EncuestaException;
 
 	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException;
 	public Long buscarNumeroGrupos();

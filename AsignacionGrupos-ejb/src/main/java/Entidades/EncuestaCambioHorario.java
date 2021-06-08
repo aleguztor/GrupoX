@@ -1,8 +1,9 @@
 package Entidades;
 
-import java.io.File;
 import java.io.Serializable;
 import java.sql.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -16,33 +17,33 @@ public class EncuestaCambioHorario implements Serializable {
 	 */
 	private static final long serialVersionUID = 291391231293892L;
 	@Id
-	private String dameDNI;
+	private String DNI;
+	@Column(nullable = false)
 	private Date Fecha_envio;
 	private String razones;
+	@Column(nullable = false)
 	private String cursoacambiar;
 	private byte[] Documentos;
 	@ManyToOne
 	private Alumno alumno;
 	public EncuestaCambioHorario() {}
 	
-	public EncuestaCambioHorario(Date d, String cursoacambiar, String r, byte[] f, String dni ) {
+	public EncuestaCambioHorario(Date d, String cursoacambiar, String dni ) {
 		Fecha_envio = d;
 		this.cursoacambiar = cursoacambiar;
-		razones = r;
-		Documentos=f;
-		dameDNI=dni;
+		DNI=dni;
 	}
 
 
 
-	public String getDameDNI() {
-		return dameDNI;
+	public String getDNI() {
+		return DNI;
 	}
 
 
 
-	public void setDameDNI(String dameDNI) {
-		this.dameDNI = dameDNI;
+	public void setDNI(String dameDNI) {
+		this.DNI = dameDNI;
 	}
 
 
@@ -97,7 +98,7 @@ public class EncuestaCambioHorario implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		
-		result = prime * result + ((dameDNI == null) ? 0 : dameDNI.hashCode());
+		result = prime * result + ((DNI == null) ? 0 : DNI.hashCode());
 		return result;
 	}
 
@@ -110,8 +111,8 @@ public class EncuestaCambioHorario implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		EncuestaCambioHorario other = (EncuestaCambioHorario) obj;
-		if (dameDNI == null) {
-			if (other.dameDNI != null) {
+		if (DNI == null) {
+			if (other.DNI != null) {
 				return false;
 			}
 	}
@@ -120,7 +121,7 @@ public class EncuestaCambioHorario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "EncuestaCambioHorario [DNI=" + dameDNI + ", Fecha de envio=" + Fecha_envio + ", razones=" + razones + ", curso a cambiar=" + cursoacambiar;
+		return "EncuestaCambioHorario [DNI=" + DNI + ", Fecha de envio=" + Fecha_envio + ", razones=" + razones + ", curso a cambiar=" + cursoacambiar;
 	}
 
 	

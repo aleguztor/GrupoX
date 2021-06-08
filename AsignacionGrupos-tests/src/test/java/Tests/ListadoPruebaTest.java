@@ -1,4 +1,4 @@
-package Tests;
+/*package Tests;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
@@ -59,3 +59,4 @@ public class ListadoPruebaTest {
     assertThat(driver.findElement(By.cssSelector(".ui-datatable-even > td:nth-child(5)")).getText(), is("06104300136@uma.es"));
   }
 }
+*/

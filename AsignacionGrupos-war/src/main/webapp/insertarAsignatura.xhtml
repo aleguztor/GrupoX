@@ -31,7 +31,7 @@
 				<tr>
 					<td><h:outputLabel value="Nombre"/></td>
 					<td><h:inputText
-							value="#{insertarrAsignatura.asignatura.nombre}" /></td>
+							value="#{insertarAsignatura.asignatura.nombre}" /></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Ofertada"/></td>
@@ -71,19 +71,17 @@
 							<f:selectItem itemLabel="No" itemValue="false"/>
 						</h:selectOneMenu></td>
 				</tr>
+				
+				
 				<tr>
-					<td><h:outputLabel value="Plazas" /></td>
-					<td><h:inputText converter="#{Integer}" value="#{insertarAsignaturas.asignatura.plazas}" /></td>
+					<td><h:outputLabel value="ID Titulacion"/></td>
+					<td><h:inputText value="#{insertarAsignatura.titu}" /></td>
 				</tr>
-				<tr>
-					<td><h:outputLabel value="Mencion"/></td>
-					<td><h:inputText value="#{insertarAsignaturas.asignatura.mencion}" /></td>
-				</tr>
-			
 				<tr>
 					<td><h:commandButton type="submit" value="Enviar" action="#{insertarAsignatura.doInsertar()}" outcome="index"/></td>
 					<td></td>
 				</tr>
+				
 			</table>
 		</h:form>
 	</div>

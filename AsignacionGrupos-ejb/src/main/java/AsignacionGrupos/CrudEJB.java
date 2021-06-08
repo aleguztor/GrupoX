@@ -516,6 +516,12 @@ import Exceptions.*;
 		TypedQuery<Titulacion> q = em.createQuery("SELECT t FROM Titulacion t", Titulacion.class);
 		return q.getResultList();
 	}
+	@Override
+	public Titulacion ObtenerTitulacionPorId(Integer eas) throws TitulacionException{
+		TypedQuery<Titulacion> q = em.createQuery("SELECT m FROM Titulacion m WHERE codigo = "+eas, Titulacion.class);
+		
+		return q.getSingleResult();
+	}
 	
 
 }

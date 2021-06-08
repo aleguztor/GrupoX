@@ -8,13 +8,14 @@ import javax.inject.Named;
 
 import AsignacionGrupos.CrudEJBLocal;
 import Entidades.Matricula;
+import Exceptions.MatriculaDuplicadaException;
 import Exceptions.MatriculaNoEncontradaException;
 
 @Named("modificarMatriculaBean")
 @RequestScoped
-public class ModificarMatricula {
+public class InsertarMatricula {
 
-	private Matricula matricula;
+	private Matricula matricula = new Matricula();
 	
 	private static final Logger LOG = Logger.getLogger(modificarAsignatura.class.getCanonicalName());
 	
@@ -29,13 +30,15 @@ public class ModificarMatricula {
 		this.matricula = matricula;
 	}
 	
-	public String doModificarMatricula() {
-		try {
-			crud.modificarMatricula(matricula);
-		} catch (MatriculaNoEncontradaException e) {
-			e.printStackTrace();
-			LOG.info("Matricula no encontrada");
+	public String doInsertarMatricula() {
+		
+	    try {
+			crud.insertarMatricula(matricula);
+		} catch (MatriculaDuplicadaException e) {
+			// TODO Auto-generated catch block
+			LOG.info("La matricula ya está creada");
 		}
+		
 		return "index.xhtml";
 	}
 }

@@ -31,6 +31,7 @@ import Exceptions.ExpedienteDuplicadoException;
 import Exceptions.ExpedienteNoEncontradoException;
 import Exceptions.GrupoDuplicadoException;
 import Exceptions.GrupoNoEncontradoException;
+import Exceptions.MatriculaDuplicadaException;
 import Exceptions.MatriculaNoEncontradaException;
 import Exceptions.OptativaNoEncontradaExpception;
 import Exceptions.TitulacionException;
@@ -66,7 +67,7 @@ public interface CrudEJBLocal {
 	public void eliminarOptativa(Optativa o ) throws OptativaNoEncontradaExpception;
 	public Optativa existeOptativa(Optativa o) throws OptativaNoEncontradaExpception;
 	
-	public void insertarMatricula(Matricula m) throws MatriculaNoEncontradaException;
+	public void insertarMatricula(Matricula m) throws MatriculaDuplicadaException;
 	public void modificarMatricula(Matricula m) throws MatriculaNoEncontradaException;
 	public void eliminarMatricula(Matricula m) throws MatriculaNoEncontradaException;
 	public Matricula existeMatricula(Matricula m) throws MatriculaNoEncontradaException;

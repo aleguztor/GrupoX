@@ -183,12 +183,12 @@ import Exceptions.*;
 	}
 
 	@Override
-	public void insertarMatricula(Matricula m) throws MatriculaNoEncontradaException {
+	public void insertarMatricula(Matricula m) throws MatriculaDuplicadaException {
 		Matricula ma = em.find(Matricula.class, m.getNum_archivo());
 		if(ma == null)
 			em.persist(m);
 		else 
-			throw new MatriculaNoEncontradaException();
+			throw new MatriculaDuplicadaException();
 		
 	}
 

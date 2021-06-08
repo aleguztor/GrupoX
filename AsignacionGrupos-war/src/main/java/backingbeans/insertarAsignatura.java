@@ -33,6 +33,7 @@ public class insertarAsignatura {
 	@PostConstruct
 	public void init() {
 	    asignatura = new Asignatura();
+	    LOG.severe(asignatura.toString());
 	}
 	public void setAsignatura(Asignatura asignatura) {
 		this.asignatura = asignatura;
@@ -42,7 +43,7 @@ public class insertarAsignatura {
 		Titulacion t=crud.ObtenerTitulacionPorId(titu);
 		
 		asignatura.setTitulacion(t);
-		
+		 LOG.severe(asignatura.toString());
 			crud.insertarAsignatura(asignatura);
 		
 			LOG.info("La asignatura insertarda");

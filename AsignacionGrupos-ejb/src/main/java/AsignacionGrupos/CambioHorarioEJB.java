@@ -22,7 +22,7 @@ public class CambioHorarioEJB implements CambioHorario {
 		grupos.remove(antiguo);
 		grupos.add(nuevo);	
 		alum.setGrupos(grupos);
-		crud.modificarAlumno(alum);
+		//crud.modificarAlumno(alum);
 	}
 
 }

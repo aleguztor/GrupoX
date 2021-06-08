@@ -91,7 +91,7 @@ public class AlgoritmoImpl implements AlgoritmoIntf{
 			a.getExpedientes().remove(0);
 			a.getExpedientes().add(e);
 			try {
-				crud.modificarAlumno(a);
+				//crud.modificarAlumno(a);
 				crud.modificarMatricula(ma);
 				crud.modificarExpediente(e);
 			} catch (Exception e1) {

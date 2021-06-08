@@ -54,7 +54,7 @@ public class Base {
 		p.remove(en5);
 		p.add(en6);
 		e6.setEncuesta(p);
-		Titulacion t =  new Titulacion("Desarrollo movil",550);
+		Titulacion t =  new Titulacion(1014,"Desarrollo movil",550);
 		Asignatura as = new Asignatura("rf12","Desarrollo de maquinas virtuales",101,12,true,true);
 		Asignatura as1 = new Asignatura("rf13","Desarrollo de maquinas virtuales",202,12,true,false);
 		List<Asignatura> asig = new LinkedList<>();

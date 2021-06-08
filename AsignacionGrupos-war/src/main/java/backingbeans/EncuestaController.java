@@ -31,23 +31,25 @@ public class EncuestaController {
 	
 	@Inject
 	AsignarEncuestas AE;
+	private static final Logger LOG = Logger.getLogger(EncuestaController.class.getCanonicalName());
 	
 	
 	public String CrearEncuesta() throws EncuestaException, AlumnoNoEncontradoException, ExpedienteNoEncontradoException {
 		Date d = new Date(System.currentTimeMillis());
 		
 		Alumno a= crud.buscarAlumnoPorDNI(dni);
-		List<Expediente> lista= a.getExpedientes();
+		List<Expediente> lista= crud.obtenerExpedientesAlumno(a.getId());
+		LOG.severe(lista.toString());
 		Expediente exp= lista.get(0);
 		
 								// cogemos el expediente de alumno
-		List<Encuesta >encuestas= exp.getEncuesta();
+		//List<Encuesta >encuestas= exp.getEncuesta();
 		Encuesta en= new Encuesta(d,exp,turnopreferente);
 		
 		
 		AE.asignarEncuesta(exp.getNum_Expediente(), en);
 		//crud.modificarExpediente(exp); 
-		//crud.insertarEncuesta(en); 
+		crud.insertarEncuesta(en); 
 		
 		return "index.xhtml";
 	}

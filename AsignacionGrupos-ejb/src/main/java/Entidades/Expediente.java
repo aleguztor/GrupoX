@@ -29,7 +29,7 @@ public class Expediente implements Serializable{
 	private Titulacion titulacion;
 	@OneToMany(mappedBy="expediente")
 	private List<Encuesta> encuesta;
-	@OneToMany(mappedBy="expedientes_num_expedientes")
+	@OneToMany(mappedBy="expedientes_num_expedientes",cascade = CascadeType.MERGE)
 	private List<Matricula> matricula = new LinkedList<>();
 	
 	public Expediente() {}

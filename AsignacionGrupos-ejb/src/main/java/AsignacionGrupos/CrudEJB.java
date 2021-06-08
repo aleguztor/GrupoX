@@ -69,16 +69,11 @@ import Exceptions.*;
 
 	@Override
 	public void insertarAlumno(Alumno a) throws  AlumnoDuplicadoException {
-		try {
-			Alumno al = buscarAlumnoPorDNI(a.getDNI());
-			if(al != null) {
-				throw new AlumnoDuplicadoException();
-			}
+		
+			
 				em.persist(a);
 			
-		} catch (AlumnoNoEncontradoException e) {
-			e.printStackTrace();
-		}
+		
 			
 		
 	}

@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -16,7 +17,7 @@ public class Alumno implements Serializable{
 
 	private static final long serialVersionUID = 6705146396193434357L;
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private Long Id;
 	@Column(nullable = false, unique = true)
 	private String DNI;
@@ -34,7 +35,7 @@ public class Alumno implements Serializable{
 	private String Localidad_notificacion;
 	private String Provincia_notificacion;
 	private String CP_notificacion;
-	@OneToMany (mappedBy="alumno", cascade = CascadeType.ALL)
+	@OneToMany (mappedBy="alumno", cascade = CascadeType.MERGE)
 	private List<Expediente> expedientes;
 	//encuesta cambiohorario
 	@OneToMany (mappedBy="alumno")

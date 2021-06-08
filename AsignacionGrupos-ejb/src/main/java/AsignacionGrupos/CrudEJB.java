@@ -462,7 +462,7 @@ import Exceptions.*;
 	
 	@Override
 	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException{
-		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE alumno_Id = "+id, Expediente.class);
+		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE e.Num_Expediente = "+id, Expediente.class);
 
 		return q.getResultList();
 	}

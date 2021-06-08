@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.sql.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -575,7 +576,7 @@ public class Crud {
 	@Test
 	public void testInsertarEncuestaCambioHorario() {
 		Date d = new Date(System.currentTimeMillis());
-		EncuestaCambioHorario e = new EncuestaCambioHorario(d,"2º","123456789a");
+		EncuestaCambioHorario e = new EncuestaCambioHorario(d,"2ï¿½","123456789a");
 		try {
 			crud.insertarEncuestaCambioHorario(e);
 			assertEquals(e,crud.existeEncuestaCambioHorario(e));
@@ -587,9 +588,12 @@ public class Crud {
 //	@Requisitos({"RF2"})
 	@Test
 	public void testObtenerExpedientesAlumno() {
-		long id = (long)214623;
+		Long id = (long)214623;
+		
+		List<Expediente> b= new LinkedList<>();
+		b.add(new Expediente((long)214623,true,5.0));
 		try {
-			assertNotNull(crud.obtenerExpedientesAlumno(id).get(0));
+			assertEquals(crud.obtenerExpedientesAlumno(id),b);
 		}catch(ExpedienteNoEncontradoException e) {
 			e.printStackTrace();
 		}
@@ -604,8 +608,11 @@ public class Crud {
 //	@Requisitos({"RF2"})
 	@Test
 	public void testBuscarMatriculasPorExpediente() {
+		
+		List<Matricula> matriculas = new LinkedList<>();
+		matriculas.add(new Matricula());
 		try {
-			assertNotNull(crud.buscarMatriculasPorExpediente((long)214623));
+			assertEquals(crud.buscarMatriculasPorExpediente((long)214623),matriculas);
 		}catch(MatriculaNoEncontradaException e) {
 			e.printStackTrace();
 		}

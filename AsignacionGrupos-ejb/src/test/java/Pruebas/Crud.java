@@ -129,11 +129,11 @@ public class Crud {
 	public void testModificarAlumno() {
 		try {
 			Alumno al = crud.buscarAlumnoPorDNI("12345678a");
-			String nombre= al.getNombre();
+			String nombre = al.getNombre();
 			Alumno ab = crud.buscarAlumnoPorDNI("12345678a");
 			ab.setNombre("pepitodelospalotes");
-			crud.modificarAlumno(al,ab);
-			
+			crud.modificarAlumno(al, ab);
+
 			assertNotEquals("pepitodelospalotes", nombre);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -163,7 +163,7 @@ public class Crud {
 			e.printStackTrace();
 		}
 	}
-	
+
 //	@Requisitos({"RF2"})
 	@Test
 	public void testGetAlumnos() {
@@ -204,7 +204,7 @@ public class Crud {
 			Optativa op = new Optativa("12314", "Overclocking de procesadores patata", 809, 6, true, false);
 			crud.insertarOptativa(op);
 			crud.eliminarOptativa(op);
-			
+
 			assertNull(crud.existeOptativa(op));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -289,18 +289,19 @@ public class Crud {
 			e.printStackTrace();
 		}
 	}
-	
+
 //@Requisitos({"RF2"})
 	@Test
 	public void testEliminarGrupo() {
 		try {
-			Grupo g = crud.busquedaGrupo("1","B", "Manyana");
+			Grupo g = crud.busquedaGrupo("1", "B", "Manyana");
 			crud.eliminarGrupo(g);
-			assertNull(crud.busquedaGrupo("1","B", "Manyana"));
-		}catch(Exception e) {
+			assertNull(crud.busquedaGrupo("1", "B", "Manyana"));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 //	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarGrupo() {
@@ -317,7 +318,7 @@ public class Crud {
 	@Test
 	public void testModificarGrupo() {
 		try {
-			Grupo g = crud.existeGrupo(new Grupo((long) 15,"1�", "c", "Tarde"));
+			Grupo g = crud.existeGrupo(new Grupo((long) 15, "1�", "c", "Tarde"));
 			g.setLetra("a");
 			crud.modificarGrupo(g);
 			assertNotEquals("a", crud.existeGrupo(g).getLetra());
@@ -330,7 +331,7 @@ public class Crud {
 	@Test
 	public void testExisteGrupo() {
 		try {
-			Grupo a = new Grupo((long) 1,"1", "B","Manyana");
+			Grupo a = new Grupo((long) 1, "1", "B", "Manyana");
 			assertNotNull(crud.existeGrupo(a));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -352,7 +353,7 @@ public class Crud {
 	@Test
 	public void testInsertarTitulacion() {
 		try {
-			Titulacion t = new Titulacion(1014,"Desarrollo movil", 540);
+			Titulacion t = new Titulacion(1014, "Desarrollo movil", 540);
 			crud.insertarTitulacion(t);
 			assertEquals(t, crud.existeTitulacion(t));
 		} catch (Exception e) {
@@ -365,12 +366,12 @@ public class Crud {
 	@Test
 	public void testModificarTitulacion() {
 		try {
-			Titulacion t = new Titulacion(1014,"Desarrollo movil", 540);
+			Titulacion t = new Titulacion(1014, "Desarrollo movil", 540);
 			crud.insertarTitulacion(t);
 			t.setCreditos(250);
 			t.setCodigo(666);
-			Titulacion b= new Titulacion(666,"",250);
-			crud.modificarTitulacion(t,b);
+			Titulacion b = new Titulacion(666, "", 250);
+			crud.modificarTitulacion(t, b);
 			assertEquals(t, crud.existeTitulacion(t));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -381,7 +382,7 @@ public class Crud {
 	@Test
 	public void testEliminarTitulacion() {
 		try {
-			Titulacion t = new Titulacion(1014,"Desarrollo movil", 540);
+			Titulacion t = new Titulacion(1014, "Desarrollo movil", 540);
 			crud.insertarTitulacion(t);
 			crud.eliminarTitulacion(t);
 			assertNull(crud.existeTitulacion(t));
@@ -394,7 +395,7 @@ public class Crud {
 	@Test
 	public void testExisteTitulacion() {
 		try {
-			Titulacion t = new Titulacion(1014,"Desarrollo movil", 540);
+			Titulacion t = new Titulacion(1014, "Desarrollo movil", 540);
 			crud.insertarTitulacion(t);
 			assertEquals(t, crud.existeTitulacion(t));
 		} catch (Exception e) {
@@ -498,7 +499,8 @@ public class Crud {
 	public void testEliminarCentro() {
 		try {
 			Centro c = new Centro((long) 12313, "Escuela tecnica Civil", "Calle Ave del Paraiso 12", "999999999");
-			crud.eliminarCentro(c);;
+			crud.eliminarCentro(c);
+			;
 			assertNull(crud.existeCentro(c));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -512,8 +514,8 @@ public class Crud {
 
 			Date dia = new Date(System.currentTimeMillis() - 1231231);
 			Date hora = new Date(1111);
-			Grupo g = new Grupo((long) 15,"20/21", "a", "manyana");
-			Clase c = new Clase(g,dia,hora);
+			Grupo g = new Grupo((long) 15, "20/21", "a", "manyana");
+			Clase c = new Clase(g, dia, hora);
 			crud.insertarClase(c);
 			assertEquals(c, crud.existeClase(c));
 		} catch (Exception e) {
@@ -527,9 +529,9 @@ public class Crud {
 		try {
 			Date dia = new Date(System.currentTimeMillis() - 1231231);
 			Date hora = new Date(1111);
-			
-			Grupo g = new Grupo((long) 15,"20/21", "a", "manyana");
-			Clase c = new Clase(g, dia,hora);
+
+			Grupo g = new Grupo((long) 15, "20/21", "a", "manyana");
+			Clase c = new Clase(g, dia, hora);
 			crud.insertarClase(c);
 			Asignatura as = new Asignatura("rf12", "Desarrollo de maquinas virtuales", 9999, 12, true, false);
 			c.setAsignatura(as);
@@ -547,8 +549,8 @@ public class Crud {
 		try {
 			Date dia = new Date(System.currentTimeMillis() - 1231231);
 			Date hora = new Date(1111);
-			Grupo g = new Grupo((long) 15,"20/21", "a", "manyana");
-			Clase c = new Clase(g, dia,hora);
+			Grupo g = new Grupo((long) 15, "20/21", "a", "manyana");
+			Clase c = new Clase(g, dia, hora);
 			crud.insertarClase(c);
 			crud.eliminarClase(c);
 			assertNull(crud.existeClase(c));
@@ -563,107 +565,103 @@ public class Crud {
 		try {
 			Date dia = new Date(System.currentTimeMillis() - 1231231);
 			Date hora = new Date(1111);
-			
-			Grupo g = new Grupo((long) 15,"20/21", "a", "manyana");
-			Clase c = new Clase(g, dia,hora);
+
+			Grupo g = new Grupo((long) 15, "20/21", "a", "manyana");
+			Clase c = new Clase(g, dia, hora);
 			crud.insertarClase(c);
 			assertEquals(c, crud.existeClase(c));
 		} catch (Exception e) {
 
 		}
 	}
-	
+
 //	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarEncuesta() {
-			Date d = new Date(System.currentTimeMillis());
-			Alumno a = new Alumno("Antono","Bermudez","555333888x","antonio@uma.es");
-			Expediente e = new Expediente((long) 555555,true,5.0);
-			Expediente_Encuesta_PK pk = new Expediente_Encuesta_PK((long) 555555,d);
-			Encuesta en = new Encuesta(pk,e,"Manyana");
-			List<Encuesta> ens = new LinkedList<>();
-			ens.add(en);
-			e.setEncuesta(ens);
-			List<Expediente> expedientes = new LinkedList<>();
-			expedientes.add(e);
-			a.setExpedientes(expedientes);
-	
-			try {
-				crud.insertarAlumno(a);
-				crud.insertarExpediente(e);
-				crud.insertarEncuesta(en);
-			} catch (AlumnoDuplicadoException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (EncuestaException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (ExpedienteDuplicadoException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			Encuesta encuesta;
-			try {
-				encuesta = crud.obtenerEncuestasPorExpediente((long) 555555).get(0);
-				assertEquals(en, encuesta);
-			} catch (ExpedienteNoEncontradoException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		
-			
+		Date d = new Date(System.currentTimeMillis());
+		Alumno a = new Alumno("Antono", "Bermudez", "555333888x", "antonio@uma.es");
+		Expediente e = new Expediente((long) 555555, true, 5.0);
+		Expediente_Encuesta_PK pk = new Expediente_Encuesta_PK((long) 555555, d);
+		Encuesta en = new Encuesta(pk, e, "Manyana");
+		List<Encuesta> ens = new LinkedList<>();
+		ens.add(en);
+		e.setEncuesta(ens);
+		List<Expediente> expedientes = new LinkedList<>();
+		expedientes.add(e);
+		a.setExpedientes(expedientes);
+
+		try {
+			crud.insertarAlumno(a);
+			crud.insertarExpediente(e);
+			crud.insertarEncuesta(en);
+		} catch (AlumnoDuplicadoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (EncuestaException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ExpedienteDuplicadoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Encuesta encuesta;
+		try {
+			encuesta = crud.obtenerEncuestasPorExpediente((long) 555555).get(0);
+			assertEquals(en, encuesta);
+		} catch (ExpedienteNoEncontradoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 	}
-	
+
 //	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarEncuestaCambioHorario() {
 		Date d = new Date(System.currentTimeMillis());
-		EncuestaCambioHorario e = new EncuestaCambioHorario(d,"2�","123456789a");
+		EncuestaCambioHorario e = new EncuestaCambioHorario(d, "2�", "123456789a");
 		try {
 			crud.insertarEncuestaCambioHorario(e);
-			assertEquals(e,crud.existeEncuestaCambioHorario(e));
+			assertEquals(e, crud.existeEncuestaCambioHorario(e));
 		} catch (EncuestaException e1) {
 			e1.printStackTrace();
-		}	
-	}	
-	
+		}
+	}
+
 //	@Requisitos({"RF2"})
 	@Test
-	public void testObtenerExpedientesAlumno() {
-		Long id = (long)214623;
-		
-		List<Expediente> b= new LinkedList<>();
-		b.add(new Expediente((long)214623,true,5.0));
-		/*try {
-		//	assertEquals(crud.obtenerExpedientesAlumno(id).getNum_Expediente(),b.get(0).getNum_Expediente());
-		}catch(ExpedienteNoEncontradoException e) {
+	public void testObtenerExpedientesAlumno() throws AlumnoNoEncontradoException {
+
+		try {
+			assertNotNull(crud.obtenerExpedienteAlumno(crud.buscarAlumnoPorDNI("12345678a").getId()));
+		} catch (ExpedienteNoEncontradoException e) {
 			e.printStackTrace();
-		}*/
-	}	
-	
+		}
+	}
+
 //	@Requisitos({"RF2"})
 	@Test
 	public void testGetEncuestas() {
 		assertNotNull(crud.getEncuestas());
 	}
-	
+
 //	@Requisitos({"RF2"})
 	@Test
 	public void testBuscarMatriculasPorExpediente() {
 		Date d = new Date(System.currentTimeMillis());
-		Expediente e1 = new Expediente((long)214623,true,5.0);
+		Expediente e1 = new Expediente((long) 214623, true, 5.0);
 		Alumno a1 = new Alumno("Mario", "Vazquez", "12345678a", "mario@uma.es");
 		List<Expediente> exps = new LinkedList<>();
 		exps.add(e1);
 		a1.setExpedientes(exps);
 		e1.setAlumno(a1);
-		MatriculaPK pk = new MatriculaPK("2", (long)214623);
-		Matricula m1 = new Matricula(pk,e1,'I',d);
+		MatriculaPK pk = new MatriculaPK("2", (long) 214623);
+		Matricula m1 = new Matricula(pk, e1, 'I', d);
 		List<Matricula> matriculas = new LinkedList<>();
 		matriculas.add(m1);
 		e1.setMatricula(matriculas);
 		m1.setExpedientes_num_expedientes(e1);
-	
+
 		try {
 			crud.insertarAlumno(a1);
 			crud.insertarExpediente(e1);
@@ -678,12 +676,12 @@ public class Crud {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
-			List<Matricula> buscar= crud.buscarMatriculasPorExpediente(e1.getNum_Expediente());
+			List<Matricula> buscar = crud.buscarMatriculasPorExpediente(e1.getNum_Expediente());
 			LOG.severe(matriculas.toString());
-			assertEquals(buscar,matriculas);
-		}catch(MatriculaNoEncontradaException e) {
+			assertEquals(buscar.get(0), matriculas.get(0));
+		} catch (MatriculaNoEncontradaException e) {
 			e.printStackTrace();
 		}
 	}
@@ -696,101 +694,78 @@ public class Crud {
 		try {
 			crud.modificarAlumno(a, a1);
 			assertNotNull(crud.buscarAlumnoPorDNI(a1.getDNI()));
-		}catch(AlumnoNoEncontradoException e) {
+		} catch (AlumnoNoEncontradoException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 //	@Requisitos({"RF2"})
 	@Test
 	public void testObtenerTitulaciones() {
 		assertNotNull(crud.obtenerTitulaciones());
 	}
-	
+
 //	@Requisitos({"RF2"})
 	@Test
 	public void testObtenerTitulacionPorId() {
 		int codigo = 1041;
 		try {
 			assertNotNull(crud.obtenerTitulacionPorId(codigo));
-		}catch(TitulacionException e) {
+		} catch (TitulacionException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	@Test
-	public void testExisteEncuestaCambiaHorario() throws EncuestaException
-	{
+	public void testExisteEncuestaCambiaHorario() throws EncuestaException {
 		Date d = new Date(System.currentTimeMillis());
-		EncuestaCambioHorario ech = new EncuestaCambioHorario(d, "2A","555333888x");
-		List<EncuestaCambioHorario> echs = new LinkedList<>();
-		echs.add(ech);
-		Alumno a = new Alumno("Antono","Bermudez","555333888x","antonio@uma.es");
-		a.setEncuestacambioH(echs);
-		try {
-			crud.insertarAlumno(a);
-			try {
-				crud.insertarEncuestaCambioHorario(ech);
-			} catch (EncuestaException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (AlumnoDuplicadoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		assertNotNull(crud.existeEncuestaCambioHorario(ech));
+		EncuestaCambioHorario e = new EncuestaCambioHorario(d, "2�", "123456789a");
+
+		crud.insertarEncuestaCambioHorario(e);
+
+		assertNotNull(crud.existeEncuestaCambioHorario(e));
 	}
-	
+
 	@Test
 	public void testObtenerGrupos() {
 		assertNotNull(crud.obtenerGrupos());
 	}
-	
-	
+
 	@Test
-	public void testExpedientesDeAlumno() throws AlumnoDuplicadoException, ExpedienteDuplicadoException {
-		Alumno a = new Alumno("Pepe","Aragon","0000000a","pepe@uma.es");
-		Expediente e1 = new Expediente((long)1314444,true,5.0);
-		List<Expediente> exp = new LinkedList<>();
-		exp.add(e1);
-		a.setExpedientes(exp);
-		crud.insertarAlumno(a);
-		crud.insertarExpediente(e1);
-		assertNotNull(crud.getExpedientesDeAlumno(a.getId()));
-		
+	public void testExpedientesDeAlumno() throws AlumnoNoEncontradoException {
+		Alumno a = crud.buscarAlumnoPorDNI("12345678a");
+		assertEquals("12345678a",crud.getExpedientesDeAlumno(a.getId()).get(0).getAlumno().getDNI());
+
 	}
-	
+
 	@Test
 	public void testExisteExpedientePorPK() {
-		
+
 	}
-	
+
 	@Test
 	public void testObtenerEncuestasPorExpediente() {
-		
+
 	}
-	
+
 	@Test
 	public void testEliminarEncuestasPorExpediente() {
-		
+
 	}
-	
+
 	@Test
 	public void testEliminarGrupoPorId() {
-		
+
 	}
-	
+
 	@Test
 	public void testGetAsignaturas() {
-		
+
 	}
+
 	@Test
 	public void testEliminarAsignaturasPorReferencia() {
-		
+
 	}
-	
+
 }

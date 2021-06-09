@@ -523,6 +523,13 @@ import Exceptions.*;
 		
 		return q.getResultList();
 	}
+	
+	@Override
+	public Grupo obtenerGrupoPorId(Long id){
+		TypedQuery<Grupo> q = em.createQuery("SELECT a FROM Grupo a where a.id ="+id, Grupo.class);
+		
+		return q.getSingleResult();
+	}
 	@Override
 	public List<Expediente> getExpedientesDeAlumno(Long id){
 		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE alumno_Id = "+id, Expediente.class);

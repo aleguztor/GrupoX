@@ -124,4 +124,5 @@ public interface CrudEJBLocal {
 	public void eliminarGrupoPorId(Long id) throws GrupoNoEncontradoException;
 	public List<Asignatura> getAsignaturas();
 	public void eliminarAsignaturaPorReferencia(String ref) throws AsignaturaNoEncontradaException;
+	public Grupo obtenerGrupoPorId(Long id) throws GrupoNoEncontradoException;
 }

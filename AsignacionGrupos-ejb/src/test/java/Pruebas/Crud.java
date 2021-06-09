@@ -37,6 +37,8 @@ import Exceptions.AlumnoNoEncontradoException;
 import Exceptions.EncuestaException;
 import Exceptions.ExpedienteDuplicadoException;
 import Exceptions.ExpedienteNoEncontradoException;
+import Exceptions.GrupoDuplicadoException;
+import Exceptions.GrupoNoEncontradoException;
 import Exceptions.MatriculaDuplicadaException;
 import Exceptions.MatriculaNoEncontradaException;
 import Exceptions.TitulacionException;
@@ -778,9 +780,28 @@ public class Crud {
 	public void testEliminarEncuestasPorExpediente() {
 		
 	}
-	
 	@Test
-	public void testEliminarGrupoPorId() {
+	public void testObtenerGrupoPorId(){
+		Grupo grupo = new Grupo((long)12, "20/21", "A", "M");
+		try {
+			crud.insertarGrupo(grupo);
+		} catch (GrupoDuplicadoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			assertNotNull(crud.obtenerGrupoPorId((long) 12));
+		} catch (GrupoNoEncontradoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void testEliminarGrupoPorId() throws GrupoDuplicadoException, GrupoNoEncontradoException {
+		Grupo grupo = new Grupo((long)12, "20/21","A","M");
+		crud.insertarGrupo(grupo);
+		crud.eliminarGrupoPorId((long) 12);
+		assertNull(crud.obtenerGrupoPorId((long) 12));
 		
 	}
 	

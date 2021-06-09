@@ -52,7 +52,7 @@ public class EncuestaController {
 		//crud.modificarExpediente(exp); 
 		crud.insertarEncuesta(en,exp); 
 		
-		return "index.xhtml";
+		return "Alumno.html";
 	}
 
 	public Long getNumexpediente() {

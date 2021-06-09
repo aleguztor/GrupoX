@@ -12,14 +12,11 @@
 </h:head>
 
 <h:body>
-	<h1> ENCUESTAS INICIALES</h1>
 	<h:form>
-   
-        <p:dataTable var="row" value="#{viewEncuestas.encuestas}" sortable="true" filterable="true">
-            <p:column field="Fecha_envio" headerText="Fecha envio" sortable="true" filterable="true" />
-            <p:column field="Num_Expediente" headerText="Expediente" sortable="true" filterable="true"/>
-            <p:column field="Turno_Preferente" headerText="Turno preferente" sortable="true" filterable="true"/>
-           
+        <p:dataTable var="row" value="#{vE.encuestas}">
+            <p:column id="fe" headerText="Fecha envio" field="fecha_envio" sortable="true" filterable="true" />
+            <p:column id="numexp" headerText="Expediente" field="expediente.num_Expediente" sortable="true" filterable="true"/>
+            <p:column id="tp" headerText="Turno preferente" field="turno_Preferente" sortable="true" filterable="true"/>
         </p:dataTable>
    
 </h:form>

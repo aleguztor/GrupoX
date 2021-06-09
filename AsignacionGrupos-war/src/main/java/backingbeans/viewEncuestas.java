@@ -12,16 +12,13 @@ import javax.inject.Named;
 import AsignacionGrupos.CrudEJBLocal;
 import Entidades.Encuesta;
 
-@Named
+@Named(value="vE")
 @RequestScoped
 public class viewEncuestas implements Serializable{
-		
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1232312312L;
-	private Encuesta en;
     private List<Encuesta> encuestas;
+    
     @Inject
     private CrudEJBLocal crud;
     
@@ -34,10 +31,9 @@ public class viewEncuestas implements Serializable{
        return encuestas;
     }
 
-    public synchronized void setEncuesta(Encuesta e) {
-    	en=e;
-    }
-    public synchronized Encuesta getEncuesta() {
-    	return en;
-    }
+	public void setEncuestas(List<Encuesta> encuestas) {
+		this.encuestas = encuestas;
+	}
+
+
 }

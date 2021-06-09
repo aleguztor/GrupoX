@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Matricula</title>
+	<title>Insertar matricula</title>
 </h:head>
 
 <h:body>
@@ -16,40 +16,38 @@
 		<h:form>
 			<table>
 				<tr>
-                	<td><h:outputLabel value="Expediente Alumno"/></td>
+                	<td><h:outputLabel value="Expediente del alumno"/></td>
 					<td><h:inputText convert="#{Long}" value="#{insertarMatriculaBean.numexp}" /></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Curso académico"/></td>
-					<td><h:inputText value="#{insertarMatriculaBean.matricula.curso_academico}" /></td>
+					<td><h:inputText value="#{insertarMatriculaBean.ca}" /></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Estado"/></td>
-					<td><h:selectOneMenu converter="#{Boolean}" value="#{insertarMatriculaBean.matricula.estado}">
-							<f:selectItem itemLabel="Activo" itemValue="true" />
-							<f:selectItem itemLabel="Inactivo" itemValue="false"/>
+					<td><h:selectOneMenu converter="#{Boolean}" value="#{insertarMatriculaBean.estado}">
+							<f:selectItem itemLabel="Activo" itemValue="A" />
+							<f:selectItem itemLabel="Inactivo" itemValue="I"/>
 						</h:selectOneMenu></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Num_Archivo"/></td>
-					<td><h:inputText converter="#{Integer}" value="#{insertarMatriculaBean.matricula.num_archivo}" /></td>
+					<td><h:inputText converter="#{Integer}" value="#{insertarMatriculaBean.numarch}" /></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Turno preferente"/></td>
-					<td><h:selectOneMenu value="#{insertarMatriculaBean.matricula.turno_preferente}">
+					<td><h:selectOneMenu value="#{insertarMatriculaBean.tp}">
 							<f:selectItem itemLabel="Mañana" itemValue="M" />
 							<f:selectItem itemLabel="Tarde" itemValue="T"/>
 						</h:selectOneMenu></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Fecha de matricula" /></td>
-					<td><h:inputText value="#{insertarMatriculaBean.matricula.fecha_matricula}">
-						<f:convertDateTime pattern="dd/MM/yyyy"/>
-						</h:inputText></td>
+					<td><h:inputText value="#{insertarMatriculaBean.date}"/></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Nuevo ingreso"/></td>
-					<td><h:selectOneMenu value="#{insertarMatriculaBean.matricula.nuevo_ingreso}">
+					<td><h:selectOneMenu value="#{insertarMatriculaBean.ni}">
 							<f:selectItem itemLabel="Si" itemValue="S"/>
 							<f:selectItem itemLabel="No" itemValue="N"/>
 						</h:selectOneMenu></td>

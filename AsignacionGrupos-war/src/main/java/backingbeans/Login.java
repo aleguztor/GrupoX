@@ -29,7 +29,7 @@ public class Login {
 			context.getExternalContext().getSessionMap().put("user", username);
 
 			try {
-				context.getExternalContext().redirect("index.xhtml");
+				context.getExternalContext().redirect("Alumno.html");
 			} catch (IOException e) {
 				e.printStackTrace();
 

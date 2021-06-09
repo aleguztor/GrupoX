@@ -37,7 +37,7 @@ public class SolicitudBean {
 		e.setDocumentos(file.getContent());
 		e.setRazones(razones);
 			crud.insertarEncuestaCambioHorario(e);
-		return "index.xhtml";
+		return "Alumno.html";
 		
 	}
 

@@ -65,12 +65,13 @@ public class Encuesta implements Serializable{
 		this.gpa = gpa;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((Fecha_envio == null) ? 0 : Fecha_envio.hashCode());
-		result = prime * result + ((Turno_Preferente == null) ? 0 : Turno_Preferente.hashCode());
 		result = prime * result + ((expediente == null) ? 0 : expediente.hashCode());
 		return result;
 	}
@@ -88,11 +89,6 @@ public class Encuesta implements Serializable{
 			if (other.Fecha_envio != null)
 				return false;
 		} else if (!Fecha_envio.equals(other.Fecha_envio))
-			return false;
-		if (Turno_Preferente == null) {
-			if (other.Turno_Preferente != null)
-				return false;
-		} else if (!Turno_Preferente.equals(other.Turno_Preferente))
 			return false;
 		if (expediente == null) {
 			if (other.expediente != null)

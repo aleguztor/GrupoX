@@ -44,7 +44,6 @@ public class Asignaturas_matriculas {
 			final int prime = 31;
 			int result = 1;
 			result = prime * result + ((am == null) ? 0 : am.hashCode());
-			result = prime * result + ((asignatura == null) ? 0 : asignatura.hashCode());
 			return result;
 		}
 
@@ -62,13 +61,10 @@ public class Asignaturas_matriculas {
 					return false;
 			} else if (!am.equals(other.am))
 				return false;
-			if (asignatura == null) {
-				if (other.asignatura != null)
-					return false;
-			} else if (!asignatura.equals(other.asignatura))
-				return false;
 			return true;
 		}
+
+		
 
 		
 		

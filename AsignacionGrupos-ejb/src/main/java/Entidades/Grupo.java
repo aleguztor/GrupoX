@@ -198,14 +198,13 @@ public class Grupo implements Serializable {
 		this.am = am;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Curso == null) ? 0 : Curso.hashCode());
 		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
-		result = prime * result + ((Letra == null) ? 0 : Letra.hashCode());
-		result = prime * result + ((Turno_manyana_tarde == null) ? 0 : Turno_manyana_tarde.hashCode());
 		return result;
 	}
 
@@ -218,25 +217,10 @@ public class Grupo implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Grupo other = (Grupo) obj;
-		if (Curso == null) {
-			if (other.Curso != null)
-				return false;
-		} else if (!Curso.equals(other.Curso))
-			return false;
 		if (Id == null) {
 			if (other.Id != null)
 				return false;
 		} else if (!Id.equals(other.Id))
-			return false;
-		if (Letra == null) {
-			if (other.Letra != null)
-				return false;
-		} else if (!Letra.equals(other.Letra))
-			return false;
-		if (Turno_manyana_tarde == null) {
-			if (other.Turno_manyana_tarde != null)
-				return false;
-		} else if (!Turno_manyana_tarde.equals(other.Turno_manyana_tarde))
 			return false;
 		return true;
 	}

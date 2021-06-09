@@ -117,6 +117,43 @@ public class Grupos_Por_Asignatura implements Serializable {
 	@JoinColumn(referencedColumnName="Referencia")
 	private Asignatura asignatura;
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Curso_Academico == null) ? 0 : Curso_Academico.hashCode());
+		result = prime * result + ((asignatura == null) ? 0 : asignatura.hashCode());
+		result = prime * result + ((grupo == null) ? 0 : grupo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Grupos_Por_Asignatura other = (Grupos_Por_Asignatura) obj;
+		if (Curso_Academico == null) {
+			if (other.Curso_Academico != null)
+				return false;
+		} else if (!Curso_Academico.equals(other.Curso_Academico))
+			return false;
+		if (asignatura == null) {
+			if (other.asignatura != null)
+				return false;
+		} else if (!asignatura.equals(other.asignatura))
+			return false;
+		if (grupo == null) {
+			if (other.grupo != null)
+				return false;
+		} else if (!grupo.equals(other.grupo))
+			return false;
+		return true;
+	}
+
 	public Grupos_Por_Asignatura() {}
 	
 	public Grupos_Por_Asignatura(String c, Grupo g, Asignatura a) {
@@ -166,46 +203,7 @@ public class Grupos_Por_Asignatura implements Serializable {
 		this.asignatura = asignatura;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((Curso_Academico == null) ? 0 : Curso_Academico.hashCode());
-		result = prime * result + (Oferta ? 1231 : 1237);
-		result = prime * result + ((asignatura == null) ? 0 : asignatura.hashCode());
-		result = prime * result + ((grupo == null) ? 0 : grupo.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Grupos_Por_Asignatura other = (Grupos_Por_Asignatura) obj;
-		if (Curso_Academico == null) {
-			if (other.Curso_Academico != null)
-				return false;
-		} else if (!Curso_Academico.equals(other.Curso_Academico))
-			return false;
-		if (Oferta != other.Oferta)
-			return false;
-		if (asignatura == null) {
-			if (other.asignatura != null)
-				return false;
-		} else if (!asignatura.equals(other.asignatura))
-			return false;
-		if (grupo == null) {
-			if (other.grupo != null)
-				return false;
-		} else if (!grupo.equals(other.grupo))
-			return false;
-		return true;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Grupos_Por_Asignatura [Curso_Academico=" + Curso_Academico + ", Oferta=" + Oferta + ", grupo=" + grupo

@@ -93,11 +93,12 @@ public class EncuestaCambioHorario implements Serializable {
 	public void setDocumentos(byte[] documentos) {
 		Documentos = documentos;
 	}
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		
 		result = prime * result + ((DNI == null) ? 0 : DNI.hashCode());
 		return result;
 	}
@@ -112,10 +113,10 @@ public class EncuestaCambioHorario implements Serializable {
 			return false;
 		EncuestaCambioHorario other = (EncuestaCambioHorario) obj;
 		if (DNI == null) {
-			if (other.DNI != null) {
+			if (other.DNI != null)
 				return false;
-			}
-	}
+		} else if (!DNI.equals(other.DNI))
+			return false;
 		return true;
 	}
 

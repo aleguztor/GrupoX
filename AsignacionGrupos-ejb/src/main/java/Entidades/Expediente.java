@@ -89,16 +89,13 @@ public class Expediente implements Serializable{
 		this.matricula = matricula;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (Activo ? 1231 : 1237);
-		long temp;
-		temp = Double.doubleToLongBits(Nota_Media_Provisional);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((Num_Expediente == null) ? 0 : Num_Expediente.hashCode());
-		result = prime * result + ((alumno == null) ? 0 : alumno.hashCode());
 		return result;
 	}
 
@@ -111,19 +108,10 @@ public class Expediente implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Expediente other = (Expediente) obj;
-		if (Activo != other.Activo)
-			return false;
-		if (Double.doubleToLongBits(Nota_Media_Provisional) != Double.doubleToLongBits(other.Nota_Media_Provisional))
-			return false;
 		if (Num_Expediente == null) {
 			if (other.Num_Expediente != null)
 				return false;
 		} else if (!Num_Expediente.equals(other.Num_Expediente))
-			return false;
-		if (alumno == null) {
-			if (other.alumno != null)
-				return false;
-		} else if (!alumno.equals(other.alumno))
 			return false;
 		return true;
 	}

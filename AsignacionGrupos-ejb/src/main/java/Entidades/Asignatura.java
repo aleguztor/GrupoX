@@ -156,15 +156,12 @@ public class Asignatura {
 		this.am = am;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Codigo;
-		result = prime * result + Creditos;
-		result = prime * result + (Idioma_de_imparticion ? 1231 : 1237);
-		result = prime * result + ((Nombre == null) ? 0 : Nombre.hashCode());
-		result = prime * result + (Ofertada ? 1231 : 1237);
 		result = prime * result + ((Referencia == null) ? 0 : Referencia.hashCode());
 		return result;
 	}
@@ -178,19 +175,6 @@ public class Asignatura {
 		if (getClass() != obj.getClass())
 			return false;
 		Asignatura other = (Asignatura) obj;
-		if (Codigo != other.Codigo)
-			return false;
-		if (Creditos != other.Creditos)
-			return false;
-		if (Idioma_de_imparticion != other.Idioma_de_imparticion)
-			return false;
-		if (Nombre == null) {
-			if (other.Nombre != null)
-				return false;
-		} else if (!Nombre.equals(other.Nombre))
-			return false;
-		if (Ofertada != other.Ofertada)
-			return false;
 		if (Referencia == null) {
 			if (other.Referencia != null)
 				return false;

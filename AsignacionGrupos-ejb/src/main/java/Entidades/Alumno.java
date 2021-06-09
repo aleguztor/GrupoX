@@ -225,13 +225,12 @@ public class Alumno implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Apellido1 == null) ? 0 : Apellido1.hashCode());
 		result = prime * result + ((DNI == null) ? 0 : DNI.hashCode());
-		result = prime * result + ((Email_institucional == null) ? 0 : Email_institucional.hashCode());
 		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
-		result = prime * result + ((Nombre == null) ? 0 : Nombre.hashCode());
 		return result;
 	}
+
+	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -242,26 +241,15 @@ public class Alumno implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Alumno other = (Alumno) obj;
-		if (Apellido1 == null) {
-			if (other.Apellido1 != null)
-				return false;
-		} else if (!Apellido1.equals(other.Apellido1))
-			return false;
 		if (DNI == null) {
 			if (other.DNI != null)
 				return false;
 		} else if (!DNI.equals(other.DNI))
 			return false;
-		if (Email_institucional == null) {
-			if (other.Email_institucional != null)
+		if (Id == null) {
+			if (other.Id != null)
 				return false;
-		} else if (!Email_institucional.equals(other.Email_institucional))
-			return false;
-		
-		if (Nombre == null) {
-			if (other.Nombre != null)
-				return false;
-		} else if (!Nombre.equals(other.Nombre))
+		} else if (!Id.equals(other.Id))
 			return false;
 		return true;
 	}

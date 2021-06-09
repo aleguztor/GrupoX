@@ -25,6 +25,8 @@ public class Asignaturas_matriculasPK implements Serializable{
 		this.matricula = matricula;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

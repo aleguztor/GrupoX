@@ -78,13 +78,19 @@
 				<td><h:commandButton id="boton" type="submit" value="Enviar"
 						action="#{grupoBean.doInsertar}"  /></td>
 				<td></td>
-				<td>	<h:commandButton id="backButton" value="Back" action="Main.html" /> </td>
+				
 			</tr>
 			
 			
 			
 		</table>
 	</h:form>
+	
+<h:form>
+		<h:commandButton id="backButton" value="Back" action="Main.html" />
+	</h:form>
+	
+	
 	<h:form>
 		<p:dataTable var="a" value="#{grupoBean.grupos}">
 			<p:column id="idcodigo" headerText="Codigo" field="id"

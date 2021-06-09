@@ -475,7 +475,8 @@ import Exceptions.*;
 	}
 	@Override 
 	public List<Encuesta> getEncuestas(){
-		return em.createQuery("SELECT e FROM Encuesta e", Encuesta.class).getResultList();
+		TypedQuery<Encuesta> q = em.createQuery("SELECT e FROM Encuesta e", Encuesta.class);
+		return q.getResultList();
 	}
 	@Override
 	public void insertarEncuesta(Encuesta e){
@@ -581,5 +582,10 @@ import Exceptions.*;
 			throw new AsignaturaNoEncontradaException();
 		}
 		em.remove(em.merge(a));
+	}
+	@Override
+	public List<Centro> getCentros(){
+		TypedQuery<Centro> q = em.createQuery("SELECT c FROM Centro c", Centro.class);
+		return q.getResultList();
 	}
 }

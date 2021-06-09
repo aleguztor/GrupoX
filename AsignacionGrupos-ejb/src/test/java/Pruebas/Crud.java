@@ -30,9 +30,12 @@ import Entidades.Matricula;
 import Entidades.MatriculaPK;
 import Entidades.Optativa;
 import Entidades.Titulacion;
+import Exceptions.AlumnoDuplicadoException;
 import Exceptions.AlumnoNoEncontradoException;
 import Exceptions.EncuestaException;
+import Exceptions.ExpedienteDuplicadoException;
 import Exceptions.ExpedienteNoEncontradoException;
+import Exceptions.MatriculaDuplicadaException;
 import Exceptions.MatriculaNoEncontradaException;
 import Exceptions.TitulacionException;
 
@@ -621,9 +624,26 @@ public class Crud {
 		Matricula m1 = new Matricula(pk,e1,'I',d);
 		List<Matricula> matriculas = new LinkedList<>();
 		matriculas.add(m1);
+		e1.setMatricula(matriculas);
+		m1.setExpedientes_num_expedientes(e1);
+	
+		try {
+			crud.insertarAlumno(a1);
+			crud.insertarExpediente(e1);
+			crud.insertarMatricula(m1);
+		} catch (AlumnoDuplicadoException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		} catch (ExpedienteDuplicadoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MatriculaDuplicadaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		try {
-			List<Matricula> buscar= new LinkedList<>(crud.buscarMatriculasPorExpediente(e1.getNum_Expediente()));
+			List<Matricula> buscar= crud.buscarMatriculasPorExpediente(e1.getNum_Expediente());
 			LOG.severe(matriculas.toString());
 			assertEquals(buscar,matriculas);
 		}catch(MatriculaNoEncontradaException e) {

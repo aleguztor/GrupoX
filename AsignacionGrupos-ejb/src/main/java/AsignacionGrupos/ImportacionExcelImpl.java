@@ -296,4 +296,176 @@ public class ImportacionExcelImpl implements ImportacionExcel {
 		}
 	}
 
+	@Override
+	public void ImportarAsignaturas(String ruta) throws ExcelNoEncontradoException {
+
+		LOG.info("EMPEZAMOS LA IMPORTACION DEL ARCHIVO");
+		try {
+
+			FileInputStream inputStream = new FileInputStream(ruta);
+			Workbook workbook = new XSSFWorkbook(inputStream);
+			boolean acaba = false;
+			int numeroDePaginas = workbook.getNumberOfSheets();
+			int i=0;
+			LOG.severe("WHILE");
+			while(i<numeroDePaginas) {
+				Sheet sheet = workbook.getSheetAt(i); // miramos la hoja que vamos a usar
+				Iterator<Row> rowIterator = sheet.iterator(); // iterador de fila
+				Row next = rowIterator.next();
+				Iterator<Cell> cell = next.cellIterator();
+				Titulacion t = new Titulacion();
+				String titulacionNombre = sheet.getSheetName();
+				LOG.info("tenemos el nombre de la titulacion " + titulacionNombre);
+				Integer codigo;
+				boolean tenemosCodigo = false;
+				List<Asignatura> asignaturas = new LinkedList<Asignatura>();
+				switch(titulacionNombre) {
+				case "GII":
+					titulacionNombre = "Grado en Ingeniería Informática";
+					break;
+				case "GISw":
+					titulacionNombre = "Grado en Ingeniería del Software";
+					break;
+				case "GICom":
+					titulacionNombre = "Grado en Ingenieria de Computadores";
+					break;
+				case "Grado Ing. Salud":
+					titulacionNombre = "Grado en Ingeniería de la Salud";
+					break;
+				case "GII+GIM":
+					titulacionNombre= "Doble Grado en Ingeniería Informática y Matemáticas";
+					break;
+				}
+				rowIterator.next();
+				while (rowIterator.hasNext() &&!acaba) {
+					Row nextRow = rowIterator.next();
+					Asignatura as = new Asignatura();
+					Iterator<Cell> cellIterator = nextRow.cellIterator(); // para movernos por la fial
+					while (cellIterator.hasNext() && !acaba) {
+						Cell nextCell = cellIterator.next();
+
+						int columnIndex = nextCell.getColumnIndex();
+
+						switch (columnIndex) {
+						case 0: // titulacion
+							if(!tenemosCodigo) {
+								int j =1;
+								codigo =  (int) nextCell.getNumericCellValue();
+								t.setCodigo(codigo);
+								t.setNombre(titulacionNombre);
+								t.setCreditos(240);
+								em.persist(em.merge(t));
+								tenemosCodigo=true;
+								
+							}
+							LOG.info("titulacion ");
+							break;
+						case 1: // ofertada
+							String ofertada = nextCell.getStringCellValue();
+							if(ofertada==""){
+								LOG.info("faltan datos");
+								acaba = true;
+								continue;
+							}
+							boolean of=false;
+							if(ofertada=="Sí") of= true;
+							as.setOfertada(of);
+							LOG.info("ofertada");
+							break;
+						case 2: // codigo
+							Integer cod = (int)nextCell.getNumericCellValue();
+							
+							as.setCodigo(cod);
+							LOG.info("codigo");
+							break;
+						case 3: // referencia
+							String ref = Double.toString(nextCell.getNumericCellValue());
+							if(ref==""){
+								LOG.info("faltan datos");
+								acaba = true;
+								continue;
+							}
+							as.setReferencia(ref);
+							LOG.info("referencia");
+							break;
+						case 4:// asignatura
+							String nombre = nextCell.getStringCellValue();
+							if(nombre== "") {
+								LOG.info("faltan datos");
+								acaba = true;
+								continue;
+							}
+							as.setNombre(nombre);
+							LOG.info("nombre");
+
+							break;
+						case 5: // curso
+							String curso =Double.toString(nextCell.getNumericCellValue());
+							if(curso == null) {
+								LOG.info("faltan datos");
+								acaba = true;
+								continue;
+							}
+							as.setCurso(curso);
+							LOG.info("curso");
+							break;
+						case 6: // credito teoria
+							
+							LOG.info("creditos teoria");
+							break;
+						case 7: // credito practica
+							
+							break;
+						case 8:
+							Integer creditos = (int) nextCell.getNumericCellValue();
+							as.setCreditos(creditos);
+							break;
+						case 9: // duracion
+							String duracion = nextCell.getStringCellValue();
+							int dur;
+							if(duracion == ""){
+								LOG.info("faltan datos");
+								acaba = true;
+								continue;
+							}
+							if(duracion =="1º Semestre") {
+								dur =1;
+							}else {
+								dur=2;
+							}
+							as.setDuracion(dur);
+							LOG.info("duracion");
+							break;
+
+						case 10: // plazas
+							break;
+						case 11: // otro idioma
+							String idioma = nextCell.getStringCellValue();
+							if(idioma == "") {
+								as.setIdioma_de_imparticion(false);
+							}
+							as.setIdioma_de_imparticion(true);
+							LOG.info("idioma");
+							asignaturas.add(as);
+							em.persist(em.merge(as));
+							break;
+						
+						}
+
+					}
+					
+					
+
+				}
+				
+				Titulacion ti = em.merge(t);
+				ti.setAsignaturas(asignaturas);
+			}
+			workbook.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 }

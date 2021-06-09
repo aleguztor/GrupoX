@@ -31,6 +31,24 @@
 			</tr>
 		</table>
 	</h:form>
+	
+	<h:form id="import_form_asignaturas" enctype="multipart/form-data">
+	
+	
+		<table>
+			
+			<tr>
+				<td>Documento Asignaturas</td>
+				<td><h:inputFile id="fileAsignaturas" value="#{importarControllador.uploadedFile}"/></td>
+			</tr>
+			<tr>
+				<td><h:commandButton id="boton" type="submit" value="Subir"
+					action="#{importarControllador.importarAlumnos}" ajax="false" /> 
+					</td>
+				<td> </td>
+			</tr>
+		</table>
+	</h:form>
 	<h:form>
 		<h:commandButton id="backButton" value="Back" action="Main.html" />
 	</h:form>

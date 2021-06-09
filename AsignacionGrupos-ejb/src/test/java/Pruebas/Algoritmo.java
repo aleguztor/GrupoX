@@ -33,6 +33,7 @@ public class Algoritmo {
 	@Test
 	public void testAlgoritmo() {
 		List<Grupo> g = alg.buscarGrupos();
+		
 		for(Grupo a : g) {
 			LOG.info(a.toString()+"\n");
 		}

@@ -22,7 +22,7 @@
 			<p:column id="eminst" headerText="Email institucional"
 				field="email_institucional" sortable="true" filterable="true" />
 			<p:column id="alborrar">
-				<h:commandButton id="elimbtn" action="#{listado.borrarAlumno(a.id)}" value="Borrar"></h:commandButton>
+				<h:commandButton id="elimbtn" action="#{listado.borrarAlumno(a.id)}" outcome="listadoAlumnos.xhtml" value="Borrar"></h:commandButton>
 			</p:column>	
 			<p:column id="expedient" headerText="Expedientes">
 

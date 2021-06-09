@@ -114,4 +114,8 @@ public interface CrudEJBLocal {
 	public List<Titulacion> obtenerTitulaciones();
 	public Titulacion obtenerTitulacionPorId(Integer codigo) throws TitulacionException;
 	public List<Grupo> obtenerGrupos();
+	List<Expediente> getExpedientesDeAlumno(Long id);
+	Alumno buscarAlumnoPorId(Long id) throws AlumnoNoEncontradoException;
+	void eliminarAlumno(Long id) throws AlumnoNoEncontradoException;
+	Expediente existeExpedientePorPK(Long num) throws ExpedienteNoEncontradoException;
 }

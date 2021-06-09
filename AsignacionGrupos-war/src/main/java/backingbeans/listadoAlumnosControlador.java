@@ -54,14 +54,17 @@ public class listadoAlumnosControlador implements Serializable {
 		this.alumnos = alumnos;
 	}
 	
-	public String borrarAlumno(String dni) {
+	public String borrarAlumno(Long id) {
 		try {
-			LOG.severe(crud.obtenerExpedientesAlumno(id).toString());
-			Expediente e = crud.obtenerExpedientesAlumno(id).get(0);
-			Matricula m = crud.buscarMatriculasPorExpediente(e.getNum_Expediente()).get(0);
-			crud.eliminarMatricula(m);
-			crud.eliminarExpediente(e);
-			crud.eliminarAlumnoPorDNI(dni);
+			List<Expediente> e = crud.getExpedientesDeAlumno(id);
+			for(Expediente exp : e) {
+				List<Matricula> m = crud.buscarMatriculasPorExpediente(exp.getNum_Expediente());
+				for(Matricula mat : m) {
+					crud.eliminarMatricula(mat);
+				}
+				crud.eliminarExpediente(exp);
+			}
+			crud.eliminarAlumno(id);
 		} catch (AlumnoNoEncontradoException e) {
 			e.printStackTrace();
 		} catch (MatriculaNoEncontradaException e1) {

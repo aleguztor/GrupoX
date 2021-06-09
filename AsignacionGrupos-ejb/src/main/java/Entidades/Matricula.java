@@ -106,8 +106,6 @@ public class Matricula implements Serializable {
 		this.expedientes_num_expedientes = expedientes_num_expedientes;
 	}
 
-	
-	
 	public List<Asignaturas_matriculas> getAm() {
 		return am;
 	}

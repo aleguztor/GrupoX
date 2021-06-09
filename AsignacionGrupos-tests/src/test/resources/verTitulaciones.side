@@ -1,0 +1,124 @@
+{
+  "id": "4772a7f9-aa37-4ff5-8f59-012b2ab2ab6d",
+  "version": "2.0",
+  "name": "verTitulaciones",
+  "url": "http://0.0.0.0:8080/AsignacionGrupos-war/faces/Login.xhtml",
+  "tests": [{
+    "id": "94c357a0-3dc6-450a-b5d4-3534bdac7a50",
+    "name": "verTitulacion",
+    "commands": [{
+      "id": "1e9f14fd-b162-4a7e-bd39-6d6ea8d6508c",
+      "comment": "",
+      "command": "open",
+      "target": "http://0.0.0.0:8080/AsignacionGrupos-war/faces/Login.xhtml",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2440c03f-53a5-4f8f-99db-dd07894f47dd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "911x947",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ff55f55f-e8ab-4c21-a3ab-fb96415e9af2",
+      "comment": "",
+      "command": "click",
+      "target": "id=myform:username",
+      "targets": [
+        ["id=myform:username", "id"],
+        ["name=myform:username", "name"],
+        ["css=#myform\\3Ausername", "css:finder"],
+        ["xpath=//input[@id='myform:username']", "xpath:attributes"],
+        ["xpath=//form[@id='myform']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "beee252a-fb48-4904-9d38-c96c0bca68f8",
+      "comment": "",
+      "command": "type",
+      "target": "id=myform:username",
+      "targets": [
+        ["id=myform:username", "id"],
+        ["name=myform:username", "name"],
+        ["css=#myform\\3Ausername", "css:finder"],
+        ["xpath=//input[@id='myform:username']", "xpath:attributes"],
+        ["xpath=//form[@id='myform']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "secretaria"
+    }, {
+      "id": "65197b1e-3e55-4904-bcb7-8746aaa99e27",
+      "comment": "",
+      "command": "type",
+      "target": "id=myform:login",
+      "targets": [
+        ["id=myform:login", "id"],
+        ["name=myform:login", "name"],
+        ["css=#myform\\3Alogin", "css:finder"],
+        ["xpath=//input[@id='myform:login']", "xpath:attributes"],
+        ["xpath=//form[@id='myform']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "secretaria"
+    }, {
+      "id": "d456f3e7-9f78-4a21-bc42-7afd97b8f821",
+      "comment": "",
+      "command": "click",
+      "target": "id=myform:iniciarses",
+      "targets": [
+        ["id=myform:iniciarses", "id"],
+        ["name=myform:iniciarses", "name"],
+        ["css=#myform\\3Ainiciarses", "css:finder"],
+        ["xpath=//input[@id='myform:iniciarses']", "xpath:attributes"],
+        ["xpath=//form[@id='myform']/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fbfdcd07-f57e-4c8c-aec0-0a67a8593437",
+      "comment": "",
+      "command": "click",
+      "target": "css=.u-icon-8 > .u-svg-link",
+      "targets": [
+        ["css=.u-icon-8 > .u-svg-link", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "d5c9f26f-13e9-44e9-9b83-a8a9b9c90b2e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ui-widget-content:nth-child(1) > td:nth-child(1)",
+      "targets": [
+        ["css=.ui-widget-content:nth-child(1) > td:nth-child(1)", "css:finder"],
+        ["xpath=//tbody[@id='j_idt5:j_idt6_data']/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'1041')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "357b4dc9-395c-493d-889e-3409ae661f88",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ui-widget-content:nth-child(1) > td:nth-child(1)",
+      "targets": [
+        ["css=.ui-widget-content:nth-child(1) > td:nth-child(1)", "css:finder"],
+        ["xpath=//tbody[@id='j_idt5:j_idt6_data']/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'1041')]", "xpath:innerText"]
+      ],
+      "value": "1041"
+    }]
+  }],
+  "suites": [{
+    "id": "4c045548-8039-46b5-ae78-20d63a892743",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": [],
+  "plugins": []
+}

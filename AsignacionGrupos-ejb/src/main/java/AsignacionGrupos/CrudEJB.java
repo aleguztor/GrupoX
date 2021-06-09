@@ -188,7 +188,6 @@ import Exceptions.*;
 	@Override
 	public void insertarMatricula(Matricula m) throws MatriculaDuplicadaException {
 		em.persist(em.merge(m));
-		
 	}
 
 	@Override

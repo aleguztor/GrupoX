@@ -87,11 +87,39 @@
 						value="#{alumnoBean.alumno.CP_notificacion}" styleClass="formulario" /></td>
 			</tr>
 
+			<tr id="row16">
+				<td id="titulacion-label"><h:outputLabel id="textTitulaccion" value="Titulacion" /></td>
+			</tr>
+
+			<tr id="row17">
+				<td id="titulacion-rellenar"><h:inputText id="titualcionin" Convert="#{Integer}"
+						value="#{alumnoBean.idtitulacion}" required="true" styleClass="formulario"/></td>
+
+			</tr>
+
+			<tr id="row18">
+				<td id="estado-label"><h:outputLabel id="textestado" value="Estado expediente" /></td>
+			</tr>
+
+			<tr id="row19">
+				<td id="estado-rellenar"><h:inputText id="estadoin"
+						value="#{alumnoBean.expediente.activo}" styleClass="formulario" /></td>
+			</tr>
+
+			<tr id="row20">
+				<td id="nota-label"><h:outputLabel id="notatext" value="Nota Media Provisional" /></td>
+			</tr>
+
+			<tr id="row21">
+				<td id="nota-rellenar"><h:inputText id="notain" value="#{alumnoBean.expediente.nota_Media_Provisional}" styleClass="formulario"/></td>
+			</tr>
+			
 			<tr id="row15">
 				<td id="boton"><h:commandButton id="submit" type="submit" value="Insertar"
 						action="#{alumnoBean.doCrearAlumno}"  outcome="listadoAlumno" /></td>
 			</tr>
 		</table>
+		
 
 	</h:form>
 <h:form>

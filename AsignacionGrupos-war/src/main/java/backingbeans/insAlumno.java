@@ -25,7 +25,7 @@ import Exceptions.*;
 @RequestScoped
 public class insAlumno {
 
-	
+	private Integer idtitulacion;
 	private Alumno alumno = new Alumno();
 	private Expediente expediente = new Expediente();
 	private Matricula matricula = new Matricula();
@@ -57,11 +57,22 @@ public class insAlumno {
 		this.matricula = matricula;
 	}
 	
+	
+	public Integer getIdtitulacion() {
+		return idtitulacion;
+	}
+
+	public void setIdtitulacion(Integer idtitulacion) {
+		this.idtitulacion = idtitulacion;
+	}
+
 	public String doCrearAlumno() throws TitulacionException, MatriculaNoEncontradaException, ExpedienteNoEncontradoException, ParseException {
 		try {
 			
 			crud.insertarAlumno(alumno);
 			try {
+				expediente.setTitulacion(crud.obtenerTitulacionPorId(idtitulacion));
+				expediente.setAlumno(alumno);
 				crud.insertarExpediente(expediente);
 			} catch (ExpedienteDuplicadoException e) {
 				// TODO Auto-generated catch block
@@ -70,7 +81,7 @@ public class insAlumno {
 		} catch (AlumnoDuplicadoException e) {
 				LOG.info("El alumno ya esta en Base de datos incluido");
 		}
-		return "index";
+		return "Main.html";
 	}
 	
 	public List<Alumno> listaAlumnos(){

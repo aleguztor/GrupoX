@@ -187,13 +187,7 @@ import Exceptions.*;
 
 	@Override
 	public void insertarMatricula(Matricula m) throws MatriculaDuplicadaException {
-<<<<<<< HEAD
-		
-			em.persist(m);
-=======
 		em.persist(em.merge(m));
->>>>>>> branch 'master' of https://github.com/aleguztor/GrupoX.git
-		
 	}
 
 	@Override

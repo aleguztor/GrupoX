@@ -764,6 +764,33 @@ public class Crud {
 		
 	}
 	
+	@Test
+	public void testExisteExpedientePorPK() {
+		
+	}
 	
+	@Test
+	public void testObtenerEncuestasPorExpediente() {
+		
+	}
+	
+	@Test
+	public void testEliminarEncuestasPorExpediente() {
+		
+	}
+	
+	@Test
+	public void testEliminarGrupoPorId() {
+		
+	}
+	
+	@Test
+	public void testGetAsignaturas() {
+		
+	}
+	@Test
+	public void testEliminarAsignaturasPorReferencia() {
+		
+	}
 	
 }

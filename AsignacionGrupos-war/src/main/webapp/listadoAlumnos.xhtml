@@ -39,6 +39,11 @@
 					<f:param name="dni" value="#{a.DNI}" />
 				</h:commandButton>
 			</p:column>
+			<p:column id="gruposBoton" headerText="Grupos">
+				<h:commandButton id="pasoIdAlumno" action="#{grupos.outcome}"  includeViewParams="true" value="Ver">
+					<f:param name="id" value="#{a.id}" />
+				</h:commandButton>
+			</p:column>
 		</p:dataTable>
 	</h:form>
 	<h:form>

@@ -466,6 +466,7 @@ public class ImportacionExcelImpl implements ImportacionExcel {
 							as.setIdioma_de_imparticion(true);
 							LOG.info("idioma");
 							asignaturas.add(as);
+							as.setTitulacion(t);
 							em.persist(em.merge(as));
 							break;
 						

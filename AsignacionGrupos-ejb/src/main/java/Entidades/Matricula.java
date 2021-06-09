@@ -119,8 +119,7 @@ public class Matricula implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((curso_academico == null) ? 0 : curso_academico.hashCode());
-		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
-		result = prime * result + ((fecha_matricula == null) ? 0 : fecha_matricula.hashCode());
+		
 		return result;
 	}
 
@@ -138,16 +137,7 @@ public class Matricula implements Serializable {
 				return false;
 		} else if (!curso_academico.equals(other.curso_academico))
 			return false;
-		if (estado == null) {
-			if (other.estado != null)
-				return false;
-		} else if (!estado.equals(other.estado))
-			return false;
-		if (fecha_matricula == null) {
-			if (other.fecha_matricula != null)
-				return false;
-		} else if (!fecha_matricula.equals(other.fecha_matricula))
-			return false;
+		
 		return true;
 	}
 

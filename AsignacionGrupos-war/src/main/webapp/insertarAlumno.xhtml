@@ -101,9 +101,14 @@
 				<td id="estado-label"><h:outputLabel id="textestado" value="Estado expediente" /></td>
 			</tr>
 
+			
 			<tr id="row19">
-				<td id="estado-rellenar"><h:inputText id="estadoin"
-						value="#{alumnoBean.expediente.activo}" styleClass="formulario" /></td>
+				
+				<td><h:selectOneMenu id="selecttrue"
+						value="#{alumnoBean.expediente.activo}">
+						<f:selectItem itemLabel="Si" itemValue="true" />
+						<f:selectItem itemLabel="No" itemValue="false" />
+					</h:selectOneMenu></td>
 			</tr>
 
 			<tr id="row20">

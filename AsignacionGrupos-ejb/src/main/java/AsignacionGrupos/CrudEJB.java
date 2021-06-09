@@ -553,5 +553,25 @@ import Exceptions.*;
 			}
 		}
 	}
-
+	@Override
+	public void eliminarGrupoPorId(Long id) throws GrupoNoEncontradoException{
+		Grupo g = em.find(Grupo.class, id);
+		if(g == null) {
+			throw new GrupoNoEncontradoException();
+		}
+		em.remove(em.merge(g));
+	}
+	@Override
+	public List<Asignatura> getAsignaturas(){
+		TypedQuery<Asignatura> q = em.createQuery("SELECT a FROM Asignatura a", Asignatura.class);
+		return q.getResultList();
+	}
+	@Override
+	public void eliminarAsignaturaPorReferencia(String ref) throws AsignaturaNoEncontradaException{
+		Asignatura a = em.find(Asignatura.class, ref);
+		if(a == null) {
+			throw new AsignaturaNoEncontradaException();
+		}
+		em.remove(em.merge(a));
+	}
 }

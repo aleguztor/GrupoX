@@ -30,6 +30,7 @@ import Exceptions.EncuestaException;
 import Exceptions.ExpedienteDuplicadoException;
 import Exceptions.ExpedienteNoEncontradoException;
 import Exceptions.GrupoDuplicadoException;
+import Exceptions.GrupoException;
 import Exceptions.GrupoNoEncontradoException;
 import Exceptions.MatriculaDuplicadaException;
 import Exceptions.MatriculaNoEncontradaException;
@@ -120,4 +121,7 @@ public interface CrudEJBLocal {
 	public Expediente existeExpedientePorPK(Long num) throws ExpedienteNoEncontradoException;
 	public List<Encuesta> obtenerEncuestasPorExpediente(Long ne) throws ExpedienteNoEncontradoException;
 	public void eliminarEncuestaPorExpediente(Long exp) throws EncuestaException;
+	public void eliminarGrupoPorId(Long id) throws GrupoNoEncontradoException;
+	public List<Asignatura> getAsignaturas();
+	public void eliminarAsignaturaPorReferencia(String ref) throws AsignaturaNoEncontradaException;
 }

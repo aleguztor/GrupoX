@@ -35,9 +35,6 @@ public class Grupo implements Serializable {
 	private Long PlazasNuevoIngreso = (long)0;
 	private Long PlazasRepetidores = (long)0;
 	private boolean idiomaIngles;
-	
-
-	
 	@OneToMany(mappedBy = "grupo")
 	private List<Grupos_Por_Asignatura> gpa;
 	@ManyToOne

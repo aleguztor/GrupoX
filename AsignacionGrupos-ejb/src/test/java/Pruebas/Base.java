@@ -223,13 +223,16 @@ public class Base {
 		p.add(en5);
 		p.add(en6);
 		
-		
-		
+		EncuestaCambioHorario ech = new EncuestaCambioHorario(d, "2A","12345678a");
+		List<EncuestaCambioHorario> echs = new LinkedList<>();
+		echs.add(ech);
+		a1.setEncuestacambioH(echs);
 		em.getTransaction().begin();
-		
+		em.persist(ech);
 		em.persist(t);
 		em.persist(as);
 		em.persist(as1);
+		
 		Grupos_Por_AsignaturaPersist(gpa);
 		AlumnosPersist(alumnos);
 		MatriculasPersist(mats);

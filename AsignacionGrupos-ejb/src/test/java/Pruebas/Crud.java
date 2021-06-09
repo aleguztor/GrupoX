@@ -23,8 +23,10 @@ import Entidades.Alumno;
 import Entidades.Asignatura;
 import Entidades.Centro;
 import Entidades.Clase;
+import Entidades.Encuesta;
 import Entidades.EncuestaCambioHorario;
 import Entidades.Expediente;
+import Entidades.Expediente_Encuesta_PK;
 import Entidades.Grupo;
 import Entidades.Matricula;
 import Entidades.MatriculaPK;
@@ -572,9 +574,44 @@ public class Crud {
 	}
 	
 //	@Requisitos({"RF2"})
-	@Ignore
+	@Test
 	public void testInsertarEncuesta() {
+			Date d = new Date(System.currentTimeMillis());
+			Alumno a = new Alumno("Antono","Bermudez","555333888x","antonio@uma.es");
+			Expediente e = new Expediente((long) 555555,true,5.0);
+			Expediente_Encuesta_PK pk = new Expediente_Encuesta_PK((long) 555555,d);
+			Encuesta en = new Encuesta(pk,e,"Manyana");
+			List<Encuesta> ens = new LinkedList<>();
+			ens.add(en);
+			e.setEncuesta(ens);
+			List<Expediente> expedientes = new LinkedList<>();
+			expedientes.add(e);
+			a.setExpedientes(expedientes);
+	
+			try {
+				crud.insertarAlumno(a);
+				crud.insertarExpediente(e);
+				crud.insertarEncuesta(en);
+			} catch (AlumnoDuplicadoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (EncuestaException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ExpedienteDuplicadoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			Encuesta encuesta;
+			try {
+				encuesta = crud.obtenerEncuestasPorExpediente((long) 555555).get(0);
+				assertEquals(en, encuesta);
+			} catch (ExpedienteNoEncontradoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		
+			
 	}
 	
 //	@Requisitos({"RF2"})
@@ -680,4 +717,53 @@ public class Crud {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	@Test
+	public void testExisteEncuestaCambiaHorario() throws EncuestaException
+	{
+		Date d = new Date(System.currentTimeMillis());
+		EncuestaCambioHorario ech = new EncuestaCambioHorario(d, "2A","555333888x");
+		List<EncuestaCambioHorario> echs = new LinkedList<>();
+		echs.add(ech);
+		Alumno a = new Alumno("Antono","Bermudez","555333888x","antonio@uma.es");
+		a.setEncuestacambioH(echs);
+		try {
+			crud.insertarAlumno(a);
+			try {
+				crud.insertarEncuestaCambioHorario(ech);
+			} catch (EncuestaException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (AlumnoDuplicadoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		assertNotNull(crud.existeEncuestaCambioHorario(ech));
+	}
+	
+	@Test
+	public void testObtenerGrupos() {
+		assertNotNull(crud.obtenerGrupos());
+	}
+	
+	
+	@Test
+	public void testExpedientesDeAlumno() throws AlumnoDuplicadoException, ExpedienteDuplicadoException {
+		Alumno a = new Alumno("Pepe","Aragon","0000000a","pepe@uma.es");
+		Expediente e1 = new Expediente((long)1314444,true,5.0);
+		List<Expediente> exp = new LinkedList<>();
+		exp.add(e1);
+		a.setExpedientes(exp);
+		crud.insertarAlumno(a);
+		crud.insertarExpediente(e1);
+		assertNotNull(crud.getExpedientesDeAlumno(a.getId()));
+		
+	}
+	
+	
+	
 }

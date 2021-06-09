@@ -54,6 +54,14 @@ public class Alumno implements Serializable{
 	 * @JsonbTransient private String cadenaValidacion;
 	 */
 
+	public List<EncuestaCambioHorario> getEncuestacambioH() {
+		return encuestacambioH;
+	}
+
+	public void setEncuestacambioH(List<EncuestaCambioHorario> encuestacambioH) {
+		this.encuestacambioH = encuestacambioH;
+	}
+
 	public Alumno() {}
 	
 	public Alumno(String n, String ap1, String dni, String ei) {

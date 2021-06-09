@@ -301,10 +301,10 @@ public class ImportacionExcelImpl implements ImportacionExcel {
 
 		LOG.info("EMPEZAMOS LA IMPORTACION DEL ARCHIVO");
 		try {
-
+		
 			FileInputStream inputStream = new FileInputStream(ruta);
 			Workbook workbook = new XSSFWorkbook(inputStream);
-			boolean acaba = false;
+			
 			int numeroDePaginas = workbook.getNumberOfSheets();
 			int i=0;
 			LOG.severe("WHILE");
@@ -316,7 +316,8 @@ public class ImportacionExcelImpl implements ImportacionExcel {
 				Titulacion t = new Titulacion();
 				String titulacionNombre = sheet.getSheetName();
 				LOG.info("tenemos el nombre de la titulacion " + titulacionNombre);
-				Integer codigo;
+				Integer codigo = Integer.MIN_VALUE;
+				boolean acaba = false;
 				boolean tenemosCodigo = false;
 				List<Asignatura> asignaturas = new LinkedList<Asignatura>();
 				switch(titulacionNombre) {
@@ -336,6 +337,7 @@ public class ImportacionExcelImpl implements ImportacionExcel {
 					titulacionNombre= "Doble Grado en Ingeniería Informática y Matemáticas";
 					break;
 				}
+				LOG.info("CAMBIAMOS EL NOMBRE");
 				rowIterator.next();
 				while (rowIterator.hasNext() &&!acaba) {
 					Row nextRow = rowIterator.next();
@@ -348,27 +350,34 @@ public class ImportacionExcelImpl implements ImportacionExcel {
 
 						switch (columnIndex) {
 						case 0: // titulacion
+							int j =1;
 							if(!tenemosCodigo) {
-								int j =1;
+								LOG.info("SACAMOS EL CODIGO DE TITULACION");
 								codigo =  (int) nextCell.getNumericCellValue();
 								t.setCodigo(codigo);
 								t.setNombre(titulacionNombre);
 								t.setCreditos(240);
 								em.persist(em.merge(t));
+								LOG.info("Titulacion insertada");
 								tenemosCodigo=true;
-								
+								j++;
 							}
+							if((nextCell.getNumericCellValue() == 0)) acaba= true;
 							LOG.info("titulacion ");
 							break;
 						case 1: // ofertada
 							String ofertada = nextCell.getStringCellValue();
-							if(ofertada==""){
+							if(ofertada.equals("")){
 								LOG.info("faltan datos");
 								acaba = true;
 								continue;
 							}
-							boolean of=false;
-							if(ofertada=="Sí") of= true;
+							boolean of;
+							if(ofertada.equals("Sí")) {
+								of= true;
+							}else {
+								of=false;
+							}
 							as.setOfertada(of);
 							LOG.info("ofertada");
 							break;
@@ -379,7 +388,7 @@ public class ImportacionExcelImpl implements ImportacionExcel {
 							LOG.info("codigo");
 							break;
 						case 3: // referencia
-							String ref = Double.toString(nextCell.getNumericCellValue());
+							String ref = Double.toString((int)nextCell.getNumericCellValue());
 							if(ref==""){
 								LOG.info("faltan datos");
 								acaba = true;
@@ -417,8 +426,18 @@ public class ImportacionExcelImpl implements ImportacionExcel {
 							
 							break;
 						case 8:
-							Integer creditos = (int) nextCell.getNumericCellValue();
-							as.setCreditos(creditos);
+							Integer creditos;
+							if(codigo == 1056) { //ingenieria de la salud si 4.5 = 5
+								String cr = nextCell.getStringCellValue();
+								if(cr == "4.5")
+									creditos = 5;
+								
+							}else {
+								creditos = (int) nextCell.getNumericCellValue();
+								as.setCreditos(creditos);
+							}
+							
+							LOG.info("creditos");
 							break;
 						case 9: // duracion
 							String duracion = nextCell.getStringCellValue();
@@ -428,7 +447,7 @@ public class ImportacionExcelImpl implements ImportacionExcel {
 								acaba = true;
 								continue;
 							}
-							if(duracion =="1º Semestre") {
+							if(duracion =="1º Semestre" || duracion == "1º") {
 								dur =1;
 							}else {
 								dur=2;
@@ -457,9 +476,10 @@ public class ImportacionExcelImpl implements ImportacionExcel {
 					
 
 				}
-				
+				//update de titulacion
 				Titulacion ti = em.merge(t);
 				ti.setAsignaturas(asignaturas);
+				i++;
 			}
 			workbook.close();
 		} catch (Exception e) {

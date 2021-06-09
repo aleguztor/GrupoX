@@ -63,7 +63,7 @@ public class Base {
 		Encuesta en6 = new Encuesta(pk6,e6, "Manyana");
 		
 		
-		List<Encuesta> p = new LinkedList<>();
+		List<Encuesta> p = new LinkedList<Encuesta>();
 		p.add(en1);
 		e1.setEncuesta(p);
 		p.remove(en1);
@@ -84,7 +84,7 @@ public class Base {
 		Titulacion t =  new Titulacion(1041,"Grado en Ingenieria Informatica",240);
 		Asignatura as = new Asignatura("1624616","Desarrollo de maquinas virtuales",101,12,true,true);
 		Asignatura as1 = new Asignatura("14312432","Desarrollo de maquinas virtuales",202,12,true,false);
-		List<Asignatura> asig = new LinkedList<>();
+		List<Asignatura> asig = new LinkedList<Asignatura>();
 		asig.add(as);
 		asig.add(as1);
 		t.setAsignaturas(asig);
@@ -94,7 +94,7 @@ public class Base {
 		e4.setTitulacion(t);
 		e5.setTitulacion(t);
 		e6.setTitulacion(t);
-		List<Matricula> mats = new LinkedList<>();
+		List<Matricula> mats = new LinkedList<Matricula>();
 		MatriculaPK pk = new MatriculaPK("2", (long)214623);
 		Matricula m1 = new Matricula(pk,e1,'I',d);
 		mats.add(m1);
@@ -160,8 +160,8 @@ public class Base {
 		aa1.setPlazasRepetidores((long)20);
 		c1.setPlazasNuevoIngreso((long)30);
 		de1.setPlazasNuevoIngreso((long)30);
-		List<Expediente> exps = new LinkedList<>();
-		List<Grupo> gps = new LinkedList<>();
+		List<Expediente> exps = new LinkedList<Expediente>();
+		List<Grupo> gps = new LinkedList<Grupo>();
 		exps.add(e1);
 		a1.setExpedientes(exps);
 		exps.remove(0);
@@ -189,7 +189,7 @@ public class Base {
 		Grupos_Por_Asignatura g7 = new Grupos_Por_Asignatura("20/21",c1,as);
 		Grupos_Por_Asignatura g8 = new Grupos_Por_Asignatura("20/21",de1,as);
 		List<Grupos_Por_Asignatura> gpa = new LinkedList<Grupos_Por_Asignatura>();
-		List<Alumno> alumnos = new LinkedList<>();
+		List<Alumno> alumnos = new LinkedList<Alumno>();
 		mats.remove(0);
 		mats.add(m1);
 		mats.add(m2);

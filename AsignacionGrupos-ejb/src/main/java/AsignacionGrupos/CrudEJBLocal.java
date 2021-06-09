@@ -125,4 +125,5 @@ public interface CrudEJBLocal {
 	public List<Asignatura> getAsignaturas();
 	public void eliminarAsignaturaPorReferencia(String ref) throws AsignaturaNoEncontradaException;
 	public Grupo obtenerGrupoPorId(Long id) throws GrupoNoEncontradoException;
+	public List<Centro> getCentros();
 }

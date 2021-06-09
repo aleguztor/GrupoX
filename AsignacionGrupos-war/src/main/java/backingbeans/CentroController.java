@@ -1,5 +1,8 @@
 package backingbeans;
 
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,16 +18,22 @@ public class CentroController {
 	private String nombre;
 	private String direccion;
 	private String tlfConserjeria;
+	private List<Centro> centros;
 	
 
 	@Inject 
 	CrudEJBLocal crud;
 	
+	@PostConstruct
+	public void init() {
+		centros = crud.getCentros();
+	}
+	
 	
 	public String CrearCentro() throws CentroException {
 		Centro c= new Centro(id, nombre, direccion, tlfConserjeria);
 		crud.insertarCentro(c);
-		return "index.xhtml";
+		return "Main.html";
 	}
 	public Long getId() {
 		return id;
@@ -49,6 +58,16 @@ public class CentroController {
 	}
 	public void setTlfConserjeria(String tlfConserjeria) {
 		this.tlfConserjeria = tlfConserjeria;
+	}
+
+
+	public List<Centro> getCentros() {
+		return centros;
+	}
+
+
+	public void setCentros(List<Centro> centros) {
+		this.centros = centros;
 	}
 
 	

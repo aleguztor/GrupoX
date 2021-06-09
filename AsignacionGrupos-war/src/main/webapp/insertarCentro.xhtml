@@ -44,6 +44,18 @@
 		</table>
 	</h:form>
 	<h:form>
+		<p:dataTable var="c" value="#{centroController.centros}">
+			<p:column id="id" headerText="ID" field="ID" sortable="true"
+				filterable="true" />
+			<p:column id="nombre" headerText="Nombre" field="nombre" sortable="true" 
+				filterable="true" />
+			<p:column id="direccion" headerText="Direccion" field="direccion" sortable="true" 
+				filterable="true" />
+			<p:column id="tlfcons" headerText="Telefono Conserjeria" field="TLF_Conserjeria" sortable="true" 
+				filterable="true" />
+		</p:dataTable>
+	</h:form>
+	<h:form>
 		<h:commandButton id="backButton" value="Back" action="Main.html" />
 	</h:form>
 </div>

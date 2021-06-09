@@ -527,7 +527,7 @@ import Exceptions.*;
 	
 	@Override
 	public Grupo obtenerGrupoPorId(Long id){
-		TypedQuery<Grupo> q = em.createQuery("SELECT a FROM Grupo a where a.id ="+id, Grupo.class);
+		TypedQuery<Grupo> q = em.createQuery("SELECT a FROM Grupo a where a.Id ="+id, Grupo.class);
 		
 		return q.getSingleResult();
 	}

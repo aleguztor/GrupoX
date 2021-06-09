@@ -1,6 +1,5 @@
 package AsignacionGrupos;
 
-
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -10,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import com.sun.javadoc.ThrowsTag;
 
 import Entidades.Alumno;
 import Entidades.Asignatura;
@@ -28,21 +28,20 @@ import Exceptions.*;
  * Session Bean implementation class CrudEJB
  */
 @Stateless
-	public class CrudEJB implements CrudEJBLocal {
-	
-		
-    /**
-     * Default constructor. 
-     */
-	@PersistenceContext(unitName="AsignacionGrupos")
-	private EntityManager em;
-	
-	private static final Logger LOG=Logger.getLogger(CrudEJB.class.getCanonicalName());
+public class CrudEJB implements CrudEJBLocal {
 
-    @Override
+	/**
+	 * Default constructor.
+	 */
+	@PersistenceContext(unitName = "AsignacionGrupos")
+	private EntityManager em;
+
+	private static final Logger LOG = Logger.getLogger(CrudEJB.class.getCanonicalName());
+
+	@Override
 	public Expediente existeExpediente(Expediente e) throws ExpedienteNoEncontradoException {
 		Expediente ex = em.find(Expediente.class, e.getNum_Expediente());
-		if(ex==null) {
+		if (ex == null) {
 			return null;
 		}
 		return ex;
@@ -52,30 +51,29 @@ import Exceptions.*;
 	public void modificarExpediente(Expediente e) throws ExpedienteNoEncontradoException {
 		Expediente ex = existeExpediente(e);
 		em.merge(e);
-		
+
 	}
 
 	@Override
 	public void eliminarExpediente(Expediente e) throws ExpedienteNoEncontradoException {
 		Expediente ex = existeExpediente(e);
 		em.remove(ex);
-		
+
 	}
 
 	@Override
-	public void insertarExpediente(Expediente e) throws  ExpedienteDuplicadoException {
+	public void insertarExpediente(Expediente e) throws ExpedienteDuplicadoException {
 		em.persist(e);
 	}
 
 	@Override
-	public void insertarAlumno(Alumno a) throws  AlumnoDuplicadoException {
+	public void insertarAlumno(Alumno a) throws AlumnoDuplicadoException {
 		
-			
-				em.persist(a);
-			
+			em.persist(a);
 		
-			
+			LOG.info("El alumno existe");
 		
+
 	}
 
 	@Override
@@ -84,61 +82,60 @@ import Exceptions.*;
 		 * Alumno al = existeAlumno(a); if(al == null) { throw new
 		 * AlumnoNoEncontradoException(); }
 		 */
-		Alumno alumno= em.merge(a);
+		Alumno alumno = em.merge(a);
 		LOG.severe(a.toString());
-		if(b.getApellido1() != null && !b.getApellido1().equals("")) {
+		if (b.getApellido1() != null && !b.getApellido1().equals("")) {
 			alumno.setApellido1(b.getApellido1());
 		}
-		if(b.getApellido2() != null && !b.getApellido2().equals("") ) {
+		if (b.getApellido2() != null && !b.getApellido2().equals("")) {
 			alumno.setApellido2(b.getApellido2());
 		}
-		
-		if(b.getNombre() != null && !b.getNombre().equals("")) {
+
+		if (b.getNombre() != null && !b.getNombre().equals("")) {
 			alumno.setNombre(b.getNombre());
-			
+
 		}
-		
-		if(b.getEmail_personal() != null && !b.getEmail_personal().equals("")) {
+
+		if (b.getEmail_personal() != null && !b.getEmail_personal().equals("")) {
 			alumno.setEmail_personal(b.getEmail_personal());
 		}
-		
-		if(b.getLocalidad_notificacion() != null && !b.getLocalidad_notificacion().equals("")) {
+
+		if (b.getLocalidad_notificacion() != null && !b.getLocalidad_notificacion().equals("")) {
 			alumno.setLocalidad_notificacion(b.getLocalidad_notificacion());
 		}
-		if(b.getCP_notificacion() != null && !b.getCP_notificacion().equals("")) {
+		if (b.getCP_notificacion() != null && !b.getCP_notificacion().equals("")) {
 			alumno.setCP_notificacion(b.getCP_notificacion());
 		}
-		if(b.getProvincia_notificacion() != null && !b.getProvincia_notificacion().equals("")) {
+		if (b.getProvincia_notificacion() != null && !b.getProvincia_notificacion().equals("")) {
 			alumno.setProvincia_notificacion(b.getProvincia_notificacion());
 		}
-		if(b.getDireccion_notificacion() != null && !b.getDireccion_notificacion().equals("")) {
+		if (b.getDireccion_notificacion() != null && !b.getDireccion_notificacion().equals("")) {
 			alumno.setDireccion_notificacion(b.getDireccion_notificacion());
 		}
-		
-		if(b.getMovil() != null && !b.getMovil().equals("")) {
+
+		if (b.getMovil() != null && !b.getMovil().equals("")) {
 			alumno.setMovil(b.getMovil());
 		}
-		
-		if(b.getTelefono() != null && !b.getTelefono().equals("")) {
+
+		if (b.getTelefono() != null && !b.getTelefono().equals("")) {
 			alumno.setTelefono(b.getTelefono());
 		}
-		
-		
+
 	}
 
 	@Override
 	public Alumno existeAlumno(Alumno a) throws AlumnoNoEncontradoException {
 		Alumno al = buscarAlumnoPorDNI(a.getDNI());
-		if(al == null)
+		if (al == null)
 			return null;
 		else
 			return al;
 	}
 
 	@Override
-	public void insertarOptativa(Optativa o) throws  OptativaNoEncontradaExpception {
+	public void insertarOptativa(Optativa o) throws OptativaNoEncontradaExpception {
 		Optativa op = em.find(Optativa.class, o.getReferencia());
-		if(op == null)
+		if (op == null)
 			em.persist(o);
 		else
 			throw new OptativaNoEncontradaExpception();
@@ -147,27 +144,27 @@ import Exceptions.*;
 	@Override
 	public void modificarOptativa(Optativa o) throws OptativaNoEncontradaExpception {
 		Optativa op = existeOptativa(o);
-		if(op==null)
+		if (op == null)
 			throw new OptativaNoEncontradaExpception();
-		else 
+		else
 			em.merge(o);
-		
+
 	}
 
 	@Override
 	public void eliminarOptativa(Optativa o) throws OptativaNoEncontradaExpception {
 		Optativa op = existeOptativa(o);
-		if(op==null)
+		if (op == null)
 			throw new OptativaNoEncontradaExpception();
-		else 
+		else
 			em.remove(op);
-		
+
 	}
 
 	@Override
 	public Optativa existeOptativa(Optativa o) throws OptativaNoEncontradaExpception {
 		Optativa op = em.find(Optativa.class, o.getReferencia());
-		if(op == null)
+		if (op == null)
 			return null;
 		else
 			return op;
@@ -176,129 +173,126 @@ import Exceptions.*;
 	@Override
 	public void insertarMatricula(Matricula m) throws MatriculaDuplicadaException {
 		Matricula ma = em.find(Matricula.class, m.getNum_archivo());
-		if(ma == null)
+		if (ma == null)
 			em.persist(m);
-		else 
+		else
 			throw new MatriculaDuplicadaException();
-		
+
 	}
 
 	@Override
 	public void modificarMatricula(Matricula m) throws MatriculaNoEncontradaException {
 		Matricula ma = existeMatricula(m);
-		if(ma ==null)
+		if (ma == null)
 			throw new MatriculaNoEncontradaException();
-		else 
+		else
 			em.merge(m);
-		
+
 	}
 
 	@Override
 	public void eliminarMatricula(Matricula m) throws MatriculaNoEncontradaException {
 		Matricula ma = existeMatricula(m);
-		if(ma==null)
+		if (ma == null)
 			throw new MatriculaNoEncontradaException();
-		else 
+		else
 			em.remove(ma);
-		
+
 	}
 
 	@Override
 	public Matricula existeMatricula(Matricula m) throws MatriculaNoEncontradaException {
 		Matricula ma = em.find(Matricula.class, m.getNum_archivo());
-		if(ma == null)
+		if (ma == null)
 			return null;
-		else 
+		else
 			return ma;
 	}
-
-	
 
 	@Override
 	public void insertarGrupo(Grupo g) throws GrupoDuplicadoException {
 		Grupo gr = em.find(Grupo.class, g.getId());
-		if(gr == null) {
+		if (gr == null) {
 			em.persist(g);
-		}
-		else 
+		} else
 			throw new GrupoDuplicadoException();
-		
+
 	}
 
 	@Override
 	public void modificarGrupo(Grupo g) throws GrupoNoEncontradoException {
 		Grupo gr = existeGrupo(g);
-		if(gr ==null)
+		if (gr == null)
 			throw new GrupoNoEncontradoException();
-		else 
+		else
 			em.merge(g);
-		
+
 	}
 
 	@Override
 	public void eliminarGrupo(Grupo g) throws GrupoNoEncontradoException {
 		Grupo gr = existeGrupo(g);
-		if(gr==null)
+		if (gr == null)
 			throw new GrupoNoEncontradoException();
-		else 
+		else
 			em.remove(gr);
-		
+
 	}
 
 	@Override
 	public Grupo existeGrupo(Grupo g) throws GrupoNoEncontradoException {
-		Grupo gr = em.find(Grupo.class,g.getId());
-		if(gr == null)
+		Grupo gr = em.find(Grupo.class, g.getId());
+		if (gr == null)
 			return null;
-		else 
+		else
 			return gr;
 	}
 
 	@Override
 	public void insertarTitulacion(Titulacion t) throws TitulacionException {
-		Titulacion ti = em.find(Titulacion.class,t.getCodigo());
-		if(ti == null)
+		Titulacion ti = em.find(Titulacion.class, t.getCodigo());
+		if (ti == null)
 			em.persist(t);
-		else 
+		else
 			throw new TitulacionException();
-		
+
 	}
 
 	@Override
 	public void modificarTitulacion(Titulacion t, Titulacion nueva) throws TitulacionException {
-				
+
 		Titulacion ti = existeTitulacion(t);
-		if(ti==null) {
+		if (ti == null) {
 			throw new TitulacionException();
-		}else { 
-			Titulacion cambiar=em.merge(ti);
-			if(!nueva.getCodigo().equals("")) {
+		} else {
+			Titulacion cambiar = em.merge(ti);
+			if (!nueva.getCodigo().equals("")) {
 				ti.setCodigo(nueva.getCodigo());
 			}
-			if(!nueva.getNombre().equals("")) {
+			if (!nueva.getNombre().equals("")) {
 				ti.setNombre(nueva.getNombre());
 			}
-			if(!nueva.getCreditos().equals("")) {
+			if (!nueva.getCreditos().equals("")) {
 				ti.setCreditos(nueva.getCreditos());
 			}
 		}
-		
+
 	}
 
 	@Override
 	public void eliminarTitulacion(Titulacion t) throws TitulacionException {
 		Titulacion ti = existeTitulacion(t);
-		if(ti==null)
+		if (ti == null)
 			throw new TitulacionException();
-		else 
+		else
 			em.remove(ti);
-		
+
 	}
 
 	@Override
 	public Titulacion existeTitulacion(Titulacion t) throws TitulacionException {
 		Titulacion ti = em.find(Titulacion.class, t.getCodigo());
-		if(ti == null)
+		if (ti == null)
 			return null;
 		else
 			return ti;
@@ -307,72 +301,69 @@ import Exceptions.*;
 
 	@Override
 	public void insertarAsignatura(Asignatura a) throws AsignaturaDuplicadaException {
-		Asignatura as = em.find(Asignatura.class,a.getReferencia());
-		if(as != null) {
+		Asignatura as = em.find(Asignatura.class, a.getReferencia());
+		if (as != null) {
 			throw new AsignaturaDuplicadaException();
-		}else {
+		} else {
 			em.persist(a);
-			
+
 		}
-		
+
 	}
 
 	@Override
 	public void modificarAsignatura(Asignatura a) throws AsignaturaNoEncontradaException {
 		Asignatura as = existeAsignatura(a);
-		if(as==null)
+		if (as == null)
 			throw new AsignaturaNoEncontradaException();
-		else 
+		else
 			em.merge(a);
-		
+
 	}
 
 	@Override
 	public void eliminarAsignatura(Asignatura a) throws AsignaturaNoEncontradaException {
 		Asignatura as = existeAsignatura(a);
-		if(as==null)
+		if (as == null)
 			throw new AsignaturaNoEncontradaException();
-		else 
+		else
 			em.remove(as);
 
-		
 	}
 
 	@Override
 	public Asignatura existeAsignatura(Asignatura a) throws AsignaturaNoEncontradaException {
 		Asignatura as = em.find(Asignatura.class, a.getReferencia());
-		if(as == null)
+		if (as == null)
 			return null;
 		else
 			return as;
 	}
 
-	
-
 	@Override
 	public void insertarCentro(Centro c) throws CentroException {
-		Centro ce = em.find(Centro.class,c.getID());
-		if(ce == null)
+		Centro ce = em.find(Centro.class, c.getID());
+		if (ce == null)
 			em.persist(c);
 		else
 			throw new CentroException();
-		
+
 	}
 
 	@Override
 	public void modificarCentro(Centro c) throws CentroException {
 		Centro ce = existeCentro(c);
-		if(ce==null)
+		if (ce == null)
 			throw new CentroException();
-		else 
+		else
 			em.merge(c);
-		
+
 	}
 
 	@Override
 	public Centro existeCentro(Centro c) throws CentroException {
 		Centro ce = em.find(Centro.class, c.getID());
-		if(ce == null)
+		if (ce == null)
 			return null;
 		else
 			return ce;
@@ -381,18 +372,20 @@ import Exceptions.*;
 	@Override
 	public void eliminarCentro(Centro c) throws CentroException {
 		Centro ce = existeCentro(c);
-		if(ce==null)
+		if (ce == null)
 			throw new CentroException();
-		else 
+		else
 			em.remove(ce);
-		
-	}
 
+	}
 
 	@Override
 	public void insertarClase(Clase c) throws ClaseException {
-		Clase cl = em.createQuery("SELECT clase FROM CLASE clase where clase.horainicio= :hora and clase.dia = :dia and clase.grupo = :grupo ",Clase.class).setParameter("hora", c.getHorainicio()).setParameter("dia", c.getDia()).setParameter("grupo", c.getGrupo()).getSingleResult();
-		if(cl == null)
+		Clase cl = em.createQuery(
+				"SELECT clase FROM CLASE clase where clase.horainicio= :hora and clase.dia = :dia and clase.grupo = :grupo ",
+				Clase.class).setParameter("hora", c.getHorainicio()).setParameter("dia", c.getDia())
+				.setParameter("grupo", c.getGrupo()).getSingleResult();
+		if (cl == null)
 			em.persist(cl);
 		else
 			throw new ClaseException();
@@ -401,39 +394,41 @@ import Exceptions.*;
 	@Override
 	public void modificarClase(Clase c) throws ClaseException {
 		Clase cl = existeClase(c);
-		if(cl==null)
+		if (cl == null)
 			throw new ClaseException();
-		else 
+		else
 			em.merge(c);
-		
+
 	}
 
 	@Override
 	public void eliminarClase(Clase c) throws ClaseException {
 		Clase cl = existeClase(c);
-		if(cl==null)
+		if (cl == null)
 			throw new ClaseException();
-		else 
+		else
 			em.remove(cl);
-		
+
 	}
 
 	@Override
 	public Clase existeClase(Clase c) throws ClaseException {
-		Clase cl = em.createQuery("SELECT clase FROM CLASE clase where clase.horainicio= :hora and clase.dia = :dia and clase.grupo = :grupo ",Clase.class).setParameter("hora", c.getHorainicio()).setParameter("dia", c.getDia()).setParameter("grupo", c.getGrupo()).getSingleResult();
-		
-		if(cl == null)
-				return null;
+		Clase cl = em.createQuery(
+				"SELECT clase FROM CLASE clase where clase.horainicio= :hora and clase.dia = :dia and clase.grupo = :grupo ",
+				Clase.class).setParameter("hora", c.getHorainicio()).setParameter("dia", c.getDia())
+				.setParameter("grupo", c.getGrupo()).getSingleResult();
+
+		if (cl == null)
+			return null;
 		else
 			return cl;
-		
-		
+
 	}
 
 	@Override
 	public Alumno buscarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
-		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a WHERE a.DNI LIKE '" + dni +"'", Alumno.class);
-		if(q.getResultList().isEmpty()) {
+		TypedQuery<Alumno> q = em.createQuery("SELECT a FROM Alumno a WHERE a.DNI LIKE '" + dni + "'", Alumno.class);
+		if (q.getResultList().isEmpty()) {
 			return null;
 		}
 		return q.getSingleResult();
@@ -442,81 +437,94 @@ import Exceptions.*;
 	@Override
 	public void eliminarAlumnoPorDNI(String dni) throws AlumnoNoEncontradoException {
 		Alumno a = buscarAlumnoPorDNI(dni);
-		
+
 		em.remove(em.merge(a));
-		
+
 	}
 
 	@Override
 	public Grupo busquedaGrupo(String c, String l, String t) throws GrupoNoEncontradoException {
-		TypedQuery<Grupo> q = em.createQuery("SELECT g FROM Grupo g WHERE g.Curso LIKE '"+c+"' AND g.Letra LIKE '"+l+"'"
-				+ " AND g.Turno_Manyana_Tarde LIKE '"+t+"'", Grupo.class);
-		
+		TypedQuery<Grupo> q = em.createQuery("SELECT g FROM Grupo g WHERE g.Curso LIKE '" + c + "' AND g.Letra LIKE '"
+				+ l + "'" + " AND g.Turno_Manyana_Tarde LIKE '" + t + "'", Grupo.class);
+
 		return q.getSingleResult();
 	}
-	
+
 	@Override
 	public List<Alumno> getAlumnos() {
 		return em.createQuery("SELECT a FROM Alumno a", Alumno.class).getResultList();
 	}
-	
+
 	@Override
-	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException{
-		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE alumno_Id = "+id, Expediente.class);
+	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException {
+		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE alumno_Id = " + id,
+				Expediente.class);
 
 		return q.getResultList();
 	}
-	@Override //SIN COMPROBAD TEST
-	public List<Encuesta> getEncuestas(){
+
+	@Override // SIN COMPROBAD TEST
+	public List<Encuesta> getEncuestas() {
 		return em.createQuery("SELECT e FROM Encuesta e", Encuesta.class).getResultList();
 	}
+
 	@Override
-	public void insertarEncuesta(Encuesta e, Expediente ese){
-		Encuesta.Expediente_Encuesta_PK fadfa= new Encuesta.Expediente_Encuesta_PK(ese.getNum_Expediente(),e.getFecha_envio());
+	public void insertarEncuesta(Encuesta e, Expediente ese) {
+		Encuesta.Expediente_Encuesta_PK fadfa = new Encuesta.Expediente_Encuesta_PK(ese.getNum_Expediente(),
+				e.getFecha_envio());
 		em.persist(fadfa);
 		em.persist(e);
 	}
+
 	@Override
-	public void insertarEncuestaCambioHorario(EncuestaCambioHorario e){
-			em.persist(e);
+	public void insertarEncuestaCambioHorario(EncuestaCambioHorario e) {
+		em.persist(e);
 	}
+
 	@Override
-	public List<Matricula> buscarMatriculasPorExpediente(Long num) throws MatriculaNoEncontradaException{
-		TypedQuery<Matricula> q = em.createQuery("SELECT m FROM Matricula m WHERE m.expedientes_num_expedientes_Num_Expediente = "+num, Matricula.class);
-		
+	public List<Matricula> buscarMatriculasPorExpediente(Long num) throws MatriculaNoEncontradaException {
+		TypedQuery<Matricula> q = em.createQuery(
+				"SELECT m FROM Matricula m WHERE m.expedientes_num_expedientes_Num_Expediente = " + num,
+				Matricula.class);
+
 		return q.getResultList();
 	}
+
 	@Override
-	public void modificarCondDosAlumnos(Alumno nuevo, Alumno antiguo) throws AlumnoNoEncontradoException{
+	public void modificarCondDosAlumnos(Alumno nuevo, Alumno antiguo) throws AlumnoNoEncontradoException {
 		em.remove((em.merge(antiguo)));
-		
+
 		em.persist(nuevo);
 	}
+
 	@Override
 	public List<Titulacion> obtenerTitulaciones() {
 		TypedQuery<Titulacion> q = em.createQuery("SELECT t FROM Titulacion t", Titulacion.class);
 		return q.getResultList();
 	}
+
 	@Override
-	public Titulacion obtenerTitulacionPorId(Integer eas) throws TitulacionException{
-		TypedQuery<Titulacion> q = em.createQuery("SELECT m FROM Titulacion m WHERE m.codigo = "+eas, Titulacion.class);
-		
+	public Titulacion obtenerTitulacionPorId(Integer eas) throws TitulacionException {
+		TypedQuery<Titulacion> q = em.createQuery("SELECT m FROM Titulacion m WHERE m.codigo = " + eas,
+				Titulacion.class);
+
 		return q.getSingleResult();
 	}
+
 	@Override
 	public EncuestaCambioHorario existeEncuestaCambioHorario(EncuestaCambioHorario en) throws EncuestaException {
 		EncuestaCambioHorario e = em.find(EncuestaCambioHorario.class, en.getDNI());
-		if(e == null) {
+		if (e == null) {
 			throw new EncuestaException();
 		}
 		return e;
 	}
+
 	@Override
-	public List<Grupo> obtenerGrupos(){
+	public List<Grupo> obtenerGrupos() {
 		TypedQuery<Grupo> q = em.createQuery("SELECT a FROM Grupo a", Grupo.class);
-		
+
 		return q.getResultList();
 	}
-	
 
 }

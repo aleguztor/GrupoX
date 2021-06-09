@@ -180,31 +180,25 @@ public class ImportacionExcelImpl implements ImportacionExcel {
 					case 22: // creditos pe
 						break;
 					case 23: // creditos tf
-						al.setId(id);
+						al.setId(id+1L);
 						id++;
-						LOG.severe(al.toString());
-						exp.setAlumno(al);
-						expedientes = al.getExpedientes();
-						if (expedientes == null) {
-							expedientes = new LinkedList<Expediente>();
-						}
-						expedientes.add(exp);
-						al.setExpedientes(expedientes);
-						matriculas = exp.getMatricula();
-
-						matriculas.add(mal);
-						exp.setMatricula(matriculas);
-						al.setExpedientes(expedientes);
-						LOG.severe(exp.toString());
-
-						mal.setExpedientes_num_expedientes(exp);
-						LOG.severe(exp.toString());
+						/*
+						 * LOG.severe(al.toString()); exp.setAlumno(al); expedientes =
+						 * al.getExpedientes(); if (expedientes == null) { expedientes = new
+						 * LinkedList<Expediente>(); } expedientes.add(exp);
+						 * al.setExpedientes(expedientes); matriculas = exp.getMatricula();
+						 * 
+						 * matriculas.add(mal); exp.setMatricula(matriculas);
+						 * al.setExpedientes(expedientes); LOG.severe(exp.toString());
+						 * 
+						 * mal.setExpedientes_num_expedientes(exp); LOG.severe(exp.toString());
+						 */
 						LOG.severe(al.toString());
 						LOG.severe(mal.toString());
-						crud.insertarExpediente(exp);
-						crud.insertarMatricula(mal);
+						//crud.insertarExpediente(exp);
+						//crud.insertarMatricula(mal);
 						crud.insertarAlumno(al);
-
+						
 						break;
 					}
 

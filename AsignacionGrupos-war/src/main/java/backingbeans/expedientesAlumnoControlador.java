@@ -61,8 +61,7 @@ public class expedientesAlumnoControlador implements Serializable{
 	public String outcome() throws AlumnoNoEncontradoException, ExpedienteNoEncontradoException {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		this.id = getAlumnoParam(fc);
-		this.expedientes= crud.obtenerExpedientesAlumno(id);
-		LOG.severe(Long.toString(id));
+		this.expedientes= crud.getExpedientesDeAlumno(id);
 		return "expedientesAlumno";
 	}
 	public Long getAlumnoParam(FacesContext fc)  {

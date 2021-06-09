@@ -4,13 +4,13 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Insertar Alumno</title>
-
+<h:outputStylesheet library="css" name="formulario.css"></h:outputStylesheet>
 </h:head>
 
 <h:body>
 <p:growl id="messages" showDetail="true"/>
 	<h:form id="form-insert">
-		<table id="tabla">
+		<table id="tabla" styleClass="tabla">
 
 			<tr id="row1">
 				<td id="nombre-label"><h:outputLabel id="nombretext" value="Nombre" /></td>
@@ -19,7 +19,7 @@
 
 			<tr id="row2">
 				<td id="nombre-rellenar"><h:inputText id="nombrein"
-						value="#{alumnoBean.alumno.nombre}" required="true" /></td>
+						value="#{alumnoBean.alumno.nombre}" required="true" styleClass="formulario"/></td>
 
 			</tr>
 
@@ -31,9 +31,9 @@
 
 			<tr id="row4">
 				<td id="apellido1-rellenar"><h:inputText id="apellido1"
-						value="#{alumnoBean.alumno.apellido1}" required="true" /></td>
+						value="#{alumnoBean.alumno.apellido1}" required="true" styleClass="formulario" /></td>
 				<td id="apellido2-rellenar"><h:inputText id="apellido2"
-						value="#{alumnoBean.alumno.apellido2}" /></td>
+						value="#{alumnoBean.alumno.apellido2}" styleClass="formulario" /></td>
 			</tr>
 
 			<tr id="row5">
@@ -41,7 +41,7 @@
 			</tr>
 
 			<tr id="row6">
-				<td id="dni-rellenar"><h:inputText id="dni" value="#{alumnoBean.alumno.DNI}" required="true" /></td>
+				<td id="dni-rellenar"><h:inputText id="dni" value="#{alumnoBean.alumno.DNI}" required="true" styleClass="formulario"/></td>
 			</tr>
 
 			<tr id="row7">
@@ -51,19 +51,19 @@
 
 			<tr id="row8">
 				<td id="emailInst-rellenar"><h:inputText id="emailinsti"
-						value="#{alumnoBean.alumno.email_institucional}" required="true" />
+						value="#{alumnoBean.alumno.email_institucional}" required="true" styleClass="formulario"/>
 				</td>
 				<td id="emailPers-rellenar"><h:inputText id="emailperso"
-						value="#{alumnoBean.alumno.email_personal}" /></td>
+						value="#{alumnoBean.alumno.email_personal}" styleClass="formulario"/></td>
 			</tr>
 			<tr id="row9">
 				<td id="movil-label"><h:outputLabel id="moviltext" value="Movil" /></td>
 				<td id="telef-label"><h:outputLabel id="telftext" value="Telefono" /></td>
 			</tr>
 			<tr id="row10">
-				<td id="movil-rellenar"><h:inputText id="movil" value="#{alumnoBean.alumno.movil}" /></td>
+				<td id="movil-rellenar"><h:inputText id="movil" value="#{alumnoBean.alumno.movil}" styleClass="formulario"/></td>
 				<td id="telef-rellenar"><h:inputText id="telefono"
-						value="#{alumnoBean.alumno.telefono}" /></td>
+						value="#{alumnoBean.alumno.telefono}" styleClass="formulario"/></td>
 			</tr>
 			<tr id="row11">
 				<td id="direcc-label"><h:outputLabel id="direcciontext" value="Direccion" /></td>
@@ -71,9 +71,9 @@
 			</tr>
 			<tr id="row12">
 				<td id="direcc-rellenar"><h:inputText id="direccion"
-						value="#{alumnoBean.alumno.direccion_notificacion}" /></td>
+						value="#{alumnoBean.alumno.direccion_notificacion}" styleClass="formulario" /></td>
 				<td id="locali-rellenar"><h:inputText id="localidad"
-						value="#{alumnoBean.alumno.localidad_notificacion}" /></td>
+						value="#{alumnoBean.alumno.localidad_notificacion}" styleClass="formulario" /></td>
 
 			</tr>
 			<tr id="row13">
@@ -82,14 +82,14 @@
 			</tr>
 			<tr id="row14">
 				<td id="prov-rellenar"><h:inputText id="provincia"
-						value="#{alumnoBean.alumno.provincia_notificacion}" /></td>
+						value="#{alumnoBean.alumno.provincia_notificacion}" styleClass="formulario" /></td>
 				<td id="cp-rellenar"><h:inputText id="cp"
-						value="#{alumnoBean.alumno.CP_notificacion}" /></td>
+						value="#{alumnoBean.alumno.CP_notificacion}" styleClass="formulario" /></td>
 			</tr>
 
 			<tr id="row15">
 				<td id="boton"><h:commandButton id="submit" type="submit" value="Insertar"
-						action="#{alumnoBean.doCrearAlumno}"  outcome="listadoAlumno"/></td>
+						action="#{alumnoBean.doCrearAlumno}"  outcome="listadoAlumno" /></td>
 			</tr>
 		</table>
 

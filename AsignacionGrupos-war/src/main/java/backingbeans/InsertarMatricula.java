@@ -7,17 +7,20 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import AsignacionGrupos.CrudEJBLocal;
+import Entidades.Expediente;
 import Entidades.Matricula;
+import Entidades.MatriculaPK;
+import Exceptions.ExpedienteNoEncontradoException;
 import Exceptions.MatriculaDuplicadaException;
-import Exceptions.MatriculaNoEncontradaException;
 
 @Named("insertarMatriculaBean")
 @RequestScoped
 public class InsertarMatricula {
 
 	private Matricula matricula = new Matricula();
+	private Long numexp;
 	
-	private static final Logger LOG = Logger.getLogger(modificarAsignatura.class.getCanonicalName());
+	private static final Logger LOG = Logger.getLogger(InsertarMatricula.class.getCanonicalName());
 	
 	@Inject
 	CrudEJBLocal crud;
@@ -31,14 +34,26 @@ public class InsertarMatricula {
 	}
 	
 	public String doInsertarMatricula() {
-		
 	    try {
+	    	MatriculaPK pk = new MatriculaPK(matricula.getCurso_academico(), numexp);
+	    	LOG.severe(pk.toString());
+	    	Expediente e = crud.existeExpedientePorPK(numexp);
+	    	matricula = new Matricula(pk,e,matricula.getEstado(), matricula.getFecha_matricula());
 			crud.insertarMatricula(matricula);
 		} catch (MatriculaDuplicadaException e) {
-			// TODO Auto-generated catch block
 			LOG.info("La matricula ya está creada");
+		} catch (ExpedienteNoEncontradoException e1) {
+			e1.printStackTrace();
 		}
 		
-		return "index.xhtml";
+		return "listadoAlumnos.xhtml";
+	}
+
+	public Long getNumexp() {
+		return numexp;
+	}
+
+	public void setNumexp(Long numexp) {
+		this.numexp = numexp;
 	}
 }

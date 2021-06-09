@@ -67,12 +67,27 @@ public class CrudEJB implements CrudEJBLocal {
 	}
 
 	@Override
-	public void insertarAlumno(Alumno a) throws AlumnoDuplicadoException {
-		
-			em.persist(a);
-		
-			LOG.info("El alumno existe");
-		
+
+	public void insertarAlumno(Alumno a) throws  AlumnoDuplicadoException {	
+				em.persist(a);
+
+	}
+	
+	@Override
+	public Alumno buscarAlumnoPorId(Long id) throws AlumnoNoEncontradoException{
+		Alumno a = em.find(Alumno.class, id);
+		if(a == null) {
+			throw new AlumnoNoEncontradoException();
+		}
+		return a;
+	}
+	@Override
+	public void eliminarAlumno(Long id) throws AlumnoNoEncontradoException{
+		Alumno a = em.find(Alumno.class, id);
+		if(a == null) {
+			throw new AlumnoNoEncontradoException();
+		}
+		em.remove(em.merge(a));
 
 	}
 
@@ -456,15 +471,17 @@ public class CrudEJB implements CrudEJBLocal {
 	}
 
 	@Override
-	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException {
-		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE alumno_Id = " + id,
-				Expediente.class);
 
-		return q.getResultList();
+	public Expediente obtenerExpedienteAlumno(Long id) throws ExpedienteNoEncontradoException{
+		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE alumno_Id = "+id, Expediente.class);
+
+		return q.getSingleResult();
 	}
+
 
 	@Override // SIN COMPROBAD TEST
 	public List<Encuesta> getEncuestas() {
+
 		return em.createQuery("SELECT e FROM Encuesta e", Encuesta.class).getResultList();
 	}
 
@@ -482,12 +499,13 @@ public class CrudEJB implements CrudEJBLocal {
 	}
 
 	@Override
-	public List<Matricula> buscarMatriculasPorExpediente(Long num) throws MatriculaNoEncontradaException {
-		TypedQuery<Matricula> q = em.createQuery(
-				"SELECT m FROM Matricula m WHERE m.expedientes_num_expedientes_Num_Expediente = " + num,
-				Matricula.class);
 
-		return q.getResultList();
+	public List<Matricula> buscarMatriculasPorExpediente(Long num) throws MatriculaNoEncontradaException{
+		TypedQuery<Matricula> q = em.createQuery("SELECT m FROM Matricula m WHERE expedientes_num_expedientes.Num_Expediente = "+num, Matricula.class);
+		List<Matricula> m= q.getResultList();
+		
+		return m;
+
 	}
 
 	@Override
@@ -526,5 +544,20 @@ public class CrudEJB implements CrudEJBLocal {
 
 		return q.getResultList();
 	}
+
+	@Override
+	public List<Expediente> getExpedientesDeAlumno(Long id){
+		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE alumno_Id = "+id, Expediente.class);
+		return q.getResultList();
+	}
+	@Override
+	public Expediente existeExpedientePorPK(Long num) throws ExpedienteNoEncontradoException{
+		Expediente e = em.find(Expediente.class, num);
+		if(e == null) {
+			throw new ExpedienteNoEncontradoException();
+		}
+		return e;
+	}
+
 
 }

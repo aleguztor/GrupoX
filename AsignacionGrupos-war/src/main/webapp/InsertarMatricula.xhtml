@@ -17,7 +17,7 @@
 			<table>
 				<tr>
                 	<td><h:outputLabel value="Expediente Alumno"/></td>
-					<td><h:inputText value="#{insertarMatriculaBean.matricula.expedientes_num_expedientes}" /></td>
+					<td><h:inputText convert="#{Long}" value="#{insertarMatriculaBean.numexp}" /></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Curso académico"/></td>
@@ -25,11 +25,14 @@
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Estado"/></td>
-					<td><h:inputText value="#{insertarMatriculaBean.matricula.estado}" /></td>
+					<td><h:selectOneMenu converter="#{Boolean}" value="#{insertarMatriculaBean.matricula.estado}">
+							<f:selectItem itemLabel="Activo" itemValue="true" />
+							<f:selectItem itemLabel="Inactivo" itemValue="false"/>
+						</h:selectOneMenu></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Num_Archivo"/></td>
-					<td><h:inputText value="#{insertarMatriculaBean.matricula.num_archivo}" /></td>
+					<td><h:inputText converter="#{Integer}" value="#{insertarMatriculaBean.matricula.num_archivo}" /></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel value="Turno preferente"/></td>
@@ -52,13 +55,12 @@
 						</h:selectOneMenu></td>
 				</tr>
 				<tr>
-					<td><h:commandButton type="submit" value="Enviar" /></td>
-					<td></td>
+					<td><h:commandButton id="sumbtn" type="submit" value="Enviar" action="#{insertarMatriculaBean.doInsertarMatricula}"/></td>
 				</tr>
 			</table>
 		</h:form>
 	</div>
-<h:form>
+	<h:form>
 		 <h:commandButton id="backButton" value="Back"  action="index" />
 	</h:form>
 </h:body>

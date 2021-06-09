@@ -3,6 +3,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -13,7 +14,11 @@ import javax.inject.Named;
 
 import AsignacionGrupos.CrudEJBLocal;
 import Entidades.Alumno;
+import Entidades.Expediente;
+import Entidades.Matricula;
 import Exceptions.AlumnoNoEncontradoException;
+import Exceptions.ExpedienteNoEncontradoException;
+import Exceptions.MatriculaNoEncontradaException;
 
 @Named(value = "listado")
 @RequestScoped
@@ -22,7 +27,8 @@ public class listadoAlumnosControlador implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Alumno alumno;	
 	private List<Alumno> alumnos;
-	Long id;
+	private Long id;
+	private static final Logger LOG = Logger.getLogger(listadoAlumnosControlador.class.getCanonicalName());
 
     @Inject
     private CrudEJBLocal crud;
@@ -46,6 +52,27 @@ public class listadoAlumnosControlador implements Serializable {
 
 	public void setAlumnos(List<Alumno> alumnos) {
 		this.alumnos = alumnos;
+	}
+	
+	public String borrarAlumno(Long id) {
+		try {
+			List<Expediente> e = crud.getExpedientesDeAlumno(id);
+			for(Expediente exp : e) {
+				List<Matricula> m = crud.buscarMatriculasPorExpediente(exp.getNum_Expediente());
+				for(Matricula mat : m) {
+					crud.eliminarMatricula(mat);
+				}
+				crud.eliminarExpediente(exp);
+			}
+			crud.eliminarAlumno(id);
+		} catch (AlumnoNoEncontradoException e) {
+			e.printStackTrace();
+		} catch (MatriculaNoEncontradaException e1) {
+			e1.printStackTrace();
+		} catch (ExpedienteNoEncontradoException e1) {
+			e1.printStackTrace();
+		}
+		return "listadoAlumnosControlador.xhtml";
 	}
     
 	

@@ -6,7 +6,10 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 import java.util.logging.Logger;
 
 import javax.naming.NamingException;
@@ -575,7 +578,7 @@ public class Crud {
 	@Test
 	public void testInsertarEncuestaCambioHorario() {
 		Date d = new Date(System.currentTimeMillis());
-		EncuestaCambioHorario e = new EncuestaCambioHorario(d,"2º","123456789a");
+		EncuestaCambioHorario e = new EncuestaCambioHorario(d,"2ï¿½","123456789a");
 		try {
 			crud.insertarEncuestaCambioHorario(e);
 			assertEquals(e,crud.existeEncuestaCambioHorario(e));
@@ -587,9 +590,12 @@ public class Crud {
 //	@Requisitos({"RF2"})
 	@Test
 	public void testObtenerExpedientesAlumno() {
-		long id = (long)214623;
+		Long id = (long)214623;
+		
+		List<Expediente> b= new LinkedList<>();
+		b.add(new Expediente((long)214623,true,5.0));
 		try {
-			assertNotNull(crud.obtenerExpedientesAlumno(id).get(0));
+			assertEquals(crud.obtenerExpedienteAlumno(id).getNum_Expediente(),b.get(0).getNum_Expediente());
 		}catch(ExpedienteNoEncontradoException e) {
 			e.printStackTrace();
 		}
@@ -604,8 +610,22 @@ public class Crud {
 //	@Requisitos({"RF2"})
 	@Test
 	public void testBuscarMatriculasPorExpediente() {
+		Date d = new Date(System.currentTimeMillis());
+		Expediente e1 = new Expediente((long)214623,true,5.0);
+		Alumno a1 = new Alumno("Mario", "Vazquez", "12345678a", "mario@uma.es");
+		List<Expediente> exps = new LinkedList<>();
+		exps.add(e1);
+		a1.setExpedientes(exps);
+		e1.setAlumno(a1);
+		MatriculaPK pk = new MatriculaPK("2", (long)214623);
+		Matricula m1 = new Matricula(pk,e1,'I',d);
+		List<Matricula> matriculas = new LinkedList<>();
+		matriculas.add(m1);
+		
 		try {
-			assertNotNull(crud.buscarMatriculasPorExpediente((long)214623));
+			List<Matricula> buscar= new LinkedList<>(crud.buscarMatriculasPorExpediente(e1.getNum_Expediente()));
+			LOG.severe(matriculas.toString());
+			assertEquals(buscar,matriculas);
 		}catch(MatriculaNoEncontradaException e) {
 			e.printStackTrace();
 		}

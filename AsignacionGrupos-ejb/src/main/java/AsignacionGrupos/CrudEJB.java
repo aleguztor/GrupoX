@@ -461,10 +461,10 @@ import Exceptions.*;
 	}
 	
 	@Override
-	public List<Expediente> obtenerExpedientesAlumno(Long id) throws ExpedienteNoEncontradoException{
-		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE alumno_Id = "+id, Expediente.class);
+	public Expediente obtenerExpedienteAlumno(Long id) throws ExpedienteNoEncontradoException{
+		TypedQuery<Expediente> q = em.createQuery("SELECT e FROM Expediente e WHERE e.Num_Expediente = "+id, Expediente.class);
 
-		return q.getResultList();
+		return q.getSingleResult();
 	}
 	@Override //SIN COMPROBAD TEST
 	public List<Encuesta> getEncuestas(){
@@ -482,9 +482,10 @@ import Exceptions.*;
 	}
 	@Override
 	public List<Matricula> buscarMatriculasPorExpediente(Long num) throws MatriculaNoEncontradaException{
-		TypedQuery<Matricula> q = em.createQuery("SELECT m FROM Matricula m WHERE m.expedientes_num_expedientes_Num_Expediente = "+num, Matricula.class);
+		TypedQuery<Matricula> q = em.createQuery("SELECT m FROM Matricula m WHERE m.expedientes_num_expedientes.Num_Expediente = "+num, Matricula.class);
+		List<Matricula> m= q.getResultList();
 		
-		return q.getResultList();
+		return m;
 	}
 	@Override
 	public void modificarCondDosAlumnos(Alumno nuevo, Alumno antiguo) throws AlumnoNoEncontradoException{

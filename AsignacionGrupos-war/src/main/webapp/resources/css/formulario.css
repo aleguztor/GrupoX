@@ -1,0 +1,17 @@
+.letras{
+	
+}
+.formulario{
+	background-color: #c2ffa9;
+	border-color: #edd400;
+	border-width: 3px;
+	box-sizing: 30px;
+	text-align: center;
+	padding: 5px;
+	margin: 2px;
+	
+}
+body{
+	align-content: center;
+	text-align: center;
+}

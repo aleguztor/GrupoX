@@ -43,6 +43,6 @@ public class listadoAsignaturasController implements Serializable{
 			e.printStackTrace();
 		}
 		asignaturas = crud.getAsignaturas();
-		return "listadoAsignaturas.xhtml";
+		return "insertarAsignatura.xhtml";
 	}
 }

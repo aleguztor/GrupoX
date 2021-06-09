@@ -88,6 +88,38 @@
 <h:form>
 		 <h:commandButton id="backButton" value="Back"  action="Main.html" />
 	</h:form>
+	
+	<h:form>
+		<p:dataTable id="listasg" var="asig" value="#{la.asignaturas}">
+			<p:column id="referencia" headerText="Referencia" field="referencia" sortable="true"
+				filterable="true" />
+			<p:column id="codigo" headerText="Codigo" field="codigo" sortable="true" 
+				filterable="true" />
+			<p:column id="creditos" headerText="Créditos" field="creditos" sortable="true" 
+				filterable="true" />
+			<p:column id="nombre" headerText="Nombre" field="nombre" sortable="true" 
+				filterable="true" />
+			<p:column id="ofertada" headerText="Ofertada" field="ofertada" sortable="true" 
+				filterable="true" />
+			<p:column id="curso" headerText="Curso" field="curso" sortable="true" 
+				filterable="true" />
+			<p:column id="caracter" headerText="Caracter" field="caracter" sortable="true" 
+				filterable="true" />
+			<p:column id="duracion" headerText="Duracion" field="duracion" sortable="true" 
+				filterable="true" />
+			<p:column id="utemporal" headerText="Unidad Temporal" field="unidad_Temporal" sortable="true" 
+				filterable="true" />
+			<p:column id="idimparticion" headerText="Idioma de imparticion" field="idioma_de_imparticion" sortable="true" 
+				filterable="true" />
+			<p:column id="titulacion" headerText="Titulacion" field="titulacion.codigo" sortable="true" 
+				filterable="true" />
+			<p:column id="asborrar">
+				<h:commandButton id="elimbtn" action="#{la.doBorrarAsignatura(asig.referencia)}" outcome="listadoAsignaturas.xhtml" value="Borrar">
+					<f:ajax render="listasg"/>
+				</h:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
 </h:body>
 
 </html>

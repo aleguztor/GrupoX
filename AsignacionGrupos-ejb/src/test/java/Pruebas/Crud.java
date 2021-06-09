@@ -810,7 +810,7 @@ public class Crud {
 	
 	@Test
 	public void testGetAsignaturas() {
-		
+		assertNotNull(crud.getAsignaturas());
 	}
 	@Test
 	public void testEliminarAsignaturasPorReferencia() {

@@ -48,7 +48,7 @@ public class insertarAsignatura {
 		
 			LOG.info("La asignatura insertarda");
 		
-		return "index.xhtml";
+		return "Main.html";
 	}
 
 	public Integer getTitu() {

@@ -767,18 +767,21 @@ public class Crud {
 	}
 	
 	@Test
-	public void testExisteExpedientePorPK() {
-		
+	public void testExisteExpedientePorPK() throws ExpedienteNoEncontradoException {
+		assertNotNull(crud.existeExpedientePorPK((long)214623));
 	}
 	
 	@Test
-	public void testObtenerEncuestasPorExpediente() {
-		
+	public void testObtenerEncuestasPorExpediente() throws ExpedienteNoEncontradoException {
+		assertNotNull(crud.obtenerEncuestasPorExpediente((long)214623));
 	}
 	
 	@Test
-	public void testEliminarEncuestasPorExpediente() {
-		
+	public void testEliminarEncuestasPorExpediente() throws EncuestaException {
+		List<Encuesta> b= new LinkedList<>();
+		Expediente e1 = new Expediente((long)214623,true,5.0);
+		crud.eliminarEncuestaPorExpediente((long)214623);
+		assertEquals(e1.getEncuesta(),b);
 	}
 	@Test
 	public void testObtenerGrupoPorId(){

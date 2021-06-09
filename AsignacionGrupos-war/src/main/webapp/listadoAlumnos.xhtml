@@ -10,7 +10,7 @@
 </h:head>
 <h:body>
 	<h:form>
-		<p:dataTable var="a" value="#{listado.alumnos}">
+		<p:dataTable id="listal" var="a" value="#{listado.alumnos}">
 			<p:column id="dni" headerText="DNI" field="DNI" sortable="true"
 				filterable="true" />
 			<p:column id="nombre" headerText="Nombre" field="nombre"
@@ -22,7 +22,9 @@
 			<p:column id="eminst" headerText="Email institucional"
 				field="email_institucional" sortable="true" filterable="true" />
 			<p:column id="alborrar">
-				<h:commandButton id="elimbtn" action="#{listado.borrarAlumno(a.id)}" outcome="listadoAlumnos.xhtml" value="Borrar"></h:commandButton>
+				<h:commandButton id="elimbtn" action="#{listado.doBorrarAlumno(a.id)}" outcome="listadoAlumnos.xhtml" value="Borrar">
+					<f:ajax render="listal"/>
+				</h:commandButton>
 			</p:column>	
 			<p:column id="expedient" headerText="Expedientes">
 

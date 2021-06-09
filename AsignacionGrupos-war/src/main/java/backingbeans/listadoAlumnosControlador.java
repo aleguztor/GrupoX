@@ -1,22 +1,20 @@
 package backingbeans;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import AsignacionGrupos.CrudEJBLocal;
 import Entidades.Alumno;
+import Entidades.Encuesta;
 import Entidades.Expediente;
 import Entidades.Matricula;
 import Exceptions.AlumnoNoEncontradoException;
+import Exceptions.EncuestaException;
 import Exceptions.ExpedienteNoEncontradoException;
 import Exceptions.MatriculaNoEncontradaException;
 
@@ -54,14 +52,16 @@ public class listadoAlumnosControlador implements Serializable {
 		this.alumnos = alumnos;
 	}
 	
-	public String borrarAlumno(Long id) {
+	public String doBorrarAlumno(Long id) {
 		try {
 			List<Expediente> e = crud.getExpedientesDeAlumno(id);
 			for(Expediente exp : e) {
 				List<Matricula> m = crud.buscarMatriculasPorExpediente(exp.getNum_Expediente());
+				List<Encuesta> en = crud.obtenerEncuestasPorExpediente(exp.getNum_Expediente());
 				for(Matricula mat : m) {
 					crud.eliminarMatricula(mat);
 				}
+				crud.eliminarEncuestaPorExpediente(exp.getNum_Expediente());
 				crud.eliminarExpediente(exp);
 			}
 			crud.eliminarAlumno(id);
@@ -71,8 +71,19 @@ public class listadoAlumnosControlador implements Serializable {
 			e1.printStackTrace();
 		} catch (ExpedienteNoEncontradoException e1) {
 			e1.printStackTrace();
+		} catch (EncuestaException e1) {
+			e1.printStackTrace();
 		}
+		alumnos = crud.getAlumnos();
 		return "listadoAlumnosControlador.xhtml";
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
     
 	

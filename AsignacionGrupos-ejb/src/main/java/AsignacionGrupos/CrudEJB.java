@@ -536,5 +536,22 @@ import Exceptions.*;
 		}
 		return e;
 	}
+	@Override
+	public List<Encuesta> obtenerEncuestasPorExpediente(Long ne) throws ExpedienteNoEncontradoException{
+		Expediente e = em.find(Expediente.class, ne);
+		if(e == null) {
+			throw new ExpedienteNoEncontradoException();
+		}
+		return e.getEncuesta();
+	}
+	@Override
+	public void eliminarEncuestaPorExpediente(Long exp) throws EncuestaException{
+		TypedQuery<Encuesta> q = em.createQuery("SELECT e FROM Encuesta e WHERE expediente_Num_Expediente = "+exp, Encuesta.class);
+		if(q.getResultList() != null) {
+			for(Encuesta en : q.getResultList()) {
+				em.remove(en);
+			}
+		}
+	}
 
 }

@@ -27,10 +27,10 @@ public class AsignarEncuestasImpl implements AsignarEncuestas{
 		if(e == null) {
 			throw new ExpedienteNoEncontradoException();
 		}
+		Expediente exp = em.merge(e);
 		List<Encuesta> exen = e.getEncuesta();
 		exen.add(en);
-		e.setEncuesta(exen);
-		em.persist(en);
+		exp.setEncuesta(exen);
 	
 	}
 	

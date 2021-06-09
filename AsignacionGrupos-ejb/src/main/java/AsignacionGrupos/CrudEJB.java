@@ -479,10 +479,8 @@ import Exceptions.*;
 		return em.createQuery("SELECT e FROM Encuesta e", Encuesta.class).getResultList();
 	}
 	@Override
-	public void insertarEncuesta(Encuesta e, Expediente ese){
-		Encuesta.Expediente_Encuesta_PK fadfa= new Encuesta.Expediente_Encuesta_PK(ese.getNum_Expediente(),e.getFecha_envio());
-		em.persist(fadfa);
-		em.persist(e);
+	public void insertarEncuesta(Encuesta e){
+		em.persist(em.merge(e));
 	}
 	@Override
 	public void insertarEncuestaCambioHorario(EncuestaCambioHorario e){

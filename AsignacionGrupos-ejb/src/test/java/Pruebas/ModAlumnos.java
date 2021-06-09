@@ -1,7 +1,6 @@
 package Pruebas;
 
 import Entidades.*;
-import Entidades.Encuesta.Expediente_Encuesta_PK;
 import Exceptions.AlumnoNoEncontradoException;
 import Exceptions.AsignacionGruposException;
 import Exceptions.ExpedienteNoEncontradoException;

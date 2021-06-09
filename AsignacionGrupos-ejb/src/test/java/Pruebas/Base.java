@@ -8,7 +8,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import Entidades.*;
-import Entidades.Encuesta.Expediente_Encuesta_PK;
 public class Base {
 	private static EntityManager em;
 	public static void init(String nombreper) {
@@ -28,13 +27,18 @@ public class Base {
 		Expediente e4 = new Expediente((long)872163,true,5.0);
 		Expediente e5 = new Expediente((long)174615,true,5.0);
 		Expediente e6 = new Expediente((long)123642,true,5.0);
-		
-		Encuesta en1 = new Encuesta(d,e1, "Manyana");
-		Encuesta en2 = new Encuesta(d,e2, "Manyana");
-		Encuesta en3 = new Encuesta(d,e3, "Manyana");
-		Encuesta en4 = new Encuesta(d,e4, "Tarde");
-		Encuesta en5 = new Encuesta(d,e5, "Tarde");
-		Encuesta en6 = new Encuesta(d,e6, "Manyana");
+		Expediente_Encuesta_PK pk1 = new Expediente_Encuesta_PK((long)214623, d);
+		Expediente_Encuesta_PK pk2 = new Expediente_Encuesta_PK((long)172411, d);
+		Expediente_Encuesta_PK pk3 = new Expediente_Encuesta_PK((long)238413, d);
+		Expediente_Encuesta_PK pk4 = new Expediente_Encuesta_PK((long)872163, d);
+		Expediente_Encuesta_PK pk5 = new Expediente_Encuesta_PK((long)174615, d);
+		Expediente_Encuesta_PK pk6 = new Expediente_Encuesta_PK((long)123642, d);
+		Encuesta en1 = new Encuesta(pk1,e1, "Manyana");
+		Encuesta en2 = new Encuesta(pk2,e2, "Manyana");
+		Encuesta en3 = new Encuesta(pk3,e3, "Manyana");
+		Encuesta en4 = new Encuesta(pk4,e4, "Tarde");
+		Encuesta en5 = new Encuesta(pk5,e5, "Tarde");
+		Encuesta en6 = new Encuesta(pk6,e6, "Manyana");
 		
 		
 		List<Encuesta> p = new LinkedList<>();

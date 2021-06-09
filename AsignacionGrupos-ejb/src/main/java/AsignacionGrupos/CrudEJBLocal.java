@@ -103,7 +103,7 @@ public interface CrudEJBLocal {
 	public void eliminarClase(Clase c)throws ClaseException;
 	public Clase existeClase(Clase c)throws ClaseException;
 	
-	public void insertarEncuesta(Encuesta e, Expediente ese)throws EncuestaException;
+	public void insertarEncuesta(Encuesta e)throws EncuestaException;
 	public void insertarEncuestaCambioHorario(EncuestaCambioHorario e)throws EncuestaException;
 	public EncuestaCambioHorario existeEncuestaCambioHorario(EncuestaCambioHorario e)throws EncuestaException;
 

@@ -18,9 +18,6 @@ import javax.persistence.*;
 @IdClass(MatriculaPK.class)
 public class Matricula implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2166598667074502398L;
 	@Id
 	private String curso_academico;

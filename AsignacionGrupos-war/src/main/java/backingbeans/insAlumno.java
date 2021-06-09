@@ -1,6 +1,9 @@
 package backingbeans;
 
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -11,6 +14,8 @@ import javax.inject.Named;
 import AsignacionGrupos.CrudEJBLocal;
 import Entidades.Alumno;
 import Entidades.Expediente;
+import Entidades.Matricula;
+import Entidades.MatriculaPK;
 import Entidades.Titulacion;
 import Exceptions.*;
 
@@ -23,6 +28,7 @@ public class insAlumno {
 	
 	private Alumno alumno = new Alumno();
 	private Expediente expediente = new Expediente();
+	private Matricula matricula = new Matricula();
 	private static final Logger LOG = Logger.getLogger(insAlumno.class.getCanonicalName());
 	
 	@Inject 
@@ -44,16 +50,18 @@ public class insAlumno {
 		this.expediente = expediente;
 	}
 	
-	public String doCrearAlumno() throws TitulacionException {
+	public Matricula getMatricula() {
+		return matricula;
+	}
+	public void setMatricula(Matricula matricula) {
+		this.matricula = matricula;
+	}
+	
+	public String doCrearAlumno() throws TitulacionException, MatriculaNoEncontradaException, ExpedienteNoEncontradoException, ParseException {
 		try {
 			
 			crud.insertarAlumno(alumno);
 			try {
-				
-				expediente.setTitulacion(crud.obtenerTitulacionPorId(1041));
-				expediente.setAlumno(alumno);
-				expediente.setActivo(true);
-				expediente.setNota_Media_Provisional(0);
 				crud.insertarExpediente(expediente);
 			} catch (ExpedienteDuplicadoException e) {
 				// TODO Auto-generated catch block

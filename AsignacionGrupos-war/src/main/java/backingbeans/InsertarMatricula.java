@@ -1,5 +1,10 @@
 package backingbeans;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
@@ -13,13 +18,18 @@ import Entidades.MatriculaPK;
 import Exceptions.ExpedienteNoEncontradoException;
 import Exceptions.MatriculaDuplicadaException;
 
-@Named("insertarMatriculaBean")
+@Named(value="insertarMatriculaBean")
 @RequestScoped
 public class InsertarMatricula {
 
-	private Matricula matricula = new Matricula();
 	private Long numexp;
-	
+	private String date;
+	private Integer numarch;
+	private Matricula matricula;
+	private String ca;
+	private Character estado;
+	private Character tp;
+	private Character ni;
 	private static final Logger LOG = Logger.getLogger(InsertarMatricula.class.getCanonicalName());
 	
 	@Inject
@@ -35,18 +45,27 @@ public class InsertarMatricula {
 	
 	public String doInsertarMatricula() {
 	    try {
-	    	MatriculaPK pk = new MatriculaPK(matricula.getCurso_academico(), numexp);
-	    	LOG.severe(pk.toString());
+	    	MatriculaPK pk = new MatriculaPK(ca, numexp);
 	    	Expediente e = crud.existeExpedientePorPK(numexp);
-	    	matricula = new Matricula(pk,e,matricula.getEstado(), matricula.getFecha_matricula());
+	    	Date d = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+	    	java.sql.Date dt = new java.sql.Date(d.getTime());
+	    	matricula = new Matricula(pk,e,estado, dt);
+	    	matricula.setNum_archivo(numarch);
+	    	matricula.setTurno_preferente(tp);
+	    	matricula.setNuevo_ingreso(ni);
 			crud.insertarMatricula(matricula);
+	    	List<Matricula> lm = new LinkedList<>();
+	    	lm.add(matricula);
+	    	e.setMatricula(lm);
 		} catch (MatriculaDuplicadaException e) {
 			LOG.info("La matricula ya está creada");
 		} catch (ExpedienteNoEncontradoException e1) {
 			e1.printStackTrace();
+		} catch (ParseException e1) {
+			e1.printStackTrace();
 		}
-		
-		return "listadoAlumnos.xhtml";
+		LOG.severe(matricula.toString());
+		return "listadoAlumnos";
 	}
 
 	public Long getNumexp() {
@@ -55,5 +74,53 @@ public class InsertarMatricula {
 
 	public void setNumexp(Long numexp) {
 		this.numexp = numexp;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public Integer getNumarch() {
+		return numarch;
+	}
+
+	public void setNumarch(Integer numarch) {
+		this.numarch = numarch;
+	}
+
+	public String getCa() {
+		return ca;
+	}
+
+	public void setCa(String ca) {
+		this.ca = ca;
+	}
+
+	public Character getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Character estado) {
+		this.estado = estado;
+	}
+
+	public Character getTp() {
+		return tp;
+	}
+
+	public void setTp(Character tp) {
+		this.tp = tp;
+	}
+
+	public Character getNi() {
+		return ni;
+	}
+
+	public void setNi(Character ni) {
+		this.ni = ni;
 	}
 }

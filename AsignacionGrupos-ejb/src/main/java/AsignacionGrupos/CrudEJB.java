@@ -539,6 +539,7 @@ import Exceptions.*;
 	@Override
 	public List<Encuesta> obtenerEncuestasPorExpediente(Long ne) throws ExpedienteNoEncontradoException{
 		Expediente e = em.find(Expediente.class, ne);
+		
 		if(e == null) {
 			throw new ExpedienteNoEncontradoException();
 		}

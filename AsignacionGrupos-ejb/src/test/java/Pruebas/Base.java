@@ -194,6 +194,7 @@ public class Base {
 		gpa.add(g3);
 		gpa.add(g4);
 		gpa.add(g5);
+		
 		gpa.add(g6);
 		gpa.add(g7);
 		gpa.add(g8);

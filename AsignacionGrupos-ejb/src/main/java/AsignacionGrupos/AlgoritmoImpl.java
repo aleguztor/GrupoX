@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -19,7 +19,7 @@ import Entidades.Expediente;
 import Entidades.Grupo;
 import Entidades.Matricula;
 
-@Stateless
+@Stateful
 public class AlgoritmoImpl implements AlgoritmoIntf{
 	
 	static class comparatorAlumno implements Comparator<Alumno>{
@@ -159,7 +159,8 @@ public class AlgoritmoImpl implements AlgoritmoIntf{
 	
 	@Override
 	public List<Grupo> buscarGrupos(){
-		return em.createQuery("SELECT g FROM Grupo g", Grupo.class).getResultList();
+		TypedQuery<Grupo> q = em.createQuery("SELECT g FROM Grupo g", Grupo.class);
+		return q.getResultList();
 	}
 
 	@Override

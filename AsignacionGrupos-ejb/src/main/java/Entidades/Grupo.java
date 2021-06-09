@@ -12,7 +12,6 @@ import javax.persistence.*;
  *
  */
 @Entity
-@SequenceGenerator(name="grupo", initialValue=1, allocationSize=200)
 public class Grupo implements Serializable {
 	   
 	/**

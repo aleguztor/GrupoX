@@ -55,7 +55,7 @@ public class ModAlumnos {
 		Base.init(UNIDAD_PERSISTENCIA_PRUEBAS);
 	}
 	
-//	@Requisitos({"RF8"})
+	@Requisitos({"RF8"})
 	@Test
 	public void testCambioGrupoAlumnos() {
 		List<Alumno> alumnos = new LinkedList<>();
@@ -72,6 +72,7 @@ public class ModAlumnos {
 		}
 		
 	}
+	@Requisitos({"RF8"})
 	@Test
 	public void testCambioHorarioyGrupo() {
 		Alumno a1 = new Alumno("Mario", "Vazquez", "12345678a", "mario@uma.es");
@@ -87,6 +88,7 @@ public class ModAlumnos {
 		
 		
 	}
+	@Requisitos({"RF8"})
 	@Test
 	public void testObtenerMatriculaPorGrupo() {
 		
@@ -99,6 +101,7 @@ public class ModAlumnos {
 			e.printStackTrace();
 		}
 	}
+	@Requisitos({"RF8"})
 	@Test
 	public void testObtenerGrupoPorMatricula() {
 		Date d = new Date(System.currentTimeMillis());
@@ -113,6 +116,7 @@ public class ModAlumnos {
 			e.printStackTrace();
 		}
 	}
+	@Requisitos({"RF8"})
 	@Test
 	public void testBusquedaDeGrupo() {
 		Grupo a = new Grupo((long)15,"1", "B","Manyana");

@@ -52,7 +52,7 @@ public class Limitacion {
 		Base.init(UNIDAD_PERSISTENCIA_PRUEBAS);
 	}
 	
-//	@Requisitos({"RF7"})
+	@Requisitos({"RF7"})
 	@Test
     public void TestLimitarPlazasNuevoIngreso() {
         Grupo g = new Grupo((long)15,"1�", "c","Tarde");
@@ -66,7 +66,7 @@ public class Limitacion {
 
     }
 	
-//	@Requisitos({"RF7"})
+	@Requisitos({"RF7"})
     @Test
     public void TestLimitarPlazasRepetidores() {
 
@@ -80,8 +80,8 @@ public class Limitacion {
         }
     }
 	
+	@Requisitos({"RF7"})
 	@Test
-	
     public void TestEliminarGrupoPorFaltaDeAlumnos() {
 		//Suponemos que el limite por falta de alumnos es 3. El grupo A tiene dos alumnos por 
 		//tanto deberia borrase.

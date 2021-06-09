@@ -49,8 +49,7 @@ public class Importacion {
 		Base.init(UNIDAD_PERSISTENCIA_PRUEBAS);
 	}
 	
-	@Ignore
-//	@Requisitos({"RF1"})
+	@Requisitos({"RF1"})
 	@Test
 	public void testImportacionAlumnos() {
 		Alumno a = new Alumno( "Carmelita", "Enr�quez","95115697E", "06104200001@uma.es");

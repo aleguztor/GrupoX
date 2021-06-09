@@ -47,7 +47,7 @@ public class Filtrado {
 		Base.init(UNIDAD_PERSISTENCIA_PRUEBAS);
 	}
 	
-//	@Requisitos({"RF3"})
+	@Requisitos({"RF3"})
 	@Test
 	public void testFiltradoAlumnos() {
 		try {
@@ -66,7 +66,8 @@ public class Filtrado {
 			e.printStackTrace();
 		}
 	}	
-	@Test //MIRAR
+	@Requisitos({"RF3"})
+	@Test 
 	public void testBuscarTitulacionPorNombre() {
 		String nombre="Desarrollo movil";
 		try {

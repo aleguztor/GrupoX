@@ -39,7 +39,7 @@ public class Encuestas {
 		Base.init(UNIDAD_PERSISTENCIA_PRUEBAS);
 	}
 	
-//	@Requisitos({"RF5"})
+	@Requisitos({"RF5"})
 	@Test
 	public void testAsignarEncuesta() {
 		Date d = new Date(System.currentTimeMillis());
@@ -56,7 +56,7 @@ public class Encuestas {
 			e1.printStackTrace();
 		}
 	}
-	
+	@Requisitos({"RF5"})
 	@Test 
 	public void testcrearEncuestaCambioHorario() {
 		Date d = new Date(System.currentTimeMillis());

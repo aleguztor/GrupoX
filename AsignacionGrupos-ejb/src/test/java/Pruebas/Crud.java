@@ -55,7 +55,7 @@ public class Crud {
 		Base.init(UNIDAD_PERSISTENCIA_PRUEBAS);
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testExisteExpediente() {
 		try {
@@ -68,7 +68,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testModificarExpediente() {
 		try {
@@ -85,7 +85,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testEliminarExpediente() {
 		try {
@@ -99,7 +99,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarExp() {
 		try {
@@ -112,7 +112,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarAlumno() {
 		try {
@@ -126,7 +126,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testModificarAlumno() {
 		try {
@@ -143,7 +143,7 @@ public class Crud {
 
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testEliminarAlumnoPorDNI() {
 		try {
@@ -156,7 +156,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testBusquedaAlumnoPorDNI() {
 		try {
@@ -166,13 +166,13 @@ public class Crud {
 		}
 	}
 	
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testGetAlumnos() {
 		assertNotNull(crud.getAlumnos().get(0));
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarOptativa() {
 		try {
@@ -185,7 +185,7 @@ public class Crud {
 
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testModificarOptativa() {
 		try {
@@ -199,7 +199,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testEliminarOptativa() {
 		try {
@@ -213,7 +213,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testExisteOptativa() {
 		try {
@@ -227,7 +227,7 @@ public class Crud {
 
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarMatricula() {
 		try {
@@ -242,7 +242,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testModificarMatricula() {
 		try {
@@ -259,7 +259,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testEliminarMatricula() {
 		try {
@@ -277,7 +277,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testExisteMatricula() {
 		try {
@@ -292,7 +292,7 @@ public class Crud {
 		}
 	}
 	
-//@Requisitos({"RF2"})
+@Requisitos({"RF2"})
 	@Test
 	public void testEliminarGrupo() {
 		try {
@@ -303,7 +303,7 @@ public class Crud {
 			e.printStackTrace();
 		}
 	}
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarGrupo() {
 		try {
@@ -315,7 +315,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testModificarGrupo() {
 		try {
@@ -328,7 +328,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testExisteGrupo() {
 		try {
@@ -339,8 +339,8 @@ public class Crud {
 		}
 	}
 
+	@Requisitos({"RF2"})
 	@Test
-
 	public void testBusquedaGrupo() {
 		try {
 			Grupo g = crud.busquedaGrupo("1�", "b", "Manyana");
@@ -350,7 +350,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarTitulacion() {
 		try {
@@ -363,7 +363,7 @@ public class Crud {
 
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testModificarTitulacion() {
 		try {
@@ -379,7 +379,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testEliminarTitulacion() {
 		try {
@@ -392,7 +392,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testExisteTitulacion() {
 		try {
@@ -404,7 +404,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarAsignatura() {
 		try {
@@ -416,7 +416,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testModificarAsignatura() {
 		try {
@@ -431,7 +431,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testEliminarAsignatura() {
 		try {
@@ -444,7 +444,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testExisteAsignatura() {
 		try {
@@ -456,7 +456,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarCentro() {
 		try {
@@ -468,7 +468,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testModificarCentro() {
 		try {
@@ -483,7 +483,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testExisteCentro() {
 		try {
@@ -495,7 +495,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testEliminarCentro() {
 		try {
@@ -507,7 +507,7 @@ public class Crud {
 		}
 	}
 
-	// @Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarClase() {
 		try {
@@ -523,7 +523,7 @@ public class Crud {
 		}
 	}
 
-	// @Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testModificarClase() {
 		try {
@@ -543,7 +543,7 @@ public class Crud {
 		}
 	}
 
-	// @Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testEliminarClase() {
 		try {
@@ -559,7 +559,7 @@ public class Crud {
 		}
 	}
 
-	// @Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testExisteClase() {
 		try {
@@ -575,7 +575,7 @@ public class Crud {
 		}
 	}
 	
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarEncuesta() {
 			Date d = new Date(System.currentTimeMillis());
@@ -605,7 +605,7 @@ public class Crud {
 			
 	}
 	
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testInsertarEncuestaCambioHorario() {
 		Date d = new Date(System.currentTimeMillis());
@@ -618,27 +618,27 @@ public class Crud {
 		}	
 	}	
 	
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testObtenerExpedientesAlumno() {
 		Long id = (long)214623;
 		
 		List<Expediente> b= new LinkedList<>();
 		b.add(new Expediente((long)214623,true,5.0));
-		/*try {
-		//	assertEquals(crud.obtenerExpedientesAlumno(id).getNum_Expediente(),b.get(0).getNum_Expediente());
-		}catch(ExpedienteNoEncontradoException e) {
+		try {
+			assertEquals(crud.obtenerExpedienteAlumno(id).getNum_Expediente(),b.get(0).getNum_Expediente());
+		}catch(Exception e) {
 			e.printStackTrace();
-		}*/
+		}
 	}	
 	
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testGetEncuestas() {
 		assertNotNull(crud.getEncuestas());
 	}
 	
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testBuscarMatriculasPorExpediente() {
 		Date d = new Date(System.currentTimeMillis());
@@ -668,7 +668,7 @@ public class Crud {
 		}
 	}
 
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testModificarConDosAlumnos() {
 		Alumno a = new Alumno("Juan", "Vazquez", "8219412a", "juan@uma.es");
@@ -681,13 +681,13 @@ public class Crud {
 		}
 	}
 	
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testObtenerTitulaciones() {
 		assertNotNull(crud.obtenerTitulaciones());
 	}
 	
-//	@Requisitos({"RF2"})
+	@Requisitos({"RF2"})
 	@Test
 	public void testObtenerTitulacionPorId() {
 		int codigo = 1041;
@@ -698,7 +698,7 @@ public class Crud {
 		}
 	}
 	
-	
+	@Requisitos({"RF2"})
 	@Test
 	public void testExisteEncuestaCambiaHorario() {
 		Date d = new Date(System.currentTimeMillis());
@@ -721,6 +721,7 @@ public class Crud {
 		
 	}
 	
+	@Requisitos({"RF2"})
 	@Test
 	public void testObtenerGrupos() {
 		try {
@@ -730,7 +731,7 @@ public class Crud {
 		}
 	}
 	
-	
+	@Requisitos({"RF2"})
 	@Test
 	public void testExpedientesDeAlumno() throws AlumnoDuplicadoException, ExpedienteDuplicadoException {
 		
@@ -741,17 +742,17 @@ public class Crud {
 		}
 		
 	}
-	
+	@Requisitos({"RF2"})
 	@Test
 	public void testExisteExpedientePorPK() throws ExpedienteNoEncontradoException {
 		assertNotNull(crud.existeExpedientePorPK((long)214623));
 	}
-	
+	@Requisitos({"RF2"})
 	@Test
 	public void testObtenerEncuestasPorExpediente() throws ExpedienteNoEncontradoException {
 		assertNotNull(crud.obtenerEncuestasPorExpediente((long)214623));
 	}
-	
+	@Requisitos({"RF2"})
 	@Test
 	public void testEliminarEncuestasPorExpediente()  {
 		List<Encuesta> b= new LinkedList<>();
@@ -765,6 +766,7 @@ public class Crud {
 			e.printStackTrace();
 		}
 	}
+	@Requisitos({"RF2"})
 	@Test
 	public void testObtenerGrupoPorId(){
 		Grupo grupo = new Grupo((long)12, "20/21", "A", "M");
@@ -781,6 +783,7 @@ public class Crud {
 			e.printStackTrace();
 		}
 	}
+	@Requisitos({"RF2"})
 	@Test
 	public void testEliminarGrupoPorId() {
 		try {
@@ -790,11 +793,12 @@ public class Crud {
 			e.printStackTrace();
 		}
 	}
-	
+	@Requisitos({"RF2"})
 	@Test
 	public void testGetAsignaturas() {
 		assertNotNull(crud.getAsignaturas());
 	}
+	@Requisitos({"RF2"})
 	@Test
 	public void testEliminarAsignaturasPorReferencia() {
 		Asignatura ass= new Asignatura("23fd","Nombre",2,240,true,true);

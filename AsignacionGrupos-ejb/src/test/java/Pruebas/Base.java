@@ -114,7 +114,7 @@ public class Base {
 		m4.setListado_asignaturas("202");
 		m5.setListado_asignaturas("202");
 		m6.setListado_asignaturas("202");
-		Grupo ing = new Grupo((long) 0,"1", "A", "Manyana");
+		Grupo ing = new Grupo((long) 9,"1", "A", "Manyana");
 		ing.setIdiomaIngles(true);
 		Grupo a = new Grupo((long) 1,"1", "B","Manyana");
 		Grupo b = new Grupo((long) 2,"1", "C","Manyana");

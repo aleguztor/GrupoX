@@ -58,7 +58,22 @@ public class ImportarControllador {
 		}
 		
 		
-		return "index.xhtml";
+		return "Main.html";
+	}
+	public String importarAsignaturas() throws ExcelNoEncontradoException {
+		if(uploadedFile != null) {
+			String filename ="";
+			try(InputStream input = uploadedFile.getInputStream()){
+				filename = uploadedFile.getSubmittedFileName();
+				Files.copy(input, new File(folder,filename).toPath());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+					ie.ImportarAsignaturas(folder+"/"+filename);
+		}
+		return "Main.html";
 	}
 
 }
